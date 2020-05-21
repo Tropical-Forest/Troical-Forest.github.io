@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>git的简单使用</title>
-    <url>/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E5%92%8C%E7%94%A8GitHub%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E5%8D%8F%E4%BD%9C%E7%9A%84%E7%AE%80%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
+    <url>/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p> &nbsp;&nbsp;&nbsp;&nbsp;在这里，主要写有关用git去上传项目到GitHub或者克隆GitHub文件到本地等简单操作命令。我们要打开cmd(或者 git bash here)，进入项目路径。然后再执行下面操作。 </p>
 <hr>
 <ol>
