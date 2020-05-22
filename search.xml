@@ -20,7 +20,7 @@
 <li><code>git branch -d [分支名]</code>&nbsp;&nbsp;<em>删除分支</em></li>
 <li><code>git branch [分支名]</code>&nbsp;&nbsp;<em>新建分支</em></li>
 <li><code>git branch</code>&nbsp;&nbsp;<em>查看所有分支</em></li>
-<li><code>git branchc -a</code>&nbsp;&nbsp;<em>查看当前所在分支</em></li>
+<li><code>git branch -a</code>&nbsp;&nbsp;<em>查看当前所在分支</em></li>
 <li><code>git checkout [分支名]</code>&nbsp;&nbsp;<em>切换分支</em></li>
 </ol>
 <hr>
