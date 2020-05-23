@@ -131,5 +131,11 @@
 <li>我发现在被代理服务器开启防火墙服务时，该服务器就会死机，我也不明白什么原因。</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>代理SSH</tag>
+      </tags>
   </entry>
 </search>
