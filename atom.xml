@@ -5,9 +5,9 @@
   <subtitle>个人技术博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2020-05-23T14:01:03.637Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="https://tropical-forest.github.io/"/>
+  <updated>2020-05-23T14:40:13.912Z</updated>
+  <id>https://tropical-forest.github.io/</id>
   
   <author>
     <name>Tropical-Forest</name>
@@ -18,39 +18,36 @@
   
   <entry>
     <title>用XShell设置代理SSH</title>
-    <link href="http://yoursite.com/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/"/>
-    <id>http://yoursite.com/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/</id>
+    <link href="https://tropical-forest.github.io/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/"/>
+    <id>https://tropical-forest.github.io/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/</id>
     <published>2020-05-23T12:12:17.000Z</published>
-    <updated>2020-05-23T14:01:03.637Z</updated>
+    <updated>2020-05-23T14:40:13.912Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="所需条件"><a href="#所需条件" class="headerlink" title="所需条件"></a>所需条件</h2><ol><li>安装XShell软件</li><li>两个vps</li></ol><hr><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol><li>鼠标点击该服务器—》右键—-》属性—-》隧道—》添加，添加窗口相关数据如下图所填：<br><img src="/.com//tianjia.jpg" alt="添加窗口"><br><strong>注意：类型要选(SOCKS4/5),侦听端口要填一个未被占用的端口，关于如何查看未被占用的端口请访问<a href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_blank" rel="noopener">CentOS7有关防火墙和端口的常用命令</a></strong></li><li>确定—》连接，如图<br><img src="/.com//xiaoguo.JPG" alt="代理vps连接后的效果图"><br>&nbsp;&nbsp;图片中的警告可以忽视，那是CentOS8 可以用web服务管理服务器的提示。注意到下面的local:9090灯亮了表示成功了</li><li>右键—》属性—》代理—》浏览—》添加，添加相关数据如图所填：<br><img src="/.com//4.JPG" alt="添加代理器的相关数据图"><br>类型选SOCK5，主机填localhost，端口要与刚才填隧道的端口一致。用户名和密码不要填。然后确定</li><li>选择刚才添加的代理器—-》连接，效果如图<br><img src="/.com//3.JPG" alt="被代理的服务器连接后的效果图"><br>出现这样的画面表示通过代理服务器连接另一台服务器已经成功了。</li></ol><hr><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li>如果在被代理的服务器出现非正常关闭时，一定记得重启服务器，不然再次连接时会失败。</li><li>我发现在被代理服务器开启防火墙服务时，该服务器就会死机，我也不明白什么原因。</li></ol>]]></content>
+    <content type="html"><![CDATA[<p><meta name="referrer" content="no-referrer"></p><h2 id="所需条件"><a href="#所需条件" class="headerlink" title="所需条件"></a>所需条件</h2><ol><li>安装XShell软件</li><li>两个vps</li></ol><hr><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol><li>鼠标点击该服务器—》右键—-》属性—-》隧道—》添加，添加窗口相关数据如下图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/tianjia.jpg" alt="添加窗口"><br><strong>注意：类型要选(SOCKS4/5),侦听端口要填一个未被占用的端口，关于如何查看未被占用的端口请访问<a href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">CentOS7有关防火墙和端口的常用命令</a></strong></li><li>确定—》连接，如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/xiaoguo.JPG" alt="代理vps连接后的效果图"><br>&nbsp;&nbsp;图片中的警告可以忽视，那是CentOS8 可以用web服务管理服务器的提示。注意到下面的local:9090灯亮了表示成功了</li><li>右键—》属性—》代理—》浏览—》添加，添加相关数据如图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/4.JPG" alt="添加代理器的相关数据图"><br>类型选SOCK5，主机填localhost，端口要与刚才填隧道的端口一致。用户名和密码不要填。然后确定</li><li>选择刚才添加的代理器—-》连接，效果如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/3.JPG" alt="被代理的服务器连接后的效果图"><br>出现这样的画面表示通过代理服务器连接另一台服务器已经成功了。</li></ol><hr><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li>如果在被代理的服务器出现非正常关闭时，一定记得重启服务器，不然再次连接时会失败。</li><li>我发现在被代理服务器开启防火墙服务时，该服务器就会死机，我也不明白什么原因。</li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;所需条件&quot;&gt;&lt;a href=&quot;#所需条件&quot; class=&quot;headerlink&quot; title=&quot;所需条件&quot;&gt;&lt;/a&gt;所需条件&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;安装XShell软件&lt;/li&gt;
-&lt;li&gt;两个vps&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;步骤&quot;&gt;&lt;a
+        &lt;p&gt;&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;所需条件&quot;&gt;&lt;a href=&quot;#所需条件&quot; class=&quot;headerlink&quot; title=&quot;所需条件&quot;&gt;&lt;/a&gt;所需条件&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;安装XS
       
     
     </summary>
     
     
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+      <category term="Linux" scheme="https://tropical-forest.github.io/categories/Linux/"/>
     
     
-      <category term="代理SSH" scheme="http://yoursite.com/tags/%E4%BB%A3%E7%90%86SSH/"/>
+      <category term="代理SSH" scheme="https://tropical-forest.github.io/tags/%E4%BB%A3%E7%90%86SSH/"/>
     
   </entry>
   
   <entry>
     <title>CentOS7有关防火墙和端口的常用命令</title>
-    <link href="http://yoursite.com/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>http://yoursite.com/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <link href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
     <published>2020-05-23T05:57:56.000Z</published>
     <updated>2020-05-23T07:19:58.518Z</updated>
     
@@ -66,17 +63,17 @@
     </summary>
     
     
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+      <category term="Linux" scheme="https://tropical-forest.github.io/categories/Linux/"/>
     
     
-      <category term="防火墙和端口" scheme="http://yoursite.com/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3/"/>
+      <category term="防火墙和端口" scheme="https://tropical-forest.github.io/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3/"/>
     
   </entry>
   
   <entry>
     <title>git的简单使用</title>
-    <link href="http://yoursite.com/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yoursite.com/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</id>
+    <link href="https://tropical-forest.github.io/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+    <id>https://tropical-forest.github.io/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</id>
     <published>2020-05-21T09:08:53.000Z</published>
     <updated>2020-05-22T00:10:19.995Z</updated>
     
@@ -95,12 +92,12 @@
     </summary>
     
     
-      <category term="git&amp;GitHub" scheme="http://yoursite.com/categories/git-GitHub/"/>
+      <category term="git&amp;GitHub" scheme="https://tropical-forest.github.io/categories/git-GitHub/"/>
     
     
-      <category term="git上传本地文件" scheme="http://yoursite.com/tags/git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/"/>
+      <category term="git上传本地文件" scheme="https://tropical-forest.github.io/tags/git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/"/>
     
-      <category term="branch的查看、创建、删除" scheme="http://yoursite.com/tags/branch%E7%9A%84%E6%9F%A5%E7%9C%8B%E3%80%81%E5%88%9B%E5%BB%BA%E3%80%81%E5%88%A0%E9%99%A4/"/>
+      <category term="branch的查看、创建、删除" scheme="https://tropical-forest.github.io/tags/branch%E7%9A%84%E6%9F%A5%E7%9C%8B%E3%80%81%E5%88%9B%E5%BB%BA%E3%80%81%E5%88%A0%E9%99%A4/"/>
     
   </entry>
   
