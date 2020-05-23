@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-22T00:10:19.995Z</updated>
+  <updated>2020-05-23T06:47:43.727Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CentOS7有关防火墙和端口的常常用命令</title>
+    <link href="http://yoursite.com/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2020-05-23T05:57:56.000Z</published>
+    <updated>2020-05-23T06:47:43.727Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="关于CentOS系统"><a href="#关于CentOS系统" class="headerlink" title="关于CentOS系统"></a>关于CentOS系统</h2><p>&nbsp;&nbsp;CentOS（Community Enterprise Operating System，中文意思是社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。(来自百度百科)</p><hr><h2 id="关于防火墙"><a href="#关于防火墙" class="headerlink" title="关于防火墙"></a>关于防火墙</h2><p>&nbsp;&nbsp;防火墙技术是通过有机结合各类用于安全管理与筛选的软件和硬件设备，帮助计算机网络于其内、外网之间构建一道相对隔绝的保护屏障，以保护用户资料与信息安全性的一种技术。防火墙技术的功能主要在于及时发现并处理计算机网络运行时可能存在的安全风险、数据传输等问题，其中处理措施包括隔离与保护，同时可对计算机网络安全当中的各项操作实施记录与检测，以确保计算机网络运行的安全性，保障用户资料与信息的完整性，为用户提供更好、更安全的计算机网络使用体验。(来自百度百科)</p><hr><h2 id="关于端口"><a href="#关于端口" class="headerlink" title="关于端口"></a>关于端口</h2><p>&nbsp;&nbsp;”端口”是英文port的意译，可以认为是设备与外界通讯交流的出口。端口可分为虚拟端口和物理端口，其中虚拟端口指计算机内部或交换机路由器内的端口，不可见。例如计算机中的80端口、21端口、23端口等。物理端口又称为接口，是可见端口，计算机背板的RJ45网口，交换机路由器集线器等RJ45端口。电话使用RJ11插口也属于物理端口的范畴。(来自百度百科)</p><hr><h2 id="CentOS7有关防火墙和端口的常用命令"><a href="#CentOS7有关防火墙和端口的常用命令" class="headerlink" title="CentOS7有关防火墙和端口的常用命令"></a>CentOS7有关防火墙和端口的常用命令</h2><p>&nbsp;&nbsp;我们一般都会在服务器上搭建服务，搭建服务需要开放端口，没有端口是无法与外网联系的，也就是搭建的服务无法成功。如果搭建服务时用到端口的话，我们应该要检查端口是否开放，没有开放的话则需要去开放的端口。这是你就会用到下面的命令。下面的命令是适用于CentOS7，其他版本不知是否适用。<br>|               命令                               |             作用          |<br>|               —————                         |            ——-         |<br>|  <code>systemctl start firewalld.service</code>         |         启动防火墙        |<br>|  <code>systemctl stop firewalld.service</code>        |         停止/关闭防火墙      |<br>|  <code>systemctl restart firewalld.service</code>      |        重启防火墙      |<br>|  <code>firewalld-cmd --zone=public --add-port=[端口]/tcp --permanent</code>  |         新增开放一个端口      |<br>|  <code>firewall-cmd --zone=public --add-port=[端口]-[端口]/tcp --permanent</code>  |         新增开放多个端口      |<br>|  <code>firewall-cmd --list-all</code>                  |        查看防火墙信息      |<br>|  <code>firewall-cmd --list-ports</code>                |        查看防火墙开放端口信息      |<br>|  <code>firewall-cmd --zone=public --remove-port=80/tcp --permanent</code>  |         删除一个开放的端口      |<br>| <code>systemctl enable firewalld.service</code>        | 开机启用防火墙 |<br>| <code>systemctl disable firewalld.service</code>        | 开机不启用防火墙 |<br>| <code>systemctl unmask firewalld</code>                | 执行命令，即可实现取消服务的锁定 |<br>| <code>systemctl mask firewalld</code>                     | 下次需要锁定该服务时执行 |</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;关于CentOS系统&quot;&gt;&lt;a href=&quot;#关于CentOS系统&quot; class=&quot;headerlink&quot; title=&quot;关于CentOS系统&quot;&gt;&lt;/a&gt;关于CentOS系统&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;CentOS（Community Enterpris
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="防火墙和端口" scheme="http://yoursite.com/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>git的简单使用</title>
