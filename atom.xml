@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tropical-forest.github.io/"/>
-  <updated>2020-06-05T14:59:26.820Z</updated>
+  <updated>2020-06-22T15:38:21.865Z</updated>
   <id>https://tropical-forest.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vscode中的c/c++调试问题</title>
+    <link href="https://tropical-forest.github.io/2020/06/22/vscode%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98/"/>
+    <id>https://tropical-forest.github.io/2020/06/22/vscode%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98/</id>
+    <published>2020-06-22T15:25:21.000Z</published>
+    <updated>2020-06-22T15:38:21.865Z</updated>
+    
+    <content type="html"><![CDATA[<p>环境搭建过程，可以参考微软提供的教程：</p><h2 id="https-code-visualstudio-com-docs-languages-cpp"><a href="#https-code-visualstudio-com-docs-languages-cpp" class="headerlink" title="https://code.visualstudio.com/docs/languages/cpp"></a><a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">https://code.visualstudio.com/docs/languages/cpp</a></h2><p>我们把所有环境搭建好，c/c++文件也能运行，但就是调试时在断点处无法停下来，这时候可能是window安全问题，可能是安全软件如360把mangw安装包下的gdb.exe拦截以至于无法调试，这时候就需要去把它添加到信任区，再次调试可能就会成功了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;环境搭建过程，可以参考微软提供的教程：&lt;/p&gt;
+&lt;h2 id=&quot;https-code-visualstudio-com-docs-languages-cpp&quot;&gt;&lt;a href=&quot;#https-code-visualstudio-com-docs-languages-cpp&quot;
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>CSS样式属性</title>
