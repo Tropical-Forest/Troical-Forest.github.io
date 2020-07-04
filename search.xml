@@ -11,11 +11,11 @@
 <li><code>git config --global user.password &#39;你的GitHub账号密码&#39;</code>&nbsp;&nbsp;<em>设置你的密码</em></li>
 <li><code>git config -l</code> &nbsp;&nbsp; <em>查看git配置信息，看看账号名和密码、邮箱是否正确。</em></li>
 <li><code>git init</code>&nbsp;&nbsp; <em>项目初始化</em></li>
-<li><code>git remote add orgin  [关联项目仓库连接地址]</code> &nbsp;&nbsp; <em>本地项目与要上传到GitHub仓库进行关联。</em></li>
+<li><code>git remote add origin  [关联项目仓库连接地址]</code> &nbsp;&nbsp; <em>本地项目与要上传到GitHub仓库进行关联。</em></li>
 <li><code>git status</code>&nbsp;&nbsp;<em>查看本地发生了哪些变化</em></li>
 <li><code>git add *</code>  </li>
 <li><code>git commit  -m &#39;提交的注释&#39;</code>&nbsp;&nbsp;<em>上面两条命令是本地文件修改生效</em></li>
-<li><code>git push -u orgin master</code>&nbsp;&nbsp;<em>推送项目到GitHub主支上</em></li>
+<li><code>git push -u origin master</code>&nbsp;&nbsp;<em>推送项目到GitHub主支上</em></li>
 <li><code>git clone [url]</code>&nbsp;&nbsp;<em>url为克隆地址，克隆GitHub上的项目到本地上</em></li>
 <li><code>git branch -d [分支名]</code>&nbsp;&nbsp;<em>删除分支</em></li>
 <li><code>git branch [分支名]</code>&nbsp;&nbsp;<em>新建分支</em></li>
