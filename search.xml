@@ -289,4 +289,16 @@
         <tag>vscode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>设置git代理</title>
+    <url>/2020/07/05/%E8%AE%BE%E7%BD%AEgit%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>设置git代理方式:<br><code>git config --global http.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br><code>git config --global https.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br>删除git代理:<br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy</code></p>
+]]></content>
+      <categories>
+        <category>git&amp;GitHub</category>
+      </categories>
+      <tags>
+        <tag>git代理</tag>
+      </tags>
+  </entry>
 </search>
