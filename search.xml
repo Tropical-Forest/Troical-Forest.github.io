@@ -302,17 +302,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git实践</title>
-    <url>/2020/07/05/gitt%E5%AE%9E%E8%B7%B5/</url>
-    <content><![CDATA[<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2>]]></content>
-      <categories>
-        <category>git&amp;GitHub</category>
-      </categories>
-      <tags>
-        <tag>git命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Webpack的安装</title>
     <url>/2020/09/05/Webpack%E7%9A%84%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><p>Webpack是一个开源的前端开发工具。当Webpack处理应用程序时，它会构建一个依赖关系图，其中包含应用程序所需要的各个模块，然后将所有这些模块打包成一个或多个模组。Webpack可以通过终端或更改Webpack.config.js文件来设定各项功能</p>
