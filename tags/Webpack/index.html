@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"tropical-forest.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"defalut"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="不断学习IT技术，不断提高自己">
+  <meta name="description" content="路漫漫其修远兮，吾将上下而求索">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tropical-Forest">
 <meta property="og:url" content="https://tropical-forest.github.io/tags/Webpack/index.html">
 <meta property="og:site_name" content="Tropical-Forest">
-<meta property="og:description" content="不断学习IT技术，不断提高自己">
+<meta property="og:description" content="路漫漫其修远兮，吾将上下而求索">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Tropical-Forest">
 <meta name="twitter:card" content="summary">
@@ -98,7 +98,7 @@
       <h1 class="site-title">Tropical-Forest</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">个人技术博客</p>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
   </div>
 
   <div class="site-nav-right">
@@ -295,7 +295,7 @@
     <img class="site-author-image" itemprop="image" alt="Tropical-Forest"
       src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">Tropical-Forest</p>
-  <div class="site-description" itemprop="description">不断学习IT技术，不断提高自己</div>
+  <div class="site-description" itemprop="description">路漫漫其修远兮，吾将上下而求索</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -373,12 +373,13 @@ function show_date_time(){
     msPerDay=24*60*60*1000
     e_daysold=timeold/msPerDay
     daysold=Math.floor(e_daysold);
+    years=Math.floor(daysold/365);
     e_hrsold=(e_daysold-daysold)*24;
     hrsold=setzero(Math.floor(e_hrsold));
     e_minsold=(e_hrsold-hrsold)*60;
     minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
     seconds=setzero(Math.floor((e_minsold-minsold)*60));
-    document.getElementById('days').innerHTML="本站已安全运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    document.getElementById('days').innerHTML="本站已安全运行了"+years+"年"+daysold%365+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
 }
 function setzero(i){
     if (i<10)
@@ -387,6 +388,7 @@ function setzero(i){
 }
 show_date_time();
 </script>
+
         
 
 
