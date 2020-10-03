@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tropical-forest.github.io/"/>
-  <updated>2020-09-22T13:20:38.948Z</updated>
+  <updated>2020-10-03T01:58:34.503Z</updated>
   <id>https://tropical-forest.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>算法复杂性分析</title>
+    <link href="https://tropical-forest.github.io/2020/10/03/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90/"/>
+    <id>https://tropical-forest.github.io/2020/10/03/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90/</id>
+    <published>2020-10-03T01:28:25.000Z</published>
+    <updated>2020-10-03T01:58:34.503Z</updated>
+    
+    <content type="html"><![CDATA[<p>算法复杂性的高低体现在运行该算法所需要的计算机资源的多少上，所需要的资源多，算法复杂性就越高；反之越少，算法复杂性就越低。算法复杂性主要分为时间复杂性和空间复杂性，顾名思义就是运行该算法所花费的时间和空间资源。算法复杂性分析对指导算法设计与分析具有重要意义。</p><h2 id="时间复杂性"><a href="#时间复杂性" class="headerlink" title="时间复杂性"></a>时间复杂性</h2><p>时间复杂性分析主要通过渐近上界、渐近下界、同阶方法进行分析</p><h3 id="渐近上界"><a href="#渐近上界" class="headerlink" title="渐近上界"></a>渐近上界</h3><p><strong>记号:</strong> O<br><strong>定义</strong><br>对所有 n，f(n)&gt;=0，g(n)&gt;=0,O(g(n))= { f(n) | 存在正常数 存在正常数 c和n0使得对所有 n&gt;=n0有： 0&lt;=f(n)&lt;=cg(n)}</p><h3 id="渐近下界"><a href="#渐近下界" class="headerlink" title="渐近下界"></a>渐近下界</h3><p><strong>记号:</strong> Ω<br><strong>定义</strong><br>对所有 n，f(n)&gt;=0，g(n)&gt;=0,Ω(g(n))= { f(n) | 存在正常数 存在正常数 c和n0使得对所有 n&gt;=n0有： 0&lt;=cg(n)&lt;=f(n)}</p><h3 id="同阶"><a href="#同阶" class="headerlink" title="同阶"></a>同阶</h3><p><strong>记号:</strong> Θ<br>O(f(n)) = Ω(f(n))</p><h2 id="空间复杂性"><a href="#空间复杂性" class="headerlink" title="空间复杂性"></a>空间复杂性</h2><p>空间复杂性分析较为简单，方法与时间复杂性分析相似</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;算法复杂性的高低体现在运行该算法所需要的计算机资源的多少上，所需要的资源多，算法复杂性就越高；反之越少，算法复杂性就越低。算法复杂性主要分为时间复杂性和空间复杂性，顾名思义就是运行该算法所花费的时间和空间资源。算法复杂性分析对指导算法设计与分析具有重要意义。&lt;/p&gt;
+&lt;h2
+      
+    
+    </summary>
+    
+    
+      <category term="算法设计与分析" scheme="https://tropical-forest.github.io/categories/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>二叉树的中序遍历</title>

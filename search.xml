@@ -332,4 +332,18 @@
         <tag>中序遍历</tag>
       </tags>
   </entry>
+  <entry>
+    <title>算法复杂性分析</title>
+    <url>/2020/10/03/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>算法复杂性的高低体现在运行该算法所需要的计算机资源的多少上，所需要的资源多，算法复杂性就越高；反之越少，算法复杂性就越低。算法复杂性主要分为时间复杂性和空间复杂性，顾名思义就是运行该算法所花费的时间和空间资源。算法复杂性分析对指导算法设计与分析具有重要意义。</p>
+<h2 id="时间复杂性"><a href="#时间复杂性" class="headerlink" title="时间复杂性"></a>时间复杂性</h2><p>时间复杂性分析主要通过渐近上界、渐近下界、同阶方法进行分析</p>
+<h3 id="渐近上界"><a href="#渐近上界" class="headerlink" title="渐近上界"></a>渐近上界</h3><p><strong>记号:</strong> O<br><strong>定义</strong><br>对所有 n，f(n)&gt;=0，g(n)&gt;=0,O(g(n))= { f(n) | 存在正常数 存在正常数 c和n0使得对所有 n&gt;=n0有： 0&lt;=f(n)&lt;=cg(n)}</p>
+<h3 id="渐近下界"><a href="#渐近下界" class="headerlink" title="渐近下界"></a>渐近下界</h3><p><strong>记号:</strong> Ω<br><strong>定义</strong><br>对所有 n，f(n)&gt;=0，g(n)&gt;=0,Ω(g(n))= { f(n) | 存在正常数 存在正常数 c和n0使得对所有 n&gt;=n0有： 0&lt;=cg(n)&lt;=f(n)}</p>
+<h3 id="同阶"><a href="#同阶" class="headerlink" title="同阶"></a>同阶</h3><p><strong>记号:</strong> Θ<br>O(f(n)) = Ω(f(n))</p>
+<h2 id="空间复杂性"><a href="#空间复杂性" class="headerlink" title="空间复杂性"></a>空间复杂性</h2><p>空间复杂性分析较为简单，方法与时间复杂性分析相似</p>
+]]></content>
+      <categories>
+        <category>算法设计与分析</category>
+      </categories>
+  </entry>
 </search>
