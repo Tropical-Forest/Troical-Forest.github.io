@@ -196,6 +196,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tropical-forest.github.io/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Tropical-Forest">
+      <meta itemprop="description" content="路漫漫其修远兮，吾将上下而求索">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tropical-Forest">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/" class="post-title-link" itemprop="url">用XShell设置代理SSH</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-23 20:12:17 / 修改时间：22:40:13" itemprop="dateCreated datePublished" datetime="2020-05-23T20:12:17+08:00">2020-05-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>425</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><meta name="referrer" content="no-referrer"></p>
+<h2 id="所需条件"><a href="#所需条件" class="headerlink" title="所需条件"></a>所需条件</h2><ol>
+<li>安装XShell软件</li>
+<li>两个vps</li>
+</ol>
+<hr>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>鼠标点击该服务器—》右键—-》属性—-》隧道—》添加，添加窗口相关数据如下图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/tianjia.jpg" alt="添加窗口"><br><strong>注意：类型要选(SOCKS4/5),侦听端口要填一个未被占用的端口，关于如何查看未被占用的端口请访问<a href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">CentOS7有关防火墙和端口的常用命令</a></strong></li>
+<li>确定—》连接，如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/xiaoguo.JPG" alt="代理vps连接后的效果图"><br>&nbsp;&nbsp;图片中的警告可以忽视，那是CentOS8 可以用web服务管理服务器的提示。注意到下面的local:9090灯亮了表示成功了</li>
+<li>右键—》属性—》代理—》浏览—》添加，添加相关数据如图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/4.JPG" alt="添加代理器的相关数据图"><br>类型选SOCK5，主机填localhost，端口要与刚才填隧道的端口一致。用户名和密码不要填。然后确定</li>
+<li>选择刚才添加的代理器—-》连接，效果如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/3.JPG" alt="被代理的服务器连接后的效果图"><br>出现这样的画面表示通过代理服务器连接另一台服务器已经成功了。</li>
+</ol>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>如果在被代理的服务器出现非正常关闭时，一定记得重启服务器，不然再次连接时会失败。</li>
+<li>我发现在被代理服务器开启防火墙服务时，该服务器就会死机，我也不明白什么原因。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+  
+  </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -527,7 +629,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -581,7 +683,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9 分钟</span>
+    <span title="站点阅读时长">10 分钟</span>
 </div>
 
   <div class="powered-by"></div>

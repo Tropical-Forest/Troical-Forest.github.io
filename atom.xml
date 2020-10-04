@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tropical-forest.github.io/"/>
-  <updated>2020-10-04T02:29:57.507Z</updated>
+  <updated>2020-10-04T03:03:11.201Z</updated>
   <id>https://tropical-forest.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>合并排序</title>
+    <link href="https://tropical-forest.github.io/2020/10/04/%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
+    <id>https://tropical-forest.github.io/2020/10/04/%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F/</id>
+    <published>2020-10-04T02:55:11.000Z</published>
+    <updated>2020-10-04T03:03:11.201Z</updated>
+    
+    <content type="html"><![CDATA[<p>合并排序算法是用分治策略实现对n个元素进行排序的算法。其基本思想是:将待排序元素分成大小大致相同的2个字集合，分别对2个子集合进行排序，最终将排好序的子集合合并成为所要求的排好序的集合。<br>算法描述代码如下:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] sort(<span class="keyword">int</span>[] a,<span class="keyword">int</span> low,<span class="keyword">int</span> high) &#123;</span><br><span class="line"><span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(low&lt;high) &#123;</span><br><span class="line">sort(a,low,mid);</span><br><span class="line">sort(a,mid+<span class="number">1</span>,high);</span><br><span class="line">merge(a,low,mid,high);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span> low,<span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[high-low+<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> i = low;</span><br><span class="line"><span class="keyword">int</span> j = mid + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 把较小的数先移到新数组中</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=high)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i]&lt;a[j])&#123;</span><br><span class="line">                temp[k++] = a[i++];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                temp[k++] = a[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把左边剩余的数移入数组 </span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;=mid)&#123;</span><br><span class="line">            temp[k++] = a[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把右边边剩余的数移入数组</span></span><br><span class="line">        <span class="keyword">while</span>(j&lt;=high)&#123;</span><br><span class="line">            temp[k++] = a[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把新数组中的数覆盖nums数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;temp.length;x++)&#123;</span><br><span class="line">            a[x+low] = temp[x];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度分析:<br>T(n)={O(1) n&lt;=1 ;2T(n/2)+O(n)  n&gt;1}<br>解此递归方程可以T(n)=O(nlogn).由于排序问题的计算时间下界为Ω(nlogn)，故合并排序算法是渐近最优算法。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;合并排序算法是用分治策略实现对n个元素进行排序的算法。其基本思想是:将待排序元素分成大小大致相同的2个字集合，分别对2个子集合进行排序，最终将排好序的子集合合并成为所要求的排好序的集合。&lt;br&gt;算法描述代码如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight j
+      
+    
+    </summary>
+    
+    
+      <category term="算法设计与分析" scheme="https://tropical-forest.github.io/categories/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>棋牌覆盖</title>
