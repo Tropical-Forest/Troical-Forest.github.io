@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"tropical-forest.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"defalut"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="算法复杂性的高低体现在运行该算法所需要的计算机资源的多少上，所需要的资源多，算法复杂性就越高；反之越少，算法复杂性就越低。算法复杂性主要分为时间复杂性和空间复杂性，顾名思义就是运行该算法所花费的时间和空间资源。算法复杂性分析对指导算法设计与分析具有重要意义。 时间复杂性时间复杂性分析主要通过渐近上界、渐近下界、同阶方法进行分析 渐近上界记号: O定义对所有 n，f(n)&gt;&#x3D;0，g(n)&amp;gt">
+  <meta name="description" content="问题描述123456789101112131415161718192021问题描述：给定一个由n行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形的顶至底的一条路径，使该路径经过的数字总和最大。    7   3 8  8 1 0 2 7 4 44 5 2 6 5编程任务：对于给定的由n行数字组成的数字三角形，编程计算从三角形的顶至底的路径经过的数字和的最大值。数据输入：由文件inp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法复杂性分析">
-<meta property="og:url" content="https://tropical-forest.github.io/2020/10/03/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90/index.html">
+<meta property="og:title" content="数字三角形问题">
+<meta property="og:url" content="https://tropical-forest.github.io/2020/11/19/%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Tropical-Forest">
-<meta property="og:description" content="算法复杂性的高低体现在运行该算法所需要的计算机资源的多少上，所需要的资源多，算法复杂性就越高；反之越少，算法复杂性就越低。算法复杂性主要分为时间复杂性和空间复杂性，顾名思义就是运行该算法所花费的时间和空间资源。算法复杂性分析对指导算法设计与分析具有重要意义。 时间复杂性时间复杂性分析主要通过渐近上界、渐近下界、同阶方法进行分析 渐近上界记号: O定义对所有 n，f(n)&gt;&#x3D;0，g(n)&amp;gt">
+<meta property="og:description" content="问题描述123456789101112131415161718192021问题描述：给定一个由n行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形的顶至底的一条路径，使该路径经过的数字总和最大。    7   3 8  8 1 0 2 7 4 44 5 2 6 5编程任务：对于给定的由n行数字组成的数字三角形，编程计算从三角形的顶至底的路径经过的数字和的最大值。数据输入：由文件inp">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-03T01:28:25.000Z">
-<meta property="article:modified_time" content="2020-10-03T01:58:34.503Z">
+<meta property="article:published_time" content="2020-11-19T11:11:58.000Z">
+<meta property="article:modified_time" content="2020-11-19T11:24:36.587Z">
 <meta property="article:author" content="Tropical-Forest">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://tropical-forest.github.io/2020/10/03/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90/">
+<link rel="canonical" href="https://tropical-forest.github.io/2020/11/19/%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2%E9%97%AE%E9%A2%98/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>算法复杂性分析 | Tropical-Forest</title>
+  <title>数字三角形问题 | Tropical-Forest</title>
   
 
 
@@ -199,7 +199,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tropical-forest.github.io/2020/10/03/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://tropical-forest.github.io/2020/11/19/%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -212,7 +212,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          算法复杂性分析
+          数字三角形问题
         </h1>
 
         <div class="post-meta">
@@ -223,7 +223,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-10-03 09:28:25 / 修改时间：09:58:34" itemprop="dateCreated datePublished" datetime="2020-10-03T09:28:25+08:00">2020-10-03</time>
+              <time title="创建时间：2020-11-19 19:11:58 / 修改时间：19:24:36" itemprop="dateCreated datePublished" datetime="2020-11-19T19:11:58+08:00">2020-11-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,14 +241,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>415</span>
+              <span>2.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -260,12 +260,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>算法复杂性的高低体现在运行该算法所需要的计算机资源的多少上，所需要的资源多，算法复杂性就越高；反之越少，算法复杂性就越低。算法复杂性主要分为时间复杂性和空间复杂性，顾名思义就是运行该算法所花费的时间和空间资源。算法复杂性分析对指导算法设计与分析具有重要意义。</p>
-<h2 id="时间复杂性"><a href="#时间复杂性" class="headerlink" title="时间复杂性"></a>时间复杂性</h2><p>时间复杂性分析主要通过渐近上界、渐近下界、同阶方法进行分析</p>
-<h3 id="渐近上界"><a href="#渐近上界" class="headerlink" title="渐近上界"></a>渐近上界</h3><p><strong>记号:</strong> O<br><strong>定义</strong><br>对所有 n，f(n)&gt;=0，g(n)&gt;=0,O(g(n))= { f(n) | 存在正常数 存在正常数 c和n0使得对所有 n&gt;=n0有： 0&lt;=f(n)&lt;=cg(n)}</p>
-<h3 id="渐近下界"><a href="#渐近下界" class="headerlink" title="渐近下界"></a>渐近下界</h3><p><strong>记号:</strong> Ω<br><strong>定义</strong><br>对所有 n，f(n)&gt;=0，g(n)&gt;=0,Ω(g(n))= { f(n) | 存在正常数 存在正常数 c和n0使得对所有 n&gt;=n0有： 0&lt;=cg(n)&lt;=f(n)}</p>
-<h3 id="同阶"><a href="#同阶" class="headerlink" title="同阶"></a>同阶</h3><p><strong>记号:</strong> Θ<br>O(f(n)) = Ω(f(n))</p>
-<h2 id="空间复杂性"><a href="#空间复杂性" class="headerlink" title="空间复杂性"></a>空间复杂性</h2><p>空间复杂性分析较为简单，方法与时间复杂性分析相似</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">问题描述：</span><br><span class="line">给定一个由n行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形</span><br><span class="line">的顶至底的一条路径，使该路径经过的数字总和最大。</span><br><span class="line">    7</span><br><span class="line">   3 8</span><br><span class="line">  8 1 0</span><br><span class="line"> 2 7 4 4</span><br><span class="line">4 5 2 6 5</span><br><span class="line">编程任务：</span><br><span class="line">对于给定的由n行数字组成的数字三角形，编程计算从三角形的顶至底的路径经过的数字和的最大值。</span><br><span class="line">数据输入：</span><br><span class="line">由文件input.txt 提供输入数据。文件的第1 行是数字三角形的行数n，1£n£100。接下来n行是数字三角形各行中的数字。所有数字在0..99之间。输入数据由文件名为 input.txt 的文本文件提供。</span><br><span class="line">结果输出:</span><br><span class="line">程序运行结束时，将计算结果输出到文件output.txt 中。文件的第1 行中的数是计算</span><br><span class="line">出的最大值。</span><br><span class="line">输入文件示例   输出文件示例</span><br><span class="line">7               30</span><br><span class="line">3 8</span><br><span class="line">8 1 0</span><br><span class="line">2 7 4 4</span><br><span class="line">4 5 2 6 5</span><br></pre></td></tr></table></figure>
+<h2 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h2><p>数字三角形中每个数字我们可以用一个二维坐标来表示，例如第1行第1列表示为triangle(1,1)。分析题目可知，经过某个坐标的最大数字和跟该坐标的上面的数字最大数字和有关，所以关于这个问题我们可以用动态规划来解决。先把一个复杂的问题化为n个有关联的子问题。在这里，我们从顶点到底部，依次就算每个坐标的最大数字和。因为后面的坐标会用到前面的坐标数字和，所以我们每计算一个坐标数字和时，都需要把该数字和保存的一个表上，都时候需要用到前面的坐标数字和时，就不需要再计算，直接引用即可，算法效率就会大大提高。设a(i,j)表示坐标triangle(i,j)的数字，d(triangle(i,j))表示经过坐标triangle(i,j)的最大数字和，在这个问题中，我们可以分析一个坐标triangle(i,j) 的位置置换方程为d(triangle(i,j))= max{d(triangle(i-1,j-1),d(triangle(i-1,j))}+a(i,j);</p>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//求从顶点到底层的最长路径，也即是数字和最大</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getLongestPath</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; triangle)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">line</span> = triangle.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">int</span> longestPath=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; table;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; data;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">line</span>&lt;<span class="number">1</span>) &#123; <span class="keyword">return</span> <span class="number">0</span>; &#125; </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">line</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">1</span>) &#123; temp = triangle[i<span class="number">-1</span>][j<span class="number">-1</span>]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j==<span class="number">1</span>) &#123; temp = table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span>] + triangle[i<span class="number">-1</span>][j<span class="number">-1</span>]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j==i) &#123; temp = table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span><span class="number">-1</span>] + triangle[i<span class="number">-1</span>][j<span class="number">-1</span>];&#125;</span><br><span class="line">            <span class="keyword">else</span> &#123; temp = <span class="built_in">max</span>(table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span><span class="number">-1</span>],table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span>]) + triangle[i<span class="number">-1</span>][j<span class="number">-1</span>]; &#125;</span><br><span class="line">            data.push_back(temp);</span><br><span class="line">            <span class="keyword">if</span>(temp &gt;longestPath) &#123; longestPath = temp; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        table.push_back(data);</span><br><span class="line">        data.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">return</span> longestPath;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="comment">//标准输入输出重定向到文件中</span></span><br><span class="line">    freopen(<span class="string">"data.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"data.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; triangle;  <span class="comment">//用来保存数字三角形数据的二维数组</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; data;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">line</span>;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; <span class="built_in">line</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">line</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; temp;</span><br><span class="line">            data.push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        triangle.push_back(data);</span><br><span class="line">        data.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; getLongestPath(triangle);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><p>由算法很容易知道时间复杂度为n^2</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>动态规划就是把一个较为复杂的问题分为多个子问题，而且这些子问题是有关联的，一个子问题的计算结果可能会用到其他子问题的计算结果。所以为避免多次运算，我们可以把已经计算过的子问题的结果保存到一个表中，当要用到已经计算的子问题的结果时，直接引用表中的数据即可，这样子效率就得到大大的提高。</p>
 
     </div>
 
@@ -291,13 +290,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="prev" title="二叉树的中序遍历">
-      <i class="fa fa-chevron-left"></i> 二叉树的中序遍历
+    <a href="/2020/10/17/%E5%BC%83%E7%94%A8%E9%BC%A0%E6%A0%87%EF%BC%8C%E9%AB%98%E6%95%88%E5%B7%A5%E4%BD%9C/" rel="prev" title="弃用鼠标，高效工作">
+      <i class="fa fa-chevron-left"></i> 弃用鼠标，高效工作
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/10/03/%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98/" rel="next" title="排列问题">
-      排列问题 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -357,7 +353,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂性"><span class="nav-number">1.</span> <span class="nav-text">时间复杂性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#渐近上界"><span class="nav-number">1.1.</span> <span class="nav-text">渐近上界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渐近下界"><span class="nav-number">1.2.</span> <span class="nav-text">渐近下界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同阶"><span class="nav-number">1.3.</span> <span class="nav-text">同阶</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间复杂性"><span class="nav-number">2.</span> <span class="nav-text">空间复杂性</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法设计"><span class="nav-number">2.</span> <span class="nav-text">算法设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源代码"><span class="nav-number">3.</span> <span class="nav-text">源代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度分析"><span class="nav-number">4.</span> <span class="nav-text">时间复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -591,7 +587,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'Tropical-Forest.github.io',
       owner       : 'Tropical-Forest',
       admin       : ['Tropical-Forest'],
-      id          : '4410cf40e516fe3796c78cf81068d8ed',
+      id          : '0c998a55e5910f77f41e54a150ffcf89',
         language: 'zh-CN',
       distractionFreeMode: true
     });
