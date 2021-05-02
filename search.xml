@@ -1,117 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CentOS7有关防火墙和端口的常用命令</title>
-    <url>/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="关于CentOS系统"><a href="#关于CentOS系统" class="headerlink" title="关于CentOS系统"></a>关于CentOS系统</h2><p>&nbsp;&nbsp;CentOS（Community Enterprise Operating System，中文意思是社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。(来自百度百科)</p>
-<hr>
-<h2 id="关于防火墙"><a href="#关于防火墙" class="headerlink" title="关于防火墙"></a>关于防火墙</h2><p>&nbsp;&nbsp;防火墙技术是通过有机结合各类用于安全管理与筛选的软件和硬件设备，帮助计算机网络于其内、外网之间构建一道相对隔绝的保护屏障，以保护用户资料与信息安全性的一种技术。防火墙技术的功能主要在于及时发现并处理计算机网络运行时可能存在的安全风险、数据传输等问题，其中处理措施包括隔离与保护，同时可对计算机网络安全当中的各项操作实施记录与检测，以确保计算机网络运行的安全性，保障用户资料与信息的完整性，为用户提供更好、更安全的计算机网络使用体验。(来自百度百科)</p>
-<hr>
-<h2 id="关于端口"><a href="#关于端口" class="headerlink" title="关于端口"></a>关于端口</h2><p>&nbsp;&nbsp;”端口”是英文port的意译，可以认为是设备与外界通讯交流的出口。端口可分为虚拟端口和物理端口，其中虚拟端口指计算机内部或交换机路由器内的端口，不可见。例如计算机中的80端口、21端口、23端口等。物理端口又称为接口，是可见端口，计算机背板的RJ45网口，交换机路由器集线器等RJ45端口。电话使用RJ11插口也属于物理端口的范畴。(来自百度百科)</p>
-<hr>
-<h2 id="CentOS7有关防火墙和端口的常用命令"><a href="#CentOS7有关防火墙和端口的常用命令" class="headerlink" title="CentOS7有关防火墙和端口的常用命令"></a>CentOS7有关防火墙和端口的常用命令</h2><p>&nbsp;&nbsp;我们一般都会在服务器上搭建服务，搭建服务需要开放端口，没有端口是无法与外网联系的，也就是搭建的服务无法成功。如果搭建服务时用到端口的话，我们应该要检查端口是否开放，没有开放的话则需要去开放的端口。这是你就会用到下面的命令。下面的命令是适用于CentOS7，其他版本不知是否适用。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>systemctl start firewalld.service</code></td>
-<td>启动防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl stop firewalld.service</code></td>
-<td>停止/关闭防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl restart firewalld.service</code></td>
-<td>重启防火墙</td>
-</tr>
-<tr>
-<td><code>firewalld-cmd --zone=public --add-port=[端口]/tcp --permanent</code></td>
-<td>新增开放一个端口</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --zone=public --add-port=[端口]-[端口]/tcp --permanent</code></td>
-<td>新增开放多个端口</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --list-all</code></td>
-<td>查看防火墙信息</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --list-ports</code></td>
-<td>查看防火墙开放端口信息</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --zone=public --remove-port=80/tcp --permanent</code></td>
-<td>删除一个开放的端口</td>
-</tr>
-<tr>
-<td><code>systemctl enable firewalld.service</code></td>
-<td>开机启用防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl disable firewalld.service</code></td>
-<td>开机不启用防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl unmask firewalld</code></td>
-<td>执行命令，即可实现取消服务的锁定</td>
-</tr>
-<tr>
-<td><code>systemctl mask firewalld</code></td>
-<td>下次需要锁定该服务时执行</td>
-</tr>
-</tbody>
-</table>
-</div>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>防火墙和端口</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git的简单使用</title>
-    <url>/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p> &nbsp;&nbsp;&nbsp;&nbsp;在这里，主要写有关用git去上传项目到GitHub或者克隆GitHub文件到本地等简单操作命令。我们要打开cmd(或者 git bash here)，进入项目路径。然后再执行下面操作。 </p>
-<hr>
-<ol>
-<li><code>git config --global  user.name &#39;你的GitHub账号&#39;</code>&nbsp;&nbsp;<em>设置你的账号名</em> </li>
-<li><code>git config --global user.email &#39;你的GitHub绑定的邮箱&#39;</code>&nbsp;&nbsp;<em>设置你的邮箱</em></li>
-<li><code>git config --global user.password &#39;你的GitHub账号密码&#39;</code>&nbsp;&nbsp;<em>设置你的密码</em></li>
-<li><code>git config -l</code> &nbsp;&nbsp; <em>查看git配置信息，看看账号名和密码、邮箱是否正确。</em></li>
-<li><code>git init</code>&nbsp;&nbsp; <em>项目初始化</em></li>
-<li><code>git remote add origin  [关联项目仓库连接地址]</code> &nbsp;&nbsp; <em>本地项目与要上传到GitHub仓库进行关联。</em></li>
-<li><code>git status</code>&nbsp;&nbsp;<em>查看本地发生了哪些变化</em></li>
-<li><code>git add *</code>  </li>
-<li><code>git commit  -m &#39;提交的注释&#39;</code>&nbsp;&nbsp;<em>上面两条命令是本地文件修改生效</em></li>
-<li><code>git push -u origin master</code>&nbsp;&nbsp;<em>推送项目到GitHub主支上</em></li>
-<li><code>git clone [url]</code>&nbsp;&nbsp;<em>url为克隆地址，克隆GitHub上的项目到本地上</em></li>
-<li><code>git branch -d [分支名]</code>&nbsp;&nbsp;<em>删除分支</em></li>
-<li><code>git branch [分支名]</code>&nbsp;&nbsp;<em>新建分支</em></li>
-<li><code>git branch</code>&nbsp;&nbsp;<em>查看所有分支</em></li>
-<li><code>git branch -a</code>&nbsp;&nbsp;<em>查看当前所在分支</em></li>
-<li><code>git checkout [分支名]</code>&nbsp;&nbsp;<em>切换分支</em></li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>git&amp;GitHub</category>
-      </categories>
-      <tags>
-        <tag>git上传本地文件</tag>
-        <tag>branch的查看、创建、删除</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CSS样式属性</title>
     <url>/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/</url>
     <content><![CDATA[<h4 id="字体样式font-style属性"><a href="#字体样式font-style属性" class="headerlink" title="字体样式font-style属性"></a>字体样式font-style属性</h4><p>1.基本语法<br><code>font-style: normal | italic | oblique</code></p>
@@ -239,6 +128,84 @@
       </tags>
   </entry>
   <entry>
+    <title>CentOS7有关防火墙和端口的常用命令</title>
+    <url>/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="关于CentOS系统"><a href="#关于CentOS系统" class="headerlink" title="关于CentOS系统"></a>关于CentOS系统</h2><p>&nbsp;&nbsp;CentOS（Community Enterprise Operating System，中文意思是社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。(来自百度百科)</p>
+<hr>
+<h2 id="关于防火墙"><a href="#关于防火墙" class="headerlink" title="关于防火墙"></a>关于防火墙</h2><p>&nbsp;&nbsp;防火墙技术是通过有机结合各类用于安全管理与筛选的软件和硬件设备，帮助计算机网络于其内、外网之间构建一道相对隔绝的保护屏障，以保护用户资料与信息安全性的一种技术。防火墙技术的功能主要在于及时发现并处理计算机网络运行时可能存在的安全风险、数据传输等问题，其中处理措施包括隔离与保护，同时可对计算机网络安全当中的各项操作实施记录与检测，以确保计算机网络运行的安全性，保障用户资料与信息的完整性，为用户提供更好、更安全的计算机网络使用体验。(来自百度百科)</p>
+<hr>
+<h2 id="关于端口"><a href="#关于端口" class="headerlink" title="关于端口"></a>关于端口</h2><p>&nbsp;&nbsp;”端口”是英文port的意译，可以认为是设备与外界通讯交流的出口。端口可分为虚拟端口和物理端口，其中虚拟端口指计算机内部或交换机路由器内的端口，不可见。例如计算机中的80端口、21端口、23端口等。物理端口又称为接口，是可见端口，计算机背板的RJ45网口，交换机路由器集线器等RJ45端口。电话使用RJ11插口也属于物理端口的范畴。(来自百度百科)</p>
+<hr>
+<h2 id="CentOS7有关防火墙和端口的常用命令"><a href="#CentOS7有关防火墙和端口的常用命令" class="headerlink" title="CentOS7有关防火墙和端口的常用命令"></a>CentOS7有关防火墙和端口的常用命令</h2><p>&nbsp;&nbsp;我们一般都会在服务器上搭建服务，搭建服务需要开放端口，没有端口是无法与外网联系的，也就是搭建的服务无法成功。如果搭建服务时用到端口的话，我们应该要检查端口是否开放，没有开放的话则需要去开放的端口。这是你就会用到下面的命令。下面的命令是适用于CentOS7，其他版本不知是否适用。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>systemctl start firewalld.service</code></td>
+<td>启动防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl stop firewalld.service</code></td>
+<td>停止/关闭防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl restart firewalld.service</code></td>
+<td>重启防火墙</td>
+</tr>
+<tr>
+<td><code>firewalld-cmd --zone=public --add-port=[端口]/tcp --permanent</code></td>
+<td>新增开放一个端口</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --zone=public --add-port=[端口]-[端口]/tcp --permanent</code></td>
+<td>新增开放多个端口</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --list-all</code></td>
+<td>查看防火墙信息</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --list-ports</code></td>
+<td>查看防火墙开放端口信息</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --zone=public --remove-port=80/tcp --permanent</code></td>
+<td>删除一个开放的端口</td>
+</tr>
+<tr>
+<td><code>systemctl enable firewalld.service</code></td>
+<td>开机启用防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl disable firewalld.service</code></td>
+<td>开机不启用防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl unmask firewalld</code></td>
+<td>执行命令，即可实现取消服务的锁定</td>
+</tr>
+<tr>
+<td><code>systemctl mask firewalld</code></td>
+<td>下次需要锁定该服务时执行</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>防火墙和端口</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Webpack的安装</title>
     <url>/2020/09/05/Webpack%E7%9A%84%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><p>Webpack是一个开源的前端开发工具。当Webpack处理应用程序时，它会构建一个依赖关系图，其中包含应用程序所需要的各个模块，然后将所有这些模块打包成一个或多个模组。Webpack可以通过终端或更改Webpack.config.js文件来设定各项功能</p>
@@ -249,6 +216,39 @@
       </categories>
       <tags>
         <tag>Webpack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git的简单使用</title>
+    <url>/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p> &nbsp;&nbsp;&nbsp;&nbsp;在这里，主要写有关用git去上传项目到GitHub或者克隆GitHub文件到本地等简单操作命令。我们要打开cmd(或者 git bash here)，进入项目路径。然后再执行下面操作。 </p>
+<hr>
+<ol>
+<li><code>git config --global  user.name &#39;你的GitHub账号&#39;</code>&nbsp;&nbsp;<em>设置你的账号名</em> </li>
+<li><code>git config --global user.email &#39;你的GitHub绑定的邮箱&#39;</code>&nbsp;&nbsp;<em>设置你的邮箱</em></li>
+<li><code>git config --global user.password &#39;你的GitHub账号密码&#39;</code>&nbsp;&nbsp;<em>设置你的密码</em></li>
+<li><code>git config -l</code> &nbsp;&nbsp; <em>查看git配置信息，看看账号名和密码、邮箱是否正确。</em></li>
+<li><code>git init</code>&nbsp;&nbsp; <em>项目初始化</em></li>
+<li><code>git remote add origin  [关联项目仓库连接地址]</code> &nbsp;&nbsp; <em>本地项目与要上传到GitHub仓库进行关联。</em></li>
+<li><code>git status</code>&nbsp;&nbsp;<em>查看本地发生了哪些变化</em></li>
+<li><code>git add *</code>  </li>
+<li><code>git commit  -m &#39;提交的注释&#39;</code>&nbsp;&nbsp;<em>上面两条命令是本地文件修改生效</em></li>
+<li><code>git push -u origin master</code>&nbsp;&nbsp;<em>推送项目到GitHub主支上</em></li>
+<li><code>git clone [url]</code>&nbsp;&nbsp;<em>url为克隆地址，克隆GitHub上的项目到本地上</em></li>
+<li><code>git branch -d [分支名]</code>&nbsp;&nbsp;<em>删除分支</em></li>
+<li><code>git branch [分支名]</code>&nbsp;&nbsp;<em>新建分支</em></li>
+<li><code>git branch</code>&nbsp;&nbsp;<em>查看所有分支</em></li>
+<li><code>git branch -a</code>&nbsp;&nbsp;<em>查看当前所在分支</em></li>
+<li><code>git checkout [分支名]</code>&nbsp;&nbsp;<em>切换分支</em></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>git&amp;GitHub</category>
+      </categories>
+      <tags>
+        <tag>git上传本地文件</tag>
+        <tag>branch的查看、创建、删除</tag>
       </tags>
   </entry>
   <entry>
@@ -301,17 +301,6 @@
       </tags>
   </entry>
   <entry>
-    <title>合并排序</title>
-    <url>/2020/10/04/%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<p>合并排序算法是用分治策略实现对n个元素进行排序的算法。其基本思想是:将待排序元素分成大小大致相同的2个字集合，分别对2个子集合进行排序，最终将排好序的子集合合并成为所要求的排好序的集合。<br>算法描述代码如下:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] sort(<span class="keyword">int</span>[] a,<span class="keyword">int</span> low,<span class="keyword">int</span> high) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(low&lt;high) &#123;</span><br><span class="line">			sort(a,low,mid);</span><br><span class="line">			sort(a,mid+<span class="number">1</span>,high);</span><br><span class="line">			merge(a,low,mid,high);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span> low,<span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[high-low+<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> i = low;</span><br><span class="line">		<span class="keyword">int</span> j = mid + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">// 把较小的数先移到新数组中</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=high)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i]&lt;a[j])&#123;</span><br><span class="line">                temp[k++] = a[i++];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                temp[k++] = a[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把左边剩余的数移入数组 </span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;=mid)&#123;</span><br><span class="line">            temp[k++] = a[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把右边边剩余的数移入数组</span></span><br><span class="line">        <span class="keyword">while</span>(j&lt;=high)&#123;</span><br><span class="line">            temp[k++] = a[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把新数组中的数覆盖nums数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;temp.length;x++)&#123;</span><br><span class="line">            a[x+low] = temp[x];</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度分析:<br>T(n)={O(1) n&lt;=1 ;2T(n/2)+O(n)  n&gt;1}<br>解此递归方程可以T(n)=O(nlogn).由于排序问题的计算时间下界为Ω(nlogn)，故合并排序算法是渐近最优算法。</p>
-]]></content>
-      <categories>
-        <category>算法设计与分析</category>
-      </categories>
-  </entry>
-  <entry>
     <title>弃用鼠标，高效工作</title>
     <url>/2020/10/17/%E5%BC%83%E7%94%A8%E9%BC%A0%E6%A0%87%EF%BC%8C%E9%AB%98%E6%95%88%E5%B7%A5%E4%BD%9C/</url>
     <content><![CDATA[<p>作为一名程序员，尽量使用键盘和少用鼠标是提高工作效率的一种有用的方式，因为程序员使用电脑很多都是敲代码，双手始终放在键盘上，可以提高代码编写的速度，如果常用鼠标，就会有了鼠标和键盘来回切换的时间，这样子会降低工作效率，为了高效工作，尽量不用鼠标和多用键盘。</p>
@@ -325,6 +314,17 @@
       </tags>
   </entry>
   <entry>
+    <title>合并排序</title>
+    <url>/2020/10/04/%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<p>合并排序算法是用分治策略实现对n个元素进行排序的算法。其基本思想是:将待排序元素分成大小大致相同的2个字集合，分别对2个子集合进行排序，最终将排好序的子集合合并成为所要求的排好序的集合。<br>算法描述代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] sort(<span class="keyword">int</span>[] a,<span class="keyword">int</span> low,<span class="keyword">int</span> high) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(low&lt;high) &#123;</span><br><span class="line">			sort(a,low,mid);</span><br><span class="line">			sort(a,mid+<span class="number">1</span>,high);</span><br><span class="line">			merge(a,low,mid,high);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span> low,<span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[high-low+<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> i = low;</span><br><span class="line">		<span class="keyword">int</span> j = mid + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">// 把较小的数先移到新数组中</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=high)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i]&lt;a[j])&#123;</span><br><span class="line">                temp[k++] = a[i++];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                temp[k++] = a[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把左边剩余的数移入数组 </span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;=mid)&#123;</span><br><span class="line">            temp[k++] = a[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把右边边剩余的数移入数组</span></span><br><span class="line">        <span class="keyword">while</span>(j&lt;=high)&#123;</span><br><span class="line">            temp[k++] = a[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把新数组中的数覆盖nums数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;temp.length;x++)&#123;</span><br><span class="line">            a[x+low] = temp[x];</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度分析:<br>T(n)={O(1) n&lt;=1 ;2T(n/2)+O(n)  n&gt;1}<br>解此递归方程可以T(n)=O(nlogn).由于排序问题的计算时间下界为Ω(nlogn)，故合并排序算法是渐近最优算法。</p>
+]]></content>
+      <categories>
+        <category>算法设计与分析</category>
+      </categories>
+  </entry>
+  <entry>
     <title>排列问题</title>
     <url>/2020/10/03/%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>问题描述</p>
@@ -332,19 +332,6 @@
 <p>代码如下:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> ch3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Perm</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(Object []list,<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		Object temp;</span><br><span class="line">		temp = list[a];</span><br><span class="line">		list[a] = list[b];</span><br><span class="line">		list[b] = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">perm</span><span class="params">(Object []list, <span class="keyword">int</span> k, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(k==m) &#123;	</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;i++) &#123;</span><br><span class="line">				System.out.print(list[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=k;i&lt;=m;i++) &#123;	</span><br><span class="line">				swap(list,k,i);</span><br><span class="line">				perm(list,k+<span class="number">1</span>,m);</span><br><span class="line">				swap(list,k,i);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Object[] list = <span class="keyword">new</span> Object[<span class="number">6</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++) &#123;</span><br><span class="line">			list[i] = i+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		perm(list,<span class="number">0</span>,list.length-<span class="number">1</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>算法解析</strong><br>算法perm(list,k,m)递归地产生所以前缀list[0:k-1],且后缀时list[k:m]的全排列的所有排列。swap算法用于交换两个表元素的值。因为每次递归都会使用一个辅助空间，所以空间复杂性为O(n)。因为递归了n次，所以时间复杂性为O(n)。</p>
-]]></content>
-      <categories>
-        <category>算法设计与分析</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>数字三角形问题</title>
-    <url>/2020/11/19/%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">问题描述：</span><br><span class="line">给定一个由n行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形</span><br><span class="line">的顶至底的一条路径，使该路径经过的数字总和最大。</span><br><span class="line">    7</span><br><span class="line">   3 8</span><br><span class="line">  8 1 0</span><br><span class="line"> 2 7 4 4</span><br><span class="line">4 5 2 6 5</span><br><span class="line">编程任务：</span><br><span class="line">对于给定的由n行数字组成的数字三角形，编程计算从三角形的顶至底的路径经过的数字和的最大值。</span><br><span class="line">数据输入：</span><br><span class="line">由文件input.txt 提供输入数据。文件的第1 行是数字三角形的行数n，1£n£100。接下来n行是数字三角形各行中的数字。所有数字在0..99之间。输入数据由文件名为 input.txt 的文本文件提供。</span><br><span class="line">结果输出:</span><br><span class="line">程序运行结束时，将计算结果输出到文件output.txt 中。文件的第1 行中的数是计算</span><br><span class="line">出的最大值。</span><br><span class="line">输入文件示例   输出文件示例</span><br><span class="line">7               30</span><br><span class="line">3 8</span><br><span class="line">8 1 0</span><br><span class="line">2 7 4 4</span><br><span class="line">4 5 2 6 5</span><br></pre></td></tr></table></figure>
-<h2 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h2><p>数字三角形中每个数字我们可以用一个二维坐标来表示，例如第1行第1列表示为triangle(1,1)。分析题目可知，经过某个坐标的最大数字和跟该坐标的上面的数字最大数字和有关，所以关于这个问题我们可以用动态规划来解决。先把一个复杂的问题化为n个有关联的子问题。在这里，我们从顶点到底部，依次就算每个坐标的最大数字和。因为后面的坐标会用到前面的坐标数字和，所以我们每计算一个坐标数字和时，都需要把该数字和保存的一个表上，都时候需要用到前面的坐标数字和时，就不需要再计算，直接引用即可，算法效率就会大大提高。设a(i,j)表示坐标triangle(i,j)的数字，d(triangle(i,j))表示经过坐标triangle(i,j)的最大数字和，在这个问题中，我们可以分析一个坐标triangle(i,j) 的位置置换方程为d(triangle(i,j))= max{d(triangle(i-1,j-1),d(triangle(i-1,j))}+a(i,j);</p>
-<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//求从顶点到底层的最长路径，也即是数字和最大</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getLongestPath</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; triangle)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">line</span> = triangle.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">int</span> longestPath=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; table;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; data;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">line</span>&lt;<span class="number">1</span>) &#123; <span class="keyword">return</span> <span class="number">0</span>; &#125; </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">line</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">1</span>) &#123; temp = triangle[i<span class="number">-1</span>][j<span class="number">-1</span>]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j==<span class="number">1</span>) &#123; temp = table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span>] + triangle[i<span class="number">-1</span>][j<span class="number">-1</span>]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j==i) &#123; temp = table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span><span class="number">-1</span>] + triangle[i<span class="number">-1</span>][j<span class="number">-1</span>];&#125;</span><br><span class="line">            <span class="keyword">else</span> &#123; temp = <span class="built_in">max</span>(table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span><span class="number">-1</span>],table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span>]) + triangle[i<span class="number">-1</span>][j<span class="number">-1</span>]; &#125;</span><br><span class="line">            data.push_back(temp);</span><br><span class="line">            <span class="keyword">if</span>(temp &gt;longestPath) &#123; longestPath = temp; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        table.push_back(data);</span><br><span class="line">        data.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">return</span> longestPath;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="comment">//标准输入输出重定向到文件中</span></span><br><span class="line">    freopen(<span class="string">"data.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"data.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; triangle;  <span class="comment">//用来保存数字三角形数据的二维数组</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; data;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">line</span>;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; <span class="built_in">line</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">line</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; temp;</span><br><span class="line">            data.push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        triangle.push_back(data);</span><br><span class="line">        data.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; getLongestPath(triangle);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><p>由算法很容易知道时间复杂度为n^2</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>动态规划就是把一个较为复杂的问题分为多个子问题，而且这些子问题是有关联的，一个子问题的计算结果可能会用到其他子问题的计算结果。所以为避免多次运算，我们可以把已经计算过的子问题的结果保存到一个表中，当要用到已经计算的子问题的结果时，直接引用表中的数据即可，这样子效率就得到大大的提高。</p>
 ]]></content>
       <categories>
         <category>算法设计与分析</category>
@@ -365,6 +352,19 @@
       <tags>
         <tag>vscode</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>数字三角形问题</title>
+    <url>/2020/11/19/%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">问题描述：</span><br><span class="line">给定一个由n行数字组成的数字三角形如下图所示。试设计一个算法，计算出从三角形</span><br><span class="line">的顶至底的一条路径，使该路径经过的数字总和最大。</span><br><span class="line">    7</span><br><span class="line">   3 8</span><br><span class="line">  8 1 0</span><br><span class="line"> 2 7 4 4</span><br><span class="line">4 5 2 6 5</span><br><span class="line">编程任务：</span><br><span class="line">对于给定的由n行数字组成的数字三角形，编程计算从三角形的顶至底的路径经过的数字和的最大值。</span><br><span class="line">数据输入：</span><br><span class="line">由文件input.txt 提供输入数据。文件的第1 行是数字三角形的行数n，1£n£100。接下来n行是数字三角形各行中的数字。所有数字在0..99之间。输入数据由文件名为 input.txt 的文本文件提供。</span><br><span class="line">结果输出:</span><br><span class="line">程序运行结束时，将计算结果输出到文件output.txt 中。文件的第1 行中的数是计算</span><br><span class="line">出的最大值。</span><br><span class="line">输入文件示例   输出文件示例</span><br><span class="line">7               30</span><br><span class="line">3 8</span><br><span class="line">8 1 0</span><br><span class="line">2 7 4 4</span><br><span class="line">4 5 2 6 5</span><br></pre></td></tr></table></figure>
+<h2 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h2><p>数字三角形中每个数字我们可以用一个二维坐标来表示，例如第1行第1列表示为triangle(1,1)。分析题目可知，经过某个坐标的最大数字和跟该坐标的上面的数字最大数字和有关，所以关于这个问题我们可以用动态规划来解决。先把一个复杂的问题化为n个有关联的子问题。在这里，我们从顶点到底部，依次就算每个坐标的最大数字和。因为后面的坐标会用到前面的坐标数字和，所以我们每计算一个坐标数字和时，都需要把该数字和保存的一个表上，都时候需要用到前面的坐标数字和时，就不需要再计算，直接引用即可，算法效率就会大大提高。设a(i,j)表示坐标triangle(i,j)的数字，d(triangle(i,j))表示经过坐标triangle(i,j)的最大数字和，在这个问题中，我们可以分析一个坐标triangle(i,j) 的位置置换方程为d(triangle(i,j))= max{d(triangle(i-1,j-1),d(triangle(i-1,j))}+a(i,j);</p>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//求从顶点到底层的最长路径，也即是数字和最大</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getLongestPath</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; triangle)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">line</span> = triangle.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">int</span> longestPath=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; table;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; data;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">line</span>&lt;<span class="number">1</span>) &#123; <span class="keyword">return</span> <span class="number">0</span>; &#125; </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">line</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">1</span>) &#123; temp = triangle[i<span class="number">-1</span>][j<span class="number">-1</span>]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j==<span class="number">1</span>) &#123; temp = table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span>] + triangle[i<span class="number">-1</span>][j<span class="number">-1</span>]; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j==i) &#123; temp = table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span><span class="number">-1</span>] + triangle[i<span class="number">-1</span>][j<span class="number">-1</span>];&#125;</span><br><span class="line">            <span class="keyword">else</span> &#123; temp = <span class="built_in">max</span>(table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span><span class="number">-1</span>],table[i<span class="number">-1</span><span class="number">-1</span>][j<span class="number">-1</span>]) + triangle[i<span class="number">-1</span>][j<span class="number">-1</span>]; &#125;</span><br><span class="line">            data.push_back(temp);</span><br><span class="line">            <span class="keyword">if</span>(temp &gt;longestPath) &#123; longestPath = temp; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        table.push_back(data);</span><br><span class="line">        data.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">return</span> longestPath;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="comment">//标准输入输出重定向到文件中</span></span><br><span class="line">    freopen(<span class="string">"data.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"data.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; triangle;  <span class="comment">//用来保存数字三角形数据的二维数组</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; data;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">line</span>;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; <span class="built_in">line</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">line</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; temp;</span><br><span class="line">            data.push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        triangle.push_back(data);</span><br><span class="line">        data.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; getLongestPath(triangle);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><p>由算法很容易知道时间复杂度为n^2</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>动态规划就是把一个较为复杂的问题分为多个子问题，而且这些子问题是有关联的，一个子问题的计算结果可能会用到其他子问题的计算结果。所以为避免多次运算，我们可以把已经计算过的子问题的结果保存到一个表中，当要用到已经计算的子问题的结果时，直接引用表中的数据即可，这样子效率就得到大大的提高。</p>
+]]></content>
+      <categories>
+        <category>算法设计与分析</category>
+      </categories>
   </entry>
   <entry>
     <title>用XShell设置代理SSH</title>
