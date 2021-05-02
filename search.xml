@@ -1,52 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Webpack的安装</title>
-    <url>/2020/09/05/Webpack%E7%9A%84%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><p>Webpack是一个开源的前端开发工具。当Webpack处理应用程序时，它会构建一个依赖关系图，其中包含应用程序所需要的各个模块，然后将所有这些模块打包成一个或多个模组。Webpack可以通过终端或更改Webpack.config.js文件来设定各项功能</p>
-<h2 id="Webpack安装"><a href="#Webpack安装" class="headerlink" title="Webpack安装"></a>Webpack安装</h2><p>前提： 已经装好了node.js、npm可以使用<br>在本地安装:<br><code>npm install --save-dev webpack</code> 安装最新版本Webpack<br><code>npm install --save-dev webpack@&lt;version&gt;</code> 安装指定版本Webpack<br>最后把<code>node_modules\.bin</code>路径加到path路径下<br>在cmd上输入<code>webpack -v</code>若有显示版本号则安装成功</p>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Webpack</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git的简单使用</title>
-    <url>/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p> &nbsp;&nbsp;&nbsp;&nbsp;在这里，主要写有关用git去上传项目到GitHub或者克隆GitHub文件到本地等简单操作命令。我们要打开cmd(或者 git bash here)，进入项目路径。然后再执行下面操作。 </p>
-<hr>
-<ol>
-<li><code>git config --global  user.name &#39;你的GitHub账号&#39;</code>&nbsp;&nbsp;<em>设置你的账号名</em> </li>
-<li><code>git config --global user.email &#39;你的GitHub绑定的邮箱&#39;</code>&nbsp;&nbsp;<em>设置你的邮箱</em></li>
-<li><code>git config --global user.password &#39;你的GitHub账号密码&#39;</code>&nbsp;&nbsp;<em>设置你的密码</em></li>
-<li><code>git config -l</code> &nbsp;&nbsp; <em>查看git配置信息，看看账号名和密码、邮箱是否正确。</em></li>
-<li><code>git init</code>&nbsp;&nbsp; <em>项目初始化</em></li>
-<li><code>git remote add origin  [关联项目仓库连接地址]</code> &nbsp;&nbsp; <em>本地项目与要上传到GitHub仓库进行关联。</em></li>
-<li><code>git status</code>&nbsp;&nbsp;<em>查看本地发生了哪些变化</em></li>
-<li><code>git add *</code>  </li>
-<li><code>git commit  -m &#39;提交的注释&#39;</code>&nbsp;&nbsp;<em>上面两条命令是本地文件修改生效</em></li>
-<li><code>git push -u origin master</code>&nbsp;&nbsp;<em>推送项目到GitHub主支上</em></li>
-<li><code>git clone [url]</code>&nbsp;&nbsp;<em>url为克隆地址，克隆GitHub上的项目到本地上</em></li>
-<li><code>git branch -d [分支名]</code>&nbsp;&nbsp;<em>删除分支</em></li>
-<li><code>git branch [分支名]</code>&nbsp;&nbsp;<em>新建分支</em></li>
-<li><code>git branch</code>&nbsp;&nbsp;<em>查看所有分支</em></li>
-<li><code>git branch -a</code>&nbsp;&nbsp;<em>查看当前所在分支</em></li>
-<li><code>git checkout [分支名]</code>&nbsp;&nbsp;<em>切换分支</em></li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>git&amp;GitHub</category>
-      </categories>
-      <tags>
-        <tag>git上传本地文件</tag>
-        <tag>branch的查看、创建、删除</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CSS样式属性</title>
     <url>/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/</url>
     <content><![CDATA[<h4 id="字体样式font-style属性"><a href="#字体样式font-style属性" class="headerlink" title="字体样式font-style属性"></a>字体样式font-style属性</h4><p>1.基本语法<br><code>font-style: normal | italic | oblique</code></p>
@@ -174,11 +128,22 @@
       </tags>
   </entry>
   <entry>
-    <title>vscode中的c/c++调试问题</title>
-    <url>/2020/06/22/vscode%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>环境搭建过程，可以参考微软提供的教程：</p>
-<h2 id="https-code-visualstudio-com-docs-languages-cpp"><a href="#https-code-visualstudio-com-docs-languages-cpp" class="headerlink" title="https://code.visualstudio.com/docs/languages/cpp"></a><a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">https://code.visualstudio.com/docs/languages/cpp</a></h2><p>我们把所有环境搭建好，c/c++文件也能运行，但就是调试时在断点处无法停下来，这时候可能是window安全问题，可能是安全软件如360把mangw安装包下的gdb.exe拦截以至于无法调试，这时候就需要去把它添加到信任区，再次调试可能就会成功了。</p>
+    <title>二叉树的中序遍历</title>
+    <url>/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</url>
+    <content><![CDATA[<p>题目描述:<br><img src="/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/二叉树的中序遍历.JPG" alt="题目描述"></p>
+<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p> 常见的二叉树的遍历方法是先序遍历、中序遍历和后序遍历。</p>
+<p> 先序：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右子树。(根左右)</p>
+<p>中序：考察到一个节点后，将其暂存，遍历完左子树后，再输出该节点的值，然后遍历右子树。(左根右)</p>
+<p>后序：考察到一个节点后，将其暂存，遍历完左右子树后，再输出该节点的值。(左右根)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        inorder(root.left, res);</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        inorder(root.right, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度:O(n),因为二叉树的结点时n个，且每一个结点会被访问一次仅只有一次。<br>空间复杂度:O(n),空间复杂度取决于递归的栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n)O(n) 的级别。</p>
 ]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>中序遍历</tag>
+      </tags>
   </entry>
   <entry>
     <title>CentOS7有关防火墙和端口的常用命令</title>
@@ -259,6 +224,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Webpack的安装</title>
+    <url>/2020/09/05/Webpack%E7%9A%84%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><p>Webpack是一个开源的前端开发工具。当Webpack处理应用程序时，它会构建一个依赖关系图，其中包含应用程序所需要的各个模块，然后将所有这些模块打包成一个或多个模组。Webpack可以通过终端或更改Webpack.config.js文件来设定各项功能</p>
+<h2 id="Webpack安装"><a href="#Webpack安装" class="headerlink" title="Webpack安装"></a>Webpack安装</h2><p>前提： 已经装好了node.js、npm可以使用<br>在本地安装:<br><code>npm install --save-dev webpack</code> 安装最新版本Webpack<br><code>npm install --save-dev webpack@&lt;version&gt;</code> 安装指定版本Webpack<br>最后把<code>node_modules\.bin</code>路径加到path路径下<br>在cmd上输入<code>webpack -v</code>若有显示版本号则安装成功</p>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Webpack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vscode中的c/c++调试问题</title>
+    <url>/2020/06/22/vscode%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>环境搭建过程，可以参考微软提供的教程：</p>
+<h2 id="https-code-visualstudio-com-docs-languages-cpp"><a href="#https-code-visualstudio-com-docs-languages-cpp" class="headerlink" title="https://code.visualstudio.com/docs/languages/cpp"></a><a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">https://code.visualstudio.com/docs/languages/cpp</a></h2><p>我们把所有环境搭建好，c/c++文件也能运行，但就是调试时在断点处无法停下来，这时候可能是window安全问题，可能是安全软件如360把mangw安装包下的gdb.exe拦截以至于无法调试，这时候就需要去把它添加到信任区，再次调试可能就会成功了。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>一次很愉快的跑步</title>
     <url>/2020/10/10/%E4%B8%80%E6%AC%A1%E5%BE%88%E6%84%89%E5%BF%AB%E7%9A%84%E8%B7%91%E6%AD%A5/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;今天晚上跑步很愉快、很顺利、很幸运。今天给自己的目标是15km.原以为会跟这周三一样跑5公里就会放弃。刚跑3公里左右右脚确实有点痛，但坚持跑了几圈后脚就不痛了。这是在北区跑，佩戴新买的肩包，我跑起来感觉不累，感觉很轻松。不知道是为什么今天跑步感觉很轻松。分析一下原因:</p>
@@ -281,6 +266,39 @@
       <categories>
         <category>跑步日志</category>
       </categories>
+  </entry>
+  <entry>
+    <title>git的简单使用</title>
+    <url>/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p> &nbsp;&nbsp;&nbsp;&nbsp;在这里，主要写有关用git去上传项目到GitHub或者克隆GitHub文件到本地等简单操作命令。我们要打开cmd(或者 git bash here)，进入项目路径。然后再执行下面操作。 </p>
+<hr>
+<ol>
+<li><code>git config --global  user.name &#39;你的GitHub账号&#39;</code>&nbsp;&nbsp;<em>设置你的账号名</em> </li>
+<li><code>git config --global user.email &#39;你的GitHub绑定的邮箱&#39;</code>&nbsp;&nbsp;<em>设置你的邮箱</em></li>
+<li><code>git config --global user.password &#39;你的GitHub账号密码&#39;</code>&nbsp;&nbsp;<em>设置你的密码</em></li>
+<li><code>git config -l</code> &nbsp;&nbsp; <em>查看git配置信息，看看账号名和密码、邮箱是否正确。</em></li>
+<li><code>git init</code>&nbsp;&nbsp; <em>项目初始化</em></li>
+<li><code>git remote add origin  [关联项目仓库连接地址]</code> &nbsp;&nbsp; <em>本地项目与要上传到GitHub仓库进行关联。</em></li>
+<li><code>git status</code>&nbsp;&nbsp;<em>查看本地发生了哪些变化</em></li>
+<li><code>git add *</code>  </li>
+<li><code>git commit  -m &#39;提交的注释&#39;</code>&nbsp;&nbsp;<em>上面两条命令是本地文件修改生效</em></li>
+<li><code>git push -u origin master</code>&nbsp;&nbsp;<em>推送项目到GitHub主支上</em></li>
+<li><code>git clone [url]</code>&nbsp;&nbsp;<em>url为克隆地址，克隆GitHub上的项目到本地上</em></li>
+<li><code>git branch -d [分支名]</code>&nbsp;&nbsp;<em>删除分支</em></li>
+<li><code>git branch [分支名]</code>&nbsp;&nbsp;<em>新建分支</em></li>
+<li><code>git branch</code>&nbsp;&nbsp;<em>查看所有分支</em></li>
+<li><code>git branch -a</code>&nbsp;&nbsp;<em>查看当前所在分支</em></li>
+<li><code>git checkout [分支名]</code>&nbsp;&nbsp;<em>切换分支</em></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>git&amp;GitHub</category>
+      </categories>
+      <tags>
+        <tag>git上传本地文件</tag>
+        <tag>branch的查看、创建、删除</tag>
+      </tags>
   </entry>
   <entry>
     <title>弃用鼠标，高效工作</title>
@@ -307,21 +325,19 @@
       </categories>
   </entry>
   <entry>
-    <title>二叉树的中序遍历</title>
-    <url>/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</url>
-    <content><![CDATA[<p>题目描述:<br><img src="/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/二叉树的中序遍历.JPG" alt="题目描述"></p>
-<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p> 常见的二叉树的遍历方法是先序遍历、中序遍历和后序遍历。</p>
-<p> 先序：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右子树。(根左右)</p>
-<p>中序：考察到一个节点后，将其暂存，遍历完左子树后，再输出该节点的值，然后遍历右子树。(左根右)</p>
-<p>后序：考察到一个节点后，将其暂存，遍历完左右子树后，再输出该节点的值。(左右根)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        inorder(root.left, res);</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        inorder(root.right, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度:O(n),因为二叉树的结点时n个，且每一个结点会被访问一次仅只有一次。<br>空间复杂度:O(n),空间复杂度取决于递归的栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n)O(n) 的级别。</p>
+    <title>Visual-Studio-Code更新提示路径找不到问题</title>
+    <url>/2020/06/23/%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h4><p>我们在更新VSCode时，机器提示路径不存在，它提示你看更新日志路径。如果你现在使用的VSCode路径不是你第一次下载安装时VSCode路径且第一次安装VSCode路径下的VSCode已删掉的话，那么出现错误提示的原因是因为注册表中还留有VSCode原来的路径，恰恰原来的路径下已经没有VSCode安装内容了，所有机器就会提示路径错误。</p>
+<h4 id="解决办法有两种"><a href="#解决办法有两种" class="headerlink" title="解决办法有两种:"></a>解决办法有两种:</h4><ol>
+<li>直接在它错误提示位置安装VSCode，可以直接把目前所使用VSCode的安装包内容复制过去就可解决更新失败问题</li>
+<li>修改VSCode在注册表中的位置，win+r后输入regedit打开注册表，然后搜索Visual Studio Code ,然后不断查找下一个，找到错误提示位置信息，然后把里面的地址相应的改成当前VSCode位置。</li>
+</ol>
 ]]></content>
       <categories>
-        <category>LeetCode</category>
+        <category>VSCode</category>
       </categories>
       <tags>
-        <tag>中序遍历</tag>
+        <tag>vscode</tag>
       </tags>
   </entry>
   <entry>
@@ -338,31 +354,15 @@
       </categories>
   </entry>
   <entry>
-    <title>用XShell设置代理SSH</title>
-    <url>/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/</url>
-    <content><![CDATA[<p><meta name="referrer" content="no-referrer"></p>
-<h2 id="所需条件"><a href="#所需条件" class="headerlink" title="所需条件"></a>所需条件</h2><ol>
-<li>安装XShell软件</li>
-<li>两个vps</li>
-</ol>
-<hr>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li>鼠标点击该服务器—》右键—-》属性—-》隧道—》添加，添加窗口相关数据如下图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/tianjia.jpg" alt="添加窗口"><br><strong>注意：类型要选(SOCKS4/5),侦听端口要填一个未被占用的端口，关于如何查看未被占用的端口请访问<a href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">CentOS7有关防火墙和端口的常用命令</a></strong></li>
-<li>确定—》连接，如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/xiaoguo.JPG" alt="代理vps连接后的效果图"><br>&nbsp;&nbsp;图片中的警告可以忽视，那是CentOS8 可以用web服务管理服务器的提示。注意到下面的local:9090灯亮了表示成功了</li>
-<li>右键—》属性—》代理—》浏览—》添加，添加相关数据如图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/4.JPG" alt="添加代理器的相关数据图"><br>类型选SOCK5，主机填localhost，端口要与刚才填隧道的端口一致。用户名和密码不要填。然后确定</li>
-<li>选择刚才添加的代理器—-》连接，效果如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/3.JPG" alt="被代理的服务器连接后的效果图"><br>出现这样的画面表示通过代理服务器连接另一台服务器已经成功了。</li>
-</ol>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li>如果在被代理的服务器出现非正常关闭时，一定记得重启服务器，不然再次连接时会失败。</li>
-<li>我发现在被代理服务器开启防火墙服务时，该服务器就会死机，我也不明白什么原因。</li>
-</ol>
+    <title>设置git代理</title>
+    <url>/2020/07/05/%E8%AE%BE%E7%BD%AEgit%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>设置git代理方式:<br><code>git config --global http.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br><code>git config --global https.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br>删除git代理:<br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy</code></p>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>git&amp;GitHub</category>
       </categories>
       <tags>
-        <tag>代理SSH</tag>
+        <tag>git代理</tag>
       </tags>
   </entry>
   <entry>
@@ -399,6 +399,34 @@
       </categories>
   </entry>
   <entry>
+    <title>用XShell设置代理SSH</title>
+    <url>/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/</url>
+    <content><![CDATA[<p><meta name="referrer" content="no-referrer"></p>
+<h2 id="所需条件"><a href="#所需条件" class="headerlink" title="所需条件"></a>所需条件</h2><ol>
+<li>安装XShell软件</li>
+<li>两个vps</li>
+</ol>
+<hr>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>鼠标点击该服务器—》右键—-》属性—-》隧道—》添加，添加窗口相关数据如下图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/tianjia.jpg" alt="添加窗口"><br><strong>注意：类型要选(SOCKS4/5),侦听端口要填一个未被占用的端口，关于如何查看未被占用的端口请访问<a href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">CentOS7有关防火墙和端口的常用命令</a></strong></li>
+<li>确定—》连接，如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/xiaoguo.JPG" alt="代理vps连接后的效果图"><br>&nbsp;&nbsp;图片中的警告可以忽视，那是CentOS8 可以用web服务管理服务器的提示。注意到下面的local:9090灯亮了表示成功了</li>
+<li>右键—》属性—》代理—》浏览—》添加，添加相关数据如图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/4.JPG" alt="添加代理器的相关数据图"><br>类型选SOCK5，主机填localhost，端口要与刚才填隧道的端口一致。用户名和密码不要填。然后确定</li>
+<li>选择刚才添加的代理器—-》连接，效果如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/3.JPG" alt="被代理的服务器连接后的效果图"><br>出现这样的画面表示通过代理服务器连接另一台服务器已经成功了。</li>
+</ol>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>如果在被代理的服务器出现非正常关闭时，一定记得重启服务器，不然再次连接时会失败。</li>
+<li>我发现在被代理服务器开启防火墙服务时，该服务器就会死机，我也不明白什么原因。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>代理SSH</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法复杂性分析</title>
     <url>/2020/10/03/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p>算法复杂性的高低体现在运行该算法所需要的计算机资源的多少上，所需要的资源多，算法复杂性就越高；反之越少，算法复杂性就越低。算法复杂性主要分为时间复杂性和空间复杂性，顾名思义就是运行该算法所花费的时间和空间资源。算法复杂性分析对指导算法设计与分析具有重要意义。</p>
@@ -411,33 +439,5 @@
       <categories>
         <category>算法设计与分析</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Visual-Studio-Code更新提示路径找不到问题</title>
-    <url>/2020/06/23/%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h4><p>我们在更新VSCode时，机器提示路径不存在，它提示你看更新日志路径。如果你现在使用的VSCode路径不是你第一次下载安装时VSCode路径且第一次安装VSCode路径下的VSCode已删掉的话，那么出现错误提示的原因是因为注册表中还留有VSCode原来的路径，恰恰原来的路径下已经没有VSCode安装内容了，所有机器就会提示路径错误。</p>
-<h4 id="解决办法有两种"><a href="#解决办法有两种" class="headerlink" title="解决办法有两种:"></a>解决办法有两种:</h4><ol>
-<li>直接在它错误提示位置安装VSCode，可以直接把目前所使用VSCode的安装包内容复制过去就可解决更新失败问题</li>
-<li>修改VSCode在注册表中的位置，win+r后输入regedit打开注册表，然后搜索Visual Studio Code ,然后不断查找下一个，找到错误提示位置信息，然后把里面的地址相应的改成当前VSCode位置。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>VSCode</category>
-      </categories>
-      <tags>
-        <tag>vscode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设置git代理</title>
-    <url>/2020/07/05/%E8%AE%BE%E7%BD%AEgit%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>设置git代理方式:<br><code>git config --global http.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br><code>git config --global https.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br>删除git代理:<br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy</code></p>
-]]></content>
-      <categories>
-        <category>git&amp;GitHub</category>
-      </categories>
-      <tags>
-        <tag>git代理</tag>
-      </tags>
   </entry>
 </search>
