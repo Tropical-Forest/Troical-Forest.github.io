@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>vscode中的c/c++调试问题</title>
+    <url>/2020/06/22/vscode%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>环境搭建过程，可以参考微软提供的教程：</p>
+<h2 id="https-code-visualstudio-com-docs-languages-cpp"><a href="#https-code-visualstudio-com-docs-languages-cpp" class="headerlink" title="https://code.visualstudio.com/docs/languages/cpp"></a><a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">https://code.visualstudio.com/docs/languages/cpp</a></h2><p>我们把所有环境搭建好，c/c++文件也能运行，但就是调试时在断点处无法停下来，这时候可能是window安全问题，可能是安全软件如360把mangw安装包下的gdb.exe拦截以至于无法调试，这时候就需要去把它添加到信任区，再次调试可能就会成功了。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>CentOS7有关防火墙和端口的常用命令</title>
+    <url>/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="关于CentOS系统"><a href="#关于CentOS系统" class="headerlink" title="关于CentOS系统"></a>关于CentOS系统</h2><p>&nbsp;&nbsp;CentOS（Community Enterprise Operating System，中文意思是社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。(来自百度百科)</p>
+<hr>
+<h2 id="关于防火墙"><a href="#关于防火墙" class="headerlink" title="关于防火墙"></a>关于防火墙</h2><p>&nbsp;&nbsp;防火墙技术是通过有机结合各类用于安全管理与筛选的软件和硬件设备，帮助计算机网络于其内、外网之间构建一道相对隔绝的保护屏障，以保护用户资料与信息安全性的一种技术。防火墙技术的功能主要在于及时发现并处理计算机网络运行时可能存在的安全风险、数据传输等问题，其中处理措施包括隔离与保护，同时可对计算机网络安全当中的各项操作实施记录与检测，以确保计算机网络运行的安全性，保障用户资料与信息的完整性，为用户提供更好、更安全的计算机网络使用体验。(来自百度百科)</p>
+<hr>
+<h2 id="关于端口"><a href="#关于端口" class="headerlink" title="关于端口"></a>关于端口</h2><p>&nbsp;&nbsp;”端口”是英文port的意译，可以认为是设备与外界通讯交流的出口。端口可分为虚拟端口和物理端口，其中虚拟端口指计算机内部或交换机路由器内的端口，不可见。例如计算机中的80端口、21端口、23端口等。物理端口又称为接口，是可见端口，计算机背板的RJ45网口，交换机路由器集线器等RJ45端口。电话使用RJ11插口也属于物理端口的范畴。(来自百度百科)</p>
+<hr>
+<h2 id="CentOS7有关防火墙和端口的常用命令"><a href="#CentOS7有关防火墙和端口的常用命令" class="headerlink" title="CentOS7有关防火墙和端口的常用命令"></a>CentOS7有关防火墙和端口的常用命令</h2><p>&nbsp;&nbsp;我们一般都会在服务器上搭建服务，搭建服务需要开放端口，没有端口是无法与外网联系的，也就是搭建的服务无法成功。如果搭建服务时用到端口的话，我们应该要检查端口是否开放，没有开放的话则需要去开放的端口。这是你就会用到下面的命令。下面的命令是适用于CentOS7，其他版本不知是否适用。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>systemctl start firewalld.service</code></td>
+<td>启动防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl stop firewalld.service</code></td>
+<td>停止/关闭防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl restart firewalld.service</code></td>
+<td>重启防火墙</td>
+</tr>
+<tr>
+<td><code>firewalld-cmd --zone=public --add-port=[端口]/tcp --permanent</code></td>
+<td>新增开放一个端口</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --zone=public --add-port=[端口]-[端口]/tcp --permanent</code></td>
+<td>新增开放多个端口</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --list-all</code></td>
+<td>查看防火墙信息</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --list-ports</code></td>
+<td>查看防火墙开放端口信息</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --zone=public --remove-port=80/tcp --permanent</code></td>
+<td>删除一个开放的端口</td>
+</tr>
+<tr>
+<td><code>systemctl enable firewalld.service</code></td>
+<td>开机启用防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl disable firewalld.service</code></td>
+<td>开机不启用防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl unmask firewalld</code></td>
+<td>执行命令，即可实现取消服务的锁定</td>
+</tr>
+<tr>
+<td><code>systemctl mask firewalld</code></td>
+<td>下次需要锁定该服务时执行</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>防火墙和端口</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSS样式属性</title>
     <url>/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/</url>
     <content><![CDATA[<h4 id="字体样式font-style属性"><a href="#字体样式font-style属性" class="headerlink" title="字体样式font-style属性"></a>字体样式font-style属性</h4><p>1.基本语法<br><code>font-style: normal | italic | oblique</code></p>
@@ -128,102 +213,6 @@
       </tags>
   </entry>
   <entry>
-    <title>二叉树的中序遍历</title>
-    <url>/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</url>
-    <content><![CDATA[<p>题目描述:<br><img src="/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/二叉树的中序遍历.JPG" alt="题目描述"></p>
-<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p> 常见的二叉树的遍历方法是先序遍历、中序遍历和后序遍历。</p>
-<p> 先序：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右子树。(根左右)</p>
-<p>中序：考察到一个节点后，将其暂存，遍历完左子树后，再输出该节点的值，然后遍历右子树。(左根右)</p>
-<p>后序：考察到一个节点后，将其暂存，遍历完左右子树后，再输出该节点的值。(左右根)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        inorder(root.left, res);</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        inorder(root.right, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度:O(n),因为二叉树的结点时n个，且每一个结点会被访问一次仅只有一次。<br>空间复杂度:O(n),空间复杂度取决于递归的栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n)O(n) 的级别。</p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>中序遍历</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS7有关防火墙和端口的常用命令</title>
-    <url>/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="关于CentOS系统"><a href="#关于CentOS系统" class="headerlink" title="关于CentOS系统"></a>关于CentOS系统</h2><p>&nbsp;&nbsp;CentOS（Community Enterprise Operating System，中文意思是社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。(来自百度百科)</p>
-<hr>
-<h2 id="关于防火墙"><a href="#关于防火墙" class="headerlink" title="关于防火墙"></a>关于防火墙</h2><p>&nbsp;&nbsp;防火墙技术是通过有机结合各类用于安全管理与筛选的软件和硬件设备，帮助计算机网络于其内、外网之间构建一道相对隔绝的保护屏障，以保护用户资料与信息安全性的一种技术。防火墙技术的功能主要在于及时发现并处理计算机网络运行时可能存在的安全风险、数据传输等问题，其中处理措施包括隔离与保护，同时可对计算机网络安全当中的各项操作实施记录与检测，以确保计算机网络运行的安全性，保障用户资料与信息的完整性，为用户提供更好、更安全的计算机网络使用体验。(来自百度百科)</p>
-<hr>
-<h2 id="关于端口"><a href="#关于端口" class="headerlink" title="关于端口"></a>关于端口</h2><p>&nbsp;&nbsp;”端口”是英文port的意译，可以认为是设备与外界通讯交流的出口。端口可分为虚拟端口和物理端口，其中虚拟端口指计算机内部或交换机路由器内的端口，不可见。例如计算机中的80端口、21端口、23端口等。物理端口又称为接口，是可见端口，计算机背板的RJ45网口，交换机路由器集线器等RJ45端口。电话使用RJ11插口也属于物理端口的范畴。(来自百度百科)</p>
-<hr>
-<h2 id="CentOS7有关防火墙和端口的常用命令"><a href="#CentOS7有关防火墙和端口的常用命令" class="headerlink" title="CentOS7有关防火墙和端口的常用命令"></a>CentOS7有关防火墙和端口的常用命令</h2><p>&nbsp;&nbsp;我们一般都会在服务器上搭建服务，搭建服务需要开放端口，没有端口是无法与外网联系的，也就是搭建的服务无法成功。如果搭建服务时用到端口的话，我们应该要检查端口是否开放，没有开放的话则需要去开放的端口。这是你就会用到下面的命令。下面的命令是适用于CentOS7，其他版本不知是否适用。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>systemctl start firewalld.service</code></td>
-<td>启动防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl stop firewalld.service</code></td>
-<td>停止/关闭防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl restart firewalld.service</code></td>
-<td>重启防火墙</td>
-</tr>
-<tr>
-<td><code>firewalld-cmd --zone=public --add-port=[端口]/tcp --permanent</code></td>
-<td>新增开放一个端口</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --zone=public --add-port=[端口]-[端口]/tcp --permanent</code></td>
-<td>新增开放多个端口</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --list-all</code></td>
-<td>查看防火墙信息</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --list-ports</code></td>
-<td>查看防火墙开放端口信息</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --zone=public --remove-port=80/tcp --permanent</code></td>
-<td>删除一个开放的端口</td>
-</tr>
-<tr>
-<td><code>systemctl enable firewalld.service</code></td>
-<td>开机启用防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl disable firewalld.service</code></td>
-<td>开机不启用防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl unmask firewalld</code></td>
-<td>执行命令，即可实现取消服务的锁定</td>
-</tr>
-<tr>
-<td><code>systemctl mask firewalld</code></td>
-<td>下次需要锁定该服务时执行</td>
-</tr>
-</tbody>
-</table>
-</div>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>防火墙和端口</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Webpack的安装</title>
     <url>/2020/09/05/Webpack%E7%9A%84%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><p>Webpack是一个开源的前端开发工具。当Webpack处理应用程序时，它会构建一个依赖关系图，其中包含应用程序所需要的各个模块，然后将所有这些模块打包成一个或多个模组。Webpack可以通过终端或更改Webpack.config.js文件来设定各项功能</p>
@@ -235,13 +224,6 @@
       <tags>
         <tag>Webpack</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>vscode中的c/c++调试问题</title>
-    <url>/2020/06/22/vscode%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>环境搭建过程，可以参考微软提供的教程：</p>
-<h2 id="https-code-visualstudio-com-docs-languages-cpp"><a href="#https-code-visualstudio-com-docs-languages-cpp" class="headerlink" title="https://code.visualstudio.com/docs/languages/cpp"></a><a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">https://code.visualstudio.com/docs/languages/cpp</a></h2><p>我们把所有环境搭建好，c/c++文件也能运行，但就是调试时在断点处无法停下来，这时候可能是window安全问题，可能是安全软件如360把mangw安装包下的gdb.exe拦截以至于无法调试，这时候就需要去把它添加到信任区，再次调试可能就会成功了。</p>
-]]></content>
   </entry>
   <entry>
     <title>一次很愉快的跑步</title>
@@ -266,6 +248,24 @@
       <categories>
         <category>跑步日志</category>
       </categories>
+  </entry>
+  <entry>
+    <title>二叉树的中序遍历</title>
+    <url>/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</url>
+    <content><![CDATA[<p>题目描述:<br><img src="/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/二叉树的中序遍历.JPG" alt="题目描述"></p>
+<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p> 常见的二叉树的遍历方法是先序遍历、中序遍历和后序遍历。</p>
+<p> 先序：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右子树。(根左右)</p>
+<p>中序：考察到一个节点后，将其暂存，遍历完左子树后，再输出该节点的值，然后遍历右子树。(左根右)</p>
+<p>后序：考察到一个节点后，将其暂存，遍历完左右子树后，再输出该节点的值。(左右根)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        inorder(root.left, res);</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        inorder(root.right, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度:O(n),因为二叉树的结点时n个，且每一个结点会被访问一次仅只有一次。<br>空间复杂度:O(n),空间复杂度取决于递归的栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n)O(n) 的级别。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>中序遍历</tag>
+      </tags>
   </entry>
   <entry>
     <title>git的简单使用</title>
@@ -325,22 +325,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Visual-Studio-Code更新提示路径找不到问题</title>
-    <url>/2020/06/23/%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h4><p>我们在更新VSCode时，机器提示路径不存在，它提示你看更新日志路径。如果你现在使用的VSCode路径不是你第一次下载安装时VSCode路径且第一次安装VSCode路径下的VSCode已删掉的话，那么出现错误提示的原因是因为注册表中还留有VSCode原来的路径，恰恰原来的路径下已经没有VSCode安装内容了，所有机器就会提示路径错误。</p>
-<h4 id="解决办法有两种"><a href="#解决办法有两种" class="headerlink" title="解决办法有两种:"></a>解决办法有两种:</h4><ol>
-<li>直接在它错误提示位置安装VSCode，可以直接把目前所使用VSCode的安装包内容复制过去就可解决更新失败问题</li>
-<li>修改VSCode在注册表中的位置，win+r后输入regedit打开注册表，然后搜索Visual Studio Code ,然后不断查找下一个，找到错误提示位置信息，然后把里面的地址相应的改成当前VSCode位置。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>VSCode</category>
-      </categories>
-      <tags>
-        <tag>vscode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>排列问题</title>
     <url>/2020/10/03/%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>问题描述</p>
@@ -354,15 +338,19 @@
       </categories>
   </entry>
   <entry>
-    <title>设置git代理</title>
-    <url>/2020/07/05/%E8%AE%BE%E7%BD%AEgit%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>设置git代理方式:<br><code>git config --global http.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br><code>git config --global https.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br>删除git代理:<br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy</code></p>
+    <title>Visual-Studio-Code更新提示路径找不到问题</title>
+    <url>/2020/06/23/%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h4><p>我们在更新VSCode时，机器提示路径不存在，它提示你看更新日志路径。如果你现在使用的VSCode路径不是你第一次下载安装时VSCode路径且第一次安装VSCode路径下的VSCode已删掉的话，那么出现错误提示的原因是因为注册表中还留有VSCode原来的路径，恰恰原来的路径下已经没有VSCode安装内容了，所有机器就会提示路径错误。</p>
+<h4 id="解决办法有两种"><a href="#解决办法有两种" class="headerlink" title="解决办法有两种:"></a>解决办法有两种:</h4><ol>
+<li>直接在它错误提示位置安装VSCode，可以直接把目前所使用VSCode的安装包内容复制过去就可解决更新失败问题</li>
+<li>修改VSCode在注册表中的位置，win+r后输入regedit打开注册表，然后搜索Visual Studio Code ,然后不断查找下一个，找到错误提示位置信息，然后把里面的地址相应的改成当前VSCode位置。</li>
+</ol>
 ]]></content>
       <categories>
-        <category>git&amp;GitHub</category>
+        <category>VSCode</category>
       </categories>
       <tags>
-        <tag>git代理</tag>
+        <tag>vscode</tag>
       </tags>
   </entry>
   <entry>
@@ -439,5 +427,17 @@
       <categories>
         <category>算法设计与分析</category>
       </categories>
+  </entry>
+  <entry>
+    <title>设置git代理</title>
+    <url>/2020/07/05/%E8%AE%BE%E7%BD%AEgit%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>设置git代理方式:<br><code>git config --global http.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br><code>git config --global https.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br>删除git代理:<br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy</code></p>
+]]></content>
+      <categories>
+        <category>git&amp;GitHub</category>
+      </categories>
+      <tags>
+        <tag>git代理</tag>
+      </tags>
   </entry>
 </search>
