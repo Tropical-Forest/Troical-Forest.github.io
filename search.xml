@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Webpack的安装</title>
+    <url>/2020/09/05/Webpack%E7%9A%84%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><p>Webpack是一个开源的前端开发工具。当Webpack处理应用程序时，它会构建一个依赖关系图，其中包含应用程序所需要的各个模块，然后将所有这些模块打包成一个或多个模组。Webpack可以通过终端或更改Webpack.config.js文件来设定各项功能</p>
+<h2 id="Webpack安装"><a href="#Webpack安装" class="headerlink" title="Webpack安装"></a>Webpack安装</h2><p>前提： 已经装好了node.js、npm可以使用<br>在本地安装:<br><code>npm install --save-dev webpack</code> 安装最新版本Webpack<br><code>npm install --save-dev webpack@&lt;version&gt;</code> 安装指定版本Webpack<br>最后把<code>node_modules\.bin</code>路径加到path路径下<br>在cmd上输入<code>webpack -v</code>若有显示版本号则安装成功</p>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Webpack</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git的简单使用</title>
     <url>/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p> &nbsp;&nbsp;&nbsp;&nbsp;在这里，主要写有关用git去上传项目到GitHub或者克隆GitHub文件到本地等简单操作命令。我们要打开cmd(或者 git bash here)，进入项目路径。然后再执行下面操作。 </p>
@@ -31,112 +44,6 @@
       <tags>
         <tag>git上传本地文件</tag>
         <tag>branch的查看、创建、删除</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用XShell设置代理SSH</title>
-    <url>/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/</url>
-    <content><![CDATA[<p><meta name="referrer" content="no-referrer"></p>
-<h2 id="所需条件"><a href="#所需条件" class="headerlink" title="所需条件"></a>所需条件</h2><ol>
-<li>安装XShell软件</li>
-<li>两个vps</li>
-</ol>
-<hr>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li>鼠标点击该服务器—》右键—-》属性—-》隧道—》添加，添加窗口相关数据如下图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/tianjia.jpg" alt="添加窗口"><br><strong>注意：类型要选(SOCKS4/5),侦听端口要填一个未被占用的端口，关于如何查看未被占用的端口请访问<a href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">CentOS7有关防火墙和端口的常用命令</a></strong></li>
-<li>确定—》连接，如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/xiaoguo.JPG" alt="代理vps连接后的效果图"><br>&nbsp;&nbsp;图片中的警告可以忽视，那是CentOS8 可以用web服务管理服务器的提示。注意到下面的local:9090灯亮了表示成功了</li>
-<li>右键—》属性—》代理—》浏览—》添加，添加相关数据如图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/4.JPG" alt="添加代理器的相关数据图"><br>类型选SOCK5，主机填localhost，端口要与刚才填隧道的端口一致。用户名和密码不要填。然后确定</li>
-<li>选择刚才添加的代理器—-》连接，效果如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/3.JPG" alt="被代理的服务器连接后的效果图"><br>出现这样的画面表示通过代理服务器连接另一台服务器已经成功了。</li>
-</ol>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li>如果在被代理的服务器出现非正常关闭时，一定记得重启服务器，不然再次连接时会失败。</li>
-<li>我发现在被代理服务器开启防火墙服务时，该服务器就会死机，我也不明白什么原因。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>代理SSH</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS7有关防火墙和端口的常用命令</title>
-    <url>/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="关于CentOS系统"><a href="#关于CentOS系统" class="headerlink" title="关于CentOS系统"></a>关于CentOS系统</h2><p>&nbsp;&nbsp;CentOS（Community Enterprise Operating System，中文意思是社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。(来自百度百科)</p>
-<hr>
-<h2 id="关于防火墙"><a href="#关于防火墙" class="headerlink" title="关于防火墙"></a>关于防火墙</h2><p>&nbsp;&nbsp;防火墙技术是通过有机结合各类用于安全管理与筛选的软件和硬件设备，帮助计算机网络于其内、外网之间构建一道相对隔绝的保护屏障，以保护用户资料与信息安全性的一种技术。防火墙技术的功能主要在于及时发现并处理计算机网络运行时可能存在的安全风险、数据传输等问题，其中处理措施包括隔离与保护，同时可对计算机网络安全当中的各项操作实施记录与检测，以确保计算机网络运行的安全性，保障用户资料与信息的完整性，为用户提供更好、更安全的计算机网络使用体验。(来自百度百科)</p>
-<hr>
-<h2 id="关于端口"><a href="#关于端口" class="headerlink" title="关于端口"></a>关于端口</h2><p>&nbsp;&nbsp;”端口”是英文port的意译，可以认为是设备与外界通讯交流的出口。端口可分为虚拟端口和物理端口，其中虚拟端口指计算机内部或交换机路由器内的端口，不可见。例如计算机中的80端口、21端口、23端口等。物理端口又称为接口，是可见端口，计算机背板的RJ45网口，交换机路由器集线器等RJ45端口。电话使用RJ11插口也属于物理端口的范畴。(来自百度百科)</p>
-<hr>
-<h2 id="CentOS7有关防火墙和端口的常用命令"><a href="#CentOS7有关防火墙和端口的常用命令" class="headerlink" title="CentOS7有关防火墙和端口的常用命令"></a>CentOS7有关防火墙和端口的常用命令</h2><p>&nbsp;&nbsp;我们一般都会在服务器上搭建服务，搭建服务需要开放端口，没有端口是无法与外网联系的，也就是搭建的服务无法成功。如果搭建服务时用到端口的话，我们应该要检查端口是否开放，没有开放的话则需要去开放的端口。这是你就会用到下面的命令。下面的命令是适用于CentOS7，其他版本不知是否适用。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>systemctl start firewalld.service</code></td>
-<td>启动防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl stop firewalld.service</code></td>
-<td>停止/关闭防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl restart firewalld.service</code></td>
-<td>重启防火墙</td>
-</tr>
-<tr>
-<td><code>firewalld-cmd --zone=public --add-port=[端口]/tcp --permanent</code></td>
-<td>新增开放一个端口</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --zone=public --add-port=[端口]-[端口]/tcp --permanent</code></td>
-<td>新增开放多个端口</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --list-all</code></td>
-<td>查看防火墙信息</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --list-ports</code></td>
-<td>查看防火墙开放端口信息</td>
-</tr>
-<tr>
-<td><code>firewall-cmd --zone=public --remove-port=80/tcp --permanent</code></td>
-<td>删除一个开放的端口</td>
-</tr>
-<tr>
-<td><code>systemctl enable firewalld.service</code></td>
-<td>开机启用防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl disable firewalld.service</code></td>
-<td>开机不启用防火墙</td>
-</tr>
-<tr>
-<td><code>systemctl unmask firewalld</code></td>
-<td>执行命令，即可实现取消服务的锁定</td>
-</tr>
-<tr>
-<td><code>systemctl mask firewalld</code></td>
-<td>下次需要锁定该服务时执行</td>
-</tr>
-</tbody>
-</table>
-</div>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>防火墙和端口</tag>
       </tags>
   </entry>
   <entry>
@@ -274,121 +181,82 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Visual-Studio-Code更新提示路径找不到问题</title>
-    <url>/2020/06/23/%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h4><p>我们在更新VSCode时，机器提示路径不存在，它提示你看更新日志路径。如果你现在使用的VSCode路径不是你第一次下载安装时VSCode路径且第一次安装VSCode路径下的VSCode已删掉的话，那么出现错误提示的原因是因为注册表中还留有VSCode原来的路径，恰恰原来的路径下已经没有VSCode安装内容了，所有机器就会提示路径错误。</p>
-<h4 id="解决办法有两种"><a href="#解决办法有两种" class="headerlink" title="解决办法有两种:"></a>解决办法有两种:</h4><ol>
-<li>直接在它错误提示位置安装VSCode，可以直接把目前所使用VSCode的安装包内容复制过去就可解决更新失败问题</li>
-<li>修改VSCode在注册表中的位置，win+r后输入regedit打开注册表，然后搜索Visual Studio Code ,然后不断查找下一个，找到错误提示位置信息，然后把里面的地址相应的改成当前VSCode位置。</li>
-</ol>
+    <title>CentOS7有关防火墙和端口的常用命令</title>
+    <url>/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="关于CentOS系统"><a href="#关于CentOS系统" class="headerlink" title="关于CentOS系统"></a>关于CentOS系统</h2><p>&nbsp;&nbsp;CentOS（Community Enterprise Operating System，中文意思是社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。(来自百度百科)</p>
+<hr>
+<h2 id="关于防火墙"><a href="#关于防火墙" class="headerlink" title="关于防火墙"></a>关于防火墙</h2><p>&nbsp;&nbsp;防火墙技术是通过有机结合各类用于安全管理与筛选的软件和硬件设备，帮助计算机网络于其内、外网之间构建一道相对隔绝的保护屏障，以保护用户资料与信息安全性的一种技术。防火墙技术的功能主要在于及时发现并处理计算机网络运行时可能存在的安全风险、数据传输等问题，其中处理措施包括隔离与保护，同时可对计算机网络安全当中的各项操作实施记录与检测，以确保计算机网络运行的安全性，保障用户资料与信息的完整性，为用户提供更好、更安全的计算机网络使用体验。(来自百度百科)</p>
+<hr>
+<h2 id="关于端口"><a href="#关于端口" class="headerlink" title="关于端口"></a>关于端口</h2><p>&nbsp;&nbsp;”端口”是英文port的意译，可以认为是设备与外界通讯交流的出口。端口可分为虚拟端口和物理端口，其中虚拟端口指计算机内部或交换机路由器内的端口，不可见。例如计算机中的80端口、21端口、23端口等。物理端口又称为接口，是可见端口，计算机背板的RJ45网口，交换机路由器集线器等RJ45端口。电话使用RJ11插口也属于物理端口的范畴。(来自百度百科)</p>
+<hr>
+<h2 id="CentOS7有关防火墙和端口的常用命令"><a href="#CentOS7有关防火墙和端口的常用命令" class="headerlink" title="CentOS7有关防火墙和端口的常用命令"></a>CentOS7有关防火墙和端口的常用命令</h2><p>&nbsp;&nbsp;我们一般都会在服务器上搭建服务，搭建服务需要开放端口，没有端口是无法与外网联系的，也就是搭建的服务无法成功。如果搭建服务时用到端口的话，我们应该要检查端口是否开放，没有开放的话则需要去开放的端口。这是你就会用到下面的命令。下面的命令是适用于CentOS7，其他版本不知是否适用。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>systemctl start firewalld.service</code></td>
+<td>启动防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl stop firewalld.service</code></td>
+<td>停止/关闭防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl restart firewalld.service</code></td>
+<td>重启防火墙</td>
+</tr>
+<tr>
+<td><code>firewalld-cmd --zone=public --add-port=[端口]/tcp --permanent</code></td>
+<td>新增开放一个端口</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --zone=public --add-port=[端口]-[端口]/tcp --permanent</code></td>
+<td>新增开放多个端口</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --list-all</code></td>
+<td>查看防火墙信息</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --list-ports</code></td>
+<td>查看防火墙开放端口信息</td>
+</tr>
+<tr>
+<td><code>firewall-cmd --zone=public --remove-port=80/tcp --permanent</code></td>
+<td>删除一个开放的端口</td>
+</tr>
+<tr>
+<td><code>systemctl enable firewalld.service</code></td>
+<td>开机启用防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl disable firewalld.service</code></td>
+<td>开机不启用防火墙</td>
+</tr>
+<tr>
+<td><code>systemctl unmask firewalld</code></td>
+<td>执行命令，即可实现取消服务的锁定</td>
+</tr>
+<tr>
+<td><code>systemctl mask firewalld</code></td>
+<td>下次需要锁定该服务时执行</td>
+</tr>
+</tbody>
+</table>
+</div>
 ]]></content>
       <categories>
-        <category>VSCode</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>vscode</tag>
+        <tag>防火墙和端口</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>设置git代理</title>
-    <url>/2020/07/05/%E8%AE%BE%E7%BD%AEgit%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>设置git代理方式:<br><code>git config --global http.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br><code>git config --global https.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br>删除git代理:<br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy</code></p>
-]]></content>
-      <categories>
-        <category>git&amp;GitHub</category>
-      </categories>
-      <tags>
-        <tag>git代理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Webpack的安装</title>
-    <url>/2020/09/05/Webpack%E7%9A%84%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><p>Webpack是一个开源的前端开发工具。当Webpack处理应用程序时，它会构建一个依赖关系图，其中包含应用程序所需要的各个模块，然后将所有这些模块打包成一个或多个模组。Webpack可以通过终端或更改Webpack.config.js文件来设定各项功能</p>
-<h2 id="Webpack安装"><a href="#Webpack安装" class="headerlink" title="Webpack安装"></a>Webpack安装</h2><p>前提： 已经装好了node.js、npm可以使用<br>在本地安装:<br><code>npm install --save-dev webpack</code> 安装最新版本Webpack<br><code>npm install --save-dev webpack@&lt;version&gt;</code> 安装指定版本Webpack<br>最后把<code>node_modules\.bin</code>路径加到path路径下<br>在cmd上输入<code>webpack -v</code>若有显示版本号则安装成功</p>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Webpack</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二叉树的中序遍历</title>
-    <url>/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</url>
-    <content><![CDATA[<p>题目描述:<br><img src="/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/二叉树的中序遍历.JPG" alt="题目描述"></p>
-<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p> 常见的二叉树的遍历方法是先序遍历、中序遍历和后序遍历。</p>
-<p> 先序：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右子树。(根左右)</p>
-<p>中序：考察到一个节点后，将其暂存，遍历完左子树后，再输出该节点的值，然后遍历右子树。(左根右)</p>
-<p>后序：考察到一个节点后，将其暂存，遍历完左右子树后，再输出该节点的值。(左右根)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        inorder(root.left, res);</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        inorder(root.right, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度:O(n),因为二叉树的结点时n个，且每一个结点会被访问一次仅只有一次。<br>空间复杂度:O(n),空间复杂度取决于递归的栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n)O(n) 的级别。</p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>中序遍历</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法复杂性分析</title>
-    <url>/2020/10/03/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p>算法复杂性的高低体现在运行该算法所需要的计算机资源的多少上，所需要的资源多，算法复杂性就越高；反之越少，算法复杂性就越低。算法复杂性主要分为时间复杂性和空间复杂性，顾名思义就是运行该算法所花费的时间和空间资源。算法复杂性分析对指导算法设计与分析具有重要意义。</p>
-<h2 id="时间复杂性"><a href="#时间复杂性" class="headerlink" title="时间复杂性"></a>时间复杂性</h2><p>时间复杂性分析主要通过渐近上界、渐近下界、同阶方法进行分析</p>
-<h3 id="渐近上界"><a href="#渐近上界" class="headerlink" title="渐近上界"></a>渐近上界</h3><p><strong>记号:</strong> O<br><strong>定义</strong><br>对所有 n，f(n)&gt;=0，g(n)&gt;=0,O(g(n))= { f(n) | 存在正常数 存在正常数 c和n0使得对所有 n&gt;=n0有： 0&lt;=f(n)&lt;=cg(n)}</p>
-<h3 id="渐近下界"><a href="#渐近下界" class="headerlink" title="渐近下界"></a>渐近下界</h3><p><strong>记号:</strong> Ω<br><strong>定义</strong><br>对所有 n，f(n)&gt;=0，g(n)&gt;=0,Ω(g(n))= { f(n) | 存在正常数 存在正常数 c和n0使得对所有 n&gt;=n0有： 0&lt;=cg(n)&lt;=f(n)}</p>
-<h3 id="同阶"><a href="#同阶" class="headerlink" title="同阶"></a>同阶</h3><p><strong>记号:</strong> Θ<br>O(f(n)) = Ω(f(n))</p>
-<h2 id="空间复杂性"><a href="#空间复杂性" class="headerlink" title="空间复杂性"></a>空间复杂性</h2><p>空间复杂性分析较为简单，方法与时间复杂性分析相似</p>
-]]></content>
-      <categories>
-        <category>算法设计与分析</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>排列问题</title>
-    <url>/2020/10/03/%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>问题描述</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">问题描述：对n个元素进行全排列，列出所有情况，例如1，2，3三个数字会得到1 2 3，1 3 2，2 1 3，2 3 1，3 1 2，3 2 1这6中情况</span><br><span class="line"></span><br><span class="line">思路：设n为元素个数，元素集合为R(r1,r2,r3....rn)，计算方法为Perm(n)</span><br><span class="line"></span><br><span class="line">当n &#x3D; 1时，则只有一种情况  r；</span><br><span class="line"></span><br><span class="line">当n &gt; 1时，则有(r1)Perm(R1),(r2)Perm(R2),(r3)Perm(R3) ... ... (rn)Perm(Rn)</span><br><span class="line"></span><br><span class="line">                  以1，2，3为例全排列，共有以下排列：</span><br><span class="line"></span><br><span class="line">                 1 Perm(2,3)  即：以1为前缀的所有组合</span><br><span class="line"></span><br><span class="line">                 2 Perm(1,3)  即：以2为前缀的所有组合</span><br><span class="line"></span><br><span class="line">                 3 Perm(2,3)  即：以3为前缀的所有组合</span><br><span class="line"></span><br><span class="line">注：Perm(k,m)利用递归的思想即可不断划分前缀，直到只剩下1个元素，则只有一种情况，即为找到了一种排列。</span><br></pre></td></tr></table></figure>
-<p>代码如下:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> ch3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Perm</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(Object []list,<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		Object temp;</span><br><span class="line">		temp = list[a];</span><br><span class="line">		list[a] = list[b];</span><br><span class="line">		list[b] = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">perm</span><span class="params">(Object []list, <span class="keyword">int</span> k, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(k==m) &#123;	</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;i++) &#123;</span><br><span class="line">				System.out.print(list[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=k;i&lt;=m;i++) &#123;	</span><br><span class="line">				swap(list,k,i);</span><br><span class="line">				perm(list,k+<span class="number">1</span>,m);</span><br><span class="line">				swap(list,k,i);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Object[] list = <span class="keyword">new</span> Object[<span class="number">6</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++) &#123;</span><br><span class="line">			list[i] = i+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		perm(list,<span class="number">0</span>,list.length-<span class="number">1</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>算法解析</strong><br>算法perm(list,k,m)递归地产生所以前缀list[0:k-1],且后缀时list[k:m]的全排列的所有排列。swap算法用于交换两个表元素的值。因为每次递归都会使用一个辅助空间，所以空间复杂性为O(n)。因为递归了n次，所以时间复杂性为O(n)。</p>
-]]></content>
-      <categories>
-        <category>算法设计与分析</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>棋牌覆盖</title>
-    <url>/2020/10/04/%E6%A3%8B%E7%89%8C%E8%A6%86%E7%9B%96/</url>
-    <content><![CDATA[<p>转载<a href="https://www.xiaowuyike.com/archives/383.html" target="_blank" rel="noopener">棋牌覆盖问题（java实现)</a></p>
-<p>棋牌覆盖问题（java实现）</p>
-<p>一、问题描述与分析</p>
-<p>问题：在一个<br>2<sup>k</sup> * 2<sup>k</sup><br>方格组成的棋盘中，有一个方格与其它的不同，用如下图的4种不同形态的L型骨牌覆盖给定的特殊棋盘上除特殊方格以外的所有方格，且任何2个L型骨牌不得重叠覆盖。<br><img src="/2020/10/04/%E6%A3%8B%E7%89%8C%E8%A6%86%E7%9B%96/gupd.md.png" alt="骨牌"></p>
-<p>分析：用分治法划分棋盘，使划分后的子棋盘的大小相同，并且每个子棋盘均包含一个特殊方格，从而将原问题分解为规模较小的棋盘覆盖问题。k&gt;0时，可将</p>
-<p>2<sup>k</sup> * 2<sup>k</sup><br>的棋盘划分为4个</p>
-<p>2<sup>k</sup>-1 * 2<sup>k</sup>-1<br>的子棋盘。<br><img src="/2020/10/04/%E6%A3%8B%E7%89%8C%E8%A6%86%E7%9B%96/qipj.md.png" alt="骨牌"></p>
-<p>这样划分后，由于原棋盘只有一个特殊方格，所以，这4个子棋盘中只有一个子棋盘包含该特殊方格，其余3个子棋盘中没有特殊方格。为了将这3个没有特殊方格的子棋盘转化为特殊棋盘，以便采用递归方法求解，可以用一个L型骨牌覆盖这3个较小棋盘的会合处（如图2），从而将原问题转化为4个较小规模的棋盘覆盖问题。<br><img src="/2020/10/04/%E6%A3%8B%E7%89%8C%E8%A6%86%E7%9B%96/erqipj.md.png" alt="子骨牌"><br>递归地使用这种划分策略，直至将棋盘分割为1×1的子棋盘。<br>二、程序实现<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChessBord</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] matrix;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> count;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.println(<span class="string">"棋盘大小："</span>);</span><br><span class="line">        <span class="keyword">while</span> (in.hasNextInt()) &#123;</span><br><span class="line">            <span class="keyword">int</span> n = in.nextInt();<span class="comment">//棋盘大小</span></span><br><span class="line">            System.out.println(<span class="string">"特殊方格位置："</span>);</span><br><span class="line">            <span class="keyword">int</span> dr = in.nextInt();<span class="comment">//特殊方格的行号</span></span><br><span class="line">            <span class="keyword">int</span> dc = in.nextInt();<span class="comment">//特殊方格的列号</span></span><br><span class="line">            matrix = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];<span class="comment">//n*n的棋盘大小</span></span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            chessBoard(<span class="number">0</span>, <span class="number">0</span>, dr, dc, n);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span>[] ii : matrix) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> jj : ii) &#123;</span><br><span class="line">                    System.out.printf(<span class="string">"%8d"</span>, jj);</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * n：表示输入矩阵是n*n的方阵</span></span><br><span class="line"><span class="comment">     * tr：棋盘左上角方格的行号；tc：棋盘左上角方格的列号</span></span><br><span class="line"><span class="comment">     * dr：特殊方格的行号；dc：特殊方格的列号</span></span><br><span class="line"><span class="comment">     * size：棋盘的大小是size×size</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">chessBoard</span><span class="params">(<span class="keyword">int</span> tr, <span class="keyword">int</span> tc, <span class="keyword">int</span> dr, <span class="keyword">int</span> dc, <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//如果当前棋盘的尺寸是1,也就是说只有一个方格的时候,返回函数</span></span><br><span class="line">        <span class="keyword">if</span> (size == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> curPattern = ++count;</span><br><span class="line">        <span class="comment">//把棋盘从中间平均分为4个部分,</span></span><br><span class="line">        size = size / <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//下面方法分别检索分隔出来的4个部分</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//左上部分</span></span><br><span class="line">        <span class="keyword">if</span> (dr &lt; tr + size &amp;&amp; dc &lt; tc + size) &#123;</span><br><span class="line">            <span class="comment">//如果左上部分包含特殊棋盘，那么就直接递归找左上部分,继续把左上部分分隔</span></span><br><span class="line">            chessBoard(tr, tc, dr, dr, size);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//如果左上部分不包含特殊棋盘，那么先把左上部分的右下角自定义一个特殊棋盘，然后在递归</span></span><br><span class="line">            matrix[tr + size - <span class="number">1</span>][tc + size - <span class="number">1</span>] = curPattern;</span><br><span class="line">            chessBoard(tr, tc, tr + size - <span class="number">1</span>, tc + size - <span class="number">1</span>, size);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//右上部分</span></span><br><span class="line">        <span class="keyword">if</span> (dr &lt; tr + size &amp;&amp; dc &gt;= tc + size) &#123;</span><br><span class="line">            chessBoard(tr, tc + size, dr, dc, size);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            matrix[tr + size - <span class="number">1</span>][tc + size] = curPattern;</span><br><span class="line">            chessBoard(tr, tc + size, tr + size - <span class="number">1</span>, tc + size, size);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//左下部分</span></span><br><span class="line">        <span class="keyword">if</span> (dr &gt;= tr + size &amp;&amp; dc &lt; tc + size) &#123;</span><br><span class="line">            chessBoard(tr + size, tc, dr, dc, size);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            matrix[tr + size][tc + size - <span class="number">1</span>] = curPattern;</span><br><span class="line">            chessBoard(tr + size, tc, tr + size, tc + size - <span class="number">1</span>, size);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//右下部分</span></span><br><span class="line">        <span class="keyword">if</span> (dr &gt;= tr + size &amp;&amp; dc &gt;= tc + size) &#123;</span><br><span class="line">            chessBoard(tr + size, tc + size, dr, dc, size);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            matrix[tr + size][tc + size] = curPattern;</span><br><span class="line">            chessBoard(tr + size, tc + size, tr + size, tc + size, size);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>三、实验结果与分析</p>
-<p>实验结果：<br><img src="/2020/10/04/%E6%A3%8B%E7%89%8C%E8%A6%86%E7%9B%96/jpgo.md.png" alt="实验结果"></p>
-<p>实验分析：</p>
-<p>用递归与分治的思想来解决，也就是把一个大的棋盘分成4个小棋盘，检索填充，然后在把小棋盘继续细分，直到棋盘中只包含一个格子为止。</p>
-<p>主干是四个if else循环，也就是说只会执行一个if中的语句，但是会执行3个else中的语句，这3个else中的语句就是构造不可覆盖格子，然后对含有新构造的不可覆盖点的子棋盘来重写进行棋盘覆盖，也就是递归调用棋盘覆盖函数，递归的结束条件就是子棋盘只有一个格子，也就是size = 1，每次调用棋盘覆盖函数，都要进行size = size/2，目的就是把一个大棋盘划分为四个相同大小的子棋盘。</p>
-]]></content>
-      <categories>
-        <category>算法设计与分析</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>合并排序</title>
-    <url>/2020/10/04/%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<p>合并排序算法是用分治策略实现对n个元素进行排序的算法。其基本思想是:将待排序元素分成大小大致相同的2个字集合，分别对2个子集合进行排序，最终将排好序的子集合合并成为所要求的排好序的集合。<br>算法描述代码如下:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] sort(<span class="keyword">int</span>[] a,<span class="keyword">int</span> low,<span class="keyword">int</span> high) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(low&lt;high) &#123;</span><br><span class="line">			sort(a,low,mid);</span><br><span class="line">			sort(a,mid+<span class="number">1</span>,high);</span><br><span class="line">			merge(a,low,mid,high);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span> low,<span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[high-low+<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> i = low;</span><br><span class="line">		<span class="keyword">int</span> j = mid + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">// 把较小的数先移到新数组中</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=high)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i]&lt;a[j])&#123;</span><br><span class="line">                temp[k++] = a[i++];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                temp[k++] = a[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把左边剩余的数移入数组 </span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;=mid)&#123;</span><br><span class="line">            temp[k++] = a[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把右边边剩余的数移入数组</span></span><br><span class="line">        <span class="keyword">while</span>(j&lt;=high)&#123;</span><br><span class="line">            temp[k++] = a[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把新数组中的数覆盖nums数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;temp.length;x++)&#123;</span><br><span class="line">            a[x+low] = temp[x];</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度分析:<br>T(n)={O(1) n&lt;=1 ;2T(n/2)+O(n)  n&gt;1}<br>解此递归方程可以T(n)=O(nlogn).由于排序问题的计算时间下界为Ω(nlogn)，故合并排序算法是渐近最优算法。</p>
-]]></content>
-      <categories>
-        <category>算法设计与分析</category>
-      </categories>
   </entry>
   <entry>
     <title>一次很愉快的跑步</title>
@@ -418,13 +286,83 @@
     <title>弃用鼠标，高效工作</title>
     <url>/2020/10/17/%E5%BC%83%E7%94%A8%E9%BC%A0%E6%A0%87%EF%BC%8C%E9%AB%98%E6%95%88%E5%B7%A5%E4%BD%9C/</url>
     <content><![CDATA[<p>作为一名程序员，尽量使用键盘和少用鼠标是提高工作效率的一种有用的方式，因为程序员使用电脑很多都是敲代码，双手始终放在键盘上，可以提高代码编写的速度，如果常用鼠标，就会有了鼠标和键盘来回切换的时间，这样子会降低工作效率，为了高效工作，尽量不用鼠标和多用键盘。</p>
-<p>为了少用鼠标的话，就需要掌握一些常用的快捷键，掌握常用的快捷键就可以放弃鼠标了<br>以下快捷键适用于win10,其他系统可能不适用。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(一)Win键</span><br><span class="line">win + e；打开资源管理器</span><br><span class="line">win + d；显示桌面，再按一次恢复窗口</span><br><span class="line">win + r; 运行对话框，这个运行如果用的话，基本上就可以告别鼠标:</span><br><span class="line">1. 在运行对话框内输入cmd,进入命令行模式</span><br><span class="line">2. 在运行对话框中输入control,进入控制面板</span><br><span class="line">3. 在运行对话框中输入appwiz.cpl，进入程序与功能</span><br><span class="line">4. 在运行对话框中输入msconfig，进入系统配置</span><br><span class="line">5. 在运行对话框中输入Chrome，打开谷歌浏览器，前提是你安装了chrome.同理这个可以用来快捷的打开一些应用程序。如果是经常使用的应用程序可以将它固定到任务栏或者开始屏幕。或者设置快捷键来访问</span><br><span class="line">6. 在对话框内输入shutdown -s -t 0;立刻关机，后面的0代表0秒后关机。可以修改为600，就是十分钟后关机</span><br><span class="line">win + x;这个可以打开很多相关设置</span><br><span class="line">7.在运行对话框中输入shutdown -a 取消定时关机</span><br><span class="line">win + space；切换输入法；shift可以快速切换中英文</span><br><span class="line">win + l; 锁定屏幕</span><br><span class="line">win + s;搜索（推荐使用，这个可以完成很多软件的打开)</span><br><span class="line">win + tab; 切换桌面</span><br><span class="line">alt + tab; 切换同桌面的不同程序</span><br><span class="line">win + ctrl + d;创建新桌面</span><br><span class="line">win + 向上方向键；窗口最大化</span><br><span class="line">win + 向左 + 向右;左上角四份之一窗口</span><br><span class="line">（二）ctrl键和Alt键，Ctrl和Alt键大多数会配合应用程序使用</span><br><span class="line">ctrl + shift + esc; 呼出任务管理器</span><br><span class="line">chrome适用的快捷键</span><br><span class="line">ctrl + w; 关闭标签</span><br><span class="line">ctrl + t;新建标签</span><br><span class="line">ctrl + shift + t;恢复刚关闭的标签</span><br><span class="line">ctrl + h;历史记录</span><br><span class="line">ctrl + j;下载列表</span><br><span class="line">ctrl + f;在页面内查找</span><br><span class="line">ctrl + n;新窗口</span><br><span class="line">ctrl + tab;切换到下一个标签</span><br><span class="line">ctrl + shift + tab;切换到上一个标签</span><br><span class="line">ctrl + r;重新加载当前页</span><br><span class="line">ctrl + d;加入书签</span><br><span class="line">alt + d;输入定位到地址栏</span><br><span class="line">alt + spance;呼出窗口控制的菜单</span><br></pre></td></tr></table></figure></p>
+<p>为了少用鼠标的话，就需要掌握一些常用的快捷键，掌握常用的快捷键就可以放弃鼠标了<br>以下快捷键适用于win10,其他系统可能不适用。<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">(一)Win键</span><br><span class="line">win + e；打开资源管理器</span><br><span class="line">win + d；显示桌面，再按一次恢复窗口</span><br><span class="line">win + r<span class="comment">; 运行对话框，这个运行如果用的话，基本上就可以告别鼠标:</span></span><br><span class="line"><span class="number">1</span>. 在运行对话框内输入cmd,进入命令行模式</span><br><span class="line"><span class="number">2</span>. 在运行对话框中输入control,进入控制面板</span><br><span class="line"><span class="number">3</span>. 在运行对话框中输入appwiz.cpl，进入程序与功能</span><br><span class="line"><span class="number">4</span>. 在运行对话框中输入msconfig，进入系统配置</span><br><span class="line"><span class="number">5</span>. 在运行对话框中输入Chrome，打开谷歌浏览器，前提是你安装了chrome.同理这个可以用来快捷的打开一些应用程序。如果是经常使用的应用程序可以将它固定到任务栏或者开始屏幕。或者设置快捷键来访问</span><br><span class="line"><span class="number">6</span>. 在对话框内输入<span class="keyword">shutdown </span>-s -t <span class="number">0</span><span class="comment">;立刻关机，后面的0代表0秒后关机。可以修改为600，就是十分钟后关机</span></span><br><span class="line">win + x<span class="comment">;这个可以打开很多相关设置</span></span><br><span class="line"><span class="number">7</span>.在运行对话框中输入<span class="keyword">shutdown </span>-a 取消定时关机</span><br><span class="line">win + space；切换输入法；<span class="keyword">shift可以快速切换中英文</span></span><br><span class="line"><span class="keyword">win </span>+ l<span class="comment">; 锁定屏幕</span></span><br><span class="line">win + s<span class="comment">;搜索（推荐使用，这个可以完成很多软件的打开)</span></span><br><span class="line">win + tab<span class="comment">; 切换桌面</span></span><br><span class="line">alt + tab<span class="comment">; 切换同桌面的不同程序</span></span><br><span class="line">win + ctrl + d<span class="comment">;创建新桌面</span></span><br><span class="line">win + 向上方向键；窗口最大化</span><br><span class="line">win + 向左 + 向右<span class="comment">;左上角四份之一窗口</span></span><br><span class="line">（二）ctrl键和Alt键，Ctrl和Alt键大多数会配合应用程序使用</span><br><span class="line">ctrl + <span class="keyword">shift </span>+ esc<span class="comment">; 呼出任务管理器</span></span><br><span class="line">chrome适用的快捷键</span><br><span class="line">ctrl + w<span class="comment">; 关闭标签</span></span><br><span class="line">ctrl + t<span class="comment">;新建标签</span></span><br><span class="line">ctrl + <span class="keyword">shift </span>+ t<span class="comment">;恢复刚关闭的标签</span></span><br><span class="line">ctrl + h<span class="comment">;历史记录</span></span><br><span class="line">ctrl + <span class="keyword">j;下载列表</span></span><br><span class="line"><span class="keyword">ctrl </span>+ f<span class="comment">;在页面内查找</span></span><br><span class="line">ctrl + n<span class="comment">;新窗口</span></span><br><span class="line">ctrl + tab<span class="comment">;切换到下一个标签</span></span><br><span class="line">ctrl + <span class="keyword">shift </span>+ tab<span class="comment">;切换到上一个标签</span></span><br><span class="line">ctrl + r<span class="comment">;重新加载当前页</span></span><br><span class="line">ctrl + d<span class="comment">;加入书签</span></span><br><span class="line">alt + d<span class="comment">;输入定位到地址栏</span></span><br><span class="line">alt + spance<span class="comment">;呼出窗口控制的菜单</span></span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>其他</category>
       </categories>
       <tags>
         <tag>快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>合并排序</title>
+    <url>/2020/10/04/%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<p>合并排序算法是用分治策略实现对n个元素进行排序的算法。其基本思想是:将待排序元素分成大小大致相同的2个字集合，分别对2个子集合进行排序，最终将排好序的子集合合并成为所要求的排好序的集合。<br>算法描述代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] sort(<span class="keyword">int</span>[] a,<span class="keyword">int</span> low,<span class="keyword">int</span> high) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(low&lt;high) &#123;</span><br><span class="line">			sort(a,low,mid);</span><br><span class="line">			sort(a,mid+<span class="number">1</span>,high);</span><br><span class="line">			merge(a,low,mid,high);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span> low,<span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[high-low+<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> i = low;</span><br><span class="line">		<span class="keyword">int</span> j = mid + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">// 把较小的数先移到新数组中</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=high)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i]&lt;a[j])&#123;</span><br><span class="line">                temp[k++] = a[i++];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                temp[k++] = a[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把左边剩余的数移入数组 </span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;=mid)&#123;</span><br><span class="line">            temp[k++] = a[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把右边边剩余的数移入数组</span></span><br><span class="line">        <span class="keyword">while</span>(j&lt;=high)&#123;</span><br><span class="line">            temp[k++] = a[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把新数组中的数覆盖nums数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;temp.length;x++)&#123;</span><br><span class="line">            a[x+low] = temp[x];</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度分析:<br>T(n)={O(1) n&lt;=1 ;2T(n/2)+O(n)  n&gt;1}<br>解此递归方程可以T(n)=O(nlogn).由于排序问题的计算时间下界为Ω(nlogn)，故合并排序算法是渐近最优算法。</p>
+]]></content>
+      <categories>
+        <category>算法设计与分析</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>二叉树的中序遍历</title>
+    <url>/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</url>
+    <content><![CDATA[<p>题目描述:<br><img src="/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/二叉树的中序遍历.JPG" alt="题目描述"></p>
+<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p> 常见的二叉树的遍历方法是先序遍历、中序遍历和后序遍历。</p>
+<p> 先序：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右子树。(根左右)</p>
+<p>中序：考察到一个节点后，将其暂存，遍历完左子树后，再输出该节点的值，然后遍历右子树。(左根右)</p>
+<p>后序：考察到一个节点后，将其暂存，遍历完左右子树后，再输出该节点的值。(左右根)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        inorder(root.left, res);</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        inorder(root.right, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度:O(n),因为二叉树的结点时n个，且每一个结点会被访问一次仅只有一次。<br>空间复杂度:O(n),空间复杂度取决于递归的栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n)O(n) 的级别。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>中序遍历</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>排列问题</title>
+    <url>/2020/10/03/%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>问题描述</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">问题描述：对n个元素进行全排列，列出所有情况，例如1，2，3三个数字会得到1 2 3，1 3 2，2 1 3，2 3 1，3 1 2，3 2 1这6中情况</span><br><span class="line"></span><br><span class="line">思路：设n为元素个数，元素集合为R(r1,r2,r3....rn)，计算方法为Perm(n)</span><br><span class="line"></span><br><span class="line">当n &#x3D; 1时，则只有一种情况  r；</span><br><span class="line"></span><br><span class="line">当n &gt; 1时，则有(r1)Perm(R1),(r2)Perm(R2),(r3)Perm(R3) ... ... (rn)Perm(Rn)</span><br><span class="line"></span><br><span class="line">                  以1，2，3为例全排列，共有以下排列：</span><br><span class="line"></span><br><span class="line">                 1 Perm(2,3)  即：以1为前缀的所有组合</span><br><span class="line"></span><br><span class="line">                 2 Perm(1,3)  即：以2为前缀的所有组合</span><br><span class="line"></span><br><span class="line">                 3 Perm(2,3)  即：以3为前缀的所有组合</span><br><span class="line"></span><br><span class="line">注：Perm(k,m)利用递归的思想即可不断划分前缀，直到只剩下1个元素，则只有一种情况，即为找到了一种排列。</span><br></pre></td></tr></table></figure>
+<p>代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> ch3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Perm</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(Object []list,<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		Object temp;</span><br><span class="line">		temp = list[a];</span><br><span class="line">		list[a] = list[b];</span><br><span class="line">		list[b] = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">perm</span><span class="params">(Object []list, <span class="keyword">int</span> k, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(k==m) &#123;	</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;i++) &#123;</span><br><span class="line">				System.out.print(list[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=k;i&lt;=m;i++) &#123;	</span><br><span class="line">				swap(list,k,i);</span><br><span class="line">				perm(list,k+<span class="number">1</span>,m);</span><br><span class="line">				swap(list,k,i);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Object[] list = <span class="keyword">new</span> Object[<span class="number">6</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++) &#123;</span><br><span class="line">			list[i] = i+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		perm(list,<span class="number">0</span>,list.length-<span class="number">1</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>算法解析</strong><br>算法perm(list,k,m)递归地产生所以前缀list[0:k-1],且后缀时list[k:m]的全排列的所有排列。swap算法用于交换两个表元素的值。因为每次递归都会使用一个辅助空间，所以空间复杂性为O(n)。因为递归了n次，所以时间复杂性为O(n)。</p>
+]]></content>
+      <categories>
+        <category>算法设计与分析</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>用XShell设置代理SSH</title>
+    <url>/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/</url>
+    <content><![CDATA[<p><meta name="referrer" content="no-referrer"></p>
+<h2 id="所需条件"><a href="#所需条件" class="headerlink" title="所需条件"></a>所需条件</h2><ol>
+<li>安装XShell软件</li>
+<li>两个vps</li>
+</ol>
+<hr>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>鼠标点击该服务器—》右键—-》属性—-》隧道—》添加，添加窗口相关数据如下图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/tianjia.jpg" alt="添加窗口"><br><strong>注意：类型要选(SOCKS4/5),侦听端口要填一个未被占用的端口，关于如何查看未被占用的端口请访问<a href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">CentOS7有关防火墙和端口的常用命令</a></strong></li>
+<li>确定—》连接，如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/xiaoguo.JPG" alt="代理vps连接后的效果图"><br>&nbsp;&nbsp;图片中的警告可以忽视，那是CentOS8 可以用web服务管理服务器的提示。注意到下面的local:9090灯亮了表示成功了</li>
+<li>右键—》属性—》代理—》浏览—》添加，添加相关数据如图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/4.JPG" alt="添加代理器的相关数据图"><br>类型选SOCK5，主机填localhost，端口要与刚才填隧道的端口一致。用户名和密码不要填。然后确定</li>
+<li>选择刚才添加的代理器—-》连接，效果如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/3.JPG" alt="被代理的服务器连接后的效果图"><br>出现这样的画面表示通过代理服务器连接另一台服务器已经成功了。</li>
+</ol>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>如果在被代理的服务器出现非正常关闭时，一定记得重启服务器，不然再次连接时会失败。</li>
+<li>我发现在被代理服务器开启防火墙服务时，该服务器就会死机，我也不明白什么原因。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>代理SSH</tag>
       </tags>
   </entry>
   <entry>
@@ -439,5 +377,67 @@
       <categories>
         <category>算法设计与分析</category>
       </categories>
+  </entry>
+  <entry>
+    <title>棋牌覆盖</title>
+    <url>/2020/10/04/%E6%A3%8B%E7%89%8C%E8%A6%86%E7%9B%96/</url>
+    <content><![CDATA[<p>转载<a href="https://www.xiaowuyike.com/archives/383.html" target="_blank" rel="noopener">棋牌覆盖问题（java实现)</a></p>
+<p>棋牌覆盖问题（java实现）</p>
+<p>一、问题描述与分析</p>
+<p>问题：在一个<br>2<sup>k</sup> * 2<sup>k</sup><br>方格组成的棋盘中，有一个方格与其它的不同，用如下图的4种不同形态的L型骨牌覆盖给定的特殊棋盘上除特殊方格以外的所有方格，且任何2个L型骨牌不得重叠覆盖。<br><img src="/2020/10/04/%E6%A3%8B%E7%89%8C%E8%A6%86%E7%9B%96/gupd.md.png" alt="骨牌"></p>
+<p>分析：用分治法划分棋盘，使划分后的子棋盘的大小相同，并且每个子棋盘均包含一个特殊方格，从而将原问题分解为规模较小的棋盘覆盖问题。k&gt;0时，可将</p>
+<p>2<sup>k</sup> * 2<sup>k</sup><br>的棋盘划分为4个</p>
+<p>2<sup>k</sup>-1 * 2<sup>k</sup>-1<br>的子棋盘。<br><img src="/2020/10/04/%E6%A3%8B%E7%89%8C%E8%A6%86%E7%9B%96/qipj.md.png" alt="骨牌"></p>
+<p>这样划分后，由于原棋盘只有一个特殊方格，所以，这4个子棋盘中只有一个子棋盘包含该特殊方格，其余3个子棋盘中没有特殊方格。为了将这3个没有特殊方格的子棋盘转化为特殊棋盘，以便采用递归方法求解，可以用一个L型骨牌覆盖这3个较小棋盘的会合处（如图2），从而将原问题转化为4个较小规模的棋盘覆盖问题。<br><img src="/2020/10/04/%E6%A3%8B%E7%89%8C%E8%A6%86%E7%9B%96/erqipj.md.png" alt="子骨牌"><br>递归地使用这种划分策略，直至将棋盘分割为1×1的子棋盘。<br>二、程序实现<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChessBord</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] matrix;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> count;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.println(<span class="string">"棋盘大小："</span>);</span><br><span class="line">        <span class="keyword">while</span> (in.hasNextInt()) &#123;</span><br><span class="line">            <span class="keyword">int</span> n = in.nextInt();<span class="comment">//棋盘大小</span></span><br><span class="line">            System.out.println(<span class="string">"特殊方格位置："</span>);</span><br><span class="line">            <span class="keyword">int</span> dr = in.nextInt();<span class="comment">//特殊方格的行号</span></span><br><span class="line">            <span class="keyword">int</span> dc = in.nextInt();<span class="comment">//特殊方格的列号</span></span><br><span class="line">            matrix = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];<span class="comment">//n*n的棋盘大小</span></span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            chessBoard(<span class="number">0</span>, <span class="number">0</span>, dr, dc, n);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span>[] ii : matrix) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> jj : ii) &#123;</span><br><span class="line">                    System.out.printf(<span class="string">"%8d"</span>, jj);</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * n：表示输入矩阵是n*n的方阵</span></span><br><span class="line"><span class="comment">     * tr：棋盘左上角方格的行号；tc：棋盘左上角方格的列号</span></span><br><span class="line"><span class="comment">     * dr：特殊方格的行号；dc：特殊方格的列号</span></span><br><span class="line"><span class="comment">     * size：棋盘的大小是size×size</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">chessBoard</span><span class="params">(<span class="keyword">int</span> tr, <span class="keyword">int</span> tc, <span class="keyword">int</span> dr, <span class="keyword">int</span> dc, <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//如果当前棋盘的尺寸是1,也就是说只有一个方格的时候,返回函数</span></span><br><span class="line">        <span class="keyword">if</span> (size == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> curPattern = ++count;</span><br><span class="line">        <span class="comment">//把棋盘从中间平均分为4个部分,</span></span><br><span class="line">        size = size / <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//下面方法分别检索分隔出来的4个部分</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//左上部分</span></span><br><span class="line">        <span class="keyword">if</span> (dr &lt; tr + size &amp;&amp; dc &lt; tc + size) &#123;</span><br><span class="line">            <span class="comment">//如果左上部分包含特殊棋盘，那么就直接递归找左上部分,继续把左上部分分隔</span></span><br><span class="line">            chessBoard(tr, tc, dr, dr, size);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//如果左上部分不包含特殊棋盘，那么先把左上部分的右下角自定义一个特殊棋盘，然后在递归</span></span><br><span class="line">            matrix[tr + size - <span class="number">1</span>][tc + size - <span class="number">1</span>] = curPattern;</span><br><span class="line">            chessBoard(tr, tc, tr + size - <span class="number">1</span>, tc + size - <span class="number">1</span>, size);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//右上部分</span></span><br><span class="line">        <span class="keyword">if</span> (dr &lt; tr + size &amp;&amp; dc &gt;= tc + size) &#123;</span><br><span class="line">            chessBoard(tr, tc + size, dr, dc, size);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            matrix[tr + size - <span class="number">1</span>][tc + size] = curPattern;</span><br><span class="line">            chessBoard(tr, tc + size, tr + size - <span class="number">1</span>, tc + size, size);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//左下部分</span></span><br><span class="line">        <span class="keyword">if</span> (dr &gt;= tr + size &amp;&amp; dc &lt; tc + size) &#123;</span><br><span class="line">            chessBoard(tr + size, tc, dr, dc, size);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            matrix[tr + size][tc + size - <span class="number">1</span>] = curPattern;</span><br><span class="line">            chessBoard(tr + size, tc, tr + size, tc + size - <span class="number">1</span>, size);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//右下部分</span></span><br><span class="line">        <span class="keyword">if</span> (dr &gt;= tr + size &amp;&amp; dc &gt;= tc + size) &#123;</span><br><span class="line">            chessBoard(tr + size, tc + size, dr, dc, size);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            matrix[tr + size][tc + size] = curPattern;</span><br><span class="line">            chessBoard(tr + size, tc + size, tr + size, tc + size, size);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>三、实验结果与分析</p>
+<p>实验结果：<br><img src="/2020/10/04/%E6%A3%8B%E7%89%8C%E8%A6%86%E7%9B%96/jpgo.md.png" alt="实验结果"></p>
+<p>实验分析：</p>
+<p>用递归与分治的思想来解决，也就是把一个大的棋盘分成4个小棋盘，检索填充，然后在把小棋盘继续细分，直到棋盘中只包含一个格子为止。</p>
+<p>主干是四个if else循环，也就是说只会执行一个if中的语句，但是会执行3个else中的语句，这3个else中的语句就是构造不可覆盖格子，然后对含有新构造的不可覆盖点的子棋盘来重写进行棋盘覆盖，也就是递归调用棋盘覆盖函数，递归的结束条件就是子棋盘只有一个格子，也就是size = 1，每次调用棋盘覆盖函数，都要进行size = size/2，目的就是把一个大棋盘划分为四个相同大小的子棋盘。</p>
+]]></content>
+      <categories>
+        <category>算法设计与分析</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>算法复杂性分析</title>
+    <url>/2020/10/03/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>算法复杂性的高低体现在运行该算法所需要的计算机资源的多少上，所需要的资源多，算法复杂性就越高；反之越少，算法复杂性就越低。算法复杂性主要分为时间复杂性和空间复杂性，顾名思义就是运行该算法所花费的时间和空间资源。算法复杂性分析对指导算法设计与分析具有重要意义。</p>
+<h2 id="时间复杂性"><a href="#时间复杂性" class="headerlink" title="时间复杂性"></a>时间复杂性</h2><p>时间复杂性分析主要通过渐近上界、渐近下界、同阶方法进行分析</p>
+<h3 id="渐近上界"><a href="#渐近上界" class="headerlink" title="渐近上界"></a>渐近上界</h3><p><strong>记号:</strong> O<br><strong>定义</strong><br>对所有 n，f(n)&gt;=0，g(n)&gt;=0,O(g(n))= { f(n) | 存在正常数 存在正常数 c和n0使得对所有 n&gt;=n0有： 0&lt;=f(n)&lt;=cg(n)}</p>
+<h3 id="渐近下界"><a href="#渐近下界" class="headerlink" title="渐近下界"></a>渐近下界</h3><p><strong>记号:</strong> Ω<br><strong>定义</strong><br>对所有 n，f(n)&gt;=0，g(n)&gt;=0,Ω(g(n))= { f(n) | 存在正常数 存在正常数 c和n0使得对所有 n&gt;=n0有： 0&lt;=cg(n)&lt;=f(n)}</p>
+<h3 id="同阶"><a href="#同阶" class="headerlink" title="同阶"></a>同阶</h3><p><strong>记号:</strong> Θ<br>O(f(n)) = Ω(f(n))</p>
+<h2 id="空间复杂性"><a href="#空间复杂性" class="headerlink" title="空间复杂性"></a>空间复杂性</h2><p>空间复杂性分析较为简单，方法与时间复杂性分析相似</p>
+]]></content>
+      <categories>
+        <category>算法设计与分析</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Visual-Studio-Code更新提示路径找不到问题</title>
+    <url>/2020/06/23/%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h4><p>我们在更新VSCode时，机器提示路径不存在，它提示你看更新日志路径。如果你现在使用的VSCode路径不是你第一次下载安装时VSCode路径且第一次安装VSCode路径下的VSCode已删掉的话，那么出现错误提示的原因是因为注册表中还留有VSCode原来的路径，恰恰原来的路径下已经没有VSCode安装内容了，所有机器就会提示路径错误。</p>
+<h4 id="解决办法有两种"><a href="#解决办法有两种" class="headerlink" title="解决办法有两种:"></a>解决办法有两种:</h4><ol>
+<li>直接在它错误提示位置安装VSCode，可以直接把目前所使用VSCode的安装包内容复制过去就可解决更新失败问题</li>
+<li>修改VSCode在注册表中的位置，win+r后输入regedit打开注册表，然后搜索Visual Studio Code ,然后不断查找下一个，找到错误提示位置信息，然后把里面的地址相应的改成当前VSCode位置。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>VSCode</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设置git代理</title>
+    <url>/2020/07/05/%E8%AE%BE%E7%BD%AEgit%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>设置git代理方式:<br><code>git config --global http.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br><code>git config --global https.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br>删除git代理:<br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy</code></p>
+]]></content>
+      <categories>
+        <category>git&amp;GitHub</category>
+      </categories>
+      <tags>
+        <tag>git代理</tag>
+      </tags>
   </entry>
 </search>
