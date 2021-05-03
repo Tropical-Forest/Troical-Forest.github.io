@@ -121,7 +121,7 @@
 <h5 id="填充属性设置"><a href="#填充属性设置" class="headerlink" title="填充属性设置"></a>填充属性设置</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;填充属性是padding，也称为内边界，表示元素内容与边框之间的距离，属性值为长度值、百分数，属性设置的效果是包含在元素边框里面并围绕着元素内容的“元素背景”，也称为内空白，其基本语法为<code>padding:长度|百分比</code></p>
 ]]></content>
       <categories>
-        <category>HTML5&amp;CSS3&amp;JavaScript</category>
+        <category>其他</category>
       </categories>
       <tags>
         <tag>CSS盒子模型</tag>
@@ -134,7 +134,7 @@
 <h2 id="Webpack安装"><a href="#Webpack安装" class="headerlink" title="Webpack安装"></a>Webpack安装</h2><p>前提： 已经装好了node.js、npm可以使用<br>在本地安装:<br><code>npm install --save-dev webpack</code> 安装最新版本Webpack<br><code>npm install --save-dev webpack@&lt;version&gt;</code> 安装指定版本Webpack<br>最后把<code>node_modules\.bin</code>路径加到path路径下<br>在cmd上输入<code>webpack -v</code>若有显示版本号则安装成功</p>
 ]]></content>
       <categories>
-        <category>Vue</category>
+        <category>其他</category>
       </categories>
       <tags>
         <tag>Webpack</tag>
@@ -212,7 +212,7 @@
 </div>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>其他</category>
       </categories>
       <tags>
         <tag>防火墙和端口</tag>
@@ -224,6 +224,9 @@
     <content><![CDATA[<p>环境搭建过程，可以参考微软提供的教程：</p>
 <h2 id="https-code-visualstudio-com-docs-languages-cpp"><a href="#https-code-visualstudio-com-docs-languages-cpp" class="headerlink" title="https://code.visualstudio.com/docs/languages/cpp"></a><a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">https://code.visualstudio.com/docs/languages/cpp</a></h2><p>我们把所有环境搭建好，c/c++文件也能运行，但就是调试时在断点处无法停下来，这时候可能是window安全问题，可能是安全软件如360把mangw安装包下的gdb.exe拦截以至于无法调试，这时候就需要去把它添加到信任区，再次调试可能就会成功了。</p>
 ]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
   </entry>
   <entry>
     <title>git的简单使用</title>
@@ -251,7 +254,7 @@
 <hr>
 ]]></content>
       <categories>
-        <category>git&amp;GitHub</category>
+        <category>其他</category>
       </categories>
       <tags>
         <tag>git上传本地文件</tag>
@@ -270,7 +273,7 @@
 <h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度:O(n),因为二叉树的结点时n个，且每一个结点会被访问一次仅只有一次。<br>空间复杂度:O(n),空间复杂度取决于递归的栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n)O(n) 的级别。</p>
 ]]></content>
       <categories>
-        <category>LeetCode</category>
+        <category>其他</category>
       </categories>
       <tags>
         <tag>中序遍历</tag>
@@ -297,7 +300,7 @@
 <p>最后，对于这次跑步我是很满足、很高兴的，希望下次能继续保持愉快的跑步。</p>
 ]]></content>
       <categories>
-        <category>跑步日志</category>
+        <category>生活日志</category>
       </categories>
   </entry>
   <entry>
@@ -380,7 +383,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>VSCode</category>
+        <category>其他</category>
       </categories>
       <tags>
         <tag>vscode</tag>
@@ -408,7 +411,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>其他</category>
       </categories>
       <tags>
         <tag>代理SSH</tag>
@@ -434,10 +437,38 @@
     <content><![CDATA[<p>设置git代理方式:<br><code>git config --global http.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br><code>git config --global https.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br>删除git代理:<br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy</code></p>
 ]]></content>
       <categories>
-        <category>git&amp;GitHub</category>
+        <category>其他</category>
       </categories>
       <tags>
         <tag>git代理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>老毛子固件搞定锐捷认证</title>
+    <url>/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/</url>
+    <content><![CDATA[<p>前言：<br>    如果你有一个校园网账号，想要实现全宿舍上网却因为锐捷认证问题所烦恼的话，那么这篇博客很适合你阅读。这篇博客是写通过一个刷有老毛子固件的路由器实现锐捷认证，实现全宿舍上网的方法。</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/show.JPG" alt="锐捷认证成功后的效果图">这是刷有老毛子固件的路由器后台，经过锐捷认证成功后你就会发现地球图标上会出现绿色的√，若没有成功，则是红色的x。</p>
+<h2 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h2><p>在操作开始之前，先准备好下面条件。不会刷路由器的朋友可以上某宝或某多等平台去淘装好固件的路由器，估计四十或五十就有了。WinSCP直接百度安装，抓包工具需要从下面网盘链接中下载下来，下面操作步骤中将会用到。</p>
+<ul>
+<li>带有老毛子固件的路由器</li>
+<li>装好WinSCP软件</li>
+<li><a href="https://pan.baidu.com/s/1dsBXKgT2cQ0FYQDk9OxGfA" target="_blank" rel="noopener">抓包工具</a>(提取码：sedx )</li>
+</ul>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="获取正常认证成功后的mac地址"><a href="#获取正常认证成功后的mac地址" class="headerlink" title="获取正常认证成功后的mac地址"></a>获取正常认证成功后的mac地址</h3><p>首先用你的电脑网线连接, 然后正常启动官方的认证程序, 然后连接之后查看自己的网卡mac地址,然后把它记下来，后面会用到这个max地址。因为接下来的dhcp服务器进行ip分配的时候, 是通过你后台注册的mac地址进行分配的.这个步骤很重要!!!<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/max.JPG" alt="max地址"><br>这里需要除了记住mac地址外，还有把锐捷认证成功后的ip地址、网关地址、DNS地址，建议把截图，因为后面路由器锐捷认证填写信息会用到它。如下所示<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information.JPG" alt="锐捷认证信息"></p>
+<h3 id="抓取数据包"><a href="#抓取数据包" class="headerlink" title="抓取数据包"></a>抓取数据包</h3><p>经过前面条件那里，你应该安装好了抓包工具，抓包工具解压后的效果图如下所示。<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/bao.JPG" alt="抓包工具"><br>再把里面“锐捷测试软件和教程”压缩包解压，其效果图如下。<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/bao2.JPG" alt="抓包工具"><br>抓包工具里面有关于抓包的教程，请自行抓包。抓包成功后保存文件名随便取，这里方便测试，就取11.mdf为文件名。</p>
+<h3 id="进入后台将SSH选项设置打开"><a href="#进入后台将SSH选项设置打开" class="headerlink" title="进入后台将SSH选项设置打开"></a>进入后台将SSH选项设置打开</h3><p>打开你的浏览器，输入网址192.168.123.1<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/后台.JPG" alt="后台"><br>建议先把路由器恢复出厂设置，避免受到其他设置的影响，从而提高成功率。然后再接着下面操作<br>1.再进入左侧的系统管理→2右侧服务→3.然后启动SSH服务<br>这样就可以进行下一步，使用WINSCP导入数据包<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/ssh.JPG" alt="ssh"></p>
+<h3 id="用winscp连接上路由器-把11-mdf传到老毛子的-etc-storage文件夹下-必须是这个文件夹，因为老毛子其他文件夹重启后就会丢失"><a href="#用winscp连接上路由器-把11-mdf传到老毛子的-etc-storage文件夹下-必须是这个文件夹，因为老毛子其他文件夹重启后就会丢失" class="headerlink" title="用winscp连接上路由器, 把11.mdf传到老毛子的/etc/storage文件夹下(必须是这个文件夹，因为老毛子其他文件夹重启后就会丢失)"></a>用winscp连接上路由器, 把11.mdf传到老毛子的/etc/storage文件夹下(必须是这个文件夹，因为老毛子其他文件夹重启后就会丢失)</h3><p><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/winscp.JPG" alt="11.mpf在winscp里面的位置"></p>
+<h3 id="在后台输入你的账号信息"><a href="#在后台输入你的账号信息" class="headerlink" title="在后台输入你的账号信息"></a>在后台输入你的账号信息</h3><p>1.打开后台—-》2.打开配置拓展环境—-》3.打开锐捷认证功能—》4.添加基本信息<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information1.JPG" alt="填写锐捷认证信息1"><br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information2.JPG" alt="填写锐捷认证信息2"><br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information3.JPG" alt="填写锐捷认证信息3"><br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information4.JPG" alt="填写锐捷认证信息4"><br>最后按“应该本页面设置”按钮，使设置信息生效。<br>接下来填写mac地址、宽度账号和密码，和设置为动态获得的方式来上网。如下图所示<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information5.JPG" alt="填写锐捷认证信息5"><br>最后按“应该本页面设置”按钮，使设置信息生效。到这里，整个操作都做完了，这时候你就会发现地球图标上会出现绿色的√，可以自由冲浪了。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>终于坚持写完了，与锐捷认证的斗争终于告一段落。虽然是可以搞定锐捷认证，但都是借用别人的工具来使用，还是不太懂里面的原理，看来《计算机网络》的知识还不过关，还需要继续学习计算机网络知识。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>+<a href="https://blog.csdn.net/weixin_40500627/article/details/108395293" target="_blank" rel="noopener">老毛子固件搞定锐捷认证</a><br>+<a href="https://blog.csdn.net/Hj127666/article/details/114670652" target="_blank" rel="noopener">锐捷6.41，静态ip，学生破解过程分享</a></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>如果大家有什么指教的话，可以在下面留言。</p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>锐捷认证</tag>
+        <tag>老毛子固件</tag>
       </tags>
   </entry>
 </search>

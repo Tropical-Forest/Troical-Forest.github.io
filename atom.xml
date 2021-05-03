@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tropical-forest.github.io/"/>
-  <updated>2020-11-19T11:24:36.587Z</updated>
+  <updated>2021-05-03T03:42:37.888Z</updated>
   <id>https://tropical-forest.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>老毛子固件搞定锐捷认证</title>
+    <link href="https://tropical-forest.github.io/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/"/>
+    <id>https://tropical-forest.github.io/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/</id>
+    <published>2021-05-02T13:16:33.000Z</published>
+    <updated>2021-05-03T03:42:37.888Z</updated>
+    
+    <content type="html"><![CDATA[<p>前言：<br>    如果你有一个校园网账号，想要实现全宿舍上网却因为锐捷认证问题所烦恼的话，那么这篇博客很适合你阅读。这篇博客是写通过一个刷有老毛子固件的路由器实现锐捷认证，实现全宿舍上网的方法。</p><h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/show.JPG" alt="锐捷认证成功后的效果图">这是刷有老毛子固件的路由器后台，经过锐捷认证成功后你就会发现地球图标上会出现绿色的√，若没有成功，则是红色的x。</p><h2 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h2><p>在操作开始之前，先准备好下面条件。不会刷路由器的朋友可以上某宝或某多等平台去淘装好固件的路由器，估计四十或五十就有了。WinSCP直接百度安装，抓包工具需要从下面网盘链接中下载下来，下面操作步骤中将会用到。</p><ul><li>带有老毛子固件的路由器</li><li>装好WinSCP软件</li><li><a href="https://pan.baidu.com/s/1dsBXKgT2cQ0FYQDk9OxGfA" target="_blank" rel="noopener">抓包工具</a>(提取码：sedx )</li></ul><h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="获取正常认证成功后的mac地址"><a href="#获取正常认证成功后的mac地址" class="headerlink" title="获取正常认证成功后的mac地址"></a>获取正常认证成功后的mac地址</h3><p>首先用你的电脑网线连接, 然后正常启动官方的认证程序, 然后连接之后查看自己的网卡mac地址,然后把它记下来，后面会用到这个max地址。因为接下来的dhcp服务器进行ip分配的时候, 是通过你后台注册的mac地址进行分配的.这个步骤很重要!!!<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/max.JPG" alt="max地址"><br>这里需要除了记住mac地址外，还有把锐捷认证成功后的ip地址、网关地址、DNS地址，建议把截图，因为后面路由器锐捷认证填写信息会用到它。如下所示<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information.JPG" alt="锐捷认证信息"></p><h3 id="抓取数据包"><a href="#抓取数据包" class="headerlink" title="抓取数据包"></a>抓取数据包</h3><p>经过前面条件那里，你应该安装好了抓包工具，抓包工具解压后的效果图如下所示。<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/bao.JPG" alt="抓包工具"><br>再把里面“锐捷测试软件和教程”压缩包解压，其效果图如下。<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/bao2.JPG" alt="抓包工具"><br>抓包工具里面有关于抓包的教程，请自行抓包。抓包成功后保存文件名随便取，这里方便测试，就取11.mdf为文件名。</p><h3 id="进入后台将SSH选项设置打开"><a href="#进入后台将SSH选项设置打开" class="headerlink" title="进入后台将SSH选项设置打开"></a>进入后台将SSH选项设置打开</h3><p>打开你的浏览器，输入网址192.168.123.1<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/后台.JPG" alt="后台"><br>建议先把路由器恢复出厂设置，避免受到其他设置的影响，从而提高成功率。然后再接着下面操作<br>1.再进入左侧的系统管理→2右侧服务→3.然后启动SSH服务<br>这样就可以进行下一步，使用WINSCP导入数据包<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/ssh.JPG" alt="ssh"></p><h3 id="用winscp连接上路由器-把11-mdf传到老毛子的-etc-storage文件夹下-必须是这个文件夹，因为老毛子其他文件夹重启后就会丢失"><a href="#用winscp连接上路由器-把11-mdf传到老毛子的-etc-storage文件夹下-必须是这个文件夹，因为老毛子其他文件夹重启后就会丢失" class="headerlink" title="用winscp连接上路由器, 把11.mdf传到老毛子的/etc/storage文件夹下(必须是这个文件夹，因为老毛子其他文件夹重启后就会丢失)"></a>用winscp连接上路由器, 把11.mdf传到老毛子的/etc/storage文件夹下(必须是这个文件夹，因为老毛子其他文件夹重启后就会丢失)</h3><p><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/winscp.JPG" alt="11.mpf在winscp里面的位置"></p><h3 id="在后台输入你的账号信息"><a href="#在后台输入你的账号信息" class="headerlink" title="在后台输入你的账号信息"></a>在后台输入你的账号信息</h3><p>1.打开后台—-》2.打开配置拓展环境—-》3.打开锐捷认证功能—》4.添加基本信息<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information1.JPG" alt="填写锐捷认证信息1"><br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information2.JPG" alt="填写锐捷认证信息2"><br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information3.JPG" alt="填写锐捷认证信息3"><br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information4.JPG" alt="填写锐捷认证信息4"><br>最后按“应该本页面设置”按钮，使设置信息生效。<br>接下来填写mac地址、宽度账号和密码，和设置为动态获得的方式来上网。如下图所示<br><img src="/2021/05/02/%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BB%8F%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%E5%85%A8%E5%AE%BF%E8%88%8D%E4%B8%8A%E7%BD%91/information5.JPG" alt="填写锐捷认证信息5"><br>最后按“应该本页面设置”按钮，使设置信息生效。到这里，整个操作都做完了，这时候你就会发现地球图标上会出现绿色的√，可以自由冲浪了。</p><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>终于坚持写完了，与锐捷认证的斗争终于告一段落。虽然是可以搞定锐捷认证，但都是借用别人的工具来使用，还是不太懂里面的原理，看来《计算机网络》的知识还不过关，还需要继续学习计算机网络知识。</p><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>+<a href="https://blog.csdn.net/weixin_40500627/article/details/108395293" target="_blank" rel="noopener">老毛子固件搞定锐捷认证</a><br>+<a href="https://blog.csdn.net/Hj127666/article/details/114670652" target="_blank" rel="noopener">锐捷6.41，静态ip，学生破解过程分享</a></p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>如果大家有什么指教的话，可以在下面留言。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;前言：&lt;br&gt;    如果你有一个校园网账号，想要实现全宿舍上网却因为锐捷认证问题所烦恼的话，那么这篇博客很适合你阅读。这篇博客是写通过一个刷有老毛子固件的路由器实现锐捷认证，实现全宿舍上网的方法。&lt;/p&gt;
+&lt;h2 id=&quot;效果展示&quot;&gt;&lt;a href=&quot;#效果展示&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="锐捷认证" scheme="https://tropical-forest.github.io/tags/%E9%94%90%E6%8D%B7%E8%AE%A4%E8%AF%81/"/>
+    
+      <category term="老毛子固件" scheme="https://tropical-forest.github.io/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>数字三角形问题</title>
@@ -72,7 +101,7 @@
     <link href="https://tropical-forest.github.io/2020/10/10/%E4%B8%80%E6%AC%A1%E5%BE%88%E6%84%89%E5%BF%AB%E7%9A%84%E8%B7%91%E6%AD%A5/"/>
     <id>https://tropical-forest.github.io/2020/10/10/%E4%B8%80%E6%AC%A1%E5%BE%88%E6%84%89%E5%BF%AB%E7%9A%84%E8%B7%91%E6%AD%A5/</id>
     <published>2020-10-10T13:46:59.000Z</published>
-    <updated>2020-10-10T14:23:36.774Z</updated>
+    <updated>2021-05-02T13:36:59.361Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;今天晚上跑步很愉快、很顺利、很幸运。今天给自己的目标是15km.原以为会跟这周三一样跑5公里就会放弃。刚跑3公里左右右脚确实有点痛，但坚持跑了几圈后脚就不痛了。这是在北区跑，佩戴新买的肩包，我跑起来感觉不累，感觉很轻松。不知道是为什么今天跑步感觉很轻松。分析一下原因:</p><ul><li><p>1.现在是秋季，温度不热不冷，很适合跑步</p></li><li><p>2.跑步时间是在晚上，晚上跑步较为轻松一些，不想黄昏是那么炎热，黄昏是跑步比晚上跑步容易流汗容易累</p></li><li><p>3.上次跑步只跑5公里，对体力没有大的消耗，体力保存较多，这是跑步可以说是占了上次的便宜</p></li><li><p>4.跑步地点。这次在北区跑，北区跑步的人较多，比南区有较为浓厚的氛围。而且女生多，跑步起来当然要认真跑啊，跑慢对形象多不好啊，认真跑起来万一能脱单呢。</p></li><li><p>5.感觉北区的跑道比南区的跑道弹性更好，当然这是个人感觉啦</p></li></ul><p>以上是跑步轻松的原因。除了轻松以外。这是跑步也遇到几个同班同学，这对我以前跑步从来没遇到而今天突然遇到感到莫名的惊喜。虽然跑步向来是孤独者的运动，但能在跑步路上遇到熟人，当然也是一件很惊喜的事情。最后我跑完后在跑道漫步两圈时，在最后要回去的时候，突然响起李宗盛的沧桑的嗓音，这对于我来说实在是一件很惊喜的事。</p><p>还有这是跑步我突然想到了爱，我想到爱不是自私的爱，而是一种博爱，爱世上的一些，爱并不应该是自私的，爱是博大的，爱是无处不在，我爱花草、我爱聪慧的她、我爱天上的星星、我也爱我的对手、我爱我所看到一些、也爱我未曾看到的一些。</p><p>最后，对于这次跑步我是很满足、很高兴的，希望下次能继续保持愉快的跑步。</p>]]></content>
     
@@ -86,7 +115,7 @@
     </summary>
     
     
-      <category term="跑步日志" scheme="https://tropical-forest.github.io/categories/%E8%B7%91%E6%AD%A5%E6%97%A5%E5%BF%97/"/>
+      <category term="生活日志" scheme="https://tropical-forest.github.io/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E5%BF%97/"/>
     
     
   </entry>
@@ -197,7 +226,7 @@
     <link href="https://tropical-forest.github.io/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/"/>
     <id>https://tropical-forest.github.io/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</id>
     <published>2020-09-14T13:03:24.000Z</published>
-    <updated>2020-09-22T13:20:38.948Z</updated>
+    <updated>2021-05-02T13:37:25.353Z</updated>
     
     <content type="html"><![CDATA[<p>题目描述:<br><img src="/2020/09/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/二叉树的中序遍历.JPG" alt="题目描述"></p><h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p> 常见的二叉树的遍历方法是先序遍历、中序遍历和后序遍历。</p><p> 先序：考察到一个节点后，即刻输出该节点的值，并继续遍历其左右子树。(根左右)</p><p>中序：考察到一个节点后，将其暂存，遍历完左子树后，再输出该节点的值，然后遍历右子树。(左根右)</p><p>后序：考察到一个节点后，将其暂存，遍历完左右子树后，再输出该节点的值。(左右根)</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        inorder(root.left, res);</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        inorder(root.right, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度:O(n),因为二叉树的结点时n个，且每一个结点会被访问一次仅只有一次。<br>空间复杂度:O(n),空间复杂度取决于递归的栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n)O(n) 的级别。</p>]]></content>
     
@@ -212,7 +241,7 @@
     </summary>
     
     
-      <category term="LeetCode" scheme="https://tropical-forest.github.io/categories/LeetCode/"/>
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
       <category term="中序遍历" scheme="https://tropical-forest.github.io/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/"/>
@@ -224,7 +253,7 @@
     <link href="https://tropical-forest.github.io/2020/09/05/Webpack%E7%9A%84%E5%AE%89%E8%A3%85/"/>
     <id>https://tropical-forest.github.io/2020/09/05/Webpack%E7%9A%84%E5%AE%89%E8%A3%85/</id>
     <published>2020-09-05T03:12:18.000Z</published>
-    <updated>2020-09-05T03:45:55.685Z</updated>
+    <updated>2021-05-02T13:34:17.228Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><p>Webpack是一个开源的前端开发工具。当Webpack处理应用程序时，它会构建一个依赖关系图，其中包含应用程序所需要的各个模块，然后将所有这些模块打包成一个或多个模组。Webpack可以通过终端或更改Webpack.config.js文件来设定各项功能</p><h2 id="Webpack安装"><a href="#Webpack安装" class="headerlink" title="Webpack安装"></a>Webpack安装</h2><p>前提： 已经装好了node.js、npm可以使用<br>在本地安装:<br><code>npm install --save-dev webpack</code> 安装最新版本Webpack<br><code>npm install --save-dev webpack@&lt;version&gt;</code> 安装指定版本Webpack<br>最后把<code>node_modules\.bin</code>路径加到path路径下<br>在cmd上输入<code>webpack -v</code>若有显示版本号则安装成功</p>]]></content>
     
@@ -238,7 +267,7 @@
     </summary>
     
     
-      <category term="Vue" scheme="https://tropical-forest.github.io/categories/Vue/"/>
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
       <category term="Webpack" scheme="https://tropical-forest.github.io/tags/Webpack/"/>
@@ -250,7 +279,7 @@
     <link href="https://tropical-forest.github.io/2020/07/05/%E8%AE%BE%E7%BD%AEgit%E4%BB%A3%E7%90%86/"/>
     <id>https://tropical-forest.github.io/2020/07/05/%E8%AE%BE%E7%BD%AEgit%E4%BB%A3%E7%90%86/</id>
     <published>2020-07-04T17:19:32.000Z</published>
-    <updated>2020-07-04T17:26:59.785Z</updated>
+    <updated>2021-05-02T13:37:08.231Z</updated>
     
     <content type="html"><![CDATA[<p>设置git代理方式:<br><code>git config --global http.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br><code>git config --global https.proxy &#39;socks5://127.0.0.1:7070&#39;</code><br>删除git代理:<br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset https.proxy</code></p>]]></content>
     
@@ -264,7 +293,7 @@
     </summary>
     
     
-      <category term="git&amp;GitHub" scheme="https://tropical-forest.github.io/categories/git-GitHub/"/>
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
       <category term="git代理" scheme="https://tropical-forest.github.io/tags/git%E4%BB%A3%E7%90%86/"/>
@@ -276,7 +305,7 @@
     <link href="https://tropical-forest.github.io/2020/06/23/%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E9%97%AE%E9%A2%98/"/>
     <id>https://tropical-forest.github.io/2020/06/23/%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E9%97%AE%E9%A2%98/</id>
     <published>2020-06-23T10:56:32.000Z</published>
-    <updated>2020-06-23T11:13:12.869Z</updated>
+    <updated>2021-05-02T13:37:19.309Z</updated>
     
     <content type="html"><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h4><p>我们在更新VSCode时，机器提示路径不存在，它提示你看更新日志路径。如果你现在使用的VSCode路径不是你第一次下载安装时VSCode路径且第一次安装VSCode路径下的VSCode已删掉的话，那么出现错误提示的原因是因为注册表中还留有VSCode原来的路径，恰恰原来的路径下已经没有VSCode安装内容了，所有机器就会提示路径错误。</p><h4 id="解决办法有两种"><a href="#解决办法有两种" class="headerlink" title="解决办法有两种:"></a>解决办法有两种:</h4><ol><li>直接在它错误提示位置安装VSCode，可以直接把目前所使用VSCode的安装包内容复制过去就可解决更新失败问题</li><li>修改VSCode在注册表中的位置，win+r后输入regedit打开注册表，然后搜索Visual Studio Code ,然后不断查找下一个，找到错误提示位置信息，然后把里面的地址相应的改成当前VSCode位置。</li></ol>]]></content>
     
@@ -290,7 +319,7 @@
     </summary>
     
     
-      <category term="VSCode" scheme="https://tropical-forest.github.io/categories/VSCode/"/>
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
       <category term="vscode" scheme="https://tropical-forest.github.io/tags/vscode/"/>
@@ -302,7 +331,7 @@
     <link href="https://tropical-forest.github.io/2020/06/22/vscode%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98/"/>
     <id>https://tropical-forest.github.io/2020/06/22/vscode%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98/</id>
     <published>2020-06-22T15:25:21.000Z</published>
-    <updated>2020-06-22T15:38:21.865Z</updated>
+    <updated>2021-05-02T13:35:02.791Z</updated>
     
     <content type="html"><![CDATA[<p>环境搭建过程，可以参考微软提供的教程：</p><h2 id="https-code-visualstudio-com-docs-languages-cpp"><a href="#https-code-visualstudio-com-docs-languages-cpp" class="headerlink" title="https://code.visualstudio.com/docs/languages/cpp"></a><a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">https://code.visualstudio.com/docs/languages/cpp</a></h2><p>我们把所有环境搭建好，c/c++文件也能运行，但就是调试时在断点处无法停下来，这时候可能是window安全问题，可能是安全软件如360把mangw安装包下的gdb.exe拦截以至于无法调试，这时候就需要去把它添加到信任区，再次调试可能就会成功了。</p>]]></content>
     
@@ -317,6 +346,8 @@
     </summary>
     
     
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
     
   </entry>
   
@@ -325,7 +356,7 @@
     <link href="https://tropical-forest.github.io/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/"/>
     <id>https://tropical-forest.github.io/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/</id>
     <published>2020-06-05T14:00:59.000Z</published>
-    <updated>2020-06-05T14:59:26.820Z</updated>
+    <updated>2021-05-02T13:36:07.251Z</updated>
     
     <content type="html"><![CDATA[<h4 id="字体样式font-style属性"><a href="#字体样式font-style属性" class="headerlink" title="字体样式font-style属性"></a>字体样式font-style属性</h4><p>1.基本语法<br><code>font-style: normal | italic | oblique</code></p><div class="table-container"><table><thead><tr><th>属性值</th><th>说明</th></tr></thead><tbody><tr><td>normal</td><td>表示不使用斜体，是font-style属性的默认值</td></tr><tr><td>italic</td><td>表示使用斜体显示文字</td></tr><tr><td>oblique</td><td>表示使用倾斜字体显示</td></tr></tbody></table></div><h4 id="字体粗细font-weight属性"><a href="#字体粗细font-weight属性" class="headerlink" title="字体粗细font-weight属性"></a>字体粗细font-weight属性</h4><p>1.基本语法<br><code>font-weight：normal | bold | lighter</code></p><div class="table-container"><table><thead><tr><th>属性值</th><th>说明</th></tr></thead><tbody><tr><td>normal</td><td>表示正常的字体,是font-weight属性的默认值</td></tr><tr><td>bold</td><td>表示标准的粗体</td></tr><tr><td>bolder</td><td>表示特粗体</td></tr><tr><td>lighter</td><td>表示细体</td></tr></tbody></table></div><h4 id="字符装饰text-decoration属性"><a href="#字符装饰text-decoration属性" class="headerlink" title="字符装饰text-decoration属性"></a>字符装饰text-decoration属性</h4><p>1.基本语法<br><code>text-decoration : none | underline | overline | line-through</code></p><div class="table-container"><table><thead><tr><th>属性</th><th>说明</th></tr></thead><tbody><tr><td>none</td><td>表示文字无修饰</td></tr><tr><td>underline</td><td>表示文字加下划线</td></tr><tr><td>line-through</td><td>表示文字加删除线</td></tr><tr><td>overline</td><td>表示文字加上画线</td></tr></tbody></table></div><h4 id="水平对齐text-align属性"><a href="#水平对齐text-align属性" class="headerlink" title="水平对齐text-align属性"></a>水平对齐text-align属性</h4><p>1.基本语法<br><code>text-align: left | right | center | justify</code></p><div class="table-container"><table><thead><tr><th>属性</th><th>说明</th></tr></thead><tbody><tr><td>left</td><td>表示左对齐</td></tr><tr><td>right</td><td>表示右对齐</td></tr><tr><td>center</td><td>表示居中</td></tr><tr><td>justify</td><td>表示两端对齐</td></tr></tbody></table></div><h4 id="CSS盒模型"><a href="#CSS盒模型" class="headerlink" title="CSS盒模型"></a>CSS盒模型</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;在网页设计中，每个元素都是长方形的盒子，便产生了特定的盒子模型。在盒子模型中，重要的概念有边界(Margin)、边框(Border)、填充(Padding)、内容(Content)，简称为MBPC模型。边界又称为外边界，是盒子边框与页面边界或其他盒子之间的距离。填充又称为内边界，即内容与边框之间的距离。</p><h5 id="边界属性设置"><a href="#边界属性设置" class="headerlink" title="边界属性设置"></a>边界属性设置</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;边界属性是margin,也称为外边距,表示盒子边框与页面边界或其他盒子之间的距离，属性值为长度值、百分数或auto,属性设置的效果是围绕元素边框的“ 空白 ”。<br>1.基本语法<br><code>margin-(top|right|bottom|left):长度单位|百分比单位|auto</code><br>auto: 表示采用默认值,浏览器计算边距。</p><h5 id="边框属性设置"><a href="#边框属性设置" class="headerlink" title="边框属性设置"></a>边框属性设置</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;常见的border-style有dashed(定义虚线)、solid(定义实线);边框border复合属性可以一次设置边框的粗细、样式和颜色，其语法为:<code>border: border-width border-style border-color</code>,例如<code>border: 2px solid red</code>。</p><h5 id="填充属性设置"><a href="#填充属性设置" class="headerlink" title="填充属性设置"></a>填充属性设置</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;填充属性是padding，也称为内边界，表示元素内容与边框之间的距离，属性值为长度值、百分数，属性设置的效果是包含在元素边框里面并围绕着元素内容的“元素背景”，也称为内空白，其基本语法为<code>padding:长度|百分比</code></p>]]></content>
     
@@ -339,7 +370,7 @@
     </summary>
     
     
-      <category term="HTML5&amp;CSS3&amp;JavaScript" scheme="https://tropical-forest.github.io/categories/HTML5-CSS3-JavaScript/"/>
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
       <category term="CSS盒子模型" scheme="https://tropical-forest.github.io/tags/CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/"/>
@@ -351,7 +382,7 @@
     <link href="https://tropical-forest.github.io/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/"/>
     <id>https://tropical-forest.github.io/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/</id>
     <published>2020-05-23T12:12:17.000Z</published>
-    <updated>2020-05-23T14:40:13.912Z</updated>
+    <updated>2021-05-02T13:36:21.536Z</updated>
     
     <content type="html"><![CDATA[<p><meta name="referrer" content="no-referrer"></p><h2 id="所需条件"><a href="#所需条件" class="headerlink" title="所需条件"></a>所需条件</h2><ol><li>安装XShell软件</li><li>两个vps</li></ol><hr><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol><li>鼠标点击该服务器—》右键—-》属性—-》隧道—》添加，添加窗口相关数据如下图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/tianjia.jpg" alt="添加窗口"><br><strong>注意：类型要选(SOCKS4/5),侦听端口要填一个未被占用的端口，关于如何查看未被占用的端口请访问<a href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">CentOS7有关防火墙和端口的常用命令</a></strong></li><li>确定—》连接，如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/xiaoguo.JPG" alt="代理vps连接后的效果图"><br>&nbsp;&nbsp;图片中的警告可以忽视，那是CentOS8 可以用web服务管理服务器的提示。注意到下面的local:9090灯亮了表示成功了</li><li>右键—》属性—》代理—》浏览—》添加，添加相关数据如图所填：<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/4.JPG" alt="添加代理器的相关数据图"><br>类型选SOCK5，主机填localhost，端口要与刚才填隧道的端口一致。用户名和密码不要填。然后确定</li><li>选择刚才添加的代理器—-》连接，效果如图<br><img src="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/3.JPG" alt="被代理的服务器连接后的效果图"><br>出现这样的画面表示通过代理服务器连接另一台服务器已经成功了。</li></ol><hr><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li>如果在被代理的服务器出现非正常关闭时，一定记得重启服务器，不然再次连接时会失败。</li><li>我发现在被代理服务器开启防火墙服务时，该服务器就会死机，我也不明白什么原因。</li></ol>]]></content>
     
@@ -367,7 +398,7 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://tropical-forest.github.io/categories/Linux/"/>
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
       <category term="代理SSH" scheme="https://tropical-forest.github.io/tags/%E4%BB%A3%E7%90%86SSH/"/>
@@ -379,7 +410,7 @@
     <link href="https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>https://tropical-forest.github.io/2020/05/23/CentOS%E6%9C%89%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
     <published>2020-05-23T05:57:56.000Z</published>
-    <updated>2020-05-23T07:19:58.518Z</updated>
+    <updated>2021-05-02T13:36:15.309Z</updated>
     
     <content type="html"><![CDATA[<h2 id="关于CentOS系统"><a href="#关于CentOS系统" class="headerlink" title="关于CentOS系统"></a>关于CentOS系统</h2><p>&nbsp;&nbsp;CentOS（Community Enterprise Operating System，中文意思是社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。(来自百度百科)</p><hr><h2 id="关于防火墙"><a href="#关于防火墙" class="headerlink" title="关于防火墙"></a>关于防火墙</h2><p>&nbsp;&nbsp;防火墙技术是通过有机结合各类用于安全管理与筛选的软件和硬件设备，帮助计算机网络于其内、外网之间构建一道相对隔绝的保护屏障，以保护用户资料与信息安全性的一种技术。防火墙技术的功能主要在于及时发现并处理计算机网络运行时可能存在的安全风险、数据传输等问题，其中处理措施包括隔离与保护，同时可对计算机网络安全当中的各项操作实施记录与检测，以确保计算机网络运行的安全性，保障用户资料与信息的完整性，为用户提供更好、更安全的计算机网络使用体验。(来自百度百科)</p><hr><h2 id="关于端口"><a href="#关于端口" class="headerlink" title="关于端口"></a>关于端口</h2><p>&nbsp;&nbsp;”端口”是英文port的意译，可以认为是设备与外界通讯交流的出口。端口可分为虚拟端口和物理端口，其中虚拟端口指计算机内部或交换机路由器内的端口，不可见。例如计算机中的80端口、21端口、23端口等。物理端口又称为接口，是可见端口，计算机背板的RJ45网口，交换机路由器集线器等RJ45端口。电话使用RJ11插口也属于物理端口的范畴。(来自百度百科)</p><hr><h2 id="CentOS7有关防火墙和端口的常用命令"><a href="#CentOS7有关防火墙和端口的常用命令" class="headerlink" title="CentOS7有关防火墙和端口的常用命令"></a>CentOS7有关防火墙和端口的常用命令</h2><p>&nbsp;&nbsp;我们一般都会在服务器上搭建服务，搭建服务需要开放端口，没有端口是无法与外网联系的，也就是搭建的服务无法成功。如果搭建服务时用到端口的话，我们应该要检查端口是否开放，没有开放的话则需要去开放的端口。这是你就会用到下面的命令。下面的命令是适用于CentOS7，其他版本不知是否适用。</p><div class="table-container"><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>systemctl start firewalld.service</code></td><td>启动防火墙</td></tr><tr><td><code>systemctl stop firewalld.service</code></td><td>停止/关闭防火墙</td></tr><tr><td><code>systemctl restart firewalld.service</code></td><td>重启防火墙</td></tr><tr><td><code>firewalld-cmd --zone=public --add-port=[端口]/tcp --permanent</code></td><td>新增开放一个端口</td></tr><tr><td><code>firewall-cmd --zone=public --add-port=[端口]-[端口]/tcp --permanent</code></td><td>新增开放多个端口</td></tr><tr><td><code>firewall-cmd --list-all</code></td><td>查看防火墙信息</td></tr><tr><td><code>firewall-cmd --list-ports</code></td><td>查看防火墙开放端口信息</td></tr><tr><td><code>firewall-cmd --zone=public --remove-port=80/tcp --permanent</code></td><td>删除一个开放的端口</td></tr><tr><td><code>systemctl enable firewalld.service</code></td><td>开机启用防火墙</td></tr><tr><td><code>systemctl disable firewalld.service</code></td><td>开机不启用防火墙</td></tr><tr><td><code>systemctl unmask firewalld</code></td><td>执行命令，即可实现取消服务的锁定</td></tr><tr><td><code>systemctl mask firewalld</code></td><td>下次需要锁定该服务时执行</td></tr></tbody></table></div>]]></content>
     
@@ -393,7 +424,7 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://tropical-forest.github.io/categories/Linux/"/>
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
       <category term="防火墙和端口" scheme="https://tropical-forest.github.io/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8C%E7%AB%AF%E5%8F%A3/"/>
@@ -405,7 +436,7 @@
     <link href="https://tropical-forest.github.io/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
     <id>https://tropical-forest.github.io/2020/05/21/git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</id>
     <published>2020-05-21T09:08:53.000Z</published>
-    <updated>2020-07-04T13:22:06.319Z</updated>
+    <updated>2021-05-02T13:35:43.030Z</updated>
     
     <content type="html"><![CDATA[<p> &nbsp;&nbsp;&nbsp;&nbsp;在这里，主要写有关用git去上传项目到GitHub或者克隆GitHub文件到本地等简单操作命令。我们要打开cmd(或者 git bash here)，进入项目路径。然后再执行下面操作。 </p><hr><ol><li><code>git config --global  user.name &#39;你的GitHub账号&#39;</code>&nbsp;&nbsp;<em>设置你的账号名</em> </li><li><code>git config --global user.email &#39;你的GitHub绑定的邮箱&#39;</code>&nbsp;&nbsp;<em>设置你的邮箱</em></li><li><code>git config --global user.password &#39;你的GitHub账号密码&#39;</code>&nbsp;&nbsp;<em>设置你的密码</em></li><li><code>git config -l</code> &nbsp;&nbsp; <em>查看git配置信息，看看账号名和密码、邮箱是否正确。</em></li><li><code>git init</code>&nbsp;&nbsp; <em>项目初始化</em></li><li><code>git remote add origin  [关联项目仓库连接地址]</code> &nbsp;&nbsp; <em>本地项目与要上传到GitHub仓库进行关联。</em></li><li><code>git status</code>&nbsp;&nbsp;<em>查看本地发生了哪些变化</em></li><li><code>git add *</code>  </li><li><code>git commit  -m &#39;提交的注释&#39;</code>&nbsp;&nbsp;<em>上面两条命令是本地文件修改生效</em></li><li><code>git push -u origin master</code>&nbsp;&nbsp;<em>推送项目到GitHub主支上</em></li><li><code>git clone [url]</code>&nbsp;&nbsp;<em>url为克隆地址，克隆GitHub上的项目到本地上</em></li><li><code>git branch -d [分支名]</code>&nbsp;&nbsp;<em>删除分支</em></li><li><code>git branch [分支名]</code>&nbsp;&nbsp;<em>新建分支</em></li><li><code>git branch</code>&nbsp;&nbsp;<em>查看所有分支</em></li><li><code>git branch -a</code>&nbsp;&nbsp;<em>查看当前所在分支</em></li><li><code>git checkout [分支名]</code>&nbsp;&nbsp;<em>切换分支</em></li></ol><hr>]]></content>
     
@@ -422,7 +453,7 @@
     </summary>
     
     
-      <category term="git&amp;GitHub" scheme="https://tropical-forest.github.io/categories/git-GitHub/"/>
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
       <category term="git上传本地文件" scheme="https://tropical-forest.github.io/tags/git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/"/>
