@@ -569,5 +569,11 @@
 <p><img src="/2022/01/17/%E4%BD%BF%E7%94%A8Thymeleaf%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/image-20220117230846238.png" alt="image-20220117230846238"></p>
 <p>出现类似上图结果，则表示thymeleaf使用成功。</p>
 ]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>thymeleaf</tag>
+      </tags>
   </entry>
 </search>
