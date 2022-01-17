@@ -528,9 +528,9 @@
 <ul>
 <li>${…} 变量表达式</li>
 <li>*{…} 选择表达式</li>
-<li><h1 id="…-消息文字表达式"><a href="#…-消息文字表达式" class="headerlink" title="{…} 消息文字表达式"></a>{…} 消息文字表达式</h1></li>
+<li>#{…} 消息文字表达式</li>
 <li>@{…} 链接url表达式</li>
-<li><h1 id="maps-工具对象表达式"><a href="#maps-工具对象表达式" class="headerlink" title="maps 工具对象表达式"></a>maps 工具对象表达式</h1></li>
+<li>#maps 工具对象表达式</li>
 </ul>
 <p>常用标签:</p>
 <ul>
