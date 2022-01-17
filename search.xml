@@ -549,14 +549,14 @@
 </ul>
 <p>常用函数：</p>
 <ul>
-<li><h1 id="dates-日期函数"><a href="#dates-日期函数" class="headerlink" title="dates 日期函数"></a>dates 日期函数</h1></li>
-<li><h1 id="lists-列表函数"><a href="#lists-列表函数" class="headerlink" title="lists 列表函数"></a>lists 列表函数</h1></li>
-<li><h1 id="arrays-数组函数"><a href="#arrays-数组函数" class="headerlink" title="arrays 数组函数"></a>arrays 数组函数</h1></li>
-<li><h1 id="strings-字符串函数"><a href="#strings-字符串函数" class="headerlink" title="strings 字符串函数"></a>strings 字符串函数</h1></li>
-<li><h1 id="numbers-数字函数"><a href="#numbers-数字函数" class="headerlink" title="numbers 数字函数"></a>numbers 数字函数</h1></li>
-<li><h1 id="calendars-日历函数"><a href="#calendars-日历函数" class="headerlink" title="calendars 日历函数"></a>calendars 日历函数</h1></li>
-<li><h1 id="objects-对象函数"><a href="#objects-对象函数" class="headerlink" title="objects 对象函数"></a>objects 对象函数</h1></li>
-<li><h1 id="bools-逻辑函数"><a href="#bools-逻辑函数" class="headerlink" title="bools 逻辑函数"></a>bools 逻辑函数</h1></li>
+<li>#dates 日期函数</li>
+<li>#lists 列表函数</li>
+<li>#arrays 数组函数</li>
+<li>#strings 字符串函数</li>
+<li>#numbers 数字函数</li>
+<li>#calendars 日历函数</li>
+<li>#objects 对象函数</li>
+<li>#bools 逻辑函数</li>
 </ul>
 <h2 id="使用-Thymeleaf模板引擎"><a href="#使用-Thymeleaf模板引擎" class="headerlink" title="使用 Thymeleaf模板引擎"></a>使用 Thymeleaf模板引擎</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>在application.yaml进行配置，配置代码如下:</p>
