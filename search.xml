@@ -495,7 +495,7 @@
 <h3 id="设计表和实体"><a href="#设计表和实体" class="headerlink" title="设计表和实体"></a>设计表和实体</h3><p>在test数据库里面添加ay_user表，表结构如下图所示:</p>
 <p><img src="/2022/01/17/%E9%9B%86%E6%88%90-Spring-Data-JPA/image-20220117174721585.png" alt="image-20220117174721585"></p>
 <p>整个项目结构如下图所示:</p>
-<p><img src="/2022/01/17/%E9%9B%86%E6%88%90-Spring-Data-JPA/Users\刘培永\AppData\Roaming\Typora\typora-user-images\image-20220117174946310.png" alt="image-20220117174946310" style="zoom:50%;"></p>
+<p><img src="/2022/01/17/%E9%9B%86%E6%88%90-Spring-Data-JPA/image-20220117174946310.png" alt="image-20220117174721585"></p>
 <p>实体类AyUser的代码如下图所示:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AyUser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>@Data是使用来自于lombok插件的方法，如果没有则需要安装</p>
