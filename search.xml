@@ -472,17 +472,6 @@
       </tags>
   </entry>
   <entry>
-    <title>mybatis反向工程使用</title>
-    <url>/2021/12/29/mybatis%E5%8F%8D%E5%90%91%E5%B7%A5%E7%A8%8B%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>微服务架构</category>
-      </categories>
-      <tags>
-        <tag>mybatis反向工程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>集成 Spring Data JPA</title>
     <url>/2022/01/17/%E9%9B%86%E6%88%90-Spring-Data-JPA/</url>
     <content><![CDATA[<h1 id="集成-Spring-Data-JPA"><a href="#集成-Spring-Data-JPA" class="headerlink" title="集成 Spring Data JPA"></a>集成 Spring Data JPA</h1><h2 id="Spring-Data-JPA介绍"><a href="#Spring-Data-JPA介绍" class="headerlink" title="Spring Data JPA介绍"></a>Spring Data JPA介绍</h2><p>本节主要介绍Spring Data JPA是什么、Spring Data JPA 核心接口Repository、核心接口间的继承关系图</p>
