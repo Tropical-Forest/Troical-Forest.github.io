@@ -579,7 +579,7 @@
   <entry>
     <title>Spring 事务支持</title>
     <url>/2022/01/18/Spring-%E4%BA%8B%E5%8A%A1%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<h2 id="Spring-事务"><a href="#Spring-事务" class="headerlink" title="Spring 事务"></a>Spring 事务</h2><h3 id="Spring-事务介绍"><a href="#Spring-事务介绍" class="headerlink" title="Spring 事务介绍"></a>Spring 事务介绍</h3><ul>
+    <content><![CDATA[<h1 id="Spring-Boot-事务支持"><a href="#Spring-Boot-事务支持" class="headerlink" title="Spring Boot 事务支持"></a>Spring Boot 事务支持</h1><h2 id="Spring-事务"><a href="#Spring-事务" class="headerlink" title="Spring 事务"></a>Spring 事务</h2><h3 id="Spring-事务介绍"><a href="#Spring-事务介绍" class="headerlink" title="Spring 事务介绍"></a>Spring 事务介绍</h3><ul>
 <li>事务有四大特性: 原子性、一致性、隔离性和持久性</li>
 <li>事务管理是用来确保数据的完整性和一致性</li>
 <li>Spring既支持编程式事务管理（也称编码式事务），又支持声明式事务管理</li>
