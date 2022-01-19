@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="CSS盒子模型," />
+  <meta name="keywords" content="Quartz定时器,定时发送邮件," />
 
 
 
@@ -105,17 +105,22 @@
 
 
 
-<meta name="description" content="字体样式font-style属性1.基本语法font-style: normal | italic | oblique     属性值 说明     normal 表示不使用斜体，是font-style属性的默认值   italic 表示使用斜体显示文字   oblique 表示使用倾斜字体显示     字体粗细font-weight属性1.基本语法font-weight：normal | bol">
+<meta name="description" content="Quartz定时器和发送Email使用Quartz 定时器Quartz概述 Quartz 是一个完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。  Quartz 可以与J2EE 与 J2SE 应用程序相结合也可以单独使用。  Quartz 允许程序开发人员根据时间的间隔来调度作业。  Quartz 实现了作业和触发器的多对多的关系，还能把多个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS样式属性">
-<meta property="og:url" content="https://tropical-forest.github.io/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/index.html">
+<meta property="og:title" content="Quartz定时器和发送Email">
+<meta property="og:url" content="https://tropical-forest.github.io/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/index.html">
 <meta property="og:site_name" content="Tropical-Forest">
-<meta property="og:description" content="字体样式font-style属性1.基本语法font-style: normal | italic | oblique     属性值 说明     normal 表示不使用斜体，是font-style属性的默认值   italic 表示使用斜体显示文字   oblique 表示使用倾斜字体显示     字体粗细font-weight属性1.基本语法font-weight：normal | bol">
-<meta property="article:published_time" content="2020-06-05T14:00:59.000Z">
-<meta property="article:modified_time" content="2021-05-02T13:36:07.251Z">
+<meta property="og:description" content="Quartz定时器和发送Email使用Quartz 定时器Quartz概述 Quartz 是一个完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。  Quartz 可以与J2EE 与 J2SE 应用程序相结合也可以单独使用。  Quartz 允许程序开发人员根据时间的间隔来调度作业。  Quartz 实现了作业和触发器的多对多的关系，还能把多个">
+<meta property="og:image" content="https://tropical-forest.github.io/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/image-20220119162829667.png">
+<meta property="og:image" content="https://tropical-forest.github.io/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/image-20220119173655292.png">
+<meta property="og:image" content="https://tropical-forest.github.io/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/image-20220119192604464.png">
+<meta property="article:published_time" content="2022-01-19T11:26:51.000Z">
+<meta property="article:modified_time" content="2022-01-19T11:29:29.692Z">
 <meta property="article:author" content="Tropical-Forest">
-<meta property="article:tag" content="CSS盒子模型">
+<meta property="article:tag" content="Quartz定时器">
+<meta property="article:tag" content="定时发送邮件">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tropical-forest.github.io/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/image-20220119162829667.png">
 
 
 
@@ -145,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="https://tropical-forest.github.io/2020/06/05/CSS样式属性/"/>
+  <link rel="canonical" href="https://tropical-forest.github.io/2022/01/19/Quartz定时器和发送Email/"/>
 
 
 
 
 
-  <title>CSS样式属性 | Tropical-Forest</title>
+  <title>Quartz定时器和发送Email | Tropical-Forest</title>
   
 
 
@@ -336,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tropical-forest.github.io/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/">
+    <link itemprop="mainEntityOfPage" href="https://tropical-forest.github.io/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tropical-Forest">
@@ -353,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSS样式属性</h1>
+          <h1 class="post-title" itemprop="name headline">Quartz定时器和发送Email</h1>
         
 
         <div class="post-meta">
@@ -365,8 +370,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T22:00:59+08:00">
-                2020-06-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-19T19:26:51+08:00">
+                2022-01-19
               </time>
             
 
@@ -388,8 +393,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringBoot</span>
                   </a>
                 </span>
 
@@ -406,8 +411,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/" itemprop="commentCount"></span>
+                <a href="/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -415,7 +420,7 @@
 
           
           
-             <span id="/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/" class="leancloud_visitors" data-flag-title="CSS样式属性">
+             <span id="/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/" class="leancloud_visitors" data-flag-title="Quartz定时器和发送Email">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -446,122 +451,209 @@
       
 
       
-        <h4 id="字体样式font-style属性"><a href="#字体样式font-style属性" class="headerlink" title="字体样式font-style属性"></a>字体样式font-style属性</h4><p>1.基本语法<br><code>font-style: normal | italic | oblique</code></p>
+        <h1 id="Quartz定时器和发送Email"><a href="#Quartz定时器和发送Email" class="headerlink" title="Quartz定时器和发送Email"></a>Quartz定时器和发送Email</h1><h2 id="使用Quartz-定时器"><a href="#使用Quartz-定时器" class="headerlink" title="使用Quartz 定时器"></a>使用Quartz 定时器</h2><h3 id="Quartz概述"><a href="#Quartz概述" class="headerlink" title="Quartz概述"></a>Quartz概述</h3><ul>
+<li><p>Quartz 是一个完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。</p>
+</li>
+<li><p>Quartz 可以与J2EE 与 J2SE 应用程序相结合也可以单独使用。</p>
+</li>
+<li><p>Quartz 允许程序开发人员根据时间的间隔来调度作业。</p>
+</li>
+<li><p>Quartz 实现了作业和触发器的多对多的关系，还能把多个作业与不同的触发器关联。</p>
+</li>
+<li>Quartz 定时器的作用很多，比如定式发送信息、定时生成报表、定时取消订单等</li>
+</ul>
+<p>​    Quartz框架主要核心组件包括调度器、触发器、作业。调度器作为作业的总指挥，触发器作为作业的操作者，作业为应用的功能模块。</p>
+<p>其关系如下图所示:</p>
+<p><img src="/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/image-20220119162829667.png" alt="image-20220119162829667"></p>
+<p>(1) Job </p>
+<p>表示一个工作，要执行的具体内容。此接口中只有一个方法，如下：</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">void</span> <span class="function"><span class="title"><span class="built_in">execute</span></span>(<span class="variable">JobExecutionContext</span> <span class="variable">context</span>)</span></span><br></pre></td></tr></table></figure>
+<p>(2) <strong>JobDetail</strong> 表示一个具体的可执行的调度程序，Job 是这个可执行程调度程序所要执行的内容，另外 JobDetail 还包含了这个任务调度的方案和策略。</p>
+<p>(3) <strong>Trigger</strong> 代表一个调度参数的配置，什么时候去调。</p>
+<p>(4) <strong>Scheduler</strong> 代表一个调度容器，一个调度容器中可以注册多个 JobDetail 和 Trigger。当 Trigger 与 JobDetail 组合，就可以被 Scheduler 容器调度了。</p>
+<p>CronTrigger配置格式:</p>
+<p>格式: [秒] [分] [小时] [日] [月] [周] [年]</p>
 <div class="table-container">
 <table>
 <thead>
 <tr>
-<th>属性值</th>
+<th>序号</th>
 <th>说明</th>
+<th>是否必填</th>
+<th>允许填写的值</th>
+<th style="text-align:center">允许的通配符</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>normal</td>
-<td>表示不使用斜体，是font-style属性的默认值</td>
+<td>1</td>
+<td>秒</td>
+<td>是</td>
+<td>0-59</td>
+<td style="text-align:center">, - * /</td>
 </tr>
 <tr>
-<td>italic</td>
-<td>表示使用斜体显示文字</td>
+<td>2</td>
+<td>分</td>
+<td>是</td>
+<td>0-59</td>
+<td style="text-align:center">, - * /</td>
 </tr>
 <tr>
-<td>oblique</td>
-<td>表示使用倾斜字体显示</td>
+<td>3</td>
+<td>小时</td>
+<td>是</td>
+<td>0-23</td>
+<td style="text-align:center">, - * /</td>
+</tr>
+<tr>
+<td>4</td>
+<td>日</td>
+<td>是</td>
+<td>1-31</td>
+<td style="text-align:center">, - * ? / L W</td>
+</tr>
+<tr>
+<td>5</td>
+<td>月</td>
+<td>是</td>
+<td>1-12 or JAN-DEC</td>
+<td style="text-align:center">, - * /</td>
+</tr>
+<tr>
+<td>6</td>
+<td>周</td>
+<td>是</td>
+<td>1-7 or SUN-SAT</td>
+<td style="text-align:center">, - * ? / L #</td>
+</tr>
+<tr>
+<td>7</td>
+<td>年</td>
+<td>否</td>
+<td>empty 或 1970-2099</td>
+<td style="text-align:center">, - * /</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h4 id="字体粗细font-weight属性"><a href="#字体粗细font-weight属性" class="headerlink" title="字体粗细font-weight属性"></a>字体粗细font-weight属性</h4><p>1.基本语法<br><code>font-weight：normal | bold | lighter</code></p>
+<p>常用示例:</p>
 <div class="table-container">
 <table>
 <thead>
 <tr>
-<th>属性值</th>
-<th>说明</th>
+<th><code>0 0 12 * * ?</code></th>
+<th style="text-align:left">每天12点触发</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>normal</td>
-<td>表示正常的字体,是font-weight属性的默认值</td>
+<td><code>0 15 10 ? * *</code></td>
+<td style="text-align:left">每天10点15分触发</td>
 </tr>
 <tr>
-<td>bold</td>
-<td>表示标准的粗体</td>
+<td><code>0 15 10 * * ?</code></td>
+<td style="text-align:left">每天10点15分触发</td>
 </tr>
 <tr>
-<td>bolder</td>
-<td>表示特粗体</td>
+<td><code>0 15 10 * * ? *</code></td>
+<td style="text-align:left">每天10点15分触发</td>
 </tr>
 <tr>
-<td>lighter</td>
-<td>表示细体</td>
+<td><code>0 15 10 * * ? 2005</code></td>
+<td style="text-align:left">2005年每天10点15分触发</td>
+</tr>
+<tr>
+<td><code>0 * 14 * * ?</code></td>
+<td style="text-align:left">每天下午的 2点到2点59分每分触发</td>
+</tr>
+<tr>
+<td><code>0 0/5 14 * * ?</code></td>
+<td style="text-align:left">每天下午的 2点到2点59分(整点开始，每隔5分触发)</td>
+</tr>
+<tr>
+<td><code>0 0/5 14,18 * * ?</code></td>
+<td style="text-align:left">每天下午的 2点到2点59分(整点开始，每隔5分触发) 每天下午的 18点到18点59分(整点开始，每隔5分触发)</td>
+</tr>
+<tr>
+<td><code>0 0-5 14 * * ?</code></td>
+<td style="text-align:left">每天下午的 2点到2点05分每分触发</td>
+</tr>
+<tr>
+<td><code>0 10,44 14 ? 3 WED</code></td>
+<td style="text-align:left">3月分每周三下午的 2点10分和2点44分触发</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * MON-FRI</code></td>
+<td style="text-align:left">从周一到周五每天上午的10点15分触发</td>
+</tr>
+<tr>
+<td><code>0 15 10 15 * ?</code></td>
+<td style="text-align:left">每月15号上午10点15分触发</td>
+</tr>
+<tr>
+<td><code>0 15 10 L * ?</code></td>
+<td style="text-align:left">每月最后一天的10点15分触发</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6L</code></td>
+<td style="text-align:left">每月最后一周的星期五的10点15分触发</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6L 2002-2005</code></td>
+<td style="text-align:left">从2002年到2005年每月最后一周的星期五的10点15分触发</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6#3</code></td>
+<td style="text-align:left">每月的第三周的星期五开始触发</td>
+</tr>
+<tr>
+<td><code>0 0 12 1/5 * ?</code></td>
+<td style="text-align:left">每月的第一个中午开始每隔5天触发一次</td>
+</tr>
+<tr>
+<td><code>0 11 11 11 11 ?</code></td>
+<td style="text-align:left">每年的11月11号 11点11分触发(光棍节)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h4 id="字符装饰text-decoration属性"><a href="#字符装饰text-decoration属性" class="headerlink" title="字符装饰text-decoration属性"></a>字符装饰text-decoration属性</h4><p>1.基本语法<br><code>text-decoration : none | underline | overline | line-through</code></p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>none</td>
-<td>表示文字无修饰</td>
-</tr>
-<tr>
-<td>underline</td>
-<td>表示文字加下划线</td>
-</tr>
-<tr>
-<td>line-through</td>
-<td>表示文字加删除线</td>
-</tr>
-<tr>
-<td>overline</td>
-<td>表示文字加上画线</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4 id="水平对齐text-align属性"><a href="#水平对齐text-align属性" class="headerlink" title="水平对齐text-align属性"></a>水平对齐text-align属性</h4><p>1.基本语法<br><code>text-align: left | right | center | justify</code></p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>left</td>
-<td>表示左对齐</td>
-</tr>
-<tr>
-<td>right</td>
-<td>表示右对齐</td>
-</tr>
-<tr>
-<td>center</td>
-<td>表示居中</td>
-</tr>
-<tr>
-<td>justify</td>
-<td>表示两端对齐</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4 id="CSS盒模型"><a href="#CSS盒模型" class="headerlink" title="CSS盒模型"></a>CSS盒模型</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;在网页设计中，每个元素都是长方形的盒子，便产生了特定的盒子模型。在盒子模型中，重要的概念有边界(Margin)、边框(Border)、填充(Padding)、内容(Content)，简称为MBPC模型。边界又称为外边界，是盒子边框与页面边界或其他盒子之间的距离。填充又称为内边界，即内容与边框之间的距离。</p>
-<h5 id="边界属性设置"><a href="#边界属性设置" class="headerlink" title="边界属性设置"></a>边界属性设置</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;边界属性是margin,也称为外边距,表示盒子边框与页面边界或其他盒子之间的距离，属性值为长度值、百分数或auto,属性设置的效果是围绕元素边框的“ 空白 ”。<br>1.基本语法<br><code>margin-(top|right|bottom|left):长度单位|百分比单位|auto</code><br>auto: 表示采用默认值,浏览器计算边距。</p>
-<h5 id="边框属性设置"><a href="#边框属性设置" class="headerlink" title="边框属性设置"></a>边框属性设置</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;常见的border-style有dashed(定义虚线)、solid(定义实线);边框border复合属性可以一次设置边框的粗细、样式和颜色，其语法为:<code>border: border-width border-style border-color</code>,例如<code>border: 2px solid red</code>。</p>
-<h5 id="填充属性设置"><a href="#填充属性设置" class="headerlink" title="填充属性设置"></a>填充属性设置</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;填充属性是padding，也称为内边界，表示元素内容与边框之间的距离，属性值为长度值、百分数，属性设置的效果是包含在元素边框里面并围绕着元素内容的“元素背景”，也称为内空白，其基本语法为<code>padding:长度|百分比</code></p>
+<p>​    Scheduler 负责管理Quartz的运行环境，Quartz 是基于多线程架构的，启动的时候会初始化一套线程，这套线程用来执行一些预置的作业。 Trigger和JobDetail可以注册到Scheduler中。Scheduler可以将Trigger绑定到某一JobDetail中，这样当Trigger触发时，对应的Job就会被执行。Scheduler拥有一个SchedulerContext，类似于ServletContext，保存着Scheduler上下文信息，Job 和 Trigger都可以访问SchedulerContext内的信息。Scheduler使用一个线程池作为任务的基础设施，任务通过共享线程池中的线程提高运行效率。</p>
+<h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.quartz-scheduler<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>quartz<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="定时器配置文件"><a href="#定时器配置文件" class="headerlink" title="定时器配置文件"></a>定时器配置文件</h3><p>​    创建定时器的方法有两种：1、使用XML配置文件的方式；2、使用注解的方式。</p>
+<p>这里使用注解的方式使用定时器配置。</p>
+<p>我们在/src/main/java/com.lpy.quartz目录下创建SendMailQuartz定时器类，具体代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableScheduling</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendMailQuartz</span> </span>&#123;</span><br><span class="line">    <span class="comment">//日志对象</span></span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LogManager.getLogger(SendMailQuartz<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//每5秒执行一次</span></span><br><span class="line">    <span class="meta">@Scheduled</span>(cron = <span class="string">"*/5 * *  * * *"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reportCurrentByCron</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"定时器运行了！！！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>@Configurable: 加上此注解的类相当于XML配置文件，可以被Spring Boot扫描初始化。</li>
+<li>@EnableScheduling：通过在配置类注解@EnableScheduling 来开启对计划任务的支持，然后在要执行计划任务的方法上注解@Scheduled，声明这是一个计划任务。</li>
+<li>@Scheduled： 注解为定时任务，在cron表达式里写执行的时机。</li>
+</ul>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>启动项目，查看控制台输出信息，发现每个5秒就打印指定的信息。则表示Quartz定时器设置成功。</p>
+<p><img src="/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/image-20220119173655292.png" alt="image-20220119173655292"></p>
+<h2 id="Spring-Boot发送Email"><a href="#Spring-Boot发送Email" class="headerlink" title="Spring Boot发送Email"></a>Spring Boot发送Email</h2><h3 id="Email介绍"><a href="#Email介绍" class="headerlink" title="Email介绍"></a>Email介绍</h3><p>邮件发送与接收的过程如下:</p>
+<p>(1) 发件人使用SMTP协议传输邮件到邮件服务器A</p>
+<p>(2) 邮件服务器A根据邮件中指定的接收者投送邮件至相应的邮件服务器B</p>
+<p>(3) 收件人使用POP3协议从邮件服务器B接收邮件</p>
+<p>SMTP 协议全称为 Simple Mail Transfer Protocol，译作简单邮件传输协议，它定义了邮件客户端软件与 SMTP 服务器之间，以及 SMTP 服务器与 SMTP 服务器之间的通信规则。</p>
+<p>也就是说 aaa@qq.com 用户先将邮件投递到腾讯的 SMTP 服务器这个过程就使用了 SMTP 协议，然后腾讯的 SMTP 服务器将邮件投递到网易的 SMTP 服务器这个过程也依然使用了 SMTP 协议，SMTP 服务器就是用来收邮件。</p>
+<p>而 POP3 协议全称为 Post Office Protocol ，译作邮局协议，它定义了邮件客户端与 POP3 服务器之间的通信规则，那么该协议在什么场景下会用到呢？当邮件到达网易的 SMTP 服务器之后， 111@163.com 用户需要登录服务器查看邮件，这个时候就该协议就用上了：邮件服务商都会为每一个用户提供专门的邮件存储空间，SMTP 服务器收到邮件之后，就将邮件保存到相应用户的邮件存储空间中，如果用户要读取邮件，就需要通过邮件服务商的 POP3 邮件服务器来完成。</p>
+<h3 id="引入依赖-1"><a href="#引入依赖-1" class="headerlink" title="引入依赖"></a>引入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-mail<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加Email配置"><a href="#添加Email配置" class="headerlink" title="添加Email配置"></a>添加Email配置</h3><p>我们需要在application.yaml文件中添加如下配置信息:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### Mail邮件配置</span></span><br><span class="line">  <span class="comment">### 邮箱主机</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">mail:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">smtp.qq.com</span></span><br><span class="line">    <span class="comment">### 发送者邮箱</span></span><br><span class="line">    <span class="attr">username:</span> <span class="number">1234</span><span class="string">@qq.com</span></span><br><span class="line">    <span class="comment">### 设置的授权码</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">1234555</span></span><br><span class="line">    <span class="comment">### 默认编码</span></span><br><span class="line">    <span class="attr">default-encoding:</span> <span class="string">UTF-8</span></span><br><span class="line">    <span class="comment"># 配置SSL 加密工厂</span></span><br><span class="line">    <span class="attr">properties:</span></span><br><span class="line">      <span class="attr">mail:</span></span><br><span class="line">        <span class="attr">smtp:</span></span><br><span class="line">          <span class="attr">socketFactoryClass:</span> <span class="string">javax.net.ssl.SSLSocketFactory</span></span><br><span class="line">        <span class="comment">#表示开启 DEBUG 模式，这样，邮件发送过程的日志会在控制台打印出来，方便排查错误</span></span><br><span class="line">        <span class="attr">debug:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment">### 端口号465或587</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">587</span></span><br></pre></td></tr></table></figure>
+<p><strong>126邮箱SMTP服务器地址:smtp.126.com,端口号:465或者994</strong><br><strong>2163邮箱SMTP服务器地址:smtp.163.com,端口号:465或者994</strong><br><strong>yeah邮箱SMTP服务器地址:smtp.yeah.net,端口号:465或者994</strong><br><strong>qq邮箱SMTP服务器地址：smtp.qq.com,端口号465或587*</strong></p>
+<h3 id="在定时器中发送邮件"><a href="#在定时器中发送邮件" class="headerlink" title="在定时器中发送邮件"></a>在定时器中发送邮件</h3><p>​    在Spring Boot中添加完依赖和配置之后，我们在项目的目录/src/main/java/com.lpy.mail下新建邮件服务接口类SendJunkMailService，具体代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SendJunkMailService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">sendJunkMail</span><span class="params">(List&lt;AyUser&gt; ayUserList)</span> <span class="keyword">throws</span> MessagingException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后继续在项目的目录/src/main/java/com.lpy.mail下新建接口类的的实现类SendJunkMailServiceImpl.java，具体代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendJunkMailServiceImpl</span> <span class="keyword">implements</span> <span class="title">SendJunkMailService</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    JavaMailSender mailSender;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> AyUserService ayUserService;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;spring.mail.username&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String from;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LogManager.getLogger(SendJunkMailServiceImpl<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">sendJunkMail</span><span class="params">(List&lt;AyUser&gt; ayUserList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(ayUserList == <span class="keyword">null</span> || ayUserList.size()&lt;=<span class="number">0</span>) <span class="keyword">return</span> Boolean.FALSE;</span><br><span class="line">        <span class="keyword">for</span> (AyUser ayUser:ayUserList) &#123;</span><br><span class="line">            MimeMessage mimeMessage = <span class="keyword">this</span>.mailSender.createMimeMessage();</span><br><span class="line">            MimeMessageHelper message = <span class="keyword">new</span> MimeMessageHelper(mimeMessage);</span><br><span class="line">            <span class="comment">//邮件发送方</span></span><br><span class="line">            message.setFrom(from);</span><br><span class="line">            message.setSubject(<span class="string">"哈哈，这是一个测试"</span>);</span><br><span class="line">            <span class="comment">//邮件接收方</span></span><br><span class="line">            message.setTo(<span class="string">"test@163.com"</span>);</span><br><span class="line">            message.setText(ayUser.getName()+<span class="string">",这是Mail测试"</span>);</span><br><span class="line">            <span class="keyword">this</span>.mailSender.send(mimeMessage);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">            logger.error(<span class="string">"sendJunkMail error and ayUser=%s"</span>,ayUserList,ex);</span><br><span class="line">            <span class="keyword">return</span> Boolean.FALSE;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Boolean.FALSE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>@Value：可以将application.yaml配置文件中的配置设置到属性中。</li>
+<li>JavaMailSender： 邮件发送接口。在Spring Boot 的Starter模块已为此提供了自动化配置，我们只需要通过注解@Autowired注入进来即可使用。</li>
+</ul>
+<p>现在我们重新修改SendMailQuartz定时器类，让定时器类能够每隔一段时间给数据库的用户发送广告邮件，SendMailQuartz类具体的修改如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableScheduling</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendMailQuartz</span> </span>&#123;</span><br><span class="line">    <span class="comment">//日志对象</span></span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LogManager.getLogger(SendMailQuartz<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> SendJunkMailService sendJunkMailService;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> AyUserService ayUserService;</span><br><span class="line">    <span class="comment">//每5秒执行一次</span></span><br><span class="line">    <span class="meta">@Scheduled</span>(cron = <span class="string">"*/5 * *  * * *"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reportCurrentByCron</span><span class="params">()</span> <span class="keyword">throws</span> MessagingException </span>&#123;</span><br><span class="line">        List&lt;AyUser&gt; userList = ayUserService.findAll();</span><br><span class="line">        <span class="keyword">if</span>(userList == <span class="keyword">null</span> || userList.size() &lt;= <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//发送邮件</span></span><br><span class="line">        sendJunkMailService.sendJunkMail(userList);</span><br><span class="line">        logger.info(<span class="string">"定时器运行了！！！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>代码全部开发完成之后，重新启动项目，发送邮件定时器类SendMailQuartz，每隔5秒会查询数据库表ay_test中的所有用户，并发送广告邮件给对应的用户。我们登录对应接收用户邮箱发现如下信息:</p>
+<p><img src="/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/image-20220119192604464.png" alt="image-20220119192604464"></p>
 
       
     </div>
@@ -611,7 +703,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tropical-forest.github.io/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/" title="CSS样式属性">https://tropical-forest.github.io/2020/06/05/CSS%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7/</a>
+    <a href="https://tropical-forest.github.io/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/" title="Quartz定时器和发送Email">https://tropical-forest.github.io/2022/01/19/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%8F%91%E9%80%81Email/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -626,7 +718,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" rel="tag"># CSS盒子模型</a>
+            <a href="/tags/Quartz%E5%AE%9A%E6%97%B6%E5%99%A8/" rel="tag"># Quartz定时器</a>
+          
+            <a href="/tags/%E5%AE%9A%E6%97%B6%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/" rel="tag"># 定时发送邮件</a>
           
         </div>
       
@@ -639,8 +733,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/23/%E7%94%A8XShell%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86SSH/" rel="next" title="用XShell设置代理SSH">
-                <i class="fa fa-chevron-left"></i> 用XShell设置代理SSH
+              <a href="/2022/01/19/%E9%9B%86%E6%88%90Log4j%E6%97%A5%E5%BF%97/" rel="next" title="集成Log4j日志">
+                <i class="fa fa-chevron-left"></i> 集成Log4j日志
               </a>
             
           </div>
@@ -648,10 +742,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/06/22/vscode%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98/" rel="prev" title="vscode中的c/c++调试问题">
-                vscode中的c/c++调试问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -802,7 +892,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#字体样式font-style属性"><span class="nav-number">1.</span> <span class="nav-text">字体样式font-style属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字体粗细font-weight属性"><span class="nav-number">2.</span> <span class="nav-text">字体粗细font-weight属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符装饰text-decoration属性"><span class="nav-number">3.</span> <span class="nav-text">字符装饰text-decoration属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#水平对齐text-align属性"><span class="nav-number">4.</span> <span class="nav-text">水平对齐text-align属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS盒模型"><span class="nav-number">5.</span> <span class="nav-text">CSS盒模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#边界属性设置"><span class="nav-number">5.1.</span> <span class="nav-text">边界属性设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#边框属性设置"><span class="nav-number">5.2.</span> <span class="nav-text">边框属性设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#填充属性设置"><span class="nav-number">5.3.</span> <span class="nav-text">填充属性设置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Quartz定时器和发送Email"><span class="nav-number">1.</span> <span class="nav-text">Quartz定时器和发送Email</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Quartz-定时器"><span class="nav-number">1.1.</span> <span class="nav-text">使用Quartz 定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Quartz概述"><span class="nav-number">1.1.1.</span> <span class="nav-text">Quartz概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入依赖"><span class="nav-number">1.1.2.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定时器配置文件"><span class="nav-number">1.1.3.</span> <span class="nav-text">定时器配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">1.1.4.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot发送Email"><span class="nav-number">1.2.</span> <span class="nav-text">Spring Boot发送Email</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Email介绍"><span class="nav-number">1.2.1.</span> <span class="nav-text">Email介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入依赖-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加Email配置"><span class="nav-number">1.2.3.</span> <span class="nav-text">添加Email配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在定时器中发送邮件"><span class="nav-number">1.2.4.</span> <span class="nav-text">在定时器中发送邮件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-1"><span class="nav-number">1.2.5.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
