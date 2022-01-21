@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tropical-forest.github.io/"/>
-  <updated>2022-01-21T04:04:03.127Z</updated>
+  <updated>2022-01-19T12:54:05.095Z</updated>
   <id>https://tropical-forest.github.io/</id>
   
   <author>
@@ -15,21 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>test</title>
-    <link href="https://tropical-forest.github.io/2022/01/21/test/"/>
-    <id>https://tropical-forest.github.io/2022/01/21/test/</id>
-    <published>2022-01-21T04:04:03.000Z</published>
-    <updated>2022-01-21T04:04:03.127Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
   
   <entry>
     <title>集成MyBatis</title>
@@ -526,6 +511,32 @@
     
     
       <category term="git代理" scheme="https://tropical-forest.github.io/tags/git%E4%BB%A3%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Visual-Studio-Code更新提示路径找不到问题</title>
+    <link href="https://tropical-forest.github.io/2020/06/23/%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E9%97%AE%E9%A2%98/"/>
+    <id>https://tropical-forest.github.io/2020/06/23/%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E9%97%AE%E9%A2%98/</id>
+    <published>2020-06-23T10:56:32.000Z</published>
+    <updated>2021-05-02T13:37:19.309Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h4><p>我们在更新VSCode时，机器提示路径不存在，它提示你看更新日志路径。如果你现在使用的VSCode路径不是你第一次下载安装时VSCode路径且第一次安装VSCode路径下的VSCode已删掉的话，那么出现错误提示的原因是因为注册表中还留有VSCode原来的路径，恰恰原来的路径下已经没有VSCode安装内容了，所有机器就会提示路径错误。</p><h4 id="解决办法有两种"><a href="#解决办法有两种" class="headerlink" title="解决办法有两种:"></a>解决办法有两种:</h4><ol><li>直接在它错误提示位置安装VSCode，可以直接把目前所使用VSCode的安装包内容复制过去就可解决更新失败问题</li><li>修改VSCode在注册表中的位置，win+r后输入regedit打开注册表，然后搜索Visual Studio Code ,然后不断查找下一个，找到错误提示位置信息，然后把里面的地址相应的改成当前VSCode位置。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述:&quot;&gt;&lt;/a&gt;问题描述:&lt;/h4&gt;&lt;p&gt;我们在更新VSCode时，机器提示路径不存在，它提示你看更新日志路径。如果你现在使用的VSCode路径不是你第一次下载安
+      
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="https://tropical-forest.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="vscode" scheme="https://tropical-forest.github.io/tags/vscode/"/>
     
   </entry>
   
