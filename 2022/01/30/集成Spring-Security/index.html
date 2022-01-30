@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="过滤器,监听器," />
+  <meta name="keywords" content="Spring Security," />
 
 
 
@@ -105,23 +105,21 @@
 
 
 
-<meta name="description" content="使用过滤器和监听器Sprin Boot 使用过滤器 Filter过滤器 Filter 介绍 Filter 也称为过滤器，是处于客户端与服务器资源文件之间的一道过滤网 Web开发人员通过Filter技术管理Web服务器的所有资源 Filter 可以实现URL 级别的权限访问控制、过滤敏感词汇、压缩响应信息等功能  ​    Filter 的创建和销毁有Web服务器负责。Web应用程序启动时，Web服">
+<meta name="description" content="1. 基本环境搭建父pom依赖 123456&lt;parent&gt;    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;spring-boot-starter-parent&lt;&#x2F;artifactId&gt;    &lt;version&gt;2.6.3&lt;&#x2F;version&amp;g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用过滤器和监听器">
-<meta property="og:url" content="https://tropical-forest.github.io/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/index.html">
+<meta property="og:title" content="集成Spring-Security">
+<meta property="og:url" content="https://tropical-forest.github.io/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/index.html">
 <meta property="og:site_name" content="Tropical-Forest">
-<meta property="og:description" content="使用过滤器和监听器Sprin Boot 使用过滤器 Filter过滤器 Filter 介绍 Filter 也称为过滤器，是处于客户端与服务器资源文件之间的一道过滤网 Web开发人员通过Filter技术管理Web服务器的所有资源 Filter 可以实现URL 级别的权限访问控制、过滤敏感词汇、压缩响应信息等功能  ​    Filter 的创建和销毁有Web服务器负责。Web应用程序启动时，Web服">
-<meta property="og:image" content="https://tropical-forest.github.io/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/image-20220118114936086.png">
-<meta property="og:image" content="https://tropical-forest.github.io/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/image-20220118122022796.png">
-<meta property="og:image" content="https://tropical-forest.github.io/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/image-20220118122301279.png">
-<meta property="og:image" content="https://tropical-forest.github.io/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/image-20220118131443279.png">
-<meta property="article:published_time" content="2022-01-18T05:15:38.000Z">
-<meta property="article:modified_time" content="2022-01-18T05:19:28.137Z">
+<meta property="og:description" content="1. 基本环境搭建父pom依赖 123456&lt;parent&gt;    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;spring-boot-starter-parent&lt;&#x2F;artifactId&gt;    &lt;version&gt;2.6.3&lt;&#x2F;version&amp;g">
+<meta property="og:image" content="https://tropical-forest.github.io/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/image-20220122162052002.png">
+<meta property="og:image" content="https://tropical-forest.github.io/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/image-20220122162225360.png">
+<meta property="og:image" content="https://tropical-forest.github.io/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/image-20220122162353226.png">
+<meta property="article:published_time" content="2022-01-30T06:53:43.000Z">
+<meta property="article:modified_time" content="2022-01-30T06:56:18.707Z">
 <meta property="article:author" content="Tropical-Forest">
-<meta property="article:tag" content="过滤器">
-<meta property="article:tag" content="监听器">
+<meta property="article:tag" content="Spring Security">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tropical-forest.github.io/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/image-20220118114936086.png">
+<meta name="twitter:image" content="https://tropical-forest.github.io/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/image-20220122162052002.png">
 
 
 
@@ -151,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="https://tropical-forest.github.io/2022/01/18/使用过滤器和监听器/"/>
+  <link rel="canonical" href="https://tropical-forest.github.io/2022/01/30/集成Spring-Security/"/>
 
 
 
 
 
-  <title>使用过滤器和监听器 | Tropical-Forest</title>
+  <title>集成Spring-Security | Tropical-Forest</title>
   
 
 
@@ -342,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tropical-forest.github.io/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="https://tropical-forest.github.io/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tropical-Forest">
@@ -359,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用过滤器和监听器</h1>
+          <h1 class="post-title" itemprop="name headline">集成Spring-Security</h1>
         
 
         <div class="post-meta">
@@ -371,8 +369,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-18T13:15:38+08:00">
-                2022-01-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-30T14:53:43+08:00">
+                2022-01-30
               </time>
             
 
@@ -412,8 +410,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/" itemprop="commentCount"></span>
+                <a href="/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -421,7 +419,7 @@
 
           
           
-             <span id="/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/" class="leancloud_visitors" data-flag-title="使用过滤器和监听器">
+             <span id="/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/" class="leancloud_visitors" data-flag-title="集成Spring-Security">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -452,40 +450,57 @@
       
 
       
-        <h1 id="使用过滤器和监听器"><a href="#使用过滤器和监听器" class="headerlink" title="使用过滤器和监听器"></a>使用过滤器和监听器</h1><h2 id="Sprin-Boot-使用过滤器-Filter"><a href="#Sprin-Boot-使用过滤器-Filter" class="headerlink" title="Sprin Boot 使用过滤器 Filter"></a>Sprin Boot 使用过滤器 Filter</h2><h3 id="过滤器-Filter-介绍"><a href="#过滤器-Filter-介绍" class="headerlink" title="过滤器 Filter 介绍"></a>过滤器 Filter 介绍</h3><ul>
-<li>Filter 也称为过滤器，是处于客户端与服务器资源文件之间的一道过滤网</li>
-<li>Web开发人员通过Filter技术管理Web服务器的所有资源</li>
-<li>Filter 可以实现URL 级别的权限访问控制、过滤敏感词汇、压缩响应信息等功能</li>
+        <h1 id="1-基本环境搭建"><a href="#1-基本环境搭建" class="headerlink" title="1. 基本环境搭建"></a>1. 基本环境搭建</h1><p>父pom依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-1-添加pom依赖"><a href="#1-1-添加pom依赖" class="headerlink" title="1.1 添加pom依赖"></a>1.1 添加pom依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-2-创建测试用Controller"><a href="#1-2-创建测试用Controller" class="headerlink" title="1.2 创建测试用Controller"></a>1.2 创建测试用Controller</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"getData"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getData</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"date"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.3 创建SpringBoot启动类并run</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootSecurityApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(SpringBootSecurityApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-4-测试"><a href="#1-4-测试" class="headerlink" title="1.4 测试"></a>1.4 测试</h2><p>访问<a href="http://localhost:8080/getData，由于我们开启了SpringSecurity且当前是未登录状态，页面会被302重定向到http://localhost:8080/login，页面如下" target="_blank" rel="noopener">http://localhost:8080/getData，由于我们开启了SpringSecurity且当前是未登录状态，页面会被302重定向到http://localhost:8080/login，页面如下</a>:</p>
+<p><img src="/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/image-20220122162052002.png" alt="image-20220122162052002"></p>
+<p>用户名: user,密码可以在控制台输出中找到:</p>
+<p><img src="/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/image-20220122162225360.png" alt="image-20220122162225360"></p>
+<p>输入正确的用户名和密码后点击Sign in按钮即被重新302到<a href="http://localhost:8080/getData并显示查询数据。" target="_blank" rel="noopener">http://localhost:8080/getData并显示查询数据。</a></p>
+<p><img src="/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/image-20220122162353226.png" alt="image-20220122162353226"></p>
+<h1 id="2-为Spring-Security设定用户名和密码"><a href="#2-为Spring-Security设定用户名和密码" class="headerlink" title="2. 为Spring Security设定用户名和密码"></a>2. 为Spring Security设定用户名和密码</h1><p>为了解决复杂密码的问题，我们可以在application.yaml做如下设定:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">security:</span></span><br><span class="line">    <span class="attr">user:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">user</span></span><br><span class="line">      <span class="attr">password:</span> <span class="number">123</span></span><br></pre></td></tr></table></figure>
+<p>这样就可以通过用户名user密码123来访问<a href="http://localhost:8080/getData接口了" target="_blank" rel="noopener">http://localhost:8080/getData接口了</a></p>
+<h1 id="3-为Spring-Security设定多个用户"><a href="#3-为Spring-Security设定多个用户" class="headerlink" title="3. 为Spring Security设定多个用户"></a>3. 为Spring Security设定多个用户</h1><p>如果想要给Spring Security设定多个用户，则新建一个class，实现接口WebMvcConfigurer(注意：SpringBoot 版本2.0以上，jdk1.8以上):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSecurityConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserDetailsService <span class="title">userDetailsService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        InMemoryUserDetailsManager inMemoryUserDetailsManager = <span class="keyword">new</span> InMemoryUserDetailsManager();</span><br><span class="line">        inMemoryUserDetailsManager.createUser(User.withUsername(<span class="string">"admin"</span>).password(passwordEncoder().encode(<span class="string">"admin"</span>)).roles().build());</span><br><span class="line">        inMemoryUserDetailsManager.createUser(User.withUsername(<span class="string">"guest"</span>).password(passwordEncoder().encode(<span class="string">"guest"</span>)).roles().build());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span>  inMemoryUserDetailsManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PasswordEncoder <span class="title">passwordEncoder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BCryptPasswordEncoder();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>@注意需要注解@EnableWebSecurity</li>
+<li>InMemoryUserDetailsManager：将用户名和密码存储在内存中的用户管理器。</li>
 </ul>
-<p>​    Filter 的创建和销毁有Web服务器负责。Web应用程序启动时，Web服务器将创建Filter的实例对象，并调用其init方法，读取web.xml，完成对象的初始化功能，从而为后续的用户请求做好拦截的准备工作（Filter 对象只会创建一次，init方法也只会执行一次）。开发人员通过init 方法的参数可获得当前filter配置信息的 FilterConfig 对象</p>
-<p>​    当客户请求访问与过滤器关联的URL时，过滤器将先执行doFilter方法，FilterChain参数用于访问后续过滤器。Filter 对象创建后会驻留在内存中，当Web应用移除或服务器停止时才销毁。在Web容器卸载Filter对象之前，destory被调用。该方法在Filter的声明周期中仅执行一次。</p>
-<p>​    Filter可以有很多个，一个个Filter组合起来就形成一个FilterChain,也就是过滤链，如下图所示:</p>
-<p><img src="/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/image-20220118114936086.png" alt="image-20220118114936086"></p>
-<h3 id="过滤器-Filter-的使用"><a href="#过滤器-Filter-的使用" class="headerlink" title="过滤器 Filter 的使用"></a>过滤器 Filter 的使用</h3><p>​    在项目的目录/src/main/java/com.lpy.filter下新建AyUserFilter.java类，具体代码如下所示:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebFilter</span>(filterName = <span class="string">"ayUserFilter"</span>, urlPatterns = <span class="string">"/*"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AyUserFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        <span class="comment">//Filter.super.init(filterConfig);</span></span><br><span class="line">        System.out.println(<span class="string">"-----------&gt;&gt;&gt; init"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"-------------------------&gt;&gt;&gt; doFilter"</span>);</span><br><span class="line">        filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//Filter.super.destroy();</span></span><br><span class="line">        System.out.println(<span class="string">"----------------&gt;&gt;&gt; destory"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>@WebFilter: 用于将一个类声明为过滤器，该注解将会在应用部署时被容器处理。</p>
-<p>​    AyUserFilter.java类开发完成之后，我们需要在入口类SpringbootDruidApplication.java中添加注解@ServletComponentScan，具体代码如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@ServletComponentScan</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootDruidApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(SpringbootDruidApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>@ServletComponentScan：使用该注解后，Servlet、Filter、Listener可以通过@WebServlet、@WebFilter、@WebListener注解自动注册。</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>​    重新启动运行项目时，web容器会初始化AyUserFilter对象，并调用init方法，可以在后台看到打印信息，如下所示:</p>
-<p><img src="/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/image-20220118122022796.png" alt="image-20220118122022796"></p>
-<p>在浏览器中输入<a href="http://localhost:8080/ayUser/test" target="_blank" rel="noopener">http://localhost:8080/ayUser/test</a> 访问应用是，AyUserFilter 拦截器会拦截本次的请求，并调用 doFilter方法，同时会在控制台打印信息，如下图所示:</p>
-<p><img src="/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/image-20220118122301279.png" alt="image-20220118122301279"></p>
-<h2 id="Spring-Boot-使用监听器-Listener"><a href="#Spring-Boot-使用监听器-Listener" class="headerlink" title="Spring Boot 使用监听器 Listener"></a>Spring Boot 使用监听器 Listener</h2><h3 id="监听器-Listener-介绍"><a href="#监听器-Listener-介绍" class="headerlink" title="监听器 Listener 介绍"></a>监听器 Listener 介绍</h3><p>​    监听器也叫 Listener, 是Servlet的监听器， 可以用于监听Web应用中某些对象、信息的创建、销毁、增加、修改、删除等动作的发生， 然后作出相应的响应处理。监听器常用于统计在线人数和在线用户，系统加载时进行信息初始化、统计网站的访问量等。</p>
-<p>​    根据监听对象可以把监听器分为3类: ServletContext、HttpSession、ServletRequest。Application 在整个Web服务中只有一个，在 Web 服务关闭时销毁。</p>
-<p>​    Session对于每个会话，在会话起始时创建， 一端关闭会话时销毁。 Request 对象是客户发生请求时创建的，用于封装请求数据， 在一次请求处理完毕时销毁。</p>
-<p>根据监听的事件， 可把监听器分为以下3类:</p>
-<p>（1）监听对象创建和销毁, 如ServletContextListener</p>
-<p>（2）监听对象域中属性的增加和删除，如 HttpSessionListener 和 ServletRequestListener.</p>
-<p>（3）监听绑定到Session 上的某个对象的状态， 如 ServletContextAttributeListener、HttpSessionAttributeListener、ServletRequestAttributeListeener等</p>
-<h3 id="监听器-Listener-的使用"><a href="#监听器-Listener-的使用" class="headerlink" title="监听器 Listener 的使用"></a>监听器 Listener 的使用</h3><p>​    在项目目录下/src/main/java/com.lpy.listener 下新建 AyUserListener.java 类，具体代码如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebListener</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AyUserListener</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent servletContextEvent)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"ServletContext 上下文初始化 "</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent servletContextEvent)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"ServletContext 上下文销毁"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>@WebListener:  用于将一个类声明为监听器</p>
-<p>@ServletContextListener 类:  能够监听 ServletContext 对象的生命周期， 实际上就是监听 Web 应用的生命周期。</p>
-<p>contextInitialized 方法: 当 Servlet 容器启动Web应用时调用该方法。</p>
-<p>contextDestroyed 方法： 当 servlet 容器终止 Web 应用时调用该方法。</p>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>重新启动运行项目，Web容器会初始化 AyUserListener 对象， 并调用contextInitialized 方法；当销毁时，会调用 contextDestroyed 方法。 如下图所示:</p>
-<p><img src="/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/image-20220118131443279.png" alt="image-20220118131443279"></p>
+<p>这样我们可以用两个用户登录，分别是用户名admin密码admin,用户名guest密码guest</p>
+<ul>
+<li>spring security5.x以上密码必须加密，不然会报错</li>
+</ul>
+<h1 id="4-Spring-Security-Mysql"><a href="#4-Spring-Security-Mysql" class="headerlink" title="4. Spring Security + Mysql"></a>4. Spring Security + Mysql</h1><ol>
+<li><p>增加如下依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>配置数据库连接</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">### mysql连接信息</span><br><span class="line">spring:</span><br><span class="line">  datasource:</span><br><span class="line">    url: jdbc:mysql://127.0.0.1:3306/test</span><br><span class="line">    password: root</span><br><span class="line">    username: root</span><br><span class="line">    driver-class-name: com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>创建测试用表结构及数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">drop table if exists test.user;</span><br><span class="line">create table test.user (</span><br><span class="line">  id int auto_increment primary key,</span><br><span class="line">  username varchar(50),</span><br><span class="line">  password varchar(50)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">insert into test.user(id, username, password) values (1, &#39;admin&#39;, &#39;admin&#39;);</span><br><span class="line">insert into test.user(id, username, password) values (2, &#39;guest&#39;, &#39;guest&#39;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>entity、repository、service</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginRepository</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LoginRepository</span><span class="params">(JdbcTemplate jdbcTemplate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.jdbcTemplate = jdbcTemplate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">getUserByUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"select id, username, password from user where username = ?"</span>;</span><br><span class="line">        <span class="keyword">return</span> jdbcTemplate.query(sql, <span class="keyword">new</span> String[]&#123;username&#125;, <span class="keyword">new</span> BeanPropertyRowMapper&lt;&gt;(User<span class="class">.<span class="keyword">class</span>))</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> LoginRepository loginRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LoginService</span><span class="params">(LoginRepository loginRepository)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.loginRepository = loginRepository;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  List&lt;User&gt; <span class="title">getUserByUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> loginRepository.getUserByUsername(username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>调整WebSecurityConfig</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSecurityConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    LoginService loginService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserDetailsService <span class="title">userDetailsService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username -&gt; &#123;</span><br><span class="line"></span><br><span class="line">            List&lt;com.lpy.entity.User&gt; users = loginService.getUserByUsername(username);</span><br><span class="line">            <span class="keyword">if</span> (users == <span class="keyword">null</span> || users.size() == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"用户名未找到"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            String password = users.get(<span class="number">0</span>).getPassword();</span><br><span class="line">            <span class="keyword">return</span> User.withUsername(username).password(password).roles(<span class="string">""</span>).build();</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PasswordEncoder <span class="title">passwordEncoder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BCryptPasswordEncoder();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意:数据库存的是密文</p>
+</li>
+</ol>
 
       
     </div>
@@ -535,7 +550,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tropical-forest.github.io/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/" title="使用过滤器和监听器">https://tropical-forest.github.io/2022/01/18/%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/</a>
+    <a href="https://tropical-forest.github.io/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/" title="集成Spring-Security">https://tropical-forest.github.io/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -550,9 +565,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E8%BF%87%E6%BB%A4%E5%99%A8/" rel="tag"># 过滤器</a>
-          
-            <a href="/tags/%E7%9B%91%E5%90%AC%E5%99%A8/" rel="tag"># 监听器</a>
+            <a href="/tags/Spring-Security/" rel="tag"># Spring Security</a>
           
         </div>
       
@@ -565,8 +578,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/01/18/Spring-%E4%BA%8B%E5%8A%A1%E6%94%AF%E6%8C%81/" rel="next" title="Spring 事务支持">
-                <i class="fa fa-chevron-left"></i> Spring 事务支持
+              <a href="/2022/01/21/%E9%9B%86%E6%88%90MongoDB%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="next" title="集成MongoDB数据库">
+                <i class="fa fa-chevron-left"></i> 集成MongoDB数据库
               </a>
             
           </div>
@@ -574,10 +587,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2022/01/19/%E9%9B%86%E6%88%90-Redis-%E7%BC%93%E5%AD%98/" rel="prev" title="集成 Redis 缓存">
-                集成 Redis 缓存 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -728,7 +737,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用过滤器和监听器"><span class="nav-number">1.</span> <span class="nav-text">使用过滤器和监听器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sprin-Boot-使用过滤器-Filter"><span class="nav-number">1.1.</span> <span class="nav-text">Sprin Boot 使用过滤器 Filter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤器-Filter-介绍"><span class="nav-number">1.1.1.</span> <span class="nav-text">过滤器 Filter 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤器-Filter-的使用"><span class="nav-number">1.1.2.</span> <span class="nav-text">过滤器 Filter 的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">1.1.3.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-使用监听器-Listener"><span class="nav-number">1.2.</span> <span class="nav-text">Spring Boot 使用监听器 Listener</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监听器-Listener-介绍"><span class="nav-number">1.2.1.</span> <span class="nav-text">监听器 Listener 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听器-Listener-的使用"><span class="nav-number">1.2.2.</span> <span class="nav-text">监听器 Listener 的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基本环境搭建"><span class="nav-number">1.</span> <span class="nav-text">1. 基本环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-添加pom依赖"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 添加pom依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-创建测试用Controller"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 创建测试用Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-测试"><span class="nav-number">1.3.</span> <span class="nav-text">1.4 测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-为Spring-Security设定用户名和密码"><span class="nav-number">2.</span> <span class="nav-text">2. 为Spring Security设定用户名和密码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-为Spring-Security设定多个用户"><span class="nav-number">3.</span> <span class="nav-text">3. 为Spring Security设定多个用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Spring-Security-Mysql"><span class="nav-number">4.</span> <span class="nav-text">4. Spring Security + Mysql</span></a></li></ol></div>
             
 
           </div>
