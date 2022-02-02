@@ -1351,4 +1351,633 @@
         <tag>Spring Security</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SpringBoot原理解析</title>
+    <url>/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="Spring-Boot原理解析"><a href="#Spring-Boot原理解析" class="headerlink" title="Spring Boot原理解析"></a>Spring Boot原理解析</h1><h2 id="回顾入口类"><a href="#回顾入口类" class="headerlink" title="回顾入口类"></a>回顾入口类</h2><h3 id="SpringbootEnvilsApplication入口类"><a href="#SpringbootEnvilsApplication入口类" class="headerlink" title="SpringbootEnvilsApplication入口类"></a>SpringbootEnvilsApplication入口类</h3><p>​    首先，我们看一下项目springboot-evils的入口类SpringbootEnvilsApplication，具体代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootEnvilsApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(SpringbootEnvilsApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 在入口类SpringbootEnvilsApplication中，@SpringBootApplication注解和main方法都是主动生成的。下面我们要了解@SpringBootApplication注解和SpringApplication.run方法到底为我们找了写什么。</p>
+<h3 id="SpringBootApplication原理"><a href="#SpringBootApplication原理" class="headerlink" title="@SpringBootApplication原理"></a>@SpringBootApplication原理</h3><p>​    @SpringBootApplication开启了Spring的组件扫描和Spring Boot自动配置功能。实际上它是一个复合注解，包含3个重要的注解：@SpringBootConfiguration、@EnableAutoConfiguration、@ComponentScan</p>
+<p>其源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(</span><br><span class="line">    excludeFilters = &#123;<span class="meta">@Filter</span>(</span><br><span class="line">    type = FilterType.CUSTOM,</span><br><span class="line">    classes = &#123;TypeExcludeFilter<span class="class">.<span class="keyword">class</span>&#125;</span></span><br><span class="line"><span class="class">), @<span class="title">Filter</span>(</span></span><br><span class="line"><span class="class">    <span class="title">type</span> </span>= FilterType.CUSTOM,</span><br><span class="line">    classes = &#123;AutoConfigurationExcludeFilter<span class="class">.<span class="keyword">class</span>&#125;</span></span><br><span class="line"><span class="class">)&#125;</span></span><br><span class="line"><span class="class">)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">SpringBootApplication</span> </span>&#123;</span><br><span class="line">   <span class="comment">//省略代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>@SpringBootConfiguration</strong>注解: 表明该类使用Spring基于Java的注解，Spring Boot推荐我们使用基于Java而不X是XML的配置。@SpringBootConfiguration源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Indexed</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SpringBootConfiguration &#123;</span><br><span class="line">  <span class="comment">//省略代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Configuration是JavaConfig形式的Spring IOC容器的配置类使用的@Configuration。</p>
+<p><strong>@EnableAutoConfiguration</strong>源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@AutoConfigurationPackage</span></span><br><span class="line"><span class="meta">@Import</span>(&#123;AutoConfigurationImportSelector<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">EnableAutoConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="comment">//省略代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    从@EnableAutoConfiguration的源代码可以看出，其包含@Import注解。而我们知道，@Import注解的主要作用就是借助AutoConfigurationImportSelector将Spring Boot应用所有符合条件的@Configuration配置到当前Spring Boot创建并使用到Ioc容器中，Ioc容器就是Spring应用程序上下文ApplicationContext.</p>
+<p><strong>@ComponentScan</strong>注解：启动组件扫描，开发的组件或bean定义能被自动发现并注入Spring应用程序上下文。比如我们在控制层添加@Controller注解、在服务层添加@Service注解和@Component注解等，这些注解都可以被@ComponentScan注解扫描到。</p>
+<h3 id="SpringApplication的run方法"><a href="#SpringApplication的run方法" class="headerlink" title="SpringApplication的run方法"></a>SpringApplication的run方法</h3><p>​    在run方法中，首先创建一个SpringApplication对象实例，然后调用SpringApplication的run方法。SpringApplication.run方法的原代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringApplication</span> </span>&#123;</span><br><span class="line">    <span class="comment">//省略代码</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ConfigurableApplicationContext <span class="title">run</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.nanoTime();</span><br><span class="line">        DefaultBootstrapContext bootstrapContext = <span class="keyword">this</span>.createBootstrapContext();</span><br><span class="line">        ConfigurableApplicationContext context = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.configureHeadlessProperty();</span><br><span class="line">        <span class="comment">//开启监听器</span></span><br><span class="line">        SpringApplicationRunListeners listeners = <span class="keyword">this</span>.getRunListeners(args);</span><br><span class="line">        listeners.starting(bootstrapContext, <span class="keyword">this</span>.mainApplicationClass);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ApplicationArguments applicationArguments = <span class="keyword">new</span> DefaultApplicationArguments(args);</span><br><span class="line">            ConfigurableEnvironment environment = <span class="keyword">this</span>.prepareEnvironment(listeners, bootstrapContext, applicationArguments);</span><br><span class="line">            <span class="keyword">this</span>.configureIgnoreBeanInfo(environment);</span><br><span class="line">            Banner printedBanner = <span class="keyword">this</span>.printBanner(environment);</span><br><span class="line">            <span class="comment">//创建应用上下文</span></span><br><span class="line">            context = <span class="keyword">this</span>.createApplicationContext();</span><br><span class="line">            context.setApplicationStartup(<span class="keyword">this</span>.applicationStartup);</span><br><span class="line">            <span class="comment">//准备应用上下文</span></span><br><span class="line">            <span class="keyword">this</span>.prepareContext(bootstrapContext, context, environment, listeners, applicationArguments, printedBanner);</span><br><span class="line">            <span class="comment">//刷新应用上下文</span></span><br><span class="line">            <span class="keyword">this</span>.refreshContext(context);</span><br><span class="line">            <span class="comment">//刷新后操作</span></span><br><span class="line">            <span class="keyword">this</span>.afterRefresh(context, applicationArguments);</span><br><span class="line">            Duration timeTakenToStartup = Duration.ofNanos(System.nanoTime() - startTime);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.logStartupInfo) &#123;</span><br><span class="line">                (<span class="keyword">new</span> StartupInfoLogger(<span class="keyword">this</span>.mainApplicationClass)).logStarted(<span class="keyword">this</span>.getApplicationLog(), timeTakenToStartup);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            listeners.started(context, timeTakenToStartup);</span><br><span class="line">            <span class="keyword">this</span>.callRunners(context, applicationArguments);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable var12) &#123;</span><br><span class="line">            <span class="keyword">this</span>.handleRunFailure(context, var12, listeners);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(var12);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Duration timeTakenToReady = Duration.ofNanos(System.nanoTime() - startTime);</span><br><span class="line">            listeners.ready(context, timeTakenToReady);</span><br><span class="line">            <span class="keyword">return</span> context;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable var11) &#123;</span><br><span class="line">            <span class="keyword">this</span>.handleRunFailure(context, var11, (SpringApplicationRunListeners)<span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(var11);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从源代码可以看出，Spring Boot首先开启了一个<strong>SpringApplicationRunListeners</strong>监听器，然后通过createApplicationContext、prepareContext、refreshContext方法创建、准备、刷新应用上下文ConfigurableApplicationContext，通过上下文加载应用所需的类和各种环境配置等，最后启动一个应用实例。</p>
+<h3 id="SpringApplicationRunListeners监听器"><a href="#SpringApplicationRunListeners监听器" class="headerlink" title="SpringApplicationRunListeners监听器"></a>SpringApplicationRunListeners监听器</h3><p>​    SpringApplicationRunListeners接口规定了SpringBoot的生命周期，在各个生命周期广播相应的事件（Application），实际调用的是ApplicationListener类。SpringApplicationRunListener的源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SpringApplicationRunListener</span> </span>&#123;</span><br><span class="line">    <span class="comment">//刚执行run方法时触发</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">starting</span><span class="params">(ConfigurableBootstrapContext bootstrapContext)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//环境建立好时触发</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">environmentPrepared</span><span class="params">(ConfigurableBootstrapContext bootstrapContext, ConfigurableEnvironment environment)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//上下文建立好时触发</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">contextPrepared</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//上下文载入配置时触发</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">contextLoaded</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">started</span><span class="params">(ConfigurableApplicationContext context, Duration timeTaken)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.started(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** <span class="doctag">@deprecated</span> */</span></span><br><span class="line">    <span class="meta">@Deprecated</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">started</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">ready</span><span class="params">(ConfigurableApplicationContext context, Duration timeTaken)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.running(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** <span class="doctag">@deprecated</span> */</span></span><br><span class="line">    <span class="meta">@Deprecated</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">running</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">failed</span><span class="params">(ConfigurableApplicationContext context, Throwable exception)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ApplicationContextInitializer接口"><a href="#ApplicationContextInitializer接口" class="headerlink" title="ApplicationContextInitializer接口"></a>ApplicationContextInitializer接口</h3><p>​    在SpringBoot准备上下文prepareContext时，会对ConfigurableApplicationContext实例做进一步的设置或者处理。prepareContext的源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">prepareContext</span><span class="params">(DefaultBootstrapContext bootstrapContext, ConfigurableApplicationContext context, ConfigurableEnvironment environment, SpringApplicationRunListeners listeners, ApplicationArguments applicationArguments, Banner printedBanner)</span> </span>&#123;</span><br><span class="line">        context.setEnvironment(environment);</span><br><span class="line">        <span class="keyword">this</span>.postProcessApplicationContext(context);</span><br><span class="line">        <span class="keyword">this</span>.applyInitializers(context);</span><br><span class="line">        listeners.contextPrepared(context);</span><br><span class="line">        bootstrapContext.close(context);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.logStartupInfo) &#123;</span><br><span class="line">            <span class="keyword">this</span>.logStartupInfo(context.getParent() == <span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">this</span>.logStartupProfileInfo(context);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();</span><br><span class="line">        beanFactory.registerSingleton(<span class="string">"springApplicationArguments"</span>, applicationArguments);</span><br><span class="line">        <span class="keyword">if</span> (printedBanner != <span class="keyword">null</span>) &#123;</span><br><span class="line">            beanFactory.registerSingleton(<span class="string">"springBootBanner"</span>, printedBanner);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (beanFactory <span class="keyword">instanceof</span> AbstractAutowireCapableBeanFactory) &#123;</span><br><span class="line">            ((AbstractAutowireCapableBeanFactory)beanFactory).setAllowCircularReferences(<span class="keyword">this</span>.allowCircularReferences);</span><br><span class="line">            <span class="keyword">if</span> (beanFactory <span class="keyword">instanceof</span> DefaultListableBeanFactory) &#123;</span><br><span class="line">                ((DefaultListableBeanFactory)beanFactory).setAllowBeanDefinitionOverriding(<span class="keyword">this</span>.allowBeanDefinitionOverriding);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.lazyInitialization) &#123;</span><br><span class="line">            context.addBeanFactoryPostProcessor(<span class="keyword">new</span> LazyInitializationBeanFactoryPostProcessor());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Set&lt;Object&gt; sources = <span class="keyword">this</span>.getAllSources();</span><br><span class="line">        Assert.notEmpty(sources, <span class="string">"Sources must not be empty"</span>);</span><br><span class="line">        <span class="keyword">this</span>.load(context, sources.toArray(<span class="keyword">new</span> Object[<span class="number">0</span>]));</span><br><span class="line">        listeners.contextLoaded(context);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>​    在准备上下文prepareContext方法中，通过applyInitializers方法对context上下文进行设置和处理。applyInitializers具体源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">applyInitializers</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</span><br><span class="line">        Iterator var2 = <span class="keyword">this</span>.getInitializers().iterator();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(var2.hasNext()) &#123;</span><br><span class="line">            ApplicationContextInitializer initializer = (ApplicationContextInitializer)var2.next();</span><br><span class="line">            Class&lt;?&gt; requiredType = GenericTypeResolver.resolveTypeArgument(initializer.getClass(), ApplicationContextInitializer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            Assert.isInstanceOf(requiredType, context, <span class="string">"Unable to call initializer."</span>);</span><br><span class="line">            initializer.initialize(context);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>​    在applyInitializers方法中，主要调用ApplicationContextInitializer类的initialize方法对应用上下文进行设置和处理。ApplicationContextInitializer本质上是一个回调接口，用于在ConfigurableApplicationContext执行refresh操作之前对它进行一些初始化操作。</p>
+<h2 id="SpringApplication执行流程"><a href="#SpringApplication执行流程" class="headerlink" title="SpringApplication执行流程"></a>SpringApplication执行流程</h2><p>如下图所示</p>
+<p><img src="/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/image-20220202162429444.png" alt="image-20220202162429444" style="zoom:150%;"></p>
+<ol>
+<li>在项目启动时，调用入口类SpringbootEnvilsApplication的main方法。</li>
+<li>入口类SpringbootEnvilsApplication的main方法会调用SpringApplication的静态方法run</li>
+<li>在run方法中首先创建一个SpringApplication对象实例，然后调用SpringApplication对象实例的run方法。</li>
+<li>查询和加载所有的SpringApplicationListener监听器。</li>
+<li>SpringApplicationListener监听器调用其starting方法，Spring Boot通知这些SpringApplicationListener监听器，马上要开始执行</li>
+<li>创建和准备Spring Boot 应用将要使用的Environment环境，包括配置用的PropertySource以及Profile.</li>
+<li>创建和初始化应用上下文ApplicationContext.这一步只是准备工作，并未开始正式创建。</li>
+<li>这一步是最重要的，Spring Boot会通过@EnableAutoConfiguration获取所有配置以及其他形式的Ioc容器配置，并加载到已经准备完毕的ApplicationContext。</li>
+<li>主要是调用ApplicationContextInitializer类的initialize方法对应用上下文进行设置和处理</li>
+<li>调用ApplicationContext上下文的refresh方法，使Ioc容器达到可用状态。</li>
+<li>查找当前ApplicationContext上下文是否注册ApplicationRunner与CommandLineRunner，如果有，循环变量执行ApplicationRunner和CommandLineRunner的run方法。</li>
+<li>执行SpringApplicationListener的finished方法，Spring Boot应用启动完毕。</li>
+</ol>
+<h2 id="Spring-boot-starter原理"><a href="#Spring-boot-starter原理" class="headerlink" title="Spring-boot-starter原理"></a>Spring-boot-starter原理</h2><p>所有<strong>官方</strong>启动器都遵循类似的命名模式；<code>spring-boot-starter-*</code>，其中<code>*</code>是特定类型的应用程序。此命名结构旨在帮助您在需要查找启动器时提供帮助。许多 IDE 中的 Maven 集成允许您按名称搜索依赖项。例如，安装了适当的 Eclipse 或 Spring Tools 插件后，您可以<code>ctrl-space</code>在 POM 编辑器中按下并键入“spring-boot-starter”以获取完整列表。</p>
+<p>正如“<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.developing-auto-configuration.custom-starter" target="_blank" rel="noopener">创建您自己的 Starter</a> ”部分所述，第三方 starter 不应以 开头<code>spring-boot</code>，因为它是为官方 Spring Boot 工件保留的。相反，第三方启动器通常以项目名称开头。例如，一个名为的第三方启动项目<code>thirdpartyproject</code>通常被命名为<code>thirdpartyproject-spring-boot-starter</code>.（来自springboot官网）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter</code></td>
+<td style="text-align:left">核心启动器，包括自动配置支持、日志记录和 YAML</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-activemq</code></td>
+<td style="text-align:left">使用 Apache ActiveMQ 进行 JMS 消息传递的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-amqp</code></td>
+<td style="text-align:left">使用 Spring AMQP 和 Rabbit MQ 的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-aop</code></td>
+<td style="text-align:left">使用 Spring AOP 和 AspectJ 进行面向方面编程的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-artemis</code></td>
+<td style="text-align:left">使用 Apache Artemis 的 JMS 消息传递启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-batch</code></td>
+<td style="text-align:left">使用 Spring Batch 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-cache</code></td>
+<td style="text-align:left">使用 Spring Framework 的缓存支持的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-cassandra</code></td>
+<td style="text-align:left">使用 Cassandra 分布式数据库和 Spring Data Cassandra 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-cassandra-reactive</code></td>
+<td style="text-align:left">使用 Cassandra 分布式数据库和 Spring Data Cassandra Reactive 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-couchbase</code></td>
+<td style="text-align:left">使用 Couchbase 面向文档的数据库和 Spring Data Couchbase 的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-couchbase-reactive</code></td>
+<td style="text-align:left">使用 Couchbase 面向文档的数据库和 Spring Data Couchbase Reactive 的初学者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-elasticsearch</code></td>
+<td style="text-align:left">使用 Elasticsearch 搜索和分析引擎和 Spring Data Elasticsearch 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-jdbc</code></td>
+<td style="text-align:left">使用 Spring Data JDBC 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-jpa</code></td>
+<td style="text-align:left">将 Spring Data JPA 与 Hibernate 一起使用的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-ldap</code></td>
+<td style="text-align:left">使用 Spring Data LDAP 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-mongodb</code></td>
+<td style="text-align:left">使用 MongoDB 面向文档的数据库和 Spring Data MongoDB 的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-mongodb-reactive</code></td>
+<td style="text-align:left">使用 MongoDB 面向文档的数据库和 Spring Data MongoDB Reactive 的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-neo4j</code></td>
+<td style="text-align:left">使用 Neo4j 图形数据库和 Spring Data Neo4j 的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-r2dbc</code></td>
+<td style="text-align:left">使用 Spring Data R2DBC 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-redis</code></td>
+<td style="text-align:left">将 Redis 键值数据存储与 Spring Data Redis 和 Lettuce 客户端一起使用的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-redis-reactive</code></td>
+<td style="text-align:left">使用带有 Spring Data Redis 反应式和 Lettuce 客户端的 Redis 键值数据存储的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-rest</code></td>
+<td style="text-align:left">使用 Spring Data REST 通过 REST 公开 Spring Data 存储库的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-freemarker</code></td>
+<td style="text-align:left">使用 FreeMarker 视图构建 MVC Web 应用程序的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-groovy-templates</code></td>
+<td style="text-align:left">使用 Groovy 模板视图构建 MVC Web 应用程序的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-hateoas</code></td>
+<td style="text-align:left">使用 Spring MVC 和 Spring HATEOAS 构建基于超媒体的 RESTful Web 应用程序的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-integration</code></td>
+<td style="text-align:left">使用 Spring Integration 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-jdbc</code></td>
+<td style="text-align:left">使用 JDBC 和 HikariCP 连接池的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-jersey</code></td>
+<td style="text-align:left">使用 JAX-RS 和 Jersey 构建 RESTful Web 应用程序的初学者。一个替代方案<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-web" target="_blank" rel="noopener"><code>spring-boot-starter-web</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-jooq</code></td>
+<td style="text-align:left">使用 jOOQ 通过 JDBC 访问 SQL 数据库的入门程序。替代<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-data-jpa" target="_blank" rel="noopener"><code>spring-boot-starter-data-jpa</code></a>或<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-jdbc" target="_blank" rel="noopener"><code>spring-boot-starter-jdbc</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-json</code></td>
+<td style="text-align:left">读写json的starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-jta-atomikos</code></td>
+<td style="text-align:left">使用 Atomikos 进行 JTA 事务的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-mail</code></td>
+<td style="text-align:left">使用 Java Mail 和 Spring Framework 的电子邮件发送支持的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-mustache</code></td>
+<td style="text-align:left">使用 Mustache 视图构建 Web 应用程序的入门程序</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-oauth2-client</code></td>
+<td style="text-align:left">使用 Spring Security 的 OAuth2/OpenID Connect 客户端功能的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-oauth2-resource-server</code></td>
+<td style="text-align:left">使用 Spring Security 的 OAuth2 资源服务器特性的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-quartz</code></td>
+<td style="text-align:left">使用 Quartz 调度器的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-rsocket</code></td>
+<td style="text-align:left">用于构建 RSocket 客户端和服务器的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-security</code></td>
+<td style="text-align:left">使用 Spring Security 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-test</code></td>
+<td style="text-align:left">使用包括 JUnit Jupiter、Hamcrest 和 Mockito 在内的库来测试 Spring Boot 应用程序的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-thymeleaf</code></td>
+<td style="text-align:left">使用 Thymeleaf 视图构建 MVC Web 应用程序的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-validation</code></td>
+<td style="text-align:left">使用带有 Hibernate Validator 的 Java Bean Validation 的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-web</code></td>
+<td style="text-align:left">使用 Spring MVC 构建 Web 应用程序的入门程序，包括 RESTful 应用程序。使用 Tomcat 作为默认的嵌入式容器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-web-services</code></td>
+<td style="text-align:left">使用 Spring Web 服务的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-webflux</code></td>
+<td style="text-align:left">使用 Spring Framework 的响应式 Web 支持构建 WebFlux 应用程序的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-websocket</code></td>
+<td style="text-align:left">使用 Spring Framework 的 WebSocket 支持构建 WebSocket 应用程序的 Starter</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><code>spring-boot-starter-actuator</code></th>
+<th>使用 Spring Boot 的 Actuator 的 Starter，它提供了生产就绪的特性来帮助你监控和管理你的应用程序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><code>spring-boot-starter-jetty</code></th>
+<th>使用 Jetty 作为嵌入式 servlet 容器的启动器。一个替代方案<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-tomcat" target="_blank" rel="noopener"><code>spring-boot-starter-tomcat</code></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spring-boot-starter-log4j2</code></td>
+<td>使用 Log4j2 进行日志记录的启动器。一个替代方案<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-logging" target="_blank" rel="noopener"><code>spring-boot-starter-logging</code></a></td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-logging</code></td>
+<td>使用 Logback 进行日志记录的启动器。默认日志记录启动器</td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-reactor-netty</code></td>
+<td>使用 Reactor Netty 作为嵌入式响应式 HTTP 服务器的启动器。</td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-tomcat</code></td>
+<td>使用 Tomcat 作为嵌入式 servlet 容器的启动器。使用的默认 servlet 容器启动器<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-web" target="_blank" rel="noopener"><code>spring-boot-starter-web</code></a></td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-undertow</code></td>
+<td>使用 Undertow 作为嵌入式 servlet 容器的启动器。一个替代方案<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-tomcat" target="_blank" rel="noopener"><code>spring-boot-starter-tomcat</code></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如果我们不想用spring-boot-starter-web引入的spring-webmvc传递依赖，那么可以使用<exclusions>标签来排除传递依赖，具体代码如下:</exclusions></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--排查Spring-webmvc --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果spring-boot-starter-web引入的传递版本过低，我们可以在pom文件中直接引入所需的版本，告诉Maven现在需要这个版本的依赖。</p>
+<p>以上内容来自黄文毅的《一步一步学 Spring Boot2 微服务项目实战》</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多环境配置与部署</title>
+    <url>/2022/02/02/%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E4%B8%8E%E9%83%A8%E7%BD%B2/</url>
+    <content><![CDATA[<h1 id="多环境配置与部署"><a href="#多环境配置与部署" class="headerlink" title="多环境配置与部署"></a>多环境配置与部署</h1><h2 id="多环境配置介绍"><a href="#多环境配置介绍" class="headerlink" title="多环境配置介绍"></a>多环境配置介绍</h2><p>​    在项目开发过程中，项目不同的角色会使用不同的环境。例如，开发人员会使用开发环境、测试人员会使用测试环境、性能测试会使用性能测试环境、项目开发完成之后会把项目部署到线上环境等，不同的环境往往会连接不同的MySQL数据库、Redis缓存、MQ消息中间件等，环境之间相互独立于隔离才不会相互影响，隔离的环境便于部署，提高工作效率。具体隔离环境如下图：</p>
+<p><img src="/2022/02/02/%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E4%B8%8E%E9%83%A8%E7%BD%B2/image-20220201225210743.png" alt="image-20220201225210743"></p>
+<h2 id="多环境配置使用"><a href="#多环境配置使用" class="headerlink" title="多环境配置使用"></a>多环境配置使用</h2><h3 id="添加多个配置文件"><a href="#添加多个配置文件" class="headerlink" title="添加多个配置文件"></a>添加多个配置文件</h3><p>​    假如项目my-spring-boot需要3个环境：开发环境、测试环境、性能测试环境。我们复制my-spring-boot项目配置文件application.properties,分别取名为application-dev.properties、application-test.properties、application-perform.properties，作为开发环境、测试环境、性能测试环境。</p>
+<p>​    每个配置文件对应的MySQL数据库、Redis缓存、ActiveMQ消息队列等配置参数都不相同。</p>
+<h3 id="配置激活选项"><a href="#配置激活选项" class="headerlink" title="配置激活选项"></a>配置激活选项</h3><p>​    多环境的配置文件开发完成之后，我们在my-spring-boot的配置文件application.properties中添加配置激活选项，具体代码如下：</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">### 激活开发环境配置</span></span><br><span class="line"><span class="meta">spring.profiles.active</span>=<span class="string">dev</span></span><br><span class="line"><span class="comment">### 激活测试环境配置</span></span><br><span class="line"><span class="meta">spring.profiles.active</span>=<span class="string">test</span></span><br><span class="line"><span class="comment">### 激活性能测试环境配置</span></span><br><span class="line"><span class="meta">spring.profiles.active</span>=<span class="string">perform</span></span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>​    多环境配置文件和配置激活选项开发完成之后，修改application-dev.properties、application-test.properties、application-perform.properties配置文件的数据库连接，具体代码如下:</p>
+<p>开发环境配置文件application-dev.properties的具体代码修改如下:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">### 开发环境mysql连接信息</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://127.0.0.1:3306/test</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"><span class="comment">### thymeleaf配置</span></span><br><span class="line"><span class="attr">thymeleaf:</span></span><br><span class="line">  <span class="attr">mode:</span> <span class="string">HTML5</span></span><br><span class="line">  <span class="attr">encoding:</span> <span class="string">utf-8</span></span><br><span class="line">  <span class="comment">### 内容类别，可不用配置</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">content-type:</span> <span class="string">text/html</span></span><br><span class="line">  <span class="comment">### 开发配置false,避免修改模板还要重启服务器</span></span><br><span class="line">  <span class="attr">cache:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment">### 配置模板路径，默认是templates，可以不用配置</span></span><br><span class="line">  <span class="attr">prefix:</span> <span class="string">classpath:/templates/</span></span><br></pre></td></tr></table></figure>
+<p>测试环境配置文件application-test.properties的具体代码修改如下:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">### 开发环境mysql连接信息</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://127.0.0.1:3306/test2</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"><span class="comment">### thymeleaf配置</span></span><br><span class="line"><span class="attr">thymeleaf:</span></span><br><span class="line">  <span class="attr">mode:</span> <span class="string">HTML5</span></span><br><span class="line">  <span class="attr">encoding:</span> <span class="string">utf-8</span></span><br><span class="line">  <span class="comment">### 内容类别，可不用配置</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">content-type:</span> <span class="string">text/html</span></span><br><span class="line">  <span class="comment">### 开发配置false,避免修改模板还要重启服务器</span></span><br><span class="line">  <span class="attr">cache:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment">### 配置模板路径，默认是templates，可以不用配置</span></span><br><span class="line">  <span class="attr">prefix:</span> <span class="string">classpath:/templates/</span></span><br></pre></td></tr></table></figure>
+<p>性能测试环境配置文件application-perform.properties的具体代码修改如下:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">### 开发环境mysql连接信息</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://127.0.0.1:3306/test3</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"><span class="comment">### thymeleaf配置</span></span><br><span class="line"><span class="attr">thymeleaf:</span></span><br><span class="line">  <span class="attr">mode:</span> <span class="string">HTML5</span></span><br><span class="line">  <span class="attr">encoding:</span> <span class="string">utf-8</span></span><br><span class="line">  <span class="comment">### 内容类别，可不用配置</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">content-type:</span> <span class="string">text/html</span></span><br><span class="line">  <span class="comment">### 开发配置false,避免修改模板还要重启服务器</span></span><br><span class="line">  <span class="attr">cache:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment">### 配置模板路径，默认是templates，可以不用配置</span></span><br><span class="line">  <span class="attr">prefix:</span> <span class="string">classpath:/templates/</span></span><br></pre></td></tr></table></figure>
+<p>项目结构如下:</p>
+<p><img src="/2022/02/02/%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E4%B8%8E%E9%83%A8%E7%BD%B2/image-20220202112612730.png" alt="image-20220202112612730" style="zoom:50%;"></p>
+<p>pom.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>AyUserController.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/ayUser"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AyUserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   <span class="keyword">private</span> AyUserService ayUserService;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@RequestMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//查询数据库所有用户</span></span><br><span class="line">      List&lt;AyUser&gt; ayUserList = ayUserService.findAll();</span><br><span class="line">      model.addAttribute(<span class="string">"users"</span>,ayUserList);</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"ayUser"</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>AyUser.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AyUser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>AyUserRepository.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AyUserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">AyUser</span>,<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function">List&lt;AyUser&gt; <span class="title">findByName</span><span class="params">(String name)</span></span>;</span><br><span class="line">    <span class="function">List&lt;AyUser&gt; <span class="title">findByNameLike</span><span class="params">(String name)</span></span>;</span><br><span class="line">    <span class="function">List&lt;AyUser&gt; <span class="title">findByIdIn</span><span class="params">(Collection&lt;String&gt; ids)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>AyUserService.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AyUserService</span> </span>&#123;</span><br><span class="line">    <span class="function">AyUser <span class="title">findById</span><span class="params">(String id)</span></span>;</span><br><span class="line">    <span class="function">List&lt;AyUser&gt; <span class="title">findAll</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">AyUser <span class="title">save</span><span class="params">(AyUser ayUser)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(String id)</span></span>;</span><br><span class="line">    <span class="comment">//分页</span></span><br><span class="line">    <span class="function">Page&lt;AyUser&gt; <span class="title">findAll</span><span class="params">(Pageable pageable)</span></span>;</span><br><span class="line">    <span class="function">List&lt;AyUser&gt; <span class="title">findByName</span><span class="params">(String name)</span></span>;</span><br><span class="line">    <span class="function">List&lt;AyUser&gt; <span class="title">findByNameLike</span><span class="params">(String name)</span></span>;</span><br><span class="line">    <span class="function">List&lt;AyUser&gt; <span class="title">findByIdIn</span><span class="params">(Collection&lt;String&gt; ids)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>AyUserServiceImpl.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AyUserServiceImpl</span> <span class="keyword">implements</span> <span class="title">AyUserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AyUserRepository ayUserRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AyUser <span class="title">findById</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ayUserRepository.findById(id).orElse(<span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;AyUser&gt; <span class="title">findAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ayUserRepository.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AyUser <span class="title">save</span><span class="params">(AyUser ayUser)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ayUserRepository.save(ayUser);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">        ayUserRepository.deleteById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Page&lt;AyUser&gt; <span class="title">findAll</span><span class="params">(Pageable pageable)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ayUserRepository.findAll(pageable);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;AyUser&gt; <span class="title">findByName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ayUserRepository.findByName(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;AyUser&gt; <span class="title">findByNameLike</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ayUserRepository.findByNameLike(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;AyUser&gt; <span class="title">findByIdIn</span><span class="params">(Collection&lt;String&gt; ids)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ayUserRepository.findByIdIn(ids);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ayUser.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user:$&#123;users&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.password&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>application.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">### 激活开发环境配置</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">test</span></span><br></pre></td></tr></table></figure>
+<p>application-dve.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">### 开发环境mysql连接信息</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://127.0.0.1:3306/test</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"><span class="comment">### thymeleaf配置</span></span><br><span class="line"><span class="attr">thymeleaf:</span></span><br><span class="line">  <span class="attr">mode:</span> <span class="string">HTML5</span></span><br><span class="line">  <span class="attr">encoding:</span> <span class="string">utf-8</span></span><br><span class="line">  <span class="comment">### 内容类别，可不用配置</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">content-type:</span> <span class="string">text/html</span></span><br><span class="line">  <span class="comment">### 开发配置false,避免修改模板还要重启服务器</span></span><br><span class="line">  <span class="attr">cache:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment">### 配置模板路径，默认是templates，可以不用配置</span></span><br><span class="line">  <span class="attr">prefix:</span> <span class="string">classpath:/templates/</span></span><br></pre></td></tr></table></figure>
+<p>application-perform.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">### 性能测试环境mysql连接信息</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://127.0.0.1:3306/test3</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8083</span></span><br><span class="line"><span class="comment">### thymeleaf配置</span></span><br><span class="line"><span class="attr">thymeleaf:</span></span><br><span class="line">  <span class="attr">mode:</span> <span class="string">HTML5</span></span><br><span class="line">  <span class="attr">encoding:</span> <span class="string">utf-8</span></span><br><span class="line">  <span class="comment">### 内容类别，可不用配置</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">content-type:</span> <span class="string">text/html</span></span><br><span class="line">  <span class="comment">### 开发配置false,避免修改模板还要重启服务器</span></span><br><span class="line">  <span class="attr">cache:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment">### 配置模板路径，默认是templates，可以不用配置</span></span><br><span class="line">  <span class="attr">prefix:</span> <span class="string">classpath:/templates/</span></span><br></pre></td></tr></table></figure>
+<p>application-test.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">### 开发环境mysql连接信息</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://127.0.0.1:3306/test2</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8082</span></span><br><span class="line"><span class="comment">### thymeleaf配置</span></span><br><span class="line"><span class="attr">thymeleaf:</span></span><br><span class="line">  <span class="attr">mode:</span> <span class="string">HTML5</span></span><br><span class="line">  <span class="attr">encoding:</span> <span class="string">utf-8</span></span><br><span class="line">  <span class="comment">### 内容类别，可不用配置</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">content-type:</span> <span class="string">text/html</span></span><br><span class="line">  <span class="comment">### 开发配置false,避免修改模板还要重启服务器</span></span><br><span class="line">  <span class="attr">cache:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment">### 配置模板路径，默认是templates，可以不用配置</span></span><br><span class="line">  <span class="attr">prefix:</span> <span class="string">classpath:/templates/</span></span><br></pre></td></tr></table></figure>
+<p>想切换到哪个环境就在application.yaml里面切换。然后重启启动项目即可。</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="Spring-Boot-内置Tomcat"><a href="#Spring-Boot-内置Tomcat" class="headerlink" title="Spring Boot 内置Tomcat"></a>Spring Boot 内置Tomcat</h3><p>​    Tomcat 服务器是一个免费的开放源代码的Web 应用服务器，属于轻量级应用<a href="https://baike.baidu.com/item/服务器" target="_blank" rel="noopener">服务器</a>，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。对于一个初学者来说，可以这样认为，当在一台机器上配置好Apache 服务器，可利用它响应<a href="https://baike.baidu.com/item/HTML" target="_blank" rel="noopener">HTML</a>（<a href="https://baike.baidu.com/item/标准通用标记语言/6805073" target="_blank" rel="noopener">标准通用标记语言</a>下的一个应用）页面的访问请求。实际上Tomcat是Apache 服务器的扩展，但运行时它是独立运行的，所以当你运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。</p>
+<p>​    如果想使用其他Servlet容器，比如Jetty作为Spring Boot 默认内置容器，只需要修改spring-boot-starter-web依赖即可。使用Jetty容器作为SpringBoot默认内置容器，具体修改代码如下:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jetty<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>以上内容来自黄文毅的《一步一步学 Spring Boot2 微服务项目实战》</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>多环境</tag>
+        <tag>部署</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>集成Dubbo和Zookeeper</title>
+    <url>/2022/02/02/%E9%9B%86%E6%88%90Dubbo%E5%92%8CZookeeper/</url>
+    <content><![CDATA[<h1 id="集成Dubbo和Zookeeper"><a href="#集成Dubbo和Zookeeper" class="headerlink" title="集成Dubbo和Zookeeper"></a>集成Dubbo和Zookeeper</h1><h2 id="Zookeeper介绍与安装"><a href="#Zookeeper介绍与安装" class="headerlink" title="Zookeeper介绍与安装"></a>Zookeeper介绍与安装</h2><h3 id="Zookeeper概述"><a href="#Zookeeper概述" class="headerlink" title="Zookeeper概述"></a>Zookeeper概述</h3><p>​    Zookeeper是一个开源的分布式应用程序协调服务，提供的功能包括命名服务、配置管理、集群管理、分布式锁等。</p>
+<p>（1）命名服务。可以简单理解为电话簿。电话号码不好记住，但是人名好记。要打谁的电话，直接查人名就好了。在分布式环境下，经常需要对应用/服务进行统一命名，便于识别不同服务。类似于域名与IP之间的对应关系，域名容易记住。Zookeeper通过名称来获取资源或服务的地址、提供者等信息。</p>
+<p>（2）配置管理。分布式系统都有大量服务器，比如在搭建Hadoop的HDFS的时候，需要在一台Master主机器上配置好HDFS需要的各种配置文件，然后通过scp命令把这些配置复制到其他节点上，这样各个机器拿到的配置信息是一致的，才能成功运行HDFS服务。Zookeeper提供了这样的服务：一种集中管理配置的方法，我们在这个集中的地方修改了配置，所有对这个配置感兴趣的都可以获得变更。这样就省去了手动复制配置，还保证了可靠和一致性。</p>
+<p>（3）集群管理。集群管理包含两点：是否有机器退出和加入、选举Master。Zookeeper集群管理就是感知变化，做出对应的策略。</p>
+<p>（4）分布式锁。Zookeeper的一致性文件系统使得锁的问题变得容易。锁服务可以分为两类，一类是保持独占，另一类是控制时序。单机程序的各个进程对互斥资源进行访问时需要加锁，分布式程序分布在各个主机上的进程对互斥资源访问时也需要加锁。</p>
+<p>Zookeeper的一个最常用的使用场景是担任服务生产者和服务者的注册中心。服务生产者将自己提供的服务注册到Zookeeper中心，服务消费者在进行服务调用的时候先到Zookeeper中查找服务，获取服务生产者的详细信息之后，再去调用服务生产者的内容与数据。具体如下图。</p>
+<p><img src="/2022/02/02/%E9%9B%86%E6%88%90Dubbo%E5%92%8CZookeeper/image-20220131152310604.png" alt="image-20220131152310604"></p>
+<h3 id="Zookeeper的安装与启动"><a href="#Zookeeper的安装与启动" class="headerlink" title="Zookeeper的安装与启动"></a>Zookeeper的安装与启动</h3><p>window版本下载网址:<a href="https://zookeeper.apache.org/releases.html" target="_blank" rel="noopener">https://zookeeper.apache.org/releases.html</a></p>
+<p>下载后解压为:</p>
+<p><img src="/2022/02/02/%E9%9B%86%E6%88%90Dubbo%E5%92%8CZookeeper/image-20220131153959538.png" alt="image-20220131153959538"></p>
+<p>将 conf 目录下的 zoo_sample.cfg 文件，复制一份，重命名为 zoo.cfg:</p>
+<p><img src="/2022/02/02/%E9%9B%86%E6%88%90Dubbo%E5%92%8CZookeeper/image-20220131153113821.png" alt="image-20220131153113821"></p>
+<p>双击 zkServer.cmd 启动程序:</p>
+<p><img src="/2022/02/02/%E9%9B%86%E6%88%90Dubbo%E5%92%8CZookeeper/image-20220131153441167.png" alt="image-20220131153441167"></p>
+<p>控制台显示 <strong>bind to port 0.0.0.0/0.0.0.0:2181</strong>，表示服务端启动成功!</p>
+<p><img src="/2022/02/02/%E9%9B%86%E6%88%90Dubbo%E5%92%8CZookeeper/image-20220131154417313.png" alt="image-20220131154417313"></p>
+<p>双击zkCli.cmd 启动客户端</p>
+<p><img src="/2022/02/02/%E9%9B%86%E6%88%90Dubbo%E5%92%8CZookeeper/image-20220131154453028.png" alt="image-20220131154453028"></p>
+<p>出现 Welcome to Zookeeper！，表示我们成功启动客户端。</p>
+<p>参考文章：<a href="https://www.runoob.com/w3cnote/zookeeper-setup.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/zookeeper-setup.html</a></p>
+<h2 id="Spring-Boot集成Dubbo"><a href="#Spring-Boot集成Dubbo" class="headerlink" title="Spring Boot集成Dubbo"></a>Spring Boot集成Dubbo</h2><h3 id="Dubbo概述"><a href="#Dubbo概述" class="headerlink" title="Dubbo概述"></a>Dubbo概述</h3><p>​    Dubbo是阿里巴巴B2B平台技术部开发的一款Java服务平台框架以及SOA治理方案。其功能主要包括：高性能NIO通信及多协议集成、服务动态寻址与路由、软负载均衡与容错、依赖分析与降级等。Dubbo简单的底层框架如下图所示:</p>
+<p><img src="/2022/02/02/%E9%9B%86%E6%88%90Dubbo%E5%92%8CZookeeper/image-20220131163002917.png" alt="image-20220131163002917"></p>
+<p>​    Registry是服务注册与发现的注册中心，Provider是暴露服务的服务提供方，Consumer是调用远程服务的服务消费方，Monitor是统计服务的调用次数和调用时间的监控中心，Container是服务运行容器。Dubbo简单的调用关系如下:</p>
+<p>​    (1) 服务容器Container负责启动、加载、运行服务提供者Provider</p>
+<p>​    (2)服务提供者Provider在启动时，向注册中心Registry注册自己提供的服务</p>
+<p>（3）服务消费者Consumer在启动时，向注册中心Registry订阅自己所需的服务。</p>
+<p>​    (4)注册中心Registry返回服务提供者地址列表给消费者Provider，如果有变更，注册中心Registry将基于长连接推送，变更数据给消费者Consumer</p>
+<p>（5)服务消费者Consumer从提供者地址列表基于软负载均衡算法选一台提供者进行调用，如果调用失败，就再选另一台调用</p>
+<p>（6）服务消费者Consumer和提供者Provider在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
+<h3 id="服务与接口拆分思路"><a href="#服务与接口拆分思路" class="headerlink" title="服务与接口拆分思路"></a>服务与接口拆分思路</h3><p>​    经过前面的学习，my-spring-boot项目已经集成很多技术，也定义了很多接口。但是对于真实的项目来说，特别是对于互联网公司的项目来说，my-spring-boot这个大的服务承载的内容太多，诸多服务接口（比如AyUserService、AyMoodService、AyRoleService等）糅合在一起对外提供服务已经违背了微服务理念。因此，我们应该对my-spring-boot项目进行服务拆分，使它被拆分成一个个小的服务，我们可以按照业务或者功能维度对服务进行拆分，具体如下图:</p>
+<p><img src="/2022/02/02/%E9%9B%86%E6%88%90Dubbo%E5%92%8CZookeeper/image-20220131165550093.png" alt="image-20220131165550093"></p>
+<p>​    在上图中，my-spring-boot项目被拆分为用户服务、角色服务、说说服务等。my-spring-boot项目依赖于这些底层的服务为其提供相应的功能，而用户服务、角色服务和说说服务时面向接口API编程的，符合基本的编程规则。通过服务的拆分和面向接口编程，对应项目扩展和团队分工非常有利。</p>
+<h3 id="SpringBoot-Dubbo-Zookeeper"><a href="#SpringBoot-Dubbo-Zookeeper" class="headerlink" title="SpringBoot+Dubbo+Zookeeper"></a>SpringBoot+Dubbo+Zookeeper</h3><p><a href="https://blog.csdn.net/qq_33369905/article/details/106647287" target="_blank" rel="noopener">https://blog.csdn.net/qq_33369905/article/details/106647287</a></p>
+<p>以上内容来自黄文毅的《一步一步学 Spring Boot2 微服务项目实战》</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>集成Dubbo和Zookeeper</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring Boot应用监控</title>
+    <url>/2022/02/02/Spring-Boot%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7/</url>
+    <content><![CDATA[<h1 id="Spring-Boot应用监控"><a href="#Spring-Boot应用监控" class="headerlink" title="Spring Boot应用监控"></a>Spring Boot应用监控</h1><h2 id="应用监控介绍"><a href="#应用监控介绍" class="headerlink" title="应用监控介绍"></a>应用监控介绍</h2><p>​     Spring Boot大部分模块都是用于开发业务功能或者外部资源。除此之外，Spring Boot还为我们提供了Spring-boot-starter-actuator模块，该模块主要用于管理和监控应用，是一个暴露自身信息的模块。Spring-boot-starter-actuator模块可以有效地减少监控意系统在采集应用指标时的开发量。</p>
+<p>监控和管理端点</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>路径（端点名）</th>
+<th>描述</th>
+<th>鉴权</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/actuator</td>
+<td>所有EndPoint的列表，需加入spring HATEOAS</td>
+<td></td>
+</tr>
+<tr>
+<td>/autoconfig</td>
+<td>当前应用的所有自动配置</td>
+<td>true</td>
+</tr>
+<tr>
+<td>/beans</td>
+<td>当前应用的所有Bean信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td>/configprops</td>
+<td>当前应用的所有配置属性</td>
+<td>true</td>
+</tr>
+<tr>
+<td>/dump</td>
+<td>显示当前应用线程状态信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td>/env</td>
+<td>显示当前应用当前环境信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td>/health</td>
+<td>显示当前应用健康状况</td>
+<td>false</td>
+</tr>
+<tr>
+<td>/info</td>
+<td>显示当前应用信息</td>
+<td>false</td>
+</tr>
+<tr>
+<td>/metrics</td>
+<td>显示当前应用的各项指标信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td>/mappings</td>
+<td>显示所有的@RequestMapping映射的路径</td>
+<td>true</td>
+</tr>
+<tr>
+<td>/shutdown</td>
+<td>关闭当前引用（默认关闭）,不支持GET,支持POST</td>
+<td>true</td>
+</tr>
+<tr>
+<td>/trace</td>
+<td>显示追踪信息</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="使用应用监控"><a href="#使用应用监控" class="headerlink" title="使用应用监控"></a>使用应用监控</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h3><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">management.endpoints.enabled-by-default</span>=<span class="string">true</span></span><br><span class="line"><span class="comment">#启动所有端点</span></span><br><span class="line"><span class="meta">management.endpoints.web.exposure.include</span>=<span class="string">*</span></span><br><span class="line"><span class="comment">#自定义管理端点路径</span></span><br><span class="line"><span class="comment">#management.endpoints.web.base-path=/manage</span></span><br></pre></td></tr></table></figure>
+<p>添加<code>management.endpoints.web.exposure.include=*</code>配置后启动应用，访问 <a href="http://127.0.0.1:8080/actuator" target="_blank" rel="noopener">http://127.0.0.1:8080/actuator</a> 我们可以看到所有的 Actuator 端点列表。</p>
+<p><img src="/2022/02/02/Spring-Boot%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7/image-20220130183751090.png" alt="image-20220130183751090"></p>
+<p>如果将management.endpoints.enabled-by-default设置为false，则禁用所有端点，如需启用则如下:</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">management.endpoints.enabled-by-default</span>=<span class="string">false</span></span><br><span class="line"><span class="meta">management.endpoint.info.enabled</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="启用端点语法"><a href="#启用端点语法" class="headerlink" title="启用端点语法"></a>启用端点语法</h3><p>默认情况下，除了<code>shutdown</code>启用之外的所有端点。要配置端点的启用，请使用其<code>management.endpoint.&lt;id&gt;.enabled</code>属性。以下示例启用<code>shutdown</code>端点：</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">management.endpoint.shutdown.enabled</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+<p>如果您希望端点启用是选择加入而不是选择退出，请将<code>management.endpoints.enabled-by-default</code>属性设置为<code>false</code>并使用单个端点<code>enabled</code>属性来选择重新加入。以下示例启用<code>info</code>端点并禁用所有其他端点：</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">management.endpoints.enabled-by-default</span>=<span class="string">false</span></span><br><span class="line"><span class="meta">management.endpoint.info.enabled</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="内置端点的默认曝光"><a href="#内置端点的默认曝光" class="headerlink" title="内置端点的默认曝光"></a>内置端点的默认曝光</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left">JMX</th>
+<th style="text-align:left">Web</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>auditevents</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>beans</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>caches</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>conditions</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>configprops</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>env</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flyway</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>health</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>heapdump</code></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>httptrace</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>info</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>integrationgraph</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>jolokia</code></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>logfile</code></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>loggers</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>liquibase</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>metrics</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>mappings</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>prometheus</code></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>quartz</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>scheduledtasks</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sessions</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>shutdown</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>startup</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>threaddump</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>以上内容来自黄文毅的《一步一步学 Spring Boot2 微服务项目实战》</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot应用监控</tag>
+      </tags>
+  </entry>
 </search>
