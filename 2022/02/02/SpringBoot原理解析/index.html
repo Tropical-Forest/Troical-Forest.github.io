@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringBoot原理," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spring Boot原理解析回顾入口类SpringbootEnvilsApplication入口类​    首先，我们看一下项目springboot-evils的入口类SpringbootEnvilsApplication，具体代码如下: 12345678@SpringBootApplicationpublic class SpringbootEnvilsApplication &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot原理解析">
+<meta property="og:url" content="https://tropical-forest.github.io/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Tropical-Forest">
+<meta property="og:description" content="Spring Boot原理解析回顾入口类SpringbootEnvilsApplication入口类​    首先，我们看一下项目springboot-evils的入口类SpringbootEnvilsApplication，具体代码如下: 12345678@SpringBootApplicationpublic class SpringbootEnvilsApplication &amp;#123;">
+<meta property="og:image" content="https://tropical-forest.github.io/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/image-20220202162429444.png">
+<meta property="article:published_time" content="2022-02-02T08:45:05.000Z">
+<meta property="article:modified_time" content="2022-07-07T04:43:29.558Z">
+<meta property="article:author" content="Tropical-Forest">
+<meta property="article:tag" content="SpringBoot原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tropical-forest.github.io/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/image-20220202162429444.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://tropical-forest.github.io/2022/02/02/SpringBoot原理解析/"/>
+
+
+
+
+
+  <title>SpringBoot原理解析 | Tropical-Forest</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?28788ad4c466b7d69104451b357c26e2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Tropical-Forest" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tropical-Forest</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tropical-forest.github.io/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tropical-Forest">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tropical-Forest">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringBoot原理解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-02T16:45:05+08:00">
+                2022-02-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringBoot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" class="leancloud_visitors" data-flag-title="SpringBoot原理解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Spring-Boot原理解析"><a href="#Spring-Boot原理解析" class="headerlink" title="Spring Boot原理解析"></a>Spring Boot原理解析</h1><h2 id="回顾入口类"><a href="#回顾入口类" class="headerlink" title="回顾入口类"></a>回顾入口类</h2><h3 id="SpringbootEnvilsApplication入口类"><a href="#SpringbootEnvilsApplication入口类" class="headerlink" title="SpringbootEnvilsApplication入口类"></a>SpringbootEnvilsApplication入口类</h3><p>​    首先，我们看一下项目springboot-evils的入口类SpringbootEnvilsApplication，具体代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootEnvilsApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(SpringbootEnvilsApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 在入口类SpringbootEnvilsApplication中，@SpringBootApplication注解和main方法都是主动生成的。下面我们要了解@SpringBootApplication注解和SpringApplication.run方法到底为我们找了写什么。</p>
+<h3 id="SpringBootApplication原理"><a href="#SpringBootApplication原理" class="headerlink" title="@SpringBootApplication原理"></a>@SpringBootApplication原理</h3><p>​    @SpringBootApplication开启了Spring的组件扫描和Spring Boot自动配置功能。实际上它是一个复合注解，包含3个重要的注解：@SpringBootConfiguration、@EnableAutoConfiguration、@ComponentScan</p>
+<p>其源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(</span><br><span class="line">    excludeFilters = &#123;<span class="meta">@Filter</span>(</span><br><span class="line">    type = FilterType.CUSTOM,</span><br><span class="line">    classes = &#123;TypeExcludeFilter<span class="class">.<span class="keyword">class</span>&#125;</span></span><br><span class="line"><span class="class">), @<span class="title">Filter</span>(</span></span><br><span class="line"><span class="class">    <span class="title">type</span> </span>= FilterType.CUSTOM,</span><br><span class="line">    classes = &#123;AutoConfigurationExcludeFilter<span class="class">.<span class="keyword">class</span>&#125;</span></span><br><span class="line"><span class="class">)&#125;</span></span><br><span class="line"><span class="class">)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">SpringBootApplication</span> </span>&#123;</span><br><span class="line">   <span class="comment">//省略代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>@SpringBootConfiguration</strong>注解: 表明该类使用Spring基于Java的注解，Spring Boot推荐我们使用基于Java而不X是XML的配置。@SpringBootConfiguration源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Indexed</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SpringBootConfiguration &#123;</span><br><span class="line">  <span class="comment">//省略代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Configuration是JavaConfig形式的Spring IOC容器的配置类使用的@Configuration。</p>
+<p><strong>@EnableAutoConfiguration</strong>源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@AutoConfigurationPackage</span></span><br><span class="line"><span class="meta">@Import</span>(&#123;AutoConfigurationImportSelector<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">EnableAutoConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="comment">//省略代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    从@EnableAutoConfiguration的源代码可以看出，其包含@Import注解。而我们知道，@Import注解的主要作用就是借助AutoConfigurationImportSelector将Spring Boot应用所有符合条件的@Configuration配置到当前Spring Boot创建并使用到Ioc容器中，Ioc容器就是Spring应用程序上下文ApplicationContext.</p>
+<p><strong>@ComponentScan</strong>注解：启动组件扫描，开发的组件或bean定义能被自动发现并注入Spring应用程序上下文。比如我们在控制层添加@Controller注解、在服务层添加@Service注解和@Component注解等，这些注解都可以被@ComponentScan注解扫描到。</p>
+<h3 id="SpringApplication的run方法"><a href="#SpringApplication的run方法" class="headerlink" title="SpringApplication的run方法"></a>SpringApplication的run方法</h3><p>​    在run方法中，首先创建一个SpringApplication对象实例，然后调用SpringApplication的run方法。SpringApplication.run方法的原代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringApplication</span> </span>&#123;</span><br><span class="line">    <span class="comment">//省略代码</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ConfigurableApplicationContext <span class="title">run</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.nanoTime();</span><br><span class="line">        DefaultBootstrapContext bootstrapContext = <span class="keyword">this</span>.createBootstrapContext();</span><br><span class="line">        ConfigurableApplicationContext context = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.configureHeadlessProperty();</span><br><span class="line">        <span class="comment">//开启监听器</span></span><br><span class="line">        SpringApplicationRunListeners listeners = <span class="keyword">this</span>.getRunListeners(args);</span><br><span class="line">        listeners.starting(bootstrapContext, <span class="keyword">this</span>.mainApplicationClass);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ApplicationArguments applicationArguments = <span class="keyword">new</span> DefaultApplicationArguments(args);</span><br><span class="line">            ConfigurableEnvironment environment = <span class="keyword">this</span>.prepareEnvironment(listeners, bootstrapContext, applicationArguments);</span><br><span class="line">            <span class="keyword">this</span>.configureIgnoreBeanInfo(environment);</span><br><span class="line">            Banner printedBanner = <span class="keyword">this</span>.printBanner(environment);</span><br><span class="line">            <span class="comment">//创建应用上下文</span></span><br><span class="line">            context = <span class="keyword">this</span>.createApplicationContext();</span><br><span class="line">            context.setApplicationStartup(<span class="keyword">this</span>.applicationStartup);</span><br><span class="line">            <span class="comment">//准备应用上下文</span></span><br><span class="line">            <span class="keyword">this</span>.prepareContext(bootstrapContext, context, environment, listeners, applicationArguments, printedBanner);</span><br><span class="line">            <span class="comment">//刷新应用上下文</span></span><br><span class="line">            <span class="keyword">this</span>.refreshContext(context);</span><br><span class="line">            <span class="comment">//刷新后操作</span></span><br><span class="line">            <span class="keyword">this</span>.afterRefresh(context, applicationArguments);</span><br><span class="line">            Duration timeTakenToStartup = Duration.ofNanos(System.nanoTime() - startTime);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.logStartupInfo) &#123;</span><br><span class="line">                (<span class="keyword">new</span> StartupInfoLogger(<span class="keyword">this</span>.mainApplicationClass)).logStarted(<span class="keyword">this</span>.getApplicationLog(), timeTakenToStartup);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            listeners.started(context, timeTakenToStartup);</span><br><span class="line">            <span class="keyword">this</span>.callRunners(context, applicationArguments);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable var12) &#123;</span><br><span class="line">            <span class="keyword">this</span>.handleRunFailure(context, var12, listeners);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(var12);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Duration timeTakenToReady = Duration.ofNanos(System.nanoTime() - startTime);</span><br><span class="line">            listeners.ready(context, timeTakenToReady);</span><br><span class="line">            <span class="keyword">return</span> context;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable var11) &#123;</span><br><span class="line">            <span class="keyword">this</span>.handleRunFailure(context, var11, (SpringApplicationRunListeners)<span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(var11);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从源代码可以看出，Spring Boot首先开启了一个<strong>SpringApplicationRunListeners</strong>监听器，然后通过createApplicationContext、prepareContext、refreshContext方法创建、准备、刷新应用上下文ConfigurableApplicationContext，通过上下文加载应用所需的类和各种环境配置等，最后启动一个应用实例。</p>
+<h3 id="SpringApplicationRunListeners监听器"><a href="#SpringApplicationRunListeners监听器" class="headerlink" title="SpringApplicationRunListeners监听器"></a>SpringApplicationRunListeners监听器</h3><p>​    SpringApplicationRunListeners接口规定了SpringBoot的生命周期，在各个生命周期广播相应的事件（Application），实际调用的是ApplicationListener类。SpringApplicationRunListener的源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SpringApplicationRunListener</span> </span>&#123;</span><br><span class="line">    <span class="comment">//刚执行run方法时触发</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">starting</span><span class="params">(ConfigurableBootstrapContext bootstrapContext)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//环境建立好时触发</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">environmentPrepared</span><span class="params">(ConfigurableBootstrapContext bootstrapContext, ConfigurableEnvironment environment)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//上下文建立好时触发</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">contextPrepared</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//上下文载入配置时触发</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">contextLoaded</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">started</span><span class="params">(ConfigurableApplicationContext context, Duration timeTaken)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.started(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** <span class="doctag">@deprecated</span> */</span></span><br><span class="line">    <span class="meta">@Deprecated</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">started</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">ready</span><span class="params">(ConfigurableApplicationContext context, Duration timeTaken)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.running(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** <span class="doctag">@deprecated</span> */</span></span><br><span class="line">    <span class="meta">@Deprecated</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">running</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">failed</span><span class="params">(ConfigurableApplicationContext context, Throwable exception)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ApplicationContextInitializer接口"><a href="#ApplicationContextInitializer接口" class="headerlink" title="ApplicationContextInitializer接口"></a>ApplicationContextInitializer接口</h3><p>​    在SpringBoot准备上下文prepareContext时，会对ConfigurableApplicationContext实例做进一步的设置或者处理。prepareContext的源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">prepareContext</span><span class="params">(DefaultBootstrapContext bootstrapContext, ConfigurableApplicationContext context, ConfigurableEnvironment environment, SpringApplicationRunListeners listeners, ApplicationArguments applicationArguments, Banner printedBanner)</span> </span>&#123;</span><br><span class="line">        context.setEnvironment(environment);</span><br><span class="line">        <span class="keyword">this</span>.postProcessApplicationContext(context);</span><br><span class="line">        <span class="keyword">this</span>.applyInitializers(context);</span><br><span class="line">        listeners.contextPrepared(context);</span><br><span class="line">        bootstrapContext.close(context);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.logStartupInfo) &#123;</span><br><span class="line">            <span class="keyword">this</span>.logStartupInfo(context.getParent() == <span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">this</span>.logStartupProfileInfo(context);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();</span><br><span class="line">        beanFactory.registerSingleton(<span class="string">"springApplicationArguments"</span>, applicationArguments);</span><br><span class="line">        <span class="keyword">if</span> (printedBanner != <span class="keyword">null</span>) &#123;</span><br><span class="line">            beanFactory.registerSingleton(<span class="string">"springBootBanner"</span>, printedBanner);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (beanFactory <span class="keyword">instanceof</span> AbstractAutowireCapableBeanFactory) &#123;</span><br><span class="line">            ((AbstractAutowireCapableBeanFactory)beanFactory).setAllowCircularReferences(<span class="keyword">this</span>.allowCircularReferences);</span><br><span class="line">            <span class="keyword">if</span> (beanFactory <span class="keyword">instanceof</span> DefaultListableBeanFactory) &#123;</span><br><span class="line">                ((DefaultListableBeanFactory)beanFactory).setAllowBeanDefinitionOverriding(<span class="keyword">this</span>.allowBeanDefinitionOverriding);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.lazyInitialization) &#123;</span><br><span class="line">            context.addBeanFactoryPostProcessor(<span class="keyword">new</span> LazyInitializationBeanFactoryPostProcessor());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Set&lt;Object&gt; sources = <span class="keyword">this</span>.getAllSources();</span><br><span class="line">        Assert.notEmpty(sources, <span class="string">"Sources must not be empty"</span>);</span><br><span class="line">        <span class="keyword">this</span>.load(context, sources.toArray(<span class="keyword">new</span> Object[<span class="number">0</span>]));</span><br><span class="line">        listeners.contextLoaded(context);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>​    在准备上下文prepareContext方法中，通过applyInitializers方法对context上下文进行设置和处理。applyInitializers具体源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">applyInitializers</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</span><br><span class="line">        Iterator var2 = <span class="keyword">this</span>.getInitializers().iterator();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(var2.hasNext()) &#123;</span><br><span class="line">            ApplicationContextInitializer initializer = (ApplicationContextInitializer)var2.next();</span><br><span class="line">            Class&lt;?&gt; requiredType = GenericTypeResolver.resolveTypeArgument(initializer.getClass(), ApplicationContextInitializer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            Assert.isInstanceOf(requiredType, context, <span class="string">"Unable to call initializer."</span>);</span><br><span class="line">            initializer.initialize(context);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>​    在applyInitializers方法中，主要调用ApplicationContextInitializer类的initialize方法对应用上下文进行设置和处理。ApplicationContextInitializer本质上是一个回调接口，用于在ConfigurableApplicationContext执行refresh操作之前对它进行一些初始化操作。</p>
+<h2 id="SpringApplication执行流程"><a href="#SpringApplication执行流程" class="headerlink" title="SpringApplication执行流程"></a>SpringApplication执行流程</h2><p>如下图所示</p>
+<p><img src="/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/image-20220202162429444.png" alt="image-20220202162429444" style="zoom:150%;"></p>
+<ol>
+<li>在项目启动时，调用入口类SpringbootEnvilsApplication的main方法。</li>
+<li>入口类SpringbootEnvilsApplication的main方法会调用SpringApplication的静态方法run</li>
+<li>在run方法中首先创建一个SpringApplication对象实例，然后调用SpringApplication对象实例的run方法。</li>
+<li>查询和加载所有的SpringApplicationListener监听器。</li>
+<li>SpringApplicationListener监听器调用其starting方法，Spring Boot通知这些SpringApplicationListener监听器，马上要开始执行</li>
+<li>创建和准备Spring Boot 应用将要使用的Environment环境，包括配置用的PropertySource以及Profile.</li>
+<li>创建和初始化应用上下文ApplicationContext.这一步只是准备工作，并未开始正式创建。</li>
+<li>这一步是最重要的，Spring Boot会通过@EnableAutoConfiguration获取所有配置以及其他形式的Ioc容器配置，并加载到已经准备完毕的ApplicationContext。</li>
+<li>主要是调用ApplicationContextInitializer类的initialize方法对应用上下文进行设置和处理</li>
+<li>调用ApplicationContext上下文的refresh方法，使Ioc容器达到可用状态。</li>
+<li>查找当前ApplicationContext上下文是否注册ApplicationRunner与CommandLineRunner，如果有，循环变量执行ApplicationRunner和CommandLineRunner的run方法。</li>
+<li>执行SpringApplicationListener的finished方法，Spring Boot应用启动完毕。</li>
+</ol>
+<h2 id="Spring-boot-starter原理"><a href="#Spring-boot-starter原理" class="headerlink" title="Spring-boot-starter原理"></a>Spring-boot-starter原理</h2><p>所有<strong>官方</strong>启动器都遵循类似的命名模式；<code>spring-boot-starter-*</code>，其中<code>*</code>是特定类型的应用程序。此命名结构旨在帮助您在需要查找启动器时提供帮助。许多 IDE 中的 Maven 集成允许您按名称搜索依赖项。例如，安装了适当的 Eclipse 或 Spring Tools 插件后，您可以<code>ctrl-space</code>在 POM 编辑器中按下并键入“spring-boot-starter”以获取完整列表。</p>
+<p>正如“<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.developing-auto-configuration.custom-starter" target="_blank" rel="noopener">创建您自己的 Starter</a> ”部分所述，第三方 starter 不应以 开头<code>spring-boot</code>，因为它是为官方 Spring Boot 工件保留的。相反，第三方启动器通常以项目名称开头。例如，一个名为的第三方启动项目<code>thirdpartyproject</code>通常被命名为<code>thirdpartyproject-spring-boot-starter</code>.（来自springboot官网）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter</code></td>
+<td style="text-align:left">核心启动器，包括自动配置支持、日志记录和 YAML</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-activemq</code></td>
+<td style="text-align:left">使用 Apache ActiveMQ 进行 JMS 消息传递的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-amqp</code></td>
+<td style="text-align:left">使用 Spring AMQP 和 Rabbit MQ 的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-aop</code></td>
+<td style="text-align:left">使用 Spring AOP 和 AspectJ 进行面向方面编程的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-artemis</code></td>
+<td style="text-align:left">使用 Apache Artemis 的 JMS 消息传递启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-batch</code></td>
+<td style="text-align:left">使用 Spring Batch 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-cache</code></td>
+<td style="text-align:left">使用 Spring Framework 的缓存支持的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-cassandra</code></td>
+<td style="text-align:left">使用 Cassandra 分布式数据库和 Spring Data Cassandra 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-cassandra-reactive</code></td>
+<td style="text-align:left">使用 Cassandra 分布式数据库和 Spring Data Cassandra Reactive 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-couchbase</code></td>
+<td style="text-align:left">使用 Couchbase 面向文档的数据库和 Spring Data Couchbase 的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-couchbase-reactive</code></td>
+<td style="text-align:left">使用 Couchbase 面向文档的数据库和 Spring Data Couchbase Reactive 的初学者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-elasticsearch</code></td>
+<td style="text-align:left">使用 Elasticsearch 搜索和分析引擎和 Spring Data Elasticsearch 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-jdbc</code></td>
+<td style="text-align:left">使用 Spring Data JDBC 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-jpa</code></td>
+<td style="text-align:left">将 Spring Data JPA 与 Hibernate 一起使用的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-ldap</code></td>
+<td style="text-align:left">使用 Spring Data LDAP 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-mongodb</code></td>
+<td style="text-align:left">使用 MongoDB 面向文档的数据库和 Spring Data MongoDB 的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-mongodb-reactive</code></td>
+<td style="text-align:left">使用 MongoDB 面向文档的数据库和 Spring Data MongoDB Reactive 的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-neo4j</code></td>
+<td style="text-align:left">使用 Neo4j 图形数据库和 Spring Data Neo4j 的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-r2dbc</code></td>
+<td style="text-align:left">使用 Spring Data R2DBC 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-redis</code></td>
+<td style="text-align:left">将 Redis 键值数据存储与 Spring Data Redis 和 Lettuce 客户端一起使用的入门</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-redis-reactive</code></td>
+<td style="text-align:left">使用带有 Spring Data Redis 反应式和 Lettuce 客户端的 Redis 键值数据存储的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-data-rest</code></td>
+<td style="text-align:left">使用 Spring Data REST 通过 REST 公开 Spring Data 存储库的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-freemarker</code></td>
+<td style="text-align:left">使用 FreeMarker 视图构建 MVC Web 应用程序的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-groovy-templates</code></td>
+<td style="text-align:left">使用 Groovy 模板视图构建 MVC Web 应用程序的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-hateoas</code></td>
+<td style="text-align:left">使用 Spring MVC 和 Spring HATEOAS 构建基于超媒体的 RESTful Web 应用程序的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-integration</code></td>
+<td style="text-align:left">使用 Spring Integration 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-jdbc</code></td>
+<td style="text-align:left">使用 JDBC 和 HikariCP 连接池的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-jersey</code></td>
+<td style="text-align:left">使用 JAX-RS 和 Jersey 构建 RESTful Web 应用程序的初学者。一个替代方案<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-web" target="_blank" rel="noopener"><code>spring-boot-starter-web</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-jooq</code></td>
+<td style="text-align:left">使用 jOOQ 通过 JDBC 访问 SQL 数据库的入门程序。替代<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-data-jpa" target="_blank" rel="noopener"><code>spring-boot-starter-data-jpa</code></a>或<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-jdbc" target="_blank" rel="noopener"><code>spring-boot-starter-jdbc</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-json</code></td>
+<td style="text-align:left">读写json的starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-jta-atomikos</code></td>
+<td style="text-align:left">使用 Atomikos 进行 JTA 事务的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-mail</code></td>
+<td style="text-align:left">使用 Java Mail 和 Spring Framework 的电子邮件发送支持的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-mustache</code></td>
+<td style="text-align:left">使用 Mustache 视图构建 Web 应用程序的入门程序</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-oauth2-client</code></td>
+<td style="text-align:left">使用 Spring Security 的 OAuth2/OpenID Connect 客户端功能的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-oauth2-resource-server</code></td>
+<td style="text-align:left">使用 Spring Security 的 OAuth2 资源服务器特性的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-quartz</code></td>
+<td style="text-align:left">使用 Quartz 调度器的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-rsocket</code></td>
+<td style="text-align:left">用于构建 RSocket 客户端和服务器的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-security</code></td>
+<td style="text-align:left">使用 Spring Security 的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-test</code></td>
+<td style="text-align:left">使用包括 JUnit Jupiter、Hamcrest 和 Mockito 在内的库来测试 Spring Boot 应用程序的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-thymeleaf</code></td>
+<td style="text-align:left">使用 Thymeleaf 视图构建 MVC Web 应用程序的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-validation</code></td>
+<td style="text-align:left">使用带有 Hibernate Validator 的 Java Bean Validation 的 Starter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-web</code></td>
+<td style="text-align:left">使用 Spring MVC 构建 Web 应用程序的入门程序，包括 RESTful 应用程序。使用 Tomcat 作为默认的嵌入式容器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-web-services</code></td>
+<td style="text-align:left">使用 Spring Web 服务的入门者</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-webflux</code></td>
+<td style="text-align:left">使用 Spring Framework 的响应式 Web 支持构建 WebFlux 应用程序的启动器</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spring-boot-starter-websocket</code></td>
+<td style="text-align:left">使用 Spring Framework 的 WebSocket 支持构建 WebSocket 应用程序的 Starter</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><code>spring-boot-starter-actuator</code></th>
+<th>使用 Spring Boot 的 Actuator 的 Starter，它提供了生产就绪的特性来帮助你监控和管理你的应用程序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><code>spring-boot-starter-jetty</code></th>
+<th>使用 Jetty 作为嵌入式 servlet 容器的启动器。一个替代方案<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-tomcat" target="_blank" rel="noopener"><code>spring-boot-starter-tomcat</code></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spring-boot-starter-log4j2</code></td>
+<td>使用 Log4j2 进行日志记录的启动器。一个替代方案<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-logging" target="_blank" rel="noopener"><code>spring-boot-starter-logging</code></a></td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-logging</code></td>
+<td>使用 Logback 进行日志记录的启动器。默认日志记录启动器</td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-reactor-netty</code></td>
+<td>使用 Reactor Netty 作为嵌入式响应式 HTTP 服务器的启动器。</td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-tomcat</code></td>
+<td>使用 Tomcat 作为嵌入式 servlet 容器的启动器。使用的默认 servlet 容器启动器<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-web" target="_blank" rel="noopener"><code>spring-boot-starter-web</code></a></td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-undertow</code></td>
+<td>使用 Undertow 作为嵌入式 servlet 容器的启动器。一个替代方案<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#spring-boot-starter-tomcat" target="_blank" rel="noopener"><code>spring-boot-starter-tomcat</code></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如果我们不想用spring-boot-starter-web引入的spring-webmvc传递依赖，那么可以使用<exclusions>标签来排除传递依赖，具体代码如下:</exclusions></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--排查Spring-webmvc --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果spring-boot-starter-web引入的传递版本过低，我们可以在pom文件中直接引入所需的版本，告诉Maven现在需要这个版本的依赖。</p>
+<p>以上内容来自黄文毅的《一步一步学 Spring Boot2 微服务项目实战》</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Tropical-Forest 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Tropical-Forest 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Tropical-Forest
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tropical-forest.github.io/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" title="SpringBoot原理解析">https://tropical-forest.github.io/2022/02/02/SpringBoot%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringBoot%E5%8E%9F%E7%90%86/" rel="tag"># SpringBoot原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/01/30/%E9%9B%86%E6%88%90Spring-Security/" rel="next" title="集成Spring-Security">
+                <i class="fa fa-chevron-left"></i> 集成Spring-Security
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/02/02/%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E4%B8%8E%E9%83%A8%E7%BD%B2/" rel="prev" title="多环境配置与部署">
+                多环境配置与部署 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Tropical-Forest</p>
+              <p class="site-description motion-element" itemprop="description">路漫漫其修远兮，吾将上下而求索</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Tropical-Forest" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2533906024@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot原理解析"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot原理解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#回顾入口类"><span class="nav-number">1.1.</span> <span class="nav-text">回顾入口类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringbootEnvilsApplication入口类"><span class="nav-number">1.1.1.</span> <span class="nav-text">SpringbootEnvilsApplication入口类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBootApplication原理"><span class="nav-number">1.1.2.</span> <span class="nav-text">@SpringBootApplication原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringApplication的run方法"><span class="nav-number">1.1.3.</span> <span class="nav-text">SpringApplication的run方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringApplicationRunListeners监听器"><span class="nav-number">1.1.4.</span> <span class="nav-text">SpringApplicationRunListeners监听器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationContextInitializer接口"><span class="nav-number">1.1.5.</span> <span class="nav-text">ApplicationContextInitializer接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringApplication执行流程"><span class="nav-number">1.2.</span> <span class="nav-text">SpringApplication执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot-starter原理"><span class="nav-number">1.3.</span> <span class="nav-text">Spring-boot-starter原理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tropical-Forest</span>
+
+  
+</div>
+
+
+  <div class="powered-by">黑色给了我黑色的眼睛</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">我却用它来寻找光明 </div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>  
+
+   
+  
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'tSjOpQ8nM5yIgSiL1NKXLxL0-gzGzoHsz',
+        appKey: 'yjLqTurt6Q9owKc7qWOYeLTi',
+        placeholder: '欢迎交流讨论',
+        avatar:'hide',
+        guest_info:['nick'] ,  //评论者只需要提供评论的昵称即可
+        pageSize:'10' || 10,
+    });
+    //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  </script>
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tSjOpQ8nM5yIgSiL1NKXLxL0-gzGzoHsz", "yjLqTurt6Q9owKc7qWOYeLTi");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
+
