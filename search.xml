@@ -270,6 +270,8 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker rm -f &lt;容器ID&gt;</span><br></pre></td></tr></table></figure>
 <p>下面的命令可以清理掉所有处于终止状态的容器。</p>
 <p><code>$ docker container prune</code></p>
+<h2 id="更改容器名字："><a href="#更改容器名字：" class="headerlink" title="更改容器名字："></a>更改容器名字：</h2><p><a href="https://so.csdn.net/so/search?q=docker&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener">docker</a> rename 容器原来名  要改为的名字</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker rename sss canal</span><br></pre></td></tr></table></figure>
 <h2 id="镜像的使用"><a href="#镜像的使用" class="headerlink" title="镜像的使用"></a>镜像的使用</h2><h3 id="列出镜像列表："><a href="#列出镜像列表：" class="headerlink" title="列出镜像列表："></a><strong>列出镜像列表：</strong></h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
 <h3 id="删除镜像："><a href="#删除镜像：" class="headerlink" title="删除镜像："></a><strong>删除镜像：</strong></h3><p>镜像删除使用 <strong>docker rmi</strong> 命令，比如我们删除 hello-world 镜像：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker rmi hello-world</span><br></pre></td></tr></table></figure>
@@ -316,6 +318,16 @@
 <p>第二步：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">redis-cli</span><br></pre></td></tr></table></figure>
 <p><img src="/2022/07/07/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/image-20220707112118329.png" alt="image-20220707112118329"></p>
+<h3 id="Docker-安装Canal"><a href="#Docker-安装Canal" class="headerlink" title="Docker 安装Canal"></a>Docker 安装Canal</h3><h4 id="第一步：拉取Canal镜像"><a href="#第一步：拉取Canal镜像" class="headerlink" title="第一步：拉取Canal镜像"></a>第一步：拉取Canal镜像</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull canal/canal-server</span><br></pre></td></tr></table></figure>
+<h4 id="第二步：启动镜像"><a href="#第二步：启动镜像" class="headerlink" title="第二步：启动镜像"></a>第二步：启动镜像</h4><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -<span class="keyword">it</span> <span class="comment">--name canal  镜像ID -d</span></span><br></pre></td></tr></table></figure>
+<h4 id="第三步：将容器内部配置文件拷贝到外部"><a href="#第三步：将容器内部配置文件拷贝到外部" class="headerlink" title="第三步：将容器内部配置文件拷贝到外部"></a>第三步：将容器内部配置文件拷贝到外部</h4><p>docker cp [容器索引]:[内部路径] [外部路径]</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker cp canal:/home/admin/canal-server/conf/canal.properties /vagrant/canal/canal.properties</span><br><span class="line"></span><br><span class="line">docker cp canal:/home/admin/canal-server/conf/example/instance.properties /vagrant/canal/instance.properties</span><br></pre></td></tr></table></figure>
+<h4 id="第四步：修改外部配置文件instance-properties"><a href="#第四步：修改外部配置文件instance-properties" class="headerlink" title="第四步：修改外部配置文件instance.properties"></a>第四步：修改外部配置文件<code>instance.properties</code></h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">需要改成自己的数据库信息</span></span><br><span class="line"></span><br><span class="line">canal.instance.master.address=192.168.44.132:3306</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">需要改成自己的数据库用户名与密码</span></span><br><span class="line"></span><br><span class="line">canal.instance.dbUsername=canal</span><br><span class="line"></span><br><span class="line">canal.instance.dbPassword=canal</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">需要改成同步的数据库表规则，例如只是同步一下表</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">canal.instance.filter.regex=.*\\..*</span></span><br><span class="line"></span><br><span class="line">canal.instance.filter.regex=guli_ucenter.ucenter_member</span><br></pre></td></tr></table></figure>
+<h4 id="第五步：关闭移除容器"><a href="#第五步：关闭移除容器" class="headerlink" title="第五步：关闭移除容器"></a>第五步：关闭移除容器</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">关闭容器</span></span><br><span class="line">docker stop canal</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">移除容器</span></span><br><span class="line">docker rm canal</span><br></pre></td></tr></table></figure>
+<h4 id="第六步：启动新的canal容器"><a href="#第六步：启动新的canal容器" class="headerlink" title="第六步：启动新的canal容器"></a>第六步：启动新的canal容器</h4><p> 这里-v是将外部的文件挂载到容器内部 这样就不用每次启动都要配置参数了</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --name canal -p 11111:11111 -d -v /vagrant/canal/instance.properties:/home/admim/canal-server/conf/example/instance.properties -v /vagrant/canal/canal.properties:/home/admin/canal-server/conf/canal.properties canal/canal-server</span><br></pre></td></tr></table></figure>
+<p>到这步canal已经安装完成</p>
 <h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>1、关于容器中无法使用vim的问题</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">第一步：apt-<span class="builtin-name">get</span> update</span><br><span class="line">第二步：apt-<span class="builtin-name">get</span> install vim</span><br></pre></td></tr></table></figure>
 ]]></content>
@@ -2613,6 +2625,25 @@
         <tag>异步消息</tag>
         <tag>异步调用</tag>
         <tag>ActiveMQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux的使用</title>
+    <url>/2022/07/11/Linux%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="删除文件、文件夹"><a href="#删除文件、文件夹" class="headerlink" title="删除文件、文件夹"></a>删除文件、文件夹</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm  test.java  直接删除</span><br><span class="line">rm -i test.java   交互式删除</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm -f test.java   避免交互式操作，自动回答y</span><br><span class="line">rm -r  user/      递归删除目录下所有的文件和子目录</span><br></pre></td></tr></table></figure>
+<h3 id="查看Linux系统版本"><a href="#查看Linux系统版本" class="headerlink" title="查看Linux系统版本"></a>查看Linux系统版本</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /proc/version</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/07/11/Linux%E7%9A%84%E4%BD%BF%E7%94%A8/image-20220711213354661.png" alt="image-20220711213354661"></p>
+<h3 id="软件包管理工具"><a href="#软件包管理工具" class="headerlink" title="软件包管理工具"></a>软件包管理工具</h3><p>rpm    ——- centos</p>
+<p>apt  ———— ubuntu</p>
+<p>例如·:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm install vim  centos上下载vim</span><br><span class="line">apt install vim  ubuntu上下载vim</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
 </search>

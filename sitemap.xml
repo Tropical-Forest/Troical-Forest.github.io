@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://tropical-forest.github.io/2022/07/11/Linux%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2022-07-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tropical-forest.github.io/2022/01/21/%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF%E5%92%8C%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8/</loc>
     
     <lastmod>2022-07-07</lastmod>
@@ -766,6 +775,13 @@
   
   <url>
     <loc>https://tropical-forest.github.io/tags/ActiveMQ/</loc>
+    <lastmod>2022-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://tropical-forest.github.io/tags/Linux/</loc>
     <lastmod>2022-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
