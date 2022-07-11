@@ -316,6 +316,8 @@
 <p>第二步：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">redis-cli</span><br></pre></td></tr></table></figure>
 <p><img src="/2022/07/07/Docker%E7%9A%84%E4%BD%BF%E7%94%A8/image-20220707112118329.png" alt="image-20220707112118329"></p>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>1、关于容器中无法使用vim的问题</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">第一步：apt-<span class="builtin-name">get</span> update</span><br><span class="line">第二步：apt-<span class="builtin-name">get</span> install vim</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>部署</category>
