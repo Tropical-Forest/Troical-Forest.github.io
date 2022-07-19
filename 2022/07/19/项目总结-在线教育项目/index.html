@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="在线教育项目," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、项目描述● 项目总体介绍： 在线教育项目采用B2C商业模式，使用微服务架构，项目采用前后端分离开发● 项目功能模块: 在线教育项目分为前台系统和后台系统     前台系统包含： 首页数据显示、课程列表和详情、课程支付、课程视频播放，微信登录、微信支付     等等    后台系统包含： 权限管理、课程管理、统计分析、课程分类管理等等● 项目涉及技术：  因为项目采用前后端分离开发  前端技术包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目总结-在线教育项目">
+<meta property="og:url" content="https://tropical-forest.github.io/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="Tropical-Forest">
+<meta property="og:description" content="1、项目描述● 项目总体介绍： 在线教育项目采用B2C商业模式，使用微服务架构，项目采用前后端分离开发● 项目功能模块: 在线教育项目分为前台系统和后台系统     前台系统包含： 首页数据显示、课程列表和详情、课程支付、课程视频播放，微信登录、微信支付     等等    后台系统包含： 权限管理、课程管理、统计分析、课程分类管理等等● 项目涉及技术：  因为项目采用前后端分离开发  前端技术包">
+<meta property="og:image" content="https://tropical-forest.github.io/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/image-20220718153924013.png">
+<meta property="og:image" content="https://tropical-forest.github.io/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/image-20220719100146619.png">
+<meta property="article:published_time" content="2022-07-19T02:43:53.000Z">
+<meta property="article:modified_time" content="2022-07-19T02:45:59.057Z">
+<meta property="article:author" content="Tropical-Forest">
+<meta property="article:tag" content="在线教育项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tropical-forest.github.io/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/image-20220718153924013.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://tropical-forest.github.io/2022/07/19/项目总结-在线教育项目/"/>
+
+
+
+
+
+  <title>项目总结-在线教育项目 | Tropical-Forest</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?28788ad4c466b7d69104451b357c26e2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Tropical-Forest" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tropical-Forest</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tropical-forest.github.io/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tropical-Forest">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tropical-Forest">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">项目总结-在线教育项目</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-07-19T10:43:53+08:00">
+                2022-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" class="leancloud_visitors" data-flag-title="项目总结-在线教育项目">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1、项目描述"><a href="#1、项目描述" class="headerlink" title="1、项目描述"></a>1、项目描述</h2><p>● 项目总体介绍： 在线教育项目采用B2C商业模式，使用微服务架构，项目采用前后端分离开发<br>● 项目功能模块: 在线教育项目分为前台系统和后台系统<br>     前台系统包含： 首页数据显示、课程列表和详情、课程支付、课程视频播放，微信登录、微信支付<br>     等等<br>    后台系统包含： 权限管理、课程管理、统计分析、课程分类管理等等<br>● 项目涉及技术：<br>  因为项目采用前后端分离开发<br>  前端技术包含： vue、elment-ui、nuxt等等<br>  后端技术包含： SpringBoot、SpringCloud等等<br>  第三方技术包含： 阿里云OSS、视频点播、短信服务等等</p>
+<h2 id="2、企业中项目的开发流程"><a href="#2、企业中项目的开发流程" class="headerlink" title="2、企业中项目的开发流程"></a>2、企业中项目的开发流程</h2><p>一个中大型项目的开发流程</p>
+<p>1、需求调研（产品经理）</p>
+<p>2、需求评审（产品/设计/前端/后端/测试/运营）</p>
+<p>3、立项（项目经理、品管）</p>
+<p>4、UI设计</p>
+<p>5、开发</p>
+<ul>
+<li>架构、数据库设计、API文档、MOCK数据、开发、单元测试</li>
+<li>前端</li>
+<li>后端</li>
+</ul>
+<p>6、前端后端联调</p>
+<p>7、项目提测：黑盒白盒、压力测试（qps）  loadrunner</p>
+<p>8、bug修改</p>
+<p>9、回归测试</p>
+<p>10、运维和部署上线</p>
+<p>11、灰度发布</p>
+<p>12、全量发布</p>
+<p>13、维护和运营</p>
+<h2 id="3、系统中都有那些角色？数据库是怎么设计的？"><a href="#3、系统中都有那些角色？数据库是怎么设计的？" class="headerlink" title="3、系统中都有那些角色？数据库是怎么设计的？"></a>3、系统中都有那些角色？数据库是怎么设计的？</h2><p>前台：会员（学员）</p>
+<p>后台：系统管理员、运营人员</p>
+<p>后台分库，每个微服务一个独立的数据库，使用了分布式id生成器</p>
+<h2 id="4、视频点播是怎么实现的（流媒体你们是怎么实现的）"><a href="#4、视频点播是怎么实现的（流媒体你们是怎么实现的）" class="headerlink" title="4、视频点播是怎么实现的（流媒体你们是怎么实现的）"></a>4、视频点播是怎么实现的（流媒体你们是怎么实现的）</h2><p>我们直接接入了阿里云的云视频点播。云平台上的功能包括视频上传、转码、加密、智能审核、监控统计等。</p>
+<p>还包括视频播放功能，阿里云还提供了一个视频播放器。</p>
+<h2 id="5、前后端联调经常遇到的问题："><a href="#5、前后端联调经常遇到的问题：" class="headerlink" title="5、前后端联调经常遇到的问题："></a>5、前后端联调经常遇到的问题：</h2><p>   1、请求方式post、get</p>
+<p>   2、json、x-wwww-form-urlencoded混乱的错误</p>
+<p>   3、后台必要的参数，前端省略了</p>
+<p>   4、数据类型不匹配</p>
+<p>   5、空指针异常</p>
+<p>   6、分布式系统中分布式id生成器生成的id 长度过大（19个字符长度的整数），js无法解析（js智能解析16个长度：2的53次幂）</p>
+<p>​     id策略改成 ID_WORKER_STR</p>
+<h2 id="6、前后端分离项目中的跨域问题是如何解决的"><a href="#6、前后端分离项目中的跨域问题是如何解决的" class="headerlink" title="6、前后端分离项目中的跨域问题是如何解决的"></a>6、前后端分离项目中的跨域问题是如何解决的</h2><p>后端服务器配置：我们的项目中是通过Spring注解解决跨域的 @CrossOrigin</p>
+<p>也可以使用nginx反向代理、httpClient、网关</p>
+<h2 id="7、说说你做了哪个部分、遇到了什么问题、怎么解决的"><a href="#7、说说你做了哪个部分、遇到了什么问题、怎么解决的" class="headerlink" title="7、说说你做了哪个部分、遇到了什么问题、怎么解决的"></a>7、说说你做了哪个部分、遇到了什么问题、怎么解决的</h2><p>问题1：</p>
+<p>分布式id生成器在前端无法处理，总是在后三位进行四舍五入。</p>
+<p>分布式id生成器生成的id是19个字符的长度，前端javascript脚本对整数的处理能力只有2的53次方，也就是最多只能处理16个字符</p>
+<p>解决的方案是把id在程序中设置成了字符串的性质</p>
+<h2 id="8、分布式系统的id生成策略"><a href="#8、分布式系统的id生成策略" class="headerlink" title="8、分布式系统的id生成策略"></a>8、分布式系统的id生成策略</h2><p><a href="https://www.cnblogs.com/haoxinyue/p/5208136.html" target="_blank" rel="noopener">https://www.cnblogs.com/haoxinyue/p/5208136.html</a></p>
+<h2 id="9、分布式系统的CAP原理"><a href="#9、分布式系统的CAP原理" class="headerlink" title="9、分布式系统的CAP原理"></a>9、分布式系统的CAP原理</h2><p><strong>CAP定理：</strong></p>
+<p>指的是在一个分布式系统中，Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性），三者不可同时获得。</p>
+<p> 一致性（C）：在分布式系统中的所有数据备份，在同一时刻是否同样的值。（所有节点在同一时间的数据完全一致，越多节点，数据同步越耗时）</p>
+<p>可用性（A）：负载过大后，集群整体是否还能响应客户端的读写请求。（服务一直可用，而且是正常响应时间）</p>
+<p>分区容错性（P）：分区容错性，就是高可用性，一个节点崩了，并不影响其它的节点（100个节点，挂了几个，不影响服务，越多机器越好）</p>
+<p><strong>CA 满足的情况下，P不能满足的原因：</strong></p>
+<p>数据同步(C)需要时间，也要正常的时间内响应(A)，那么机器数量就要少，所以P就不满足</p>
+<p><strong>CP 满足的情况下，A不能满足的原因：</strong></p>
+<p>数据同步(C)需要时间, 机器数量也多(P)，但是同步数据需要时间，所以不能再正常时间内响应，所以A就不满足</p>
+<p><strong>AP 满足的情况下，C不能满足的原因：</strong></p>
+<p>机器数量也多(P)，正常的时间内响应(A)，那么数据就不能及时同步到其他节点，所以C不满足</p>
+<p><strong>注册中心选择的原则：</strong></p>
+<p>Zookeeper：CP设计，保证了一致性，集群搭建的时候，某个节点失效，则会进行选举行的leader，或者半数以上节点不可用，则无法提供服务，因此可用性没法满足</p>
+<p>Eureka：AP原则，无主从节点，一个节点挂了，自动切换其他节点可以使用，去中心化</p>
+<p><strong>结论：</strong></p>
+<p>分布式系统中P,肯定要满足，所以我们只能在一致性和可用性之间进行权衡</p>
+<p>如果要求一致性，则选择zookeeper，如金融行业</p>
+<p>如果要求可用性，则Eureka，如教育、电商系统</p>
+<p>没有最好的选择，最好的选择是根据业务场景来进行架构设计</p>
+<h2 id="10、前端渲染和后端渲染有什么区别"><a href="#10、前端渲染和后端渲染有什么区别" class="headerlink" title="10、前端渲染和后端渲染有什么区别"></a>10、<strong>前端渲染和后端渲染有什么区别</strong></h2><p>前端渲染是返回json给前端，通过javascript将数据绑定到页面上</p>
+<p>后端渲染是在服务器端将页面生成直接发送给服务器，有利于SEO的优化</p>
+<h2 id="11、能画一下系统架构图吗"><a href="#11、能画一下系统架构图吗" class="headerlink" title="11、能画一下系统架构图吗"></a><strong>11、能画一下系统架构图吗</strong></h2><p><img src="/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/image-20220718153924013.png" alt="image-20220718153924013"></p>
+<h2 id="12、B2C模式是什么，你还了解其他商业模式吗？"><a href="#12、B2C模式是什么，你还了解其他商业模式吗？" class="headerlink" title="12、B2C模式是什么，你还了解其他商业模式吗？"></a>12、B2C模式是什么，你还了解其他商业模式吗？</h2><p>   Business To Customer 会员模式，商家到用户，这种模式是自己制作大量自有版权的视频，放在自有平台上，让用户按月付费或者按年付费。 这种模式简单，快速，只要专心录制大量视频即可快速发展，其曾因为 lynda 的天价融资而 大热。但在中国由于版权保护意识不强，教育内容易于复制，有海量的免费资源的竞争对手众多等原因，难以取得像样的现金流。</p>
+<p>代表网站：慕课网</p>
+<p>其他商业模式有：C2C（平台模式，即用户到用户）B2B2C(商家到商家到用户，平台链接第三方教育机构和用户，平台一般不直接提供课程内容)、O2O模式（Online To Offline 线上到线下）</p>
+<h2 id="13、微服务架构？"><a href="#13、微服务架构？" class="headerlink" title="13、微服务架构？"></a>13、微服务架构？</h2><p>微服务架构是一种软件开发的架构，把大型软件分解成多个独立的组件，其中每个组件都是一个服务，组件间都是互相独立的。一个微服务就是一个独立的进程。</p>
+<h2 id="14、课程支付是如何实现的？"><a href="#14、课程支付是如何实现的？" class="headerlink" title="14、课程支付是如何实现的？"></a>14、课程支付是如何实现的？</h2><p>课程分为收费课程和免费课程，免费课程可以直接观看，收费课程需要支付才能观看。</p>
+<p>与课程支付相关的数据库是：订单表和支付日志表</p>
+<p>点击立即购买，会生成订单，订单表里会生成一条记录，</p>
+<p>点击去支付，会生成支付二维码，扫描二维码去支付，会生成一条支付日志</p>
+<p>课程支付需要完成的接口：</p>
+<p>1、生成订单的接口</p>
+<p>2、根据订单id查询订单信息</p>
+<p>3、生成微信支付的二维码</p>
+<p>4、查询订单支付状态接口</p>
+<h2 id="15、你用过远程调用吗？项目中如何使用远程调用？"><a href="#15、你用过远程调用吗？项目中如何使用远程调用？" class="headerlink" title="15、你用过远程调用吗？项目中如何使用远程调用？"></a>15、你用过远程调用吗？项目中如何使用远程调用？</h2><p>1、引入依赖</p>
+<p> <code>&lt;dependency&gt;</code><br>            <code>&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</code><br>            <code>&lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;</code><br>   &lt;/dependency&gt;`</p>
+<p>2、主启动类上添加注解</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableFeignClients</span></span><br></pre></td></tr></table></figure>
+<p>3、写远程调用接口，@FeignClient</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@Component</span></span><br><span class="line"><span class="variable">@FeignClient</span>(<span class="string">"service-ucenter"</span>)</span><br><span class="line">public interface UcenterClient &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据用户id获取用户信息</span></span><br><span class="line">    <span class="variable">@PostMapping</span>(<span class="string">"/educenter/member/getUserInfoOrder/&#123;id&#125;"</span>)</span><br><span class="line">    public UcenterMemberOrder getUserInfoOrder(<span class="variable">@PathVariable</span>(<span class="string">"id"</span>) String id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="16、微信支付如何实现？"><a href="#16、微信支付如何实现？" class="headerlink" title="16、微信支付如何实现？"></a>16、微信支付如何实现？</h2><p>1、生成微信支付二维码接口</p>
+<p>2、获取支付状态接口</p>
+<p>关键的必填信息就几个：<br><strong>公众号ID、商户号、随机字符串、签名、商品描述、商户订单号、标价金额、终端ip、通知地址、交易类型。</strong></p>
+<h2 id="17、阿里云OSS是什么？"><a href="#17、阿里云OSS是什么？" class="headerlink" title="17、阿里云OSS是什么？"></a>17、阿里云OSS是什么？</h2><p>阿里云对象存储OSS（Object Storage Service）为您提供基于网络的数据存取服务。使用OSS，您可以通过网络随时存储和调用包括文本、图片、音视频在内的各类数据文件。</p>
+<h2 id="18、权限管理如何实现？"><a href="#18、权限管理如何实现？" class="headerlink" title="18、权限管理如何实现？"></a>18、权限管理如何实现？</h2><p><strong>不同角色的用户登录后台管理系统拥有不同的菜单权限与功能权限，**</strong>权限管理包含三个功能模块：菜单管理、角色管理和用户管理**</p>
+<p><img src="/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/image-20220719100146619.png" alt="image-20220719100146619"></p>
+<p>权限管理有5张数据表，分别是权限表、角色表、用户表、角色权限表、用户角色表</p>
+<h2 id="19、登录模块如何实现？"><a href="#19、登录模块如何实现？" class="headerlink" title="19、登录模块如何实现？"></a>19、登录模块如何实现？</h2><p>有两种登录模式，一种是账号和密码，另一种是微信扫描登录</p>
+<p>单点登录，</p>
+<p>微信扫码登录： 需要微信开发平台账号id、密钥、重定向</p>
+<h2 id="20、统计分析模块如何实现？"><a href="#20、统计分析模块如何实现？" class="headerlink" title="20、统计分析模块如何实现？"></a>20、统计分析模块如何实现？</h2><p>使用Echart实现，</p>
+<h2 id="21、定时器如何实现？"><a href="#21、定时器如何实现？" class="headerlink" title="21、定时器如何实现？"></a>21、定时器如何实现？</h2><p>使用cron表达式实现，Cron表达式是一个具有时间含义的字符串，字符串以5~6个空格隔开，分为6~7个域</p>
+<h2 id="22、NUXT是什么？"><a href="#22、NUXT是什么？" class="headerlink" title="22、NUXT是什么？"></a>22、NUXT是什么？</h2><p>Nuxt.js 是一个基于 Vue.js 的第三方开源服务端渲染应用框架，它可以帮我们轻松的使用 Vue.js 技术栈实现同构应用。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Tropical-Forest 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Tropical-Forest 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Tropical-Forest
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tropical-forest.github.io/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" title="项目总结-在线教育项目">https://tropical-forest.github.io/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" rel="tag"># 在线教育项目</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/07/13/Linux%E5%88%87%E6%8D%A2jdk%E7%89%88%E6%9C%AC/" rel="next" title="Linux切换jdk版本">
+                <i class="fa fa-chevron-left"></i> Linux切换jdk版本
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Tropical-Forest</p>
+              <p class="site-description motion-element" itemprop="description">路漫漫其修远兮，吾将上下而求索</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Tropical-Forest" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2533906024@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、项目描述"><span class="nav-number">1.</span> <span class="nav-text">1、项目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、企业中项目的开发流程"><span class="nav-number">2.</span> <span class="nav-text">2、企业中项目的开发流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、系统中都有那些角色？数据库是怎么设计的？"><span class="nav-number">3.</span> <span class="nav-text">3、系统中都有那些角色？数据库是怎么设计的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、视频点播是怎么实现的（流媒体你们是怎么实现的）"><span class="nav-number">4.</span> <span class="nav-text">4、视频点播是怎么实现的（流媒体你们是怎么实现的）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、前后端联调经常遇到的问题："><span class="nav-number">5.</span> <span class="nav-text">5、前后端联调经常遇到的问题：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、前后端分离项目中的跨域问题是如何解决的"><span class="nav-number">6.</span> <span class="nav-text">6、前后端分离项目中的跨域问题是如何解决的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、说说你做了哪个部分、遇到了什么问题、怎么解决的"><span class="nav-number">7.</span> <span class="nav-text">7、说说你做了哪个部分、遇到了什么问题、怎么解决的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、分布式系统的id生成策略"><span class="nav-number">8.</span> <span class="nav-text">8、分布式系统的id生成策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、分布式系统的CAP原理"><span class="nav-number">9.</span> <span class="nav-text">9、分布式系统的CAP原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、前端渲染和后端渲染有什么区别"><span class="nav-number">10.</span> <span class="nav-text">10、前端渲染和后端渲染有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11、能画一下系统架构图吗"><span class="nav-number">11.</span> <span class="nav-text">11、能画一下系统架构图吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12、B2C模式是什么，你还了解其他商业模式吗？"><span class="nav-number">12.</span> <span class="nav-text">12、B2C模式是什么，你还了解其他商业模式吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13、微服务架构？"><span class="nav-number">13.</span> <span class="nav-text">13、微服务架构？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14、课程支付是如何实现的？"><span class="nav-number">14.</span> <span class="nav-text">14、课程支付是如何实现的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15、你用过远程调用吗？项目中如何使用远程调用？"><span class="nav-number">15.</span> <span class="nav-text">15、你用过远程调用吗？项目中如何使用远程调用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16、微信支付如何实现？"><span class="nav-number">16.</span> <span class="nav-text">16、微信支付如何实现？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17、阿里云OSS是什么？"><span class="nav-number">17.</span> <span class="nav-text">17、阿里云OSS是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18、权限管理如何实现？"><span class="nav-number">18.</span> <span class="nav-text">18、权限管理如何实现？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19、登录模块如何实现？"><span class="nav-number">19.</span> <span class="nav-text">19、登录模块如何实现？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20、统计分析模块如何实现？"><span class="nav-number">20.</span> <span class="nav-text">20、统计分析模块如何实现？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21、定时器如何实现？"><span class="nav-number">21.</span> <span class="nav-text">21、定时器如何实现？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22、NUXT是什么？"><span class="nav-number">22.</span> <span class="nav-text">22、NUXT是什么？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tropical-Forest</span>
+
+  
+</div>
+
+
+  <div class="powered-by">黑色给了我黑色的眼睛</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">我却用它来寻找光明 </div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>  
+
+   
+  
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'tSjOpQ8nM5yIgSiL1NKXLxL0-gzGzoHsz',
+        appKey: 'yjLqTurt6Q9owKc7qWOYeLTi',
+        placeholder: '欢迎交流讨论',
+        avatar:'hide',
+        guest_info:['nick'] ,  //评论者只需要提供评论的昵称即可
+        pageSize:'10' || 10,
+    });
+    //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  </script>
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tSjOpQ8nM5yIgSiL1NKXLxL0-gzGzoHsz", "yjLqTurt6Q9owKc7qWOYeLTi");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
+

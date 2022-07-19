@@ -2701,6 +2701,13 @@
 <p>第五步、测试是否安装成功</p>
 <p>docker -v</p>
 <p>推荐 <a href="https://www.runoob.com/docker/ubuntu-docker-install.html" target="_blank" rel="noopener">https://www.runoob.com/docker/ubuntu-docker-install.html</a> 下的自动安装命令</p>
+<p>一键安装命令：</p>
+<p>使用官方安装脚本自动安装</p>
+<p>安装命令如下：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">curl -fsSL <span class="keyword">https</span>://<span class="built_in">get</span>.docker.com | bash -s docker <span class="comment">--mirror Aliyun</span></span><br></pre></td></tr></table></figure>
+<p>也可以使用国内 daocloud 一键安装命令：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">curl -sSL http<span class="variable">s:</span>//<span class="built_in">get</span>.daocloud.io/docker | <span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<hr>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -2722,6 +2729,110 @@
       </categories>
       <tags>
         <tag>jdk版本切换</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目总结-在线教育项目</title>
+    <url>/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<h2 id="1、项目描述"><a href="#1、项目描述" class="headerlink" title="1、项目描述"></a>1、项目描述</h2><p>● 项目总体介绍： 在线教育项目采用B2C商业模式，使用微服务架构，项目采用前后端分离开发<br>● 项目功能模块: 在线教育项目分为前台系统和后台系统<br>     前台系统包含： 首页数据显示、课程列表和详情、课程支付、课程视频播放，微信登录、微信支付<br>     等等<br>    后台系统包含： 权限管理、课程管理、统计分析、课程分类管理等等<br>● 项目涉及技术：<br>  因为项目采用前后端分离开发<br>  前端技术包含： vue、elment-ui、nuxt等等<br>  后端技术包含： SpringBoot、SpringCloud等等<br>  第三方技术包含： 阿里云OSS、视频点播、短信服务等等</p>
+<h2 id="2、企业中项目的开发流程"><a href="#2、企业中项目的开发流程" class="headerlink" title="2、企业中项目的开发流程"></a>2、企业中项目的开发流程</h2><p>一个中大型项目的开发流程</p>
+<p>1、需求调研（产品经理）</p>
+<p>2、需求评审（产品/设计/前端/后端/测试/运营）</p>
+<p>3、立项（项目经理、品管）</p>
+<p>4、UI设计</p>
+<p>5、开发</p>
+<ul>
+<li>架构、数据库设计、API文档、MOCK数据、开发、单元测试</li>
+<li>前端</li>
+<li>后端</li>
+</ul>
+<p>6、前端后端联调</p>
+<p>7、项目提测：黑盒白盒、压力测试（qps）  loadrunner</p>
+<p>8、bug修改</p>
+<p>9、回归测试</p>
+<p>10、运维和部署上线</p>
+<p>11、灰度发布</p>
+<p>12、全量发布</p>
+<p>13、维护和运营</p>
+<h2 id="3、系统中都有那些角色？数据库是怎么设计的？"><a href="#3、系统中都有那些角色？数据库是怎么设计的？" class="headerlink" title="3、系统中都有那些角色？数据库是怎么设计的？"></a>3、系统中都有那些角色？数据库是怎么设计的？</h2><p>前台：会员（学员）</p>
+<p>后台：系统管理员、运营人员</p>
+<p>后台分库，每个微服务一个独立的数据库，使用了分布式id生成器</p>
+<h2 id="4、视频点播是怎么实现的（流媒体你们是怎么实现的）"><a href="#4、视频点播是怎么实现的（流媒体你们是怎么实现的）" class="headerlink" title="4、视频点播是怎么实现的（流媒体你们是怎么实现的）"></a>4、视频点播是怎么实现的（流媒体你们是怎么实现的）</h2><p>我们直接接入了阿里云的云视频点播。云平台上的功能包括视频上传、转码、加密、智能审核、监控统计等。</p>
+<p>还包括视频播放功能，阿里云还提供了一个视频播放器。</p>
+<h2 id="5、前后端联调经常遇到的问题："><a href="#5、前后端联调经常遇到的问题：" class="headerlink" title="5、前后端联调经常遇到的问题："></a>5、前后端联调经常遇到的问题：</h2><p>   1、请求方式post、get</p>
+<p>   2、json、x-wwww-form-urlencoded混乱的错误</p>
+<p>   3、后台必要的参数，前端省略了</p>
+<p>   4、数据类型不匹配</p>
+<p>   5、空指针异常</p>
+<p>   6、分布式系统中分布式id生成器生成的id 长度过大（19个字符长度的整数），js无法解析（js智能解析16个长度：2的53次幂）</p>
+<p>​     id策略改成 ID_WORKER_STR</p>
+<h2 id="6、前后端分离项目中的跨域问题是如何解决的"><a href="#6、前后端分离项目中的跨域问题是如何解决的" class="headerlink" title="6、前后端分离项目中的跨域问题是如何解决的"></a>6、前后端分离项目中的跨域问题是如何解决的</h2><p>后端服务器配置：我们的项目中是通过Spring注解解决跨域的 @CrossOrigin</p>
+<p>也可以使用nginx反向代理、httpClient、网关</p>
+<h2 id="7、说说你做了哪个部分、遇到了什么问题、怎么解决的"><a href="#7、说说你做了哪个部分、遇到了什么问题、怎么解决的" class="headerlink" title="7、说说你做了哪个部分、遇到了什么问题、怎么解决的"></a>7、说说你做了哪个部分、遇到了什么问题、怎么解决的</h2><p>问题1：</p>
+<p>分布式id生成器在前端无法处理，总是在后三位进行四舍五入。</p>
+<p>分布式id生成器生成的id是19个字符的长度，前端javascript脚本对整数的处理能力只有2的53次方，也就是最多只能处理16个字符</p>
+<p>解决的方案是把id在程序中设置成了字符串的性质</p>
+<h2 id="8、分布式系统的id生成策略"><a href="#8、分布式系统的id生成策略" class="headerlink" title="8、分布式系统的id生成策略"></a>8、分布式系统的id生成策略</h2><p><a href="https://www.cnblogs.com/haoxinyue/p/5208136.html" target="_blank" rel="noopener">https://www.cnblogs.com/haoxinyue/p/5208136.html</a></p>
+<h2 id="9、分布式系统的CAP原理"><a href="#9、分布式系统的CAP原理" class="headerlink" title="9、分布式系统的CAP原理"></a>9、分布式系统的CAP原理</h2><p><strong>CAP定理：</strong></p>
+<p>指的是在一个分布式系统中，Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性），三者不可同时获得。</p>
+<p> 一致性（C）：在分布式系统中的所有数据备份，在同一时刻是否同样的值。（所有节点在同一时间的数据完全一致，越多节点，数据同步越耗时）</p>
+<p>可用性（A）：负载过大后，集群整体是否还能响应客户端的读写请求。（服务一直可用，而且是正常响应时间）</p>
+<p>分区容错性（P）：分区容错性，就是高可用性，一个节点崩了，并不影响其它的节点（100个节点，挂了几个，不影响服务，越多机器越好）</p>
+<p><strong>CA 满足的情况下，P不能满足的原因：</strong></p>
+<p>数据同步(C)需要时间，也要正常的时间内响应(A)，那么机器数量就要少，所以P就不满足</p>
+<p><strong>CP 满足的情况下，A不能满足的原因：</strong></p>
+<p>数据同步(C)需要时间, 机器数量也多(P)，但是同步数据需要时间，所以不能再正常时间内响应，所以A就不满足</p>
+<p><strong>AP 满足的情况下，C不能满足的原因：</strong></p>
+<p>机器数量也多(P)，正常的时间内响应(A)，那么数据就不能及时同步到其他节点，所以C不满足</p>
+<p><strong>注册中心选择的原则：</strong></p>
+<p>Zookeeper：CP设计，保证了一致性，集群搭建的时候，某个节点失效，则会进行选举行的leader，或者半数以上节点不可用，则无法提供服务，因此可用性没法满足</p>
+<p>Eureka：AP原则，无主从节点，一个节点挂了，自动切换其他节点可以使用，去中心化</p>
+<p><strong>结论：</strong></p>
+<p>分布式系统中P,肯定要满足，所以我们只能在一致性和可用性之间进行权衡</p>
+<p>如果要求一致性，则选择zookeeper，如金融行业</p>
+<p>如果要求可用性，则Eureka，如教育、电商系统</p>
+<p>没有最好的选择，最好的选择是根据业务场景来进行架构设计</p>
+<h2 id="10、前端渲染和后端渲染有什么区别"><a href="#10、前端渲染和后端渲染有什么区别" class="headerlink" title="10、前端渲染和后端渲染有什么区别"></a>10、<strong>前端渲染和后端渲染有什么区别</strong></h2><p>前端渲染是返回json给前端，通过javascript将数据绑定到页面上</p>
+<p>后端渲染是在服务器端将页面生成直接发送给服务器，有利于SEO的优化</p>
+<h2 id="11、能画一下系统架构图吗"><a href="#11、能画一下系统架构图吗" class="headerlink" title="11、能画一下系统架构图吗"></a><strong>11、能画一下系统架构图吗</strong></h2><p><img src="/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/image-20220718153924013.png" alt="image-20220718153924013"></p>
+<h2 id="12、B2C模式是什么，你还了解其他商业模式吗？"><a href="#12、B2C模式是什么，你还了解其他商业模式吗？" class="headerlink" title="12、B2C模式是什么，你还了解其他商业模式吗？"></a>12、B2C模式是什么，你还了解其他商业模式吗？</h2><p>   Business To Customer 会员模式，商家到用户，这种模式是自己制作大量自有版权的视频，放在自有平台上，让用户按月付费或者按年付费。 这种模式简单，快速，只要专心录制大量视频即可快速发展，其曾因为 lynda 的天价融资而 大热。但在中国由于版权保护意识不强，教育内容易于复制，有海量的免费资源的竞争对手众多等原因，难以取得像样的现金流。</p>
+<p>代表网站：慕课网</p>
+<p>其他商业模式有：C2C（平台模式，即用户到用户）B2B2C(商家到商家到用户，平台链接第三方教育机构和用户，平台一般不直接提供课程内容)、O2O模式（Online To Offline 线上到线下）</p>
+<h2 id="13、微服务架构？"><a href="#13、微服务架构？" class="headerlink" title="13、微服务架构？"></a>13、微服务架构？</h2><p>微服务架构是一种软件开发的架构，把大型软件分解成多个独立的组件，其中每个组件都是一个服务，组件间都是互相独立的。一个微服务就是一个独立的进程。</p>
+<h2 id="14、课程支付是如何实现的？"><a href="#14、课程支付是如何实现的？" class="headerlink" title="14、课程支付是如何实现的？"></a>14、课程支付是如何实现的？</h2><p>课程分为收费课程和免费课程，免费课程可以直接观看，收费课程需要支付才能观看。</p>
+<p>与课程支付相关的数据库是：订单表和支付日志表</p>
+<p>点击立即购买，会生成订单，订单表里会生成一条记录，</p>
+<p>点击去支付，会生成支付二维码，扫描二维码去支付，会生成一条支付日志</p>
+<p>课程支付需要完成的接口：</p>
+<p>1、生成订单的接口</p>
+<p>2、根据订单id查询订单信息</p>
+<p>3、生成微信支付的二维码</p>
+<p>4、查询订单支付状态接口</p>
+<h2 id="15、你用过远程调用吗？项目中如何使用远程调用？"><a href="#15、你用过远程调用吗？项目中如何使用远程调用？" class="headerlink" title="15、你用过远程调用吗？项目中如何使用远程调用？"></a>15、你用过远程调用吗？项目中如何使用远程调用？</h2><p>1、引入依赖</p>
+<p> <code>&lt;dependency&gt;</code><br>            <code>&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</code><br>            <code>&lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;</code><br>   &lt;/dependency&gt;`</p>
+<p>2、主启动类上添加注解</p>
+<figure class="highlight aspectj"><table><tr><td class="code"><pre><span class="line"><span class="meta">@EnableFeignClients</span></span><br></pre></td></tr></table></figure>
+<p>3、写远程调用接口，@FeignClient</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="variable">@Component</span></span><br><span class="line"><span class="variable">@FeignClient</span>(<span class="string">"service-ucenter"</span>)</span><br><span class="line">public interface UcenterClient &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据用户id获取用户信息</span></span><br><span class="line">    <span class="variable">@PostMapping</span>(<span class="string">"/educenter/member/getUserInfoOrder/&#123;id&#125;"</span>)</span><br><span class="line">    public UcenterMemberOrder getUserInfoOrder(<span class="variable">@PathVariable</span>(<span class="string">"id"</span>) String id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="16、微信支付如何实现？"><a href="#16、微信支付如何实现？" class="headerlink" title="16、微信支付如何实现？"></a>16、微信支付如何实现？</h2><p>1、生成微信支付二维码接口</p>
+<p>2、获取支付状态接口</p>
+<p>关键的必填信息就几个：<br><strong>公众号ID、商户号、随机字符串、签名、商品描述、商户订单号、标价金额、终端ip、通知地址、交易类型。</strong></p>
+<h2 id="17、阿里云OSS是什么？"><a href="#17、阿里云OSS是什么？" class="headerlink" title="17、阿里云OSS是什么？"></a>17、阿里云OSS是什么？</h2><p>阿里云对象存储OSS（Object Storage Service）为您提供基于网络的数据存取服务。使用OSS，您可以通过网络随时存储和调用包括文本、图片、音视频在内的各类数据文件。</p>
+<h2 id="18、权限管理如何实现？"><a href="#18、权限管理如何实现？" class="headerlink" title="18、权限管理如何实现？"></a>18、权限管理如何实现？</h2><p><strong>不同角色的用户登录后台管理系统拥有不同的菜单权限与功能权限，**</strong>权限管理包含三个功能模块：菜单管理、角色管理和用户管理**</p>
+<p><img src="/2022/07/19/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/image-20220719100146619.png" alt="image-20220719100146619"></p>
+<p>权限管理有5张数据表，分别是权限表、角色表、用户表、角色权限表、用户角色表</p>
+<h2 id="19、登录模块如何实现？"><a href="#19、登录模块如何实现？" class="headerlink" title="19、登录模块如何实现？"></a>19、登录模块如何实现？</h2><p>有两种登录模式，一种是账号和密码，另一种是微信扫描登录</p>
+<p>单点登录，</p>
+<p>微信扫码登录： 需要微信开发平台账号id、密钥、重定向</p>
+<h2 id="20、统计分析模块如何实现？"><a href="#20、统计分析模块如何实现？" class="headerlink" title="20、统计分析模块如何实现？"></a>20、统计分析模块如何实现？</h2><p>使用Echart实现，</p>
+<h2 id="21、定时器如何实现？"><a href="#21、定时器如何实现？" class="headerlink" title="21、定时器如何实现？"></a>21、定时器如何实现？</h2><p>使用cron表达式实现，Cron表达式是一个具有时间含义的字符串，字符串以5~6个空格隔开，分为6~7个域</p>
+<h2 id="22、NUXT是什么？"><a href="#22、NUXT是什么？" class="headerlink" title="22、NUXT是什么？"></a>22、NUXT是什么？</h2><p>Nuxt.js 是一个基于 Vue.js 的第三方开源服务端渲染应用框架，它可以帮我们轻松的使用 Vue.js 技术栈实现同构应用。</p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>在线教育项目</tag>
       </tags>
   </entry>
 </search>

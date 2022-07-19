@@ -113,7 +113,7 @@
 <meta property="og:description" content="常用命令删除文件、文件夹12rm  test.java  直接删除rm -i test.java   交互式删除 12rm -f test.java   避免交互式操作，自动回答yrm -r  user&#x2F;      递归删除目录下所有的文件和子目录 查看Linux系统版本1cat &#x2F;proc&#x2F;version  软件包管理工具rpm    ——- centos apt  ———— ubuntu 例如">
 <meta property="og:image" content="https://tropical-forest.github.io/2022/07/11/Linux%E7%9A%84%E4%BD%BF%E7%94%A8/image-20220711213354661.png">
 <meta property="article:published_time" content="2022-07-11T09:09:20.000Z">
-<meta property="article:modified_time" content="2022-07-13T16:35:40.185Z">
+<meta property="article:modified_time" content="2022-07-14T07:55:19.017Z">
 <meta property="article:author" content="Tropical-Forest">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -519,6 +519,13 @@
 <p>第五步、测试是否安装成功</p>
 <p>docker -v</p>
 <p>推荐 <a href="https://www.runoob.com/docker/ubuntu-docker-install.html" target="_blank" rel="noopener">https://www.runoob.com/docker/ubuntu-docker-install.html</a> 下的自动安装命令</p>
+<p>一键安装命令：</p>
+<p>使用官方安装脚本自动安装</p>
+<p>安装命令如下：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL <span class="keyword">https</span>://<span class="built_in">get</span>.docker.com | bash -s docker <span class="comment">--mirror Aliyun</span></span><br></pre></td></tr></table></figure>
+<p>也可以使用国内 daocloud 一键安装命令：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL http<span class="variable">s:</span>//<span class="built_in">get</span>.daocloud.io/docker | <span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<hr>
 
       
     </div>
@@ -688,7 +695,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -699,7 +706,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -710,7 +717,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
