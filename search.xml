@@ -2835,4 +2835,454 @@
         <tag>在线教育项目</tag>
       </tags>
   </entry>
+  <entry>
+    <title>数据库的基本操作</title>
+    <url>/2022/07/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="基本表的定义、删除和修改"><a href="#基本表的定义、删除和修改" class="headerlink" title="基本表的定义、删除和修改"></a>基本表的定义、删除和修改</h2><h3 id="定义基本表"><a href="#定义基本表" class="headerlink" title="定义基本表"></a>定义基本表</h3><p>1、建立一个“学生”表Student</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE Student</span><br><span class="line">(</span><br><span class="line">	Sno CHAR(9) PRIMARY KEY,</span><br><span class="line">	Sname CHAR(20) UNIQUE,</span><br><span class="line">	Ssex CHAR(2),</span><br><span class="line">	Sage SMALLINT,</span><br><span class="line">	Sdept CHAR(20)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>2、建立一个课程表Course</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table Course</span><br><span class="line">(</span><br><span class="line">    Cno char(4) primary key,</span><br><span class="line">    Cname char(40) not null,</span><br><span class="line">    Cpno char(4),</span><br><span class="line">    Ccredit smallint,</span><br><span class="line">    foreign key(Cpno) references Course(Cno)	&#x2F;* Cpno是外码，被参照表是Course，被参照列为Cno *&#x2F;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>3、建立学习选课表SC </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table SC</span><br><span class="line">(</span><br><span class="line">	Sno char(9),</span><br><span class="line">    Cno char(4),</span><br><span class="line">    Grade smallint,</span><br><span class="line">    primary key(Sno,Cno),</span><br><span class="line">    foreign key(Sno) references Student(Sno),</span><br><span class="line">    foreign key(Cno) references Course(Cno)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="修改基本表"><a href="#修改基本表" class="headerlink" title="修改基本表"></a>修改基本表</h3><p>1、向Student表增加“入学时间”列，其数据类型为日期型。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alter table Student add S_entrance date;</span><br></pre></td></tr></table></figure>
+<p>2、将年龄的数据类型由字符型(假设原来的数据类型为字符型)改为整数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alter table Student alter column Sage int;</span><br></pre></td></tr></table></figure>
+<p>3、增加课程名称必须取唯一值的约束条件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alter table Course add unique(Cname);</span><br></pre></td></tr></table></figure>
+<h3 id="删除基本表"><a href="#删除基本表" class="headerlink" title="删除基本表"></a>删除基本表</h3><p>1、删除Student表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop table Student</span><br><span class="line">drop table Student restrict</span><br><span class="line">drop table Student cascade</span><br><span class="line">若选择resttrict，则该表的删除是有限制条件的。欲删除的基本表不能被其他表的约束条件所应有，不能有视图，不能有触发器，不能有存储过程或函数。如果存在这些依赖该表的对象，则此表不能被删除。</span><br><span class="line">若选择cascade，则该表的删除没有限制条件。在删除基本表的同时，相关的依赖对象，例如视图，都将被一起删除。</span><br></pre></td></tr></table></figure>
+<h2 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h2><h3 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h3><h4 id="1、选择表中的若干列"><a href="#1、选择表中的若干列" class="headerlink" title="1、选择表中的若干列"></a>1、选择表中的若干列</h4><p>（1）查询指定列</p>
+<ul>
+<li><p>查询全体学生的学号与姓名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sno,Sname</span><br><span class="line">from Student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询全体学生的姓名、学号、所在系</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname,Sno,Sdept from Student;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>​    (2)查询全部列</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from Student;</span><br></pre></td></tr></table></figure>
+<p>（3）查询经过计算得值</p>
+<ul>
+<li><p>查询全体学生的姓名及其出生年份</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname, 2014-Sage</span><br><span class="line">from Student;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>查询全体学生的姓名、出生年份和所在的院系，要求用最小写字母表示系名。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname NAME,&#39;Year of Birth:&#39; BIRTH, 2014-Sage BIRTHDAY,LOWER(sdept) DEPARTMENT</span><br><span class="line">from Student;</span><br></pre></td></tr></table></figure>
+<h4 id="2、选择表中的若干元组"><a href="#2、选择表中的若干元组" class="headerlink" title="2、选择表中的若干元组"></a>2、选择表中的若干元组</h4><h4 id="（1）消除取消重复的行"><a href="#（1）消除取消重复的行" class="headerlink" title="（1）消除取消重复的行"></a>（1）消除取消重复的行</h4><ul>
+<li><p>查询选修了课程的学生学号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select distinct Sno from SC;  &#x2F;*distinct关键字的作用是去掉结果的重复行*&#x2F;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="（2）查询满足条件的元组"><a href="#（2）查询满足条件的元组" class="headerlink" title="（2）查询满足条件的元组"></a>（2）查询满足条件的元组</h4><p>查询满足指定条件的元组可以通过where子句实现。where子句常用的查询条件如下表所示：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>查询条件</th>
+<th>谓词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>比较</td>
+<td>=，&gt;,&lt;,&gt;=,&lt;=,!=,&lt;&gt;,!&gt;,!&lt;,</td>
+</tr>
+<tr>
+<td>确定范围</td>
+<td>between and, not between and</td>
+</tr>
+<tr>
+<td>确定集合</td>
+<td>in, not in</td>
+</tr>
+<tr>
+<td>字符匹配</td>
+<td>like, not like</td>
+</tr>
+<tr>
+<td>空值</td>
+<td>is null, is not null</td>
+</tr>
+<tr>
+<td>多重条件（逻辑运算）</td>
+<td>and, or, not</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><h5 id="比较大小"><a href="#比较大小" class="headerlink" title="比较大小"></a>比较大小</h5><ul>
+<li><p>查询计算机科学系全体学生的名单</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname from Student where Sdept &#x3D; &#39;CS&#39;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询所有年龄在20岁以下的学生姓名及其年龄</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname,Sage from Student where Sage&lt;20;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>查询考试成绩不及格的学生的学号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select distinct Sno from SC where Grade&lt;60;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><h5 id="确定范围"><a href="#确定范围" class="headerlink" title="确定范围"></a>确定范围</h5><ul>
+<li><p>查询年龄在20-23岁（包括20岁和23岁）之间的的学生姓名、系别和年龄</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname,Sdept,Sage from Student where Sage between 20 and 23;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>查询年龄不在20-23岁之间的学生姓名、系别和年龄</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname,Sdept,Sage from Student where Sage not between 20 and 23;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><h5 id="确定集合"><a href="#确定集合" class="headerlink" title="确定集合"></a>确定集合</h5><ul>
+<li><p>查询计算机科学系（CS）、数学系（MA）和信息系（IS）学生的姓名和性别</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname,Ssex from Student where Sdept in(&#39;CS&#39;,&#39;MA&#39;,&#39;IS&#39;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>查询既不属于计算机科学系、数学系，也不是信息系的学生的姓名和性别</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname,Ssex from Student where Sdept not in(&#39;CS&#39;,&#39;MA&#39;,&#39;IS&#39;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><h5 id="字符匹配"><a href="#字符匹配" class="headerlink" title="字符匹配"></a>字符匹配</h5><p>通配符%和_</p>
+<p>%（百分号）代表任意长度（长度可以为0）的字符串。</p>
+<p>_(下划线)代表任意单个字符</p>
+<ul>
+<li><p>查询学号为201215121的学生的详细情况</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from Student where Sno like &#39;201215121&#39;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>查询所有姓刘的学生的姓名、学号和性别</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname,Sno,Ssex from Student where Sname like &#39;刘%&#39;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>查询新“欧阳”且全名为三个汉字的学生的姓名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname from Student where Sname like &#39;欧阳_&#39;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>查询所有不姓刘的学生的姓名、学号和性别</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname,Sno from Ssex from Student where Sname not like &#39;刘%&#39;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>查询DB_Disign课程的课程号和学分</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Cno,Ccredit from Cource where Cname like &#39;DB\_Design&#39; ESCAPE &#39;\&#39;;</span><br></pre></td></tr></table></figure>
+<p>ESCAPE ‘\‘  表示”\“为换码字符。这样匹配串中紧跟在”\“后面的字符”<em>“不再具有通配符的含义，转义为普通的”_</em>“字符</p>
+</li>
+</ul>
+<ul>
+<li><h5 id="涉及空值的查询"><a href="#涉及空值的查询" class="headerlink" title="涉及空值的查询"></a>涉及空值的查询</h5><ul>
+<li><p>查询缺少成绩的学生的学号和相应的课程号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sno,Cno from SC where Grade is null &#x2F;*注意这里的is不能用等号代替*&#x2F;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>查所有成绩的学生学号和课程号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sno,Cno from SC where Grade is not null;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><h5 id="多重条件查询"><a href="#多重条件查询" class="headerlink" title="多重条件查询"></a>多重条件查询</h5><ul>
+<li><p>查询所有计算机科学系的年龄在20岁以下的学生姓名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname from Student where Sdept &#x3D; &#39;CS&#39; and Sage</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3、order-by子句"><a href="#3、order-by子句" class="headerlink" title="3、order by子句"></a>3、order by子句</h4><p>用户可以用order by子句对查询结果按照一个或多个属性列的升序（ASC）或降序（DESC）排列，默认值为升序</p>
+<p>（1）查询选修了3号课程的学生的学号及其成绩，查询结果按分数的降序排列</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sno,Grade from SC where Cno&#x3D;&#39;3&#39; order by Grade DESC;</span><br></pre></td></tr></table></figure>
+<p>（2）查询全体学生情况，查询结果按所在系的系好升序排列，同一系中的学生按年龄降序排列</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from Student order by Sdept,Sage DESC;</span><br></pre></td></tr></table></figure>
+<h4 id="4、聚集函数"><a href="#4、聚集函数" class="headerlink" title="4、聚集函数"></a>4、聚集函数</h4><p>为了进一步方便用户，增强检索功能，sql提供了许多聚集函数，主要有：</p>
+<p>count(*)</p>
+<p>count([distinct | all] &lt;列名&gt;) 统计个数</p>
+<p>sum([distinct | all] &lt;列名&gt;) 计算总和</p>
+<p>avg([distinct | all] &lt;列名&gt;) 求平均值</p>
+<p>max([distinct | all] &lt;列名&gt;) 求最大值</p>
+<p>min([distinct | all] &lt;列名&gt;) 求最小值</p>
+<p>如果指定distinct短语，则表示在计算时要取消指定列中的重复值。如果不指定distinct短语或指定all短语（all为默认值），则表示不取消重复值。</p>
+<p>（1）查询学生总人数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select count(*) from Student;</span><br></pre></td></tr></table></figure>
+<p>（2）查询选修了课程的学生人数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select count(distinct Sno) from SC;</span><br></pre></td></tr></table></figure>
+<p>（3）计算选修了1号课程的学生平均成绩</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select avg(Grade) from SC where Cno &#x3D; &#39;1&#39;;</span><br></pre></td></tr></table></figure>
+<p>（4）查询选修1号课程的学生最高分数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select max(Grade) from SC where Cno &#x3D; &#39;1&#39;;</span><br></pre></td></tr></table></figure>
+<p>（5）查询学生201215012选修课程的总学分数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select sum(Ccredit) from SC,Cource where Sno&#x3D;&#39;201215012&#39; and SC.Cno &#x3D; Cource.Cno</span><br></pre></td></tr></table></figure>
+<p>当集聚函数遇到空值时，除了count（*）外，都跳过空值而只处理非空值</p>
+<h4 id="5、group-by子句"><a href="#5、group-by子句" class="headerlink" title="5、group by子句"></a>5、group by子句</h4><p>group by子句将查询结果按某一列或多列的值分组，值相等的为一组。</p>
+<p>分组后集聚函数将作用于每一个组，即每一个组都有一个函数值</p>
+<p>（1）求各个课程号及相应的选课人数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Cno,count(Sno) from SC group by Cno;</span><br></pre></td></tr></table></figure>
+<p>该语句对查询结果按Cno分组，所有具有相同Cno值得元组为一组，然后对每一组作用集聚函数count进行计算，以求得该组的学生人数。如果分组后还要按一定的条件进行筛选，最终只输出满足指定条件的组，则可以使用having短语指定筛选条件。</p>
+<p>（2）查询选修了三门以上课程的学生学号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sno from SC group by Sno </span><br><span class="line">having count(*)&gt;3;</span><br></pre></td></tr></table></figure>
+<p>（3）查询平均成绩大于等于90分的学生学号和平均成绩</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sno,avg(Grade) from SC group by Sno</span><br><span class="line">having avg(Grade) &gt;&#x3D; 90;</span><br></pre></td></tr></table></figure>
+<h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><h4 id="1、等值与非等值连接查询"><a href="#1、等值与非等值连接查询" class="headerlink" title="1、等值与非等值连接查询"></a>1、等值与非等值连接查询</h4><ul>
+<li><p>查询每一个学生及其选修课程的情况</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Student.*,SC.* from Student,SC where Student.Sno &#x3D; SC.Sno;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询选修2号课程且成绩在90分以上的所有学生的学号和姓名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Student.Sno,Sname</span><br><span class="line">from Student,SC</span><br><span class="line">where Student.Sno &#x3D; Sc.Sno and</span><br><span class="line">SC.Cno  &#x3D; &#39;2&#39; and SC.Grade &gt;90;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2、自身连接"><a href="#2、自身连接" class="headerlink" title="2、自身连接"></a>2、自身连接</h4><ul>
+<li><p>查询每一门课的间接选修课（即选修课的选修课）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select first.Cno,second.Cpno</span><br><span class="line">from Couse first,Couse second</span><br><span class="line">where first.Cpno&#x3D;second.Cno;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3、外连接"><a href="#3、外连接" class="headerlink" title="3、外连接"></a>3、外连接</h4><h4 id="4、多表连接"><a href="#4、多表连接" class="headerlink" title="4、多表连接"></a>4、多表连接</h4><h3 id="嵌套查询"><a href="#嵌套查询" class="headerlink" title="嵌套查询"></a>嵌套查询</h3><p>​    在sql语言中，一个select-from-where语句称为一个查询块。将一个查询块嵌套在另一个查询块的where子句或having短语的条件中的查询称为嵌套查询。</p>
+<p>SQL语言允许多层嵌套查询，即一个子查询中还可以嵌套其他子查询。需要特别注意的是，子查询的select语句不能使用order by子句，order by子句只能对最终查询结果排序。</p>
+<h4 id="1、带有IN谓词的子查询"><a href="#1、带有IN谓词的子查询" class="headerlink" title="1、带有IN谓词的子查询"></a>1、带有IN谓词的子查询</h4><ul>
+<li><p>查询与“刘晨”在用一个系学习的学生</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sno,Sname,Sdept</span><br><span class="line">from Student</span><br><span class="line">where Sdept in</span><br><span class="line">(</span><br><span class="line">	select Sdept from Student where Sname&#x3D;&#39;刘晨&#39;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2、带有比较运算符的子查询"><a href="#2、带有比较运算符的子查询" class="headerlink" title="2、带有比较运算符的子查询"></a>2、带有比较运算符的子查询</h4><ul>
+<li><p>找出每个学生超过他自己选修课程平均成绩的课程号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sno,Cno</span><br><span class="line">from SC x</span><br><span class="line">where Grade &gt;&#x3D;(</span><br><span class="line">	select avg(Grade) from SC y where y.Sno &#x3D; x.Sno</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3、带有any（some）或all谓词的子查询"><a href="#3、带有any（some）或all谓词的子查询" class="headerlink" title="3、带有any（some）或all谓词的子查询"></a>3、带有any（some）或all谓词的子查询</h4><ul>
+<li><p>查询非计算机科学系中比计算机科学系任意一个学生年龄小的学生姓名和年龄。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname,Sage</span><br><span class="line">from Student</span><br><span class="line">where Sage&lt;any(</span><br><span class="line">	select sage from Student where Sdept &#x3D; &#39;CC&#39;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询非计算机科学系中比计算机科学系所有学生年龄小的学生姓名和年龄。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select Sname,Sage</span><br><span class="line">from Student</span><br><span class="line">where Sage&lt;all(</span><br><span class="line">	select sage from Student where Sdept &#x3D; &#39;CC&#39;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="4、带有exists谓词的子查询"><a href="#4、带有exists谓词的子查询" class="headerlink" title="4、带有exists谓词的子查询"></a>4、带有exists谓词的子查询</h4>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java面试题</title>
+    <url>/2022/07/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h1><h2 id="1、java的8大基本数据类型"><a href="#1、java的8大基本数据类型" class="headerlink" title="1、java的8大基本数据类型"></a>1、java的8大基本数据类型</h2><p>名称      byte     short     int     long    float    double    char     boolean</p>
+<p>大小    1            2            4        8               4         8</p>
+<p>初始值   0         0            0        0            0.0        0.0                                false</p>
+<h2 id="2、Java的三大特性"><a href="#2、Java的三大特性" class="headerlink" title="2、Java的三大特性"></a>2、Java的三大特性</h2><p>1)封装：隐藏内部功能的具体实现，只保留和外部交流数据的接口。例如汽车与发动机。</p>
+<p>不必知道发动机的实现原理，只需要使用汽车给予的接口，插入钥匙</p>
+<p>2）继承：一个对象可以从它的父类继承所有的通用的属性和方法，并在无需重新编写原来的类的情况下对这些功能进行扩展；最大的好处是实现代码的高效重用</p>
+<p>3）多态：同一个动作作用于不同的对象所产生不同的行为。</p>
+<h2 id="3、面向对象"><a href="#3、面向对象" class="headerlink" title="3、面向对象"></a>3、面向对象</h2><p>1）面向对象的核心，就是类和对象，java中的面向对象的思想：万物皆对象</p>
+<p>2）类：是对一类事务的描述，是抽象的、看不见、摸不着</p>
+<p>3）对象：是实际存在的该类事物的每个个体，也称为实例，是具体的</p>
+<p>4）所以面向对象程序设计的重点是类的设计，而不是对象的设计。</p>
+<p>5）类是对象的描述，对象是类的实例化</p>
+<p>6）类不占内存，对象才占内存</p>
+<h2 id="4、Java的特点"><a href="#4、Java的特点" class="headerlink" title="4、Java的特点"></a>4、Java的特点</h2><p>1）Java是面向对象的</p>
+<p>2）跨平台性，一次编译，到处运行</p>
+<p>3）多线程</p>
+<p>4）Java有垃圾回收机制，简化开发</p>
+<h2 id="5、JVM和字节码"><a href="#5、JVM和字节码" class="headerlink" title="5、JVM和字节码"></a>5、JVM和字节码</h2><p>JVM: Java虚拟机是运行Java字节码的虚拟机</p>
+<p>JVM有针对不同系统的特定实现，目的是使用相同的字节码，它们都会给出相同的结果（一次编译，到处运行）</p>
+<p>字节码：在Java中，JVM可以理解的代码就叫做字节码（即扩展名为.class的文件),它不面向任何特定的处理器，只面向虚拟机。Java语言通过字节码的方式，一定程度上解决了传统解释型语言执行效率低下的问题，同时又保留了解释型语言可移植的特点，所以Java程序运行时比较高效</p>
+<h2 id="6、JDK与JRE"><a href="#6、JDK与JRE" class="headerlink" title="6、JDK与JRE"></a>6、JDK与JRE</h2><p>JDK: 是Java Development Kit，它是功能齐全的java SDK，它拥有JRE所拥有的一些，还有编译器和工具。它能够创建和编译程序。</p>
+<p>JRE:是Java运行环境，它是运行已编译java程序所需的所有内容的集合，包括Java虚拟机，java类库。但是它不能用于创建新程序。</p>
+<h2 id="7、StringBuilder和StringBuffer的区别"><a href="#7、StringBuilder和StringBuffer的区别" class="headerlink" title="7、StringBuilder和StringBuffer的区别"></a>7、StringBuilder和StringBuffer的区别</h2><p>1、它们都是可变长度的字符串</p>
+<p>2、StringBuffer    线程安全    效率低</p>
+<p>3、StringBuilder    线程不安全    效率高</p>
+<h2 id="8、简单介绍下多态、重载、重写"><a href="#8、简单介绍下多态、重载、重写" class="headerlink" title="8、简单介绍下多态、重载、重写"></a>8、简单介绍下多态、重载、重写</h2><p>多态：是指同一个方法调用由于对象的不同可能会产生不同的行为</p>
+<p>重载：是指一个类中可以定义多个方法名相同，但参数不同的方法。调用时，会根据不同的参数自动匹配对应的方法。</p>
+<p>重写：必须存在继承关系，</p>
+<p>重写的方法、返回值类型、参数列表必须与父类的方法保持一致</p>
+<p>子类的访问修饰符不能低于父类方法的访问修饰符</p>
+<h2 id="9、自动装箱和拆箱"><a href="#9、自动装箱和拆箱" class="headerlink" title="9、自动装箱和拆箱"></a>9、自动装箱和拆箱</h2><p>装箱：将基本类型用它们对应的引用类型包装起来；</p>
+<p>拆箱：将包装类型转换为基本数据类型；</p>
+<h2 id="10、String能被继承吗？"><a href="#10、String能被继承吗？" class="headerlink" title="10、String能被继承吗？"></a>10、String能被继承吗？</h2><p>public final class String implements java.io.Serializable, Comparable<String>, CharSequence</String></p>
+<p>不能，他是被final修饰的。</p>
+<p>底层是由数组实现，数组长度不可变</p>
+<h2 id="11、简单介绍一下statis关键字"><a href="#11、简单介绍一下statis关键字" class="headerlink" title="11、简单介绍一下statis关键字"></a>11、简单介绍一下statis关键字</h2><p>static标记的变量或方法由整个类（所有实例）共享，可不必创建该类对象而直接使用；</p>
+<p>static成员也称为类成员变量或静态变量</p>
+<p>随着类的加载而加载</p>
+<p>修饰属性：</p>
+<p>​    无论创建多少次对象，都会去共享一个静态属性，存在静态域中和类同一级别</p>
+<p>修饰方法：</p>
+<p>也是存在于静态域中，可以使用类名.方法名去访问</p>
+<p>静态方法只能访问静态成员，如果是非静态的，应该通过实例化对象的方式</p>
+<p>静态方法不能以任何方式引用this关键字</p>
+<h2 id="12、super和this"><a href="#12、super和this" class="headerlink" title="12、super和this"></a>12、super和this</h2><p>this: 1、当成员变量和局部变量重名，用关键字this来区分</p>
+<p>2、this代表当前对象，this就是所存函数所属对象的引用</p>
+<p>3、this（参数列表），调用本类中重载的构造函数，必须放在第一行</p>
+<p>super：1、使用super调用父类的成员方法和属性</p>
+<p>2、可以从子类构造方法中调用父类的构造方法，必须放在第一行</p>
+<h2 id="13、equals和"><a href="#13、equals和" class="headerlink" title="13、equals和=="></a>13、equals和==</h2><p>==：基本数据类型比较的是值得大小</p>
+<p>引用类型比较的是内存地址</p>
+<p>equals：默认比较是否是用一个对象</p>
+<p>例如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容</p>
+<h2 id="14、关于常量池"><a href="#14、关于常量池" class="headerlink" title="14、关于常量池"></a>14、关于常量池</h2><p>当创建String类型的对象时，JVM先回在常量池中查找是否已经存在，如果已存在，就把它赋给当前引用。如果没有，就会在常量池中重新创建一个String对象。</p>
+<h2 id="15、抽象类与接口"><a href="#15、抽象类与接口" class="headerlink" title="15、抽象类与接口"></a>15、抽象类与接口</h2><p>抽象类：</p>
+<p>1、首先有构造方法</p>
+<p>2、含有抽象方法的类必须被声明为抽象类</p>
+<p>3、抽象类不能被实例化，子类必须重写父类的抽象方法</p>
+<p>4、abstract不能修饰属性、构造器、private、static、final</p>
+<p>5、一般类中不能定义抽象方法；抽象类中可以有抽象方法，也可以有非抽象方法；</p>
+<p>6、抽象方法只有方法声明；没有方法实现；</p>
+<p>接口：</p>
+<p>1、特殊的抽象类</p>
+<p>2、接口中包含的方法都是抽象方法，没有方法体</p>
+<p>3、实现接口的类必须实现接口的全部方法</p>
+<p>4、属性：private static final, 方法; public abstract</p>
+<p>区别：</p>
+<p>1、抽象类有构造器，接口没有</p>
+<p>2、关键字不同</p>
+<p>3、抽象类可以有非抽象方法，接口只能有抽象方法</p>
+<p>4、抽象类可以定义static方法，接口不行</p>
+<h2 id="16、Java中的比较器（Comparable、Comparator）"><a href="#16、Java中的比较器（Comparable、Comparator）" class="headerlink" title="16、Java中的比较器（Comparable、Comparator）"></a>16、Java中的比较器（Comparable、Comparator）</h2><p>1、这两个都是接口。</p>
+<p>内部比较器：Comparable</p>
+<p>外部比较器：Comparator</p>
+<p>2、排序规则实现的方法不同</p>
+<p>Comparable接口的方法：compareTo（object o）</p>
+<p>Comparator接口的方法： compare（T o1， T  o2）</p>
+<p>3、Comparable接口用于在类的设计中使用；设计初期，就实现这个接口，指定排序方式</p>
+<p>Comparator接口用于类设计已经完成，根据需求新建排序类实现排序</p>
+<h2 id="17、Java中的栈和堆"><a href="#17、Java中的栈和堆" class="headerlink" title="17、Java中的栈和堆"></a>17、Java中的栈和堆</h2><p>一、Java中的变量在内存中的分配</p>
+<p>1、类变量（static）：在程序加载时系统就为它在堆中开辟了内存，堆中的内存地址存在在栈中</p>
+<p>2、实例变量：当使用new时，使在堆中开辟相应的内存空间。当实例变量的引用丢失后，被GC列入可回收名单。</p>
+<p>3、局部变量：当执行到它的时候，在栈中开辟内存，当局部变量一旦脱离作用域，内存立即释放。</p>
+<p>二、堆内存用来存放由new创建的对象和数组，由GC来管理，然后在栈中定义一个特殊的变量，让栈中的这个变量的取值等于数组或对象在堆内存中的首地址</p>
+<p>栈中这个变量就成了数组或对象的引用变量</p>
+<p>三、总结</p>
+<p>基本数据类型，局部变量都是存放在栈内存中，用完就消失，没有默认初始化值</p>
+<p>new创建的实例化对象及数组，是存放在堆内存中的，用完之后靠GC不定期自动消除</p>
+<p>堆内存中所有实体都有内存地址值，有默认初始化值；实体不再被指向时，GC自动消除</p>
+<p>局部变量：存储在战争，必须显示的赋值</p>
+<p>成员变量：存储在堆中，有默认初始值</p>
+<h2 id="18、final、finally、finalize"><a href="#18、final、finally、finalize" class="headerlink" title="18、final、finally、finalize"></a>18、final、finally、finalize</h2><p>final: 1、修饰变量：被声明为final的变量必须在声明时给出变量的初始值，而在以后的引用中只能读取。</p>
+<p>2、final声明方法：方法不能被重写</p>
+<p>3、修饰类：不能被继承</p>
+<p>finally：在异常处理类中作为一个必定会执行的语句块。</p>
+<p>finalize：：java技术允许使用finalize方法在垃圾收集器对象从内存中清除出去之前做必要的清理工作</p>
+<h2 id="19、数组和链表的区别"><a href="#19、数组和链表的区别" class="headerlink" title="19、数组和链表的区别"></a>19、数组和链表的区别</h2><p>1、存储位置上：数组逻辑上相邻的元素在物理存储位置上也相邻，而链表不一定；</p>
+<p>2、存储空间上：数组是连续的一段内存空间，链表存放的内存空间可以使连续的，也可以使不连续的</p>
+<p>3、长度可变性：数组长度一旦声明不可变，链表的长度是按照实际需求进行分配</p>
+<p>数组的优点：随机范围性强，查找速度快</p>
+<p>链表的优点：插入删除效率高</p>
+<h2 id="20、为什么提出集合框架"><a href="#20、为什么提出集合框架" class="headerlink" title="20、为什么提出集合框架"></a>20、为什么提出集合框架</h2><p>数组的优点：1、长度不可变；2、存放对象的个数不确定</p>
+<p>数组的缺陷：1、插入和删除效率低；2、可能浪费内存；3、必须有足够的内存空间；4、数组大小固定</p>
+<p>链表的优点：1、插入删除速度快；2、内存利用率高；3.可扩展</p>
+<p>链表的缺点：1、不能随机查找，必须从第一个开始便利，查找效率低</p>
+<h2 id="21、集合的概述以及底层数据结构"><a href="#21、集合的概述以及底层数据结构" class="headerlink" title="21、集合的概述以及底层数据结构"></a>21、集合的概述以及底层数据结构</h2><ul>
+<li>Collection接口<ul>
+<li>List有序的 可重复的<ul>
+<li>ArrayList：Object数组</li>
+<li>LinkedList：双向链表（JDK1.6之前为循环链表，JDK1.7取消了循环）</li>
+<li>Vector：Object数组</li>
+</ul>
+</li>
+<li>Set 存储无序的 不可重复<ul>
+<li>HashSet：基于HashMap实现的，底层采用HashMap来保存元素</li>
+<li>LinkedHashSet：基于LinkedHashMap实现</li>
+<li>TreeSet：红黑树（自平衡的排序二叉树）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Map接口key-value键值对<ul>
+<li>HashMap： JDK8之前HashMap由数组+链表组成的，数组是HashMap的主体，链表则是为了解决哈希冲突而存在的。JDK8以后在解决哈希冲突时有了较大得变化，当链表长度大于阈值（默认为8）时，将链表转化为红黑树，以减少搜索时间</li>
+<li>LinkedHashMap：继承自HashMap，所以它的底层乃然是基于拉链式散列结构即由数组和链表或红黑树组成。另外，LinkedHashMap在上面结构的基础上，增加了一条双向链表，使得上面的结构可以保持键值对的插入顺序。同时通过对链表进行相应的操作，实现了访问顺序相关的逻辑</li>
+<li>TreeMap：红黑树</li>
+<li>HashTable:数组+链表组成的，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的</li>
+</ul>
+</li>
+</ul>
+<h2 id="22、并发与并行"><a href="#22、并发与并行" class="headerlink" title="22、并发与并行"></a>22、并发与并行</h2><p>并发：是指同一个时间段内多个任务同时都在执行，并且都没有执行结束。并发任务强调在一个时间段内同时执行，而一个时间段有多个单位时间累积而成，所以说并发的多个任务在单位时间内不一定同时在执行。</p>
+<p>并行：是说在单位时间内多个任务同时在执行。</p>
+<p>在多线程编程实践中，线程的个数往往多于CPU的个数，所以一般都称为多线程并发编程而不是多线程并行编程</p>
+<h2 id="23、sleep和wait的区别"><a href="#23、sleep和wait的区别" class="headerlink" title="23、sleep和wait的区别"></a>23、sleep和wait的区别</h2><p>sleep()方法是线程类Thread的静态方法，让调用线程进入睡眠状态，让出执行机会给其他线程，等到休眠时间结束后，线程进入就绪状态和其他线程一起竞争cpu的执行时间。</p>
+<p>因为sleep（）是static静态的方法，它不能改变对象的机锁，当一个synchronized快中调用了sleep（）方法，线程虽然进入休眠，但是对象的机锁没有被释放，其他线程依然无法访问这个对象。</p>
+<p>wait（）是Object类的方法，当一个线程执行到wait方法时，它就会进入到一个和该线程相关的等待池，同时释放对象的机锁，使得其他线程能够访问，可以通过notify、notifyAll方法来唤醒等待的线程。</p>
+<h2 id="24、线程的生命周期"><a href="#24、线程的生命周期" class="headerlink" title="24、线程的生命周期"></a>24、线程的生命周期</h2><p>新建-》就绪-》运行-》阻塞-》死亡</p>
+<h2 id="25、什么是线程、进程"><a href="#25、什么是线程、进程" class="headerlink" title="25、什么是线程、进程"></a>25、什么是线程、进程</h2><p>进程：是程序的一次执行，是具有一定独立功能的程序关于某个数据集合上的一次运动活动，是操作系统资源分配和调度的最小单位</p>
+<p>线程：是操作系统能够进行运算调度的最小单位，它包含在进程之中，是进程中实际运作单位。</p>
+<p>两者关系：进程是指程序执行时的一个实例，线程是进程的一个实体；</p>
+<p>线程必定也只属于一个进程，而进程可以拥有多个而且至少拥有一个线程</p>
+<h2 id="26、线程和进程的区别"><a href="#26、线程和进程的区别" class="headerlink" title="26、线程和进程的区别"></a>26、线程和进程的区别</h2><p>进程：</p>
+<ul>
+<li>拥有独立的堆栈空间和数据端，系统开销大</li>
+<li>由于进程之间是独立的特点，使得进程的安全性比较高，有独立的地址空间、一个进程崩溃，不影响其他进程</li>
+<li>进程的通信机制相对复杂，比如管道、信号、消息队列、套接字等</li>
+</ul>
+<p>线程：</p>
+<ul>
+<li>线程拥有独立的堆栈空间，但是共享数据段，它们彼此之间使用相同的地址空间，比进程开销小</li>
+<li>线程是一个进程中不同的执行路径 一个线程的死亡就等于整个进程的死亡</li>
+<li>通信相对方便</li>
+</ul>
+<h2 id="27、图解进程线程"><a href="#27、图解进程线程" class="headerlink" title="27、图解进程线程"></a>27、图解进程线程</h2><p><img src="/2022/07/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98/image-20220719223512677.png" alt="image-20220719223512677"></p>
+<p>从上图可以看出：一个进程中可以有多个线程，多个线程共享进程的堆和方法区资源，但是每个线程有自己的程序计数器、虚拟机栈和本地方法栈。</p>
+<h2 id="28、什么是线程安全、为什么提出线程安全、如何实现？"><a href="#28、什么是线程安全、为什么提出线程安全、如何实现？" class="headerlink" title="28、什么是线程安全、为什么提出线程安全、如何实现？"></a>28、什么是线程安全、为什么提出线程安全、如何实现？</h2><p>当一个线程在操作共享资源时，未执行完毕的情况下，其他线程参与进来，导致共享资源出现安全问题</p>
+<p>方式一：同步代码块</p>
+<p>synchronized（同步监视器）{</p>
+<p>​    同步的代码</p>
+<p>}</p>
+<p>同步监视器：可以由任何对象来承担，针对于实现的方式可以用对象，也可以采用this关键字。对于继承方式只能采用静态的对象。</p>
+<p>方式二：同步方法</p>
+<p>确保当中一个线程执行此方法时，其他线程等待知道当前线程执行完</p>
+<h2 id="29、Thread类中的start（）和run（）方法有什么区别？"><a href="#29、Thread类中的start（）和run（）方法有什么区别？" class="headerlink" title="29、Thread类中的start（）和run（）方法有什么区别？"></a>29、Thread类中的start（）和run（）方法有什么区别？</h2><p>start（）方法被启动新创建的线程，而且start（）内部调用了run方法，这和直接调用run（）方法的效果不一样。</p>
+<p>当你调用run（）方法的时候，只会是在原来的线程中调用，没有新的线程启动；start（）方法才会启动新线程</p>
+<h2 id="30、Java中notify和notifyAll有什么区别？"><a href="#30、Java中notify和notifyAll有什么区别？" class="headerlink" title="30、Java中notify和notifyAll有什么区别？"></a>30、Java中notify和notifyAll有什么区别？</h2><p>notify（）方法不能唤醒某个具体的线程，所以只有一个线程在等待的时候它才有用武之地</p>
+<p>而notifyAll（）方法唤醒所有线程并允许它们争夺锁确保了至少有一个线程能继续运行</p>
+<h2 id="31、泛型是什么？为什么使用？"><a href="#31、泛型是什么？为什么使用？" class="headerlink" title="31、泛型是什么？为什么使用？"></a>31、泛型是什么？为什么使用？</h2><p>简单的说是一种标签，不确定的类型，用户使用的时候确定类型，是JDK1.5出现的新特性，用于解决安全问题，是一种安全机制。</p>
+<p>好处：</p>
+<ul>
+<li>将运行时期会可能出现的异常转移到编译期</li>
+<li>提高了安全性</li>
+<li>避免了强制类型转换的麻烦</li>
+</ul>
+<h2 id="32、概述反射和序列化"><a href="#32、概述反射和序列化" class="headerlink" title="32、概述反射和序列化"></a>32、概述反射和序列化</h2><p>反射：</p>
+<p>Java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；</p>
+<p>对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为java语言的反射机制；</p>
+<p>序列化：</p>
+<p>序列化可以理解成把对象转换为容易传输的格式的过程。</p>
+<h2 id="33、序列化的好处？"><a href="#33、序列化的好处？" class="headerlink" title="33、序列化的好处？"></a>33、序列化的好处？</h2><p>方便保存对象。因为对象不能保存，所以可以序列化，将其保存。</p>
+<h2 id="34、使用JDBC的过程"><a href="#34、使用JDBC的过程" class="headerlink" title="34、使用JDBC的过程"></a>34、使用JDBC的过程</h2><p>1、加载JDBC驱动程序</p>
+<p>class.forName(“com.mysql.jdbc.Driver”);</p>
+<p>2、提供JDBC连接的URL</p>
+<p>jdbc:myql://localhost:3306/test?useUnicode=true&amp;chracterEncoding=utf-8;</p>
+<p>3、创建数据库的连接</p>
+<p>Connection con = DriverManager.getConnection(url, userrname, password)</p>
+<p>4、实现PreparedStatement</p>
+<p>PreparedStatement pastmt = con.prepareStatement(sql);</p>
+<p>5、执行SQL语句</p>
+<p>6、处理结果</p>
+<p>7、关闭JDBC对象</p>
+<h1 id="数据库篇"><a href="#数据库篇" class="headerlink" title="数据库篇"></a>数据库篇</h1>]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
 </search>
