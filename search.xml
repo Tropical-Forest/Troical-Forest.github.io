@@ -3277,7 +3277,534 @@
 <p>5、执行SQL语句</p>
 <p>6、处理结果</p>
 <p>7、关闭JDBC对象</p>
-<h1 id="数据库篇"><a href="#数据库篇" class="headerlink" title="数据库篇"></a>数据库篇</h1>]]></content>
+<h1 id="Java集合"><a href="#Java集合" class="headerlink" title="Java集合"></a>Java集合</h1><h2 id="1、什么是集合"><a href="#1、什么是集合" class="headerlink" title="1、什么是集合"></a>1、什么是集合</h2><ul>
+<li>集合就是一个放数据的容器，准确的说是放数据对象引用的容器</li>
+<li>集合类存放的都是对象的引用，而不是对象的本身</li>
+<li>集合类型主要有3种：set（集）、list（列表）和map（映射）</li>
+</ul>
+<h2 id="2、集合的特点"><a href="#2、集合的特点" class="headerlink" title="2、集合的特点"></a>2、集合的特点</h2><p>集合的特点主要有如下两点：</p>
+<ul>
+<li>集合用于存储对象的容器，对象是用来封装数据，对象多了也需要存储集中式管理</li>
+<li>和数组对比对象的大小不确定。因为集合是可变长度的。数组需要提前定义大小。</li>
+</ul>
+<h2 id="3、集合和数组的区别"><a href="#3、集合和数组的区别" class="headerlink" title="3、集合和数组的区别"></a>3、集合和数组的区别</h2><ul>
+<li>数组是固定长度的；集合是可变长度的</li>
+<li>数组可以存储基本数据类型，也可以存储引用数据类型；集合只能存储引用数据类型。</li>
+<li>数组存储的元素必须是同一个数据类型；集合存储的对象可以是不同数据类型。</li>
+</ul>
+<h2 id="4、使用集合框架的好处"><a href="#4、使用集合框架的好处" class="headerlink" title="4、使用集合框架的好处"></a>4、使用集合框架的好处</h2><p>1、容量自增长</p>
+<p>2、提供了高性能的数据结构和算法，使编码更轻松，提高了程序速度和质量</p>
+<p>3、可以方便地扩展或改写集合，提高代码复用性和可操作性。</p>
+<p>4、通过使用JDK自带的集合类，可以降低维护和学习新API成本。</p>
+<h2 id="5、常用的集合类有哪些？"><a href="#5、常用的集合类有哪些？" class="headerlink" title="5、常用的集合类有哪些？"></a>5、常用的集合类有哪些？</h2><p>Map接口和Collection接口是所有集合框架的父接口：</p>
+<ul>
+<li>Collection接口的子接口包括：Set接口和List接口</li>
+<li>Map接口的实现类主要有：HashMap、TreeMap、HashTable、ConcurrentHashMap以及Properties等</li>
+<li>Set接口的实现类主要有：HashSet、TreeSet、LinkedHashSet等</li>
+<li>List接口的实现类主要有：ArrayList、LinkedList、Stack以及Vector等</li>
+</ul>
+<h2 id="6、List、Set、Map三者的区别？"><a href="#6、List、Set、Map三者的区别？" class="headerlink" title="6、List、Set、Map三者的区别？"></a>6、List、Set、Map三者的区别？</h2><p><img src="/2022/07/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98/Users\刘培永\AppData\Roaming\Typora\typora-user-images\image-20220721095251345.png" alt="image-20220721095251345"></p>
+<ul>
+<li>Java容器分为Collection和Map两大类。Collection集合的子接口有Set、List、Queue三种子接口。我们比较常用的是Set、List，Map接口不是Collection的子接口</li>
+<li>Collection集合主要有List和Set两大接口<ul>
+<li>List： 一个有序（元素存入集合的顺序和取出的顺序一致）容器，元素可以重复，可以插入多个null元素，元素都有索引。常用的实现类有ArrayList、LinkedList和Vector。</li>
+<li>Set：一个无序（存入和取出的顺序有可能不一致）容器，不可用存储重复元素，只允许一个null元素，必须保证元素唯一性。Set接口常用的实现类是HashSet、LinkedHashSet、TreeSet</li>
+</ul>
+</li>
+<li>Map是一个键值对集合，存储键、值和之间的映射。key无序，唯一；value不要求有序，允许重复。Map没有继承雨collection接口。从Map集合中检索元素时，只要给出键对象，就会返回对应的值对象。<ul>
+<li>Map的常用实现类：HashMap、ConcurrentHashMap、HashTable、TreeMap、LinkedHashMap</li>
+</ul>
+</li>
+</ul>
+<h2 id="7、集合框架底层数据结构"><a href="#7、集合框架底层数据结构" class="headerlink" title="7、集合框架底层数据结构"></a>7、集合框架底层数据结构</h2><ul>
+<li><p>Collection</p>
+<p>1.List</p>
+<ul>
+<li>ArrayList：Object数组</li>
+<li>Vector： Object数组</li>
+<li>LinkedList：  双向链表(JDK1.6之前为循环链表，JDK1.7取消了循环)</li>
+</ul>
+<p>2.Set</p>
+<ul>
+<li>HashSet（无序、唯一）：基于HashMap实现的，底层采用HashMap来保存元素</li>
+<li>LinkedHashSet：LinkedHashSet继承于HashSet，并且其内部是通过LinkedHashMap来实现的。有点类似于我们之前说的LinkedHashMap其内部基于HashMap实现一样，不过还是有一点点区别的。</li>
+<li>TreeSet（有序、唯一）：红黑树（自平衡的排序二叉树）</li>
+</ul>
+</li>
+<li><p>Map</p>
+<ul>
+<li>HashMap：JDK1.8之前HashMap由数组+链表组成的，数组是HashMap的主体，链表则是为了解决哈希冲突而存在的（拉链法解决冲突），JDK1.8以后在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为8）时，将链表转化为红黑树，以减少搜索时间</li>
+<li>LinkedHashMap：LinkedHashMap继承自HashMap，所有它的底层结构仍然是基于拉链式散列结构即由数组+链表或红黑树组成。另外，LinkedHashMap在上面结构的基础上，增加了一条双向链表，使得上面的结构可以保持键值对的插入顺序。同时通过对链表进行相应的操作，实现了访问顺序相关逻辑。</li>
+<li>HashTable：数组+链表组成的，数组是HashTable的主体，链表则是为了解决哈希冲突而存在的</li>
+<li>TreeMap：红黑树（自平衡的排序二叉树）</li>
+</ul>
+</li>
+</ul>
+<h2 id="8、哪些集合类是线程安全的？"><a href="#8、哪些集合类是线程安全的？" class="headerlink" title="8、哪些集合类是线程安全的？"></a>8、哪些集合类是线程安全的？</h2><ul>
+<li>Vector：就比ArrayList多了个synchronized（线程安全），因为效率低，现在已经不太建议使用。</li>
+<li>hashTable: 就比HashMap多了个synchronized（线程安全），不建议使用</li>
+<li>ConcurrentHashMap: 是Java5中支持高并发、高吞吐量的线程安全HashMap实现类。它由Segment数组结构和Hashentry数组结构组成。Segment的结构和HashMap类似，是一种数组和链表结构；一个Segment里包含一个HashEntry数组，每个HashEntry是一个链表结构的元素；每个Segment守护者一个HashEntry数组里的元素，当对HashEntry数组的数据进行修改时，必须首先获得它对应的Segment锁（推荐使用）</li>
+</ul>
+<h2 id="9、Java集合的快速失败机制”fail-fast“？"><a href="#9、Java集合的快速失败机制”fail-fast“？" class="headerlink" title="9、Java集合的快速失败机制”fail-fast“？"></a>9、Java集合的快速失败机制”fail-fast“？</h2><ul>
+<li><p>是java集合的一种错误检测机制，当多个线程对集合进行结构上的改变的操作时，有可能会产生fail-fast机制</p>
+</li>
+<li><p>例如：假设存在两个线程（线程1、线程2)，线程1通过Iterator在遍历集合A中的元素，在某个时候线程2修改了结合A的结构（是结构上面的修改，而不是简单的修改集合元素的内容），那么这个时候程序就会抛出ConcurrentModificationException异常，从而产生fail-fast机制。</p>
+</li>
+<li><p>原因：迭代器在遍历时直接访问集合中的内容，并且在遍历过程中使用一个modCount变量，集合在被遍历期如果内容发生变化，就会改变modCount的值。每当迭代器使用hashNext（）遍历下一个元素之前，都会检测modCount变量是否为expectedmodCount值，是的话就返回遍历；否则抛出异常，终止遍历</p>
+</li>
+<li><p>解决方法：</p>
+<p>1、在遍历过程中，所有涉及到改变modCount值的地方全部加上synchronized。</p>
+<p>2、使用CopyOnWriteArrayList来替换ArrayList</p>
+</li>
+</ul>
+<h2 id="10、怎么确保一个集合不能被修改？"><a href="#10、怎么确保一个集合不能被修改？" class="headerlink" title="10、怎么确保一个集合不能被修改？"></a>10、怎么确保一个集合不能被修改？</h2><ul>
+<li><p>可以使用Collection.unmodififiableCollection(Collection c)方法来创建一个只读集合，这样改变集合的任何操作都会抛出java.lang.unsupportedOperationException异常。</p>
+</li>
+<li><p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list. add(<span class="string">"x"</span>);</span><br><span class="line">Collection&lt;String&gt; clist = Collections. unmodifiableCollection(list);</span><br><span class="line">clist. add(<span class="string">"y"</span>); <span class="comment">// 运行时此行报错</span></span><br><span class="line">System. out. println(list. size());</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="11、迭代器-Iterator-是什么？"><a href="#11、迭代器-Iterator-是什么？" class="headerlink" title="11、迭代器 Iterator 是什么？"></a>11、迭代器 Iterator 是什么？</h2><ul>
+<li><p>可以方便的对容器内的元素进行遍历</p>
+</li>
+<li><p>Iterator 接口提供遍历任何Collection的接口。我们可以从一个Collection中使用迭代器方法来获取迭代器实例。迭代器取代了java集合框架中的Enumeration，迭代器运行调用者在迭代过程中移除元素。</p>
+</li>
+<li>因为所有Collection接口继承了Iterator迭代器</li>
+</ul>
+<h2 id="12、Iterator-怎么使用？有什么特点？"><a href="#12、Iterator-怎么使用？有什么特点？" class="headerlink" title="12、Iterator 怎么使用？有什么特点？"></a>12、Iterator 怎么使用？有什么特点？</h2><p>Iterator 使用代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">Iterator&lt;String&gt; it = list. iterator();</span><br><span class="line"><span class="keyword">while</span>(it. hasNext())&#123;</span><br><span class="line">String obj = it. next();</span><br><span class="line">System. out. println(obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Iterator 的特点是只能单向遍历，但是更加安全，因为它可以确保，在当前遍历的集合元素被更改的时候，就会抛出ConcurrentModifificationException异常。</p>
+<h2 id="13、如何边遍历边移除Collection中的元素？"><a href="#13、如何边遍历边移除Collection中的元素？" class="headerlink" title="13、如何边遍历边移除Collection中的元素？"></a>13、如何边遍历边移除Collection中的元素？</h2><ul>
+<li><p>边遍历边修改Collection的唯一正确方式是使用Iterator.remove（）方法，如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Iterator&lt;Integer&gt; it = list.iterator();</span><br><span class="line"><span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">    it.remove();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一种最常见的错误代码如下：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(Integer i: list)&#123;</span><br><span class="line">    list.remove(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行以上错误代码会报ConcurrentModificationException异常，这是因为当使用foreach（for（integer i:list））语句时，会自动生成一个Iterator来遍历该list。但同时该list正在被Iterator。remove（）修改。java一般不允许一个线程在遍历Collection时另一个线程修改它。</li>
+</ul>
+<h2 id="14、Iterator-和-ListIterator有什么区别"><a href="#14、Iterator-和-ListIterator有什么区别" class="headerlink" title="14、Iterator 和 ListIterator有什么区别"></a>14、Iterator 和 ListIterator有什么区别</h2><ul>
+<li>Iterator 可以遍历Set 和 List集合， 而ListIterator只能遍历List</li>
+<li>Iterator 只能单向遍历，而ListIterator可以双向遍历。</li>
+<li>ListIterator 实现Iterator接口，然后添加了一些额外的功能，比如添加一个元素、替换一个元素、获取前面或后面元素的索引位置。</li>
+</ul>
+<h2 id="15、遍历一个List有哪些不同的方式？每种方法的实现原理是什么？Java中List遍历的最佳实践是什么？"><a href="#15、遍历一个List有哪些不同的方式？每种方法的实现原理是什么？Java中List遍历的最佳实践是什么？" class="headerlink" title="15、遍历一个List有哪些不同的方式？每种方法的实现原理是什么？Java中List遍历的最佳实践是什么？"></a>15、遍历一个List有哪些不同的方式？每种方法的实现原理是什么？Java中List遍历的最佳实践是什么？</h2><ul>
+<li><p>遍历方式有以下几种：</p>
+<ul>
+<li>for循环遍历，基于计数器。在集合外部维护一个计数器，然后依次读取每一个位置的元素，当读取到最后一个元素后停止。</li>
+<li>迭代器遍历，Iterator。Iterator 是面向对象的一个设计模式，目的是屏蔽不同数据集合的特点，统一遍历集合的接口。Java在Collection中支持Iterator模式</li>
+<li>foreach 循环遍历。foreach内部也是采用Iterator的方式实现。使用时不需要显式声明Iterator或计数器。优点是代码简洁，不易出错；缺点是只能做简单的遍历，不能在遍历过程中操作数据集合，例如删除、替换。</li>
+</ul>
+</li>
+<li><p>最佳实践：Java Collections框架中提供了一个RandomAccess接口，用来标记List实现是否支持Random Access。</p>
+<ul>
+<li>如果一个数据集合实现了该接口，就意味着它支持Random Access，按位置读取元素的平均时间复杂度为O（1），如ArrayList。</li>
+<li>如果没有实现该接口，表示不支持Random Access，如LInkedList</li>
+<li>推荐的做法就是，支持Random Access的列表可用for循环遍历，否则建议使用Iterator 或 foreach遍历</li>
+</ul>
+</li>
+</ul>
+<h2 id="16、说一下-ArrayList-的优缺点？"><a href="#16、说一下-ArrayList-的优缺点？" class="headerlink" title="16、说一下 ArrayList 的优缺点？"></a>16、说一下 ArrayList 的优缺点？</h2><ul>
+<li>ArrayList的优点如下：<ul>
+<li>ArrayList 底层以数组实现，是一种随机访问模式。ArrayList 实现了 RandomAccess接口，因此查找的时候非常快。</li>
+<li>ArrayList在顺序添加一个元素的时候非常方便。</li>
+</ul>
+</li>
+<li>ArrayList的缺点如下：<ul>
+<li>删除元素的时候，需要做一次元素复制操作。如果要复制的元素很多，那么就会比较耗费性能。</li>
+<li>插入元素的时候，也需要做一次元素复制操作，缺点同上。</li>
+</ul>
+</li>
+<li>ArrayList比价适合顺序添加、随机访问的场景。</li>
+</ul>
+<h2 id="17、如何实现数组和List之间的转换？"><a href="#17、如何实现数组和List之间的转换？" class="headerlink" title="17、如何实现数组和List之间的转换？"></a>17、如何实现数组和List之间的转换？</h2><ul>
+<li>数组转List： 使用Arrays.asList(array)进行转换。</li>
+<li>List转数组： 使用List自带的toArray（）方法。</li>
+</ul>
+<h2 id="18、ArrayList-和-LinkedList-的区别是什么？"><a href="#18、ArrayList-和-LinkedList-的区别是什么？" class="headerlink" title="18、ArrayList 和 LinkedList 的区别是什么？"></a>18、ArrayList 和 LinkedList 的区别是什么？</h2><ul>
+<li>数据结构实现：ArrayList是动态数组的数据结构实现，而LinkedList是双向链表的数据结构实现。</li>
+<li>随机访问效率： ArrayList比LinkedList在随机访问的时候效率要高，因为LinkedList是线程的数据存储方式，所以需要移动指针从前往后依次查找。</li>
+<li>增加和删除效率： 在非收尾的增加和删除操作，LinkedList要比ArrayList效率要高，因为ArrayList增删操作要影响数组内其他数据的下标。</li>
+<li>内存空间占用： LinkedList 比 ArrayList更占内存，因为LinkedList的节点除了存储数据，还存储两个引用，一个执行前一个元素，一个指向后一个元素。</li>
+<li>线程安全： ArrayList 和LInkedList都是不同步的，也就是不保证线程安全；</li>
+<li>综合来说，在需要频繁读取集合中的元素时，更推荐使用ArrayList，而在插入和删除操作较多时，更推荐使用LinkedList。</li>
+<li>LinkedList的双向链表也叫双链表，是链表的一种，它的每一个数据结点中都有两个指针，分别指向直接后继和直接前驱。所以，从双向链表中的任意一个结点开始，都可以很方便地访问它的前驱结点和后继结点。</li>
+</ul>
+<h2 id="19、ArrayList-和-Vector-的区别是什么？"><a href="#19、ArrayList-和-Vector-的区别是什么？" class="headerlink" title="19、ArrayList 和 Vector 的区别是什么？"></a>19、ArrayList 和 Vector 的区别是什么？</h2><ul>
+<li>这两个类都实现了List接口，它们都是有序集合<ul>
+<li>线程安全： Vector使用了synchronized来实现线程同步，是线程安全的，而ArrayList是非线程安全的</li>
+<li>性能： ArrayList 在性能方面要优于Vector</li>
+<li>扩容： ArrayList 和 Vector都会根据实际的需要动态的调整容量，只不过在Vector扩容每次会增加一倍，而ArrayList只会增加50%。</li>
+</ul>
+</li>
+<li>Vector类的所有方法都是同步的。可以由两个线程安全的访问一个vector对象、但是一个线程访问Vector的话代码要在同步操作上耗费大量的时间。</li>
+<li>ArrayList不是同步的，所以在不需要保证线程安全时建议使用ArrayList。</li>
+</ul>
+<h2 id="20、插入数据时，ArrayList、LinkedList、Vector谁的速度较快？阐述ArrayList、Vector、LinkedList的存储性能和特性？"><a href="#20、插入数据时，ArrayList、LinkedList、Vector谁的速度较快？阐述ArrayList、Vector、LinkedList的存储性能和特性？" class="headerlink" title="20、插入数据时，ArrayList、LinkedList、Vector谁的速度较快？阐述ArrayList、Vector、LinkedList的存储性能和特性？"></a>20、插入数据时，ArrayList、LinkedList、Vector谁的速度较快？阐述ArrayList、Vector、LinkedList的存储性能和特性？</h2><ul>
+<li>ArrayList和Vector底层的实现都是使用数组方式存储数据。数组元素数大于实际存储的数据以便增加和插入元素，它们都允许直接按序号索引元素，但是插入元素要涉及数组元素的移动等内存操作，所以索引数据快而插入数据慢。</li>
+<li>Vector中的方法由于加了synchronized修饰，因此Vector是线程安全容器，但性能上较ArrayList差。</li>
+<li>LinkedList使用双向链表实现存储，按序号索引数据需要进行向前或后遍历，但插入数据时只需要记录当前项的前后项即可，所以LInkedList插入速度较快。</li>
+</ul>
+<h2 id="21、多线程场景如何使用ArrayList？"><a href="#21、多线程场景如何使用ArrayList？" class="headerlink" title="21、多线程场景如何使用ArrayList？"></a>21、多线程场景如何使用ArrayList？</h2><ul>
+<li>ArrayList不是线程安全的，如果遇到多线程场景，可以通过Collections的synchronizedList方法将其转换成线程安全的容器后再使用。</li>
+</ul>
+<h2 id="22、为什么ArrayList的elementData-加上-transient修饰？"><a href="#22、为什么ArrayList的elementData-加上-transient修饰？" class="headerlink" title="22、为什么ArrayList的elementData 加上 transient修饰？"></a>22、为什么ArrayList的elementData 加上 transient修饰？</h2><ul>
+<li>ArrayList实现了Serializable接口，这意味着ArrayList支持序列化。transient的作用是说不希望elementData数组被序列化，重写了writeObject实现。</li>
+<li>每次序列化时，先调用defaultWriteObject（）方法序列化ArrayList中的非transient元素，然后遍历elementData，只序列化已存入的元素，这样既加快了序列化的速度，又减少了序列化之后的文件大小。</li>
+</ul>
+<h2 id="23、List和Set的区别？"><a href="#23、List和Set的区别？" class="headerlink" title="23、List和Set的区别？"></a>23、List和Set的区别？</h2><h2 id="24、说一下HashSet的实现原理？"><a href="#24、说一下HashSet的实现原理？" class="headerlink" title="24、说一下HashSet的实现原理？"></a>24、说一下HashSet的实现原理？</h2><ul>
+<li>HashSet 是基于HashMap实现的，HashSet的值存放与HashMap的key上，HashMap的value统一为present，因此HashSet的实现比较简单，相关HashSet的操作，基本上都是直接调用底层HashMap的相关方法来完成，HashSet不允许重复值</li>
+</ul>
+<h2 id="25、HashSet如何检查重复？HashSet是如何保证数据不可重复的？"><a href="#25、HashSet如何检查重复？HashSet是如何保证数据不可重复的？" class="headerlink" title="25、HashSet如何检查重复？HashSet是如何保证数据不可重复的？"></a>25、HashSet如何检查重复？HashSet是如何保证数据不可重复的？</h2><ul>
+<li>向HashSet 中add（）元素时，判断元素是否存在的依据，不仅要比较hash值，同时还要结合equles（）方法比较。</li>
+<li>HashSet中的add（）方法会使用HashMa的put方法</li>
+<li>HashMap的key是唯一的，由源码可以看出HashSet添加进去的值就是作为HashMap的key，并且在HashMap中如果k/v相同时，会用新的V覆盖旧的V，然后返回旧的V。所以不会重复（hashMap比较key是否相等是先比较hashcode再比较equals）。</li>
+</ul>
+<h2 id="26、HashSet-和HashMap的区别"><a href="#26、HashSet-和HashMap的区别" class="headerlink" title="26、HashSet 和HashMap的区别"></a>26、HashSet 和HashMap的区别</h2><p><img src="/2022/07/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98/Users\刘培永\AppData\Roaming\Typora\typora-user-images\image-20220721150706066.png" alt="image-20220721150706066"></p>
+<h2 id="27、什么是Hash算法"><a href="#27、什么是Hash算法" class="headerlink" title="27、什么是Hash算法"></a>27、什么是Hash算法</h2><ul>
+<li>哈希算法是指把任意长度的二进制映射为固定长度的较小的二进制，这个较小的二进制值叫做哈希值</li>
+</ul>
+<h2 id="28、什么是链表"><a href="#28、什么是链表" class="headerlink" title="28、什么是链表"></a>28、什么是链表</h2><h2 id="29、说一下HashMap的实现原理？"><a href="#29、说一下HashMap的实现原理？" class="headerlink" title="29、说一下HashMap的实现原理？"></a>29、说一下HashMap的实现原理？</h2><ul>
+<li>HashMap概述： HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null值和null键，此类不保证映射的顺序，特别是它不保证该顺序恒久不变。</li>
+<li>HashMap的数据结构：在java编程语言中，最基本的结构就是两种，一个是数组，另外一个是模拟指针（引用），所有的数据结构都可以用这两种基本结构来构造的，hashMap也不例外。HashMap实际上是一个“链表散列的数据结构，即数组和链表的结合体</li>
+<li>HashMap基于Hash算法实现的<ul>
+<li>当我们往HashMap中put元素时，利用key的hashCode重新hash计算出当前对象的元素在数组中的下标</li>
+<li>存储时，如果出现hash值相同的key，此时有两种情况<ul>
+<li>如果key相同，则覆盖原始值</li>
+<li>如果key不相同，则将当前的key-value放入链表中</li>
+</ul>
+</li>
+<li>获取是，直接找到hash值对应的下标，在进一步判断key是否相同，从而找到对应值</li>
+<li>理解了以上过程就不难明白hashMap是如何解决hash冲突的问题核心就是持有了数组的存储方式，然后将冲突的key的对象放入链表中，一旦发现冲突就在链表中做进一步的对比。</li>
+</ul>
+</li>
+<li>需要注意jdk1.8中对HashMap的实现做了优化，当链表的节点数据超过8个以后，该链表会转为红黑树来提高查询效率，从原来的o（n)到O（logn）</li>
+</ul>
+<h2 id="30、HashMap在JDK1-7和JDK1-8中有哪些不同？hashmap的底层实现？"><a href="#30、HashMap在JDK1-7和JDK1-8中有哪些不同？hashmap的底层实现？" class="headerlink" title="30、HashMap在JDK1.7和JDK1.8中有哪些不同？hashmap的底层实现？"></a>30、HashMap在JDK1.7和JDK1.8中有哪些不同？hashmap的底层实现？</h2><ul>
+<li>jdk1.8主要解决或优化了以下问题：<ul>
+<li>resize扩容优化</li>
+<li>引入了红黑树，目的是避免单条链表过长而影响效率，红黑树算法</li>
+<li>解决了多线程死循环问题，但仍然是非线程安全的，多线程时可能会造成数据丢失问题。</li>
+</ul>
+</li>
+</ul>
+<h2 id="31、什么是红黑树？"><a href="#31、什么是红黑树？" class="headerlink" title="31、什么是红黑树？"></a>31、什么是红黑树？</h2><h2 id="32、HashMap的put方法的具体流程？"><a href="#32、HashMap的put方法的具体流程？" class="headerlink" title="32、HashMap的put方法的具体流程？"></a>32、HashMap的put方法的具体流程？</h2><h2 id="33、HashMap的扩容操作时怎么实现的？"><a href="#33、HashMap的扩容操作时怎么实现的？" class="headerlink" title="33、HashMap的扩容操作时怎么实现的？"></a>33、HashMap的扩容操作时怎么实现的？</h2><p>1、在jdk.8中，resize方法是在hashmap中的键值对大于阈值时或者初始化时，就调用resize方法进行扩容；</p>
+<p>2、每次扩展的时候，都是扩展2倍</p>
+<p>3、扩展后Node对象的位置要么在原来位置，要么移动到原偏移量两倍的位置。</p>
+<h2 id="34、HashMap是怎么解决哈希冲突的？"><a href="#34、HashMap是怎么解决哈希冲突的？" class="headerlink" title="34、HashMap是怎么解决哈希冲突的？"></a>34、HashMap是怎么解决哈希冲突的？</h2><p>什么是哈希？</p>
+<ul>
+<li>Hash，一般翻译为“散列”，也有直接音译为“哈希”的，hash就是使用哈希算法是指把任意长度的二进制映射为固定长度的较小的二进制值，这个较小的二进制值叫做哈希值。</li>
+</ul>
+<p>什么是哈希冲突？</p>
+<ul>
+<li>当两个不同的输入值，根据同一散列函数计算出相同的散列值的现象，我们就把它叫做碰撞。</li>
+</ul>
+<p>总结解决哈希冲突方法：</p>
+<ul>
+<li>链表法就是将相同hash值的对象组织成一个链表放在hash值对应的槽位；</li>
+<li>开放地址法是通过一个探测算法，当某个槽位已经被占据的情况下继续查找下一个可以使用的槽位。</li>
+</ul>
+<h2 id="35、能否使用任何类作为Map的key？"><a href="#35、能否使用任何类作为Map的key？" class="headerlink" title="35、能否使用任何类作为Map的key？"></a>35、能否使用任何类作为Map的key？</h2><p>可以使用任何类作为Map的key，然而在使用之前，需要考虑以下几点：</p>
+<ul>
+<li>如果类重写了equals（）方法，也应该重写hashCode方法</li>
+<li>类的所有实例需要遵循与equals（）和hashcode()相关的规则</li>
+<li>如果一个类没有使用equals（），不应该在hashcode()中使用它。</li>
+<li>用户自定义key类最佳实践是使之为不可变得，这样hashCode（）值被缓存起来，拥有更好的性能。不可变的类也可以确保hashCode（）和equals（）在未来不会改变，这样就会解决与可变相关的问题了。</li>
+</ul>
+<h2 id="36、为什么hashMap中String、Interger这样的包装类适合作为K？"><a href="#36、为什么hashMap中String、Interger这样的包装类适合作为K？" class="headerlink" title="36、为什么hashMap中String、Interger这样的包装类适合作为K？"></a>36、为什么hashMap中String、Interger这样的包装类适合作为K？</h2><p>String、Integer等包装类的特性能够保证hash值的不可更改性和计算准确性，能够有效的减少Hash碰撞的几率</p>
+<p>​    都是final类型，即不可变性，保证key的不可更改性，不会存在获取hash值不同的情况下</p>
+<p>​    内部已重写了equals（）、hashCode（）等方法，遵守了HashMap内部的规范，不容易出现hash值计算错误的情况。</p>
+<h2 id="37、如果使用Object作为HashMapd的Key，应该怎么办？"><a href="#37、如果使用Object作为HashMapd的Key，应该怎么办？" class="headerlink" title="37、如果使用Object作为HashMapd的Key，应该怎么办？"></a>37、如果使用Object作为HashMapd的Key，应该怎么办？</h2><p>重写hashCode（）和equals（）方法</p>
+<p>1、重写hashCode（）是因为计算存储数据的存储位置，需要注意不用试图从散列码计算中排除一个对象的关键部分啦提高性能，这样虽然能更快但可能会导致更多的hash碰撞。</p>
+<p>2、重写equals（）方法，需要遵守自反性、对称性、传递性、一致性以及对于任何非null的引用值x，x.equals（null）必须返回false的这几个特性，目的是为了保证key在哈希表中的唯一性</p>
+<p>38、HashMap为什么不直接使用hashcode()处理后的哈希值直接作为table的下标？</p>
+<ul>
+<li>hashCode（）方法返回的是int整数类型，其范围是约有40亿个映射空间，而HashMap的容量服务是在16-2^30，hashMap通常情况下是取不到最大值的，并且设备上也难以提供这么多的存储空间，从而导致通过hashCode（）计算出的哈希值可能不在数组大小范围内，进而无法匹配存储位置。</li>
+<li>那怎么解决？<ul>
+<li>HashMap自己实现了自己的hash方法，通过两次扰动使得它自己的哈希值高低位自行进行异或运算，降低哈希碰撞概率也使得数据分布平均。</li>
+<li>在保证数组长度为2的幂次方的时候，使用hash（）运算之后的值与预算来获取数组下标的方式进行存储，这样一来是比取余操作更加有效率，二来也是因为只有数组长度为2次幂时，h&amp;(length-1)才等于h%length，三来解决了哈希值与数组大小范围不匹配的问题。</li>
+</ul>
+</li>
+</ul>
+<h2 id="39、HashMap的长度为什么是2的幂次方？"><a href="#39、HashMap的长度为什么是2的幂次方？" class="headerlink" title="39、HashMap的长度为什么是2的幂次方？"></a>39、HashMap的长度为什么是2的幂次方？</h2><ul>
+<li>为了能让HashMap存取高效，尽量较少碰撞，也就是尽量把数据分配均匀，每个链表/红黑树长度大致相同。这个实现就是把数据存到哪个链表/红黑树中的算法</li>
+<li>hash%length = hash&amp;(length-1) 前提是length是2的n次方</li>
+</ul>
+<h2 id="40、HashMap与HashTabe有什么区别？"><a href="#40、HashMap与HashTabe有什么区别？" class="headerlink" title="40、HashMap与HashTabe有什么区别？"></a>40、HashMap与HashTabe有什么区别？</h2><p>1、线程安全：HashMap是非线程安全的，HashTable是线程安全；HashTable内部的方法基本都经过synchronized修饰。（如果你要保证线程安全的话就使用ConcurrentHashMap）；</p>
+<p>2、效率：因为线程安全的问题，HashMap要比HashTable效率高一些。另外，HashTable基本被淘汰，不要在代码中使用它；</p>
+<p>3、对Null key和Null value的支持：HashMap 中，null 可以作为键，这样的键只有一个，可以有一个或多个键所对应的值为 null。但是在 HashTable 中 put 进的键值只要有一个 null，直接抛NullPointerException。</p>
+<p>4、初始容量大小和每次扩容容量大小的不同；</p>
+<p>5、创建时如果不指定容量初始值，Hashtable 默认的初始大小为11，之后每次扩充，容量变为原来的2n+1。HashMap 默认的初始化大小为16。之后每次扩充，容量变为原来的2倍。</p>
+<p>6、创建时如果给定了容量初始值，那么 Hashtable 会直接使用你给定的大小，而 HashMap 会将其扩充为2的幂次方大小。也就是说 HashMap 总是使用2的幂作为哈希表的大小，后面会介绍到为什么是2的幂次方。</p>
+<p>7、底层数据结构：JDK1.8以后的HashMap在解决哈希冲突时有了较大的变化，当链表长度大于阈值时，将链表转化为红黑树，以减少搜索时间。HashTable没有这样的机制</p>
+<p>8、推荐使用：推荐在单线程环境下使用HashMap替代，如果需要多线程使用则用ConcurrentHashMap替代</p>
+<h2 id="41、什么是TreeMap？"><a href="#41、什么是TreeMap？" class="headerlink" title="41、什么是TreeMap？"></a>41、什么是TreeMap？</h2><ul>
+<li>TreeMap是一个有的key-value集合，它是通过红黑树实现的</li>
+<li>TreeMap基于红黑树实现。该映射根据其键的自然顺序进行排序，或者根据创建映射时提供的Comparator进行排序，具体取决于使用的构造方法。</li>
+<li>TreeMap是线程非同步的。</li>
+</ul>
+<h2 id="42、如何决定使用HashMap还是TreeMap？"><a href="#42、如何决定使用HashMap还是TreeMap？" class="headerlink" title="42、如何决定使用HashMap还是TreeMap？"></a>42、如何决定使用HashMap还是TreeMap？</h2><ul>
+<li>对于在Map中插入、删除和定位元素这类操作，HashMap是最好的选择。然而，假如你需要对一个有序的key集合进行遍历，TreeMap是更好的选择。基于你的collection的大小，也许向hashMap中添加元素会更快，将map换为TreeMap进行有序key的遍历</li>
+</ul>
+<h2 id="43、HashMap和ConcurrentHashMap的区别"><a href="#43、HashMap和ConcurrentHashMap的区别" class="headerlink" title="43、HashMap和ConcurrentHashMap的区别"></a>43、HashMap和ConcurrentHashMap的区别</h2><p>1、ConcurrentHashMap对整个数组进行了分割分段（Segment），然后在每一个分段上都用lock锁进行保护，相对于HashTable的synchronized锁的粒度更精细了一些，并发性能更好，而HashMap没有锁机制，不是线程安全的。（JDK1.8之后ConcurrentHashMap启用了一种全新的方式实现，利用CAS算法）</p>
+<p>2、HashMap的键值对允许有null，但是concurrentHashMap都不允许。</p>
+<h2 id="44、ConcurrentHashMap-和-HashTable的区别？"><a href="#44、ConcurrentHashMap-和-HashTable的区别？" class="headerlink" title="44、ConcurrentHashMap 和 HashTable的区别？"></a>44、ConcurrentHashMap 和 HashTable的区别？</h2><ul>
+<li>ConcurrentHashMap 和 HashTable的区别主要体现在实现线程安全的方式上不同。<ul>
+<li>底层数据结构：JDK1.7的ConcurrentHashMap底层采用分段的数组+链表实现，JDK1.8采用的数据结构跟HashMap1.8的结构一样，数组+链表/红黑树.HashTable和JDK1.8之前的HashMap的底层数据结构类似都是采用数组+链表的形式，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的。</li>
+<li>实现线程安全的方式<ul>
+<li>在JDK1.7的时候，ConcurrentHashMap（分段锁）对整个数组进行了分割分段，每一把锁只锁容器其中一部分数据，多线程访问容器里不同数据段的数据，就不会存在锁竞争，提高并发访问率。到了JDK1.8的时候已经摈弃了Segment的概念，而是直接用Node数组+链表+红黑树的数据结构来实现，并发控制使用synchronized和CAS来操作。整个看起来就像是优化过且线程安全的HashMap，虽然JDK1.8中还能看到Segment的数据结构，但是已经简化了属性，只是为了兼容旧版本；</li>
+<li>HashTable（同一把锁）：使用synchronized来保证线程安全，效率非常低下。当一个线程访问同步方法时，其他线程也访问同步方法，可能会进入阻塞或轮询状态，如使用put添加元素，另一个线程不能使用put添加元素，也不能使用get，竞争会越来越激烈。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="45、ConcurrentHashMap底层具体实现知道吗？实现原理是什么？"><a href="#45、ConcurrentHashMap底层具体实现知道吗？实现原理是什么？" class="headerlink" title="45、ConcurrentHashMap底层具体实现知道吗？实现原理是什么？"></a>45、ConcurrentHashMap底层具体实现知道吗？实现原理是什么？</h2><h2 id="46、Array-和-ArrayList有何区别？"><a href="#46、Array-和-ArrayList有何区别？" class="headerlink" title="46、Array 和 ArrayList有何区别？"></a>46、Array 和 ArrayList有何区别？</h2><ul>
+<li>Array 可以存储基本数据类型和对象，ArrayList 只能存储对象。</li>
+<li>Array是指定固定大小的，而ArrayList大小是自动扩展的</li>
+<li>Array内置方法没有ArrayList多，比如addAll、removeAll、iteration等方法只有ArrayList有</li>
+</ul>
+<h2 id="47、如何实现ArrayList-和-List之间的转换？"><a href="#47、如何实现ArrayList-和-List之间的转换？" class="headerlink" title="47、如何实现ArrayList 和 List之间的转换？"></a>47、如何实现ArrayList 和 List之间的转换？</h2><ul>
+<li>Array 转 List。Arrays.asList(array)</li>
+<li>List 转 Array：List的toArray（）方法</li>
+</ul>
+<h2 id="48、comparable-和-comparator的区别？"><a href="#48、comparable-和-comparator的区别？" class="headerlink" title="48、comparable 和 comparator的区别？"></a>48、comparable 和 comparator的区别？</h2><p>已经在其他问题处答</p>
+<h2 id="49、Collection-和-Collections有什么区别？"><a href="#49、Collection-和-Collections有什么区别？" class="headerlink" title="49、Collection 和 Collections有什么区别？"></a>49、Collection 和 Collections有什么区别？</h2><ul>
+<li>Collection是一个集合接口。它提供了对集合对象进行基本操作的通用接口方法。Collection接口在java类库中有很多具体的实现。Collection接口的意义是为了各种具体的集合提供了最大化的统一操作方式，其直接继承接口有List和Set</li>
+<li>Collections则是集合类的一个工具类/帮助类,其中提供了一系列静态方法，用于对集合元素进行排序、搜索以及线程安全等各种操作。</li>
+</ul>
+<h2 id="50、TreeMap-和-TreeSet-在排序时如何比较元素？Collections-工具类中的-sort-方法如何比较元素？"><a href="#50、TreeMap-和-TreeSet-在排序时如何比较元素？Collections-工具类中的-sort-方法如何比较元素？" class="headerlink" title="50、TreeMap 和 TreeSet 在排序时如何比较元素？Collections 工具类中的 sort()方法如何比较元素？"></a>50、TreeMap 和 TreeSet 在排序时如何比较元素？Collections 工具类中的 sort()方法如何比较元素？</h2><p><img src="/2022/07/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98/Users\刘培永\AppData\Roaming\Typora\typora-user-images\image-20220721221916087.png" alt="image-20220721221916087"></p>
+<h2 id="51、Collection-和-Collections有什么区别"><a href="#51、Collection-和-Collections有什么区别" class="headerlink" title="51、Collection 和 Collections有什么区别"></a>51、Collection 和 Collections有什么区别</h2><h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><p>1、什么情况下会发生栈内存溢出。</p>
+<p>思路：描述栈定义。再描述为什么溢出，再说明一下相关配置参数。ok的话可以给面试官手写一个栈溢出的demo</p>
+<p>答案：</p>
+<ul>
+<li>栈是线程私有的，它的生命周期与线程相同，每个方法在执行的时候都会创建一个栈帧，用来存储局部变量表，操作数栈，动态链接，方法出口等信息。局部变量表又包含基本数据类型，对象引用类型</li>
+<li>如果线程请求的栈深度大于虚拟机所允许的最大深度，将抛出StackOverflowError异常，方法递归调用产生这种结果。</li>
+<li>如果java虚拟机栈可以动态扩展，并且扩展的动作已经尝试过，但是无法申请到足够的内存去完成扩展，或者在新建立线程的时候没有足够的内存去创建对应的虚拟机栈，那么Java虚拟机将抛出一个OutOfMemory异常，（线程启动太多）</li>
+<li>参数-Xss去调整JVM的大小</li>
+</ul>
+<p>2、详解JVM内存模型.</p>
+<h1 id="数据库篇"><a href="#数据库篇" class="headerlink" title="数据库篇"></a>数据库篇</h1><h2 id="1、数据库的基本操作"><a href="#1、数据库的基本操作" class="headerlink" title="1、数据库的基本操作"></a>1、数据库的基本操作</h2><p>见如下连接</p>
+<p><a href="http://tropicalforest.top/2022/07/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/#more" target="_blank" rel="noopener">http://tropicalforest.top/2022/07/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/#more</a></p>
+<h2 id="2、Mysql底层采用什么数据结构来存储数据"><a href="#2、Mysql底层采用什么数据结构来存储数据" class="headerlink" title="2、Mysql底层采用什么数据结构来存储数据"></a>2、Mysql底层采用什么数据结构来存储数据</h2><p>B-树、平衡树</p>
+<h2 id="3、分页所用的关键字"><a href="#3、分页所用的关键字" class="headerlink" title="3、分页所用的关键字"></a>3、分页所用的关键字</h2><p>MySql：</p>
+<p>mysql中使用 LIMIT</p>
+<p>select * from students limit 0,10 从第0条开始查，一共查询10条记录</p>
+<h2 id="4、SQL实现数据表的复制"><a href="#4、SQL实现数据表的复制" class="headerlink" title="4、SQL实现数据表的复制"></a>4、SQL实现数据表的复制</h2><p>select into from 和 insert into select.</p>
+<p>两种主要区别：</p>
+<p>select into from要求目标表不存在，因为在插入时会自动创建</p>
+<p>insert into select 要求目标表存在</p>
+<p>两种的语法：</p>
+<p>select  value1, value2 into  table2 from table1</p>
+<p>insert into table2(field1,field2) select value1, value2 from table1</p>
+<h2 id="5、什么是事务？"><a href="#5、什么是事务？" class="headerlink" title="5、什么是事务？"></a>5、什么是事务？</h2><p>事务是并发控制的基本单位。所谓事务，它是一个操作序列，这些操作要么都执行，要么都不执行，它是一个不可分割的工作单位。</p>
+<h2 id="6、事务的四大特性？"><a href="#6、事务的四大特性？" class="headerlink" title="6、事务的四大特性？"></a>6、事务的四大特性？</h2><ul>
+<li>原子性：事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行</li>
+<li>一致性：事务应确保数据库的状态从一个一致状态转变为另一个一致状态</li>
+<li>隔离性：多个事务并发执行时，一个事务的执行不应影响其他事务的执行</li>
+<li>持久性：已被提交的事务对数据库的修改应该永久保存在数据库中</li>
+</ul>
+<h2 id="7、什么是存储过程"><a href="#7、什么是存储过程" class="headerlink" title="7、什么是存储过程"></a>7、什么是存储过程</h2><p>存储过程可以说是一个记录集，也可以认为是一个方法，它是有一些SQL语句组成的代码块，</p>
+<p>这些SQL语句代码像一个方法一样实现一些功能（对单表或多表的增删改查），然后再给这个代码块取一个名字，在用到这个功能的时候调用它即可。</p>
+<h2 id="9、简单介绍一下触发器？"><a href="#9、简单介绍一下触发器？" class="headerlink" title="9、简单介绍一下触发器？"></a>9、简单介绍一下触发器？</h2><p>触发器是由insert、update和delete等事件来触发某种特定操作。</p>
+<p>满足触发器的触发条件时，数据库系统就会执行触发器中定义的程序语句。这样做可以保证某些操作之间的一致性。</p>
+<p>例如：在执行完一条语句时，触发查询所有，保证信息完整性</p>
+<h2 id="10、什么是E-R图"><a href="#10、什么是E-R图" class="headerlink" title="10、什么是E-R图"></a>10、什么是E-R图</h2><p>E-R图中包含了实体、关系和属性3中基本成分；</p>
+<p>通常用矩形表示实体，用连接相关实体的菱形框表示关系，用椭圆形或圆角矩形表示实体的属性，并用直线把实体及其属性连接其他。</p>
+<p>三中联系：</p>
+<p>1:1</p>
+<p>1：N</p>
+<p>M:N</p>
+<h2 id="11、什么是外连接、内连接？"><a href="#11、什么是外连接、内连接？" class="headerlink" title="11、什么是外连接、内连接？"></a>11、什么是外连接、内连接？</h2><p>内连接：根据连接条件只保留两个表中有对应数据的记录</p>
+<p>外连接：当一个表中记录在另一个表中没有记录时，会生成一条与NULL值对应的记录</p>
+<h2 id="12、什么是索引？有什么用？"><a href="#12、什么是索引？有什么用？" class="headerlink" title="12、什么是索引？有什么用？"></a>12、什么是索引？有什么用？</h2><p>索引相当于目录，可以更加方便地用于查询</p>
+<h2 id="13、范式"><a href="#13、范式" class="headerlink" title="13、范式"></a>13、范式</h2><ul>
+<li>第一范式（<strong>确保每列保持原子性</strong>）<ul>
+<li>第一范式（1NF）要求数据库表的每一个列都是不可分割的基本数据项，同一列中不能有多个值。</li>
+<li>若某一列有多个值，可以将该列单独拆分成一个实体，新实体和原实体间是一对多的关系。</li>
+<li>在任何一个关系数据库中，第一范式是对关系模式的基本要求，不满足第一范式的数据库就不是关系数据库</li>
+</ul>
+</li>
+<li>第二范式<strong>(确保表中的每列都和主键相关)</strong><ul>
+<li>满足第二范式（2NF）必须先满足第一范式（1NF）</li>
+<li>第二范式要求实体中每一行的所有非属性都必须完全依赖于主键；即非主属性必须完全依赖于主键</li>
+<li>完全依赖：主键可能由多个属性构成，完全依赖要求不允许存在非主属性依赖于主键中的某一部分属性。若存在哪个非主属性依赖于主键中的一部分属性，那么要讲发生部分依赖的这一组属性单独新建一个实体，并且在旧实体中用外键与新实体关联，并且新实体与旧实体是一对多的关系。</li>
+</ul>
+</li>
+<li>第三范式<strong>(确保每列都和主键列直接相关,而不是间接相关)</strong><ul>
+<li>满足第三范式（3NF）必须先满足第二范式（2NF）</li>
+<li>第三范式要求：实体中的属性不能是其他实体中非主属性。因为这样会出现冗余。即属性不依赖与其他非主属性。</li>
+<li>如果一个实体中出现其他实体的非主属性，可以将这两个实体用外键关联，而不是将另一张表的非主属性直接写在当前表中。</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据结构篇"><a href="#数据结构篇" class="headerlink" title="数据结构篇"></a>数据结构篇</h1><h2 id="1、二分查找算法"><a href="#1、二分查找算法" class="headerlink" title="1、二分查找算法"></a>1、二分查找算法</h2><p>二分查找算法，该方法中有三个变量，分别是low,high,mid.分别表示二分查找的最小、中间和最大的数据索引。通过一个while循环来查找数据，要查找的数据大于中间位置的数据时，即最大索引位置不变，最小索引位置变为上次循环中间位置+1；要查找的数据小于中间位置的数据时，即最小索引位置不变，最大索引位置变为上次循环位置-1.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span> []array, <span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> high = array.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid;</span><br><span class="line">    <span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">        mid = (high - low)/<span class="number">2</span> + low;</span><br><span class="line">        <span class="keyword">if</span>(array[mid] == a)&#123;</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(a&gt;array[mid])&#123;</span><br><span class="line">            low=mid+<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            high = mid-<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2、冒泡排序算法"><a href="#2、冒泡排序算法" class="headerlink" title="2、冒泡排序算法"></a>2、冒泡排序算法</h2><p>冒泡排序算法是一种较为简单的排序算法，它在重复访问要排序的元素列时，会依次比较相邻的两个元素，如果左边的元素大于右边的元素，就将二者交换位置，如此重复，直到没有相邻的元素需要交换位置，这时该列表的元素排序完成。</p>
+<p>该算法名称的由来是越大的元素会经过交换慢慢“浮”到数组的顶端，就如同水的气泡最终会上浮到顶端一样</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] bubbleSort(<span class="keyword">int</span>[] arr)&#123;</span><br><span class="line">    <span class="comment">//外层循环控制排序趟数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length -<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="comment">//内层循环控制每一趟排序次数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr.length-<span class="number">1</span>-i;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j]&gt;arr(j+<span class="number">1</span>))&#123;</span><br><span class="line">                  <span class="keyword">int</span> temp = arr[j];</span><br><span class="line">           		  arr[j] = arr[j+<span class="number">1</span>];</span><br><span class="line">                  arr[j+<span class="number">1</span>]=temp;</span><br><span class="line">            &#125;</span><br><span class="line">          </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3、插入排序算法"><a href="#3、插入排序算法" class="headerlink" title="3、插入排序算法"></a>3、插入排序算法</h2><p>插入排序算法是一种简单、直观且稳定的排序算法。如果要在一个已排好序的数据序列中插入一个数据，但要求此数据序列在插入数据后乃然有序，就要用到插入排序法。</p>
+<p>插入排序的基本思路是将一个数据插入已经排好序的序列中，从而得到一个新的有序数据，该算法适用于数据量较少的序列的排序，是稳定地排序方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] insertSort(<span class="keyword">int</span> arr[])&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">        <span class="comment">//插入的数</span></span><br><span class="line">        <span class="keyword">int</span> insertVal = arr[i];</span><br><span class="line">        <span class="comment">//被插入的位置（准备和前一个数进行比较）</span></span><br><span class="line">        <span class="keyword">int</span> index = i-<span class="number">1</span>;</span><br><span class="line">        <span class="comment">//如果插入的数比被插入的数小</span></span><br><span class="line">        <span class="keyword">while</span>(index&gt;=<span class="number">0</span> &amp;&amp; insertVal&lt;arr[index])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//则将arr[index]向后运动</span></span><br><span class="line">            arr[index+<span class="number">1</span>] = arr[index];</span><br><span class="line">            <span class="comment">//将index向前运动</span></span><br><span class="line">            index--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将插入的数放在合适的位置</span></span><br><span class="line">        arr[index+<span class="number">1</span>]=insertVal;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4、快速排序算法"><a href="#4、快速排序算法" class="headerlink" title="4、快速排序算法"></a>4、快速排序算法</h2><p>快速排序是对冒泡排序的一种改造，通过一趟排序将要排序的数据序列分成独立的两部分，其中一部分的所有数据比另一部分的所有数据都要小，然后按此方法对两部分数据分别进行快速排序，整个排序过程递归进行，最终使整个数据序列变成有序的数据序列。</p>
+<p>快速排序算法的原理</p>
+<p>快速排序算法的原理：选择一个关键值作为基准值（一般选择第一个元素为基准值元素），将比基准值大的值的都放在右边的序列中，将比基准值小的都放在左边的序列中。具体的循环过程如下。</p>
+<p>（1）从后向前比较，用基准值和最后一个值进行比较。如果比基准值小，则交换位置；如果比基准值大，则继续比较下一个值，直到找到第1个比基准值小的值才交换位置。</p>
+<p>（2）在从后向前找到第1个比基准值小的值并交换位置后，从前往后开始比较，如果有比基准值大的，则交换位置；如果没有，则继续比较下一个，知道找到第1个比基准值大的值才交换位置。</p>
+<p>（3）重复执行以上过程，直到从前向后比较的索引大于从后向前比较的索引，则结束一次循环。这是对于基准值来说，左右两边都是有序的数据序列。</p>
+<p>（4）重复循环以上过程，分别比较左右两边的序列，直到整个数据序列有效。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] quickSort(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> low, <span class="keyword">int</span> high)&#123;</span><br><span class="line">    <span class="keyword">int</span> start = low;<span class="comment">//从前向后的比较的索引</span></span><br><span class="line">    <span class="keyword">int</span> end = high;<span class="comment">//从后向前比较的索引</span></span><br><span class="line">    <span class="keyword">int</span> key = arr[low];<span class="comment">//基准值</span></span><br><span class="line">    <span class="keyword">while</span>(end&gt;start)&#123;</span><br><span class="line">        <span class="comment">//从后向前比较</span></span><br><span class="line">        <span class="keyword">while</span>(end&gt;start &amp;&amp; arr[end]&gt;=key)</span><br><span class="line">            end--;</span><br><span class="line">        <span class="comment">//如果没有比基准值小的，则比较下一个，直到有比基准值小的，则交换为位置，然后又从前向后比较</span></span><br><span class="line">        <span class="keyword">if</span>(arr[end]&lt;=key)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = arr[end];</span><br><span class="line">            arr[end] = arr[start];</span><br><span class="line">            arr[start] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//从前向后比较</span></span><br><span class="line">          <span class="keyword">while</span>(end&gt;start &amp;&amp; arr[start]&lt;=key)</span><br><span class="line">            start++;</span><br><span class="line">        <span class="comment">//如果没有比基准值大的，则比较下一个，直到有比基准值大的，则交换为位置</span></span><br><span class="line">        <span class="keyword">if</span>(arr[start]&gt;=key)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = arr[start];</span><br><span class="line">            arr[start] = arr[end];</span><br><span class="line">            arr[end] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//此时第1次循环比较结束，基准值的位置已经确定，左边的值都比基准值小。</span></span><br><span class="line">        <span class="comment">//右边的值都比基准值大，都是两边的顺序还有可能不一样，接着进行下面的递归调用。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//递归左边序列，从第1个索引位置到“基准值索引-1”</span></span><br><span class="line">    <span class="keyword">if</span>(start&gt;low) quickSort(arr,low,start-<span class="number">1</span>);</span><br><span class="line">    <span class="comment">//递归右边序列，从“基准值索引+1”到最后一个位置</span></span><br><span class="line">    <span class="keyword">if</span>(end&lt;high) quickSort(arr,end+<span class="number">1</span>,high);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5、希尔排序算法"><a href="#5、希尔排序算法" class="headerlink" title="5、希尔排序算法"></a>5、希尔排序算法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">## 6、归并排序算法</span><br><span class="line"></span><br><span class="line">```java</span><br></pre></td></tr></table></figure>
+<h2 id="7、桶排序算法"><a href="#7、桶排序算法" class="headerlink" title="7、桶排序算法"></a>7、桶排序算法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">## 8、基数排序算法</span><br><span class="line"></span><br><span class="line">```java</span><br></pre></td></tr></table></figure>
+<h2 id="9、什么是红黑树？"><a href="#9、什么是红黑树？" class="headerlink" title="9、什么是红黑树？"></a>9、什么是红黑树？</h2><p>红黑树，Red-Black Tree 「RBT」是一个自平衡(不是绝对的平衡)的二叉查找树(BST)。</p>
+<p>前面讲到红黑树能自平衡，它靠的是什么？</p>
+<blockquote>
+<p>三种操作：左旋、右旋和变色。</p>
+</blockquote>
+<p>，都是在进行插入和删除操作时通过特定操作保持二叉查找树的平衡，从而获得较高的查找性能。 </p>
+<p>红黑树的性质（规则）</p>
+<p>红黑树是一种含有红黑结点并能自平衡的二叉查找树。它必须满足下面性质：</p>
+<blockquote>
+<p> <em>性质1：每个节点要么是黑色，要么是红色。</em></p>
+<p>  <em>性质2：根节点是黑色。</em>  </p>
+<p><em>性质3：每个叶子节点（NIL）是黑色。</em> </p>
+<p> <strong><em>性质4：每个红色结点的两个子结点一定都是黑色。</em></strong></p>
+<p>  <strong><em>性质5：任意一结点到每个叶子结点的路径都包含数量相同的黑结点。（保证这棵树尽量是平衡的。）</em></strong></p>
+</blockquote>
+<h1 id="计算机网络篇"><a href="#计算机网络篇" class="headerlink" title="计算机网络篇"></a>计算机网络篇</h1><h2 id="1、TCP和UDP"><a href="#1、TCP和UDP" class="headerlink" title="1、TCP和UDP"></a>1、TCP和UDP</h2><p>TCP：面向有连接的，三次握手机制；传输的数据大小无限制；安全可靠协议；效率低，区分客户端和服务器</p>
+<p>UDP：是面向无连接的，发送的数据是通过数据报包的形式，不超过64k；不安全协议，效率高；不区分客户端和服务器。</p>
+<h2 id="2、三次握手-四次挥手？"><a href="#2、三次握手-四次挥手？" class="headerlink" title="2、三次握手 四次挥手？"></a>2、三次握手 四次挥手？</h2><p><a href="https://blog.csdn.net/qq_53847859/article/details/124110476?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-124110476-blog-78226816.pc_relevant_sortByStrongTime&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-124110476-blog-78226816.pc_relevant_sortByStrongTime&amp;utm_relevant_index=1" target="_blank" rel="noopener">https://blog.csdn.net/qq_53847859/article/details/124110476?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-124110476-blog-78226816.pc_relevant_sortByStrongTime&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-124110476-blog-78226816.pc_relevant_sortByStrongTime&amp;utm_relevant_index=1</a></p>
+<p><img src="/2022/07/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98/Users\刘培永\AppData\Roaming\Typora\typora-user-images\image-20220720165611455.png" alt="image-20220720165611455"></p>
+<p><img src="/2022/07/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98/Users\刘培永\AppData\Roaming\Typora\typora-user-images\image-20220720165628961.png" alt="image-20220720165628961"></p>
+<h2 id="3、网络的七层协议？"><a href="#3、网络的七层协议？" class="headerlink" title="3、网络的七层协议？"></a>3、网络的七层协议？</h2><p><img src="/2022/07/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98/Users\刘培永\AppData\Roaming\Typora\typora-user-images\image-20220720170041060.png" alt="image-20220720170041060"></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">OSI中的层</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">TCP/IP协议族</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">文件传输、电子邮件、文件服务等</td>
+<td style="text-align:left">TFTP、HTTP、FTP、SMTP、DNS、Telnet、SNMP</td>
+</tr>
+<tr>
+<td style="text-align:left">表示层</td>
+<td style="text-align:left">数据格式化、代码转换、数据加密</td>
+<td style="text-align:left">无</td>
+</tr>
+<tr>
+<td style="text-align:left">会话层</td>
+<td style="text-align:left">解除或建立与别的结点的联系</td>
+<td style="text-align:left">无</td>
+</tr>
+<tr>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">提供端对端的接口</td>
+<td style="text-align:left">TCP、UDP</td>
+</tr>
+<tr>
+<td style="text-align:left">网络层</td>
+<td style="text-align:left">为数据包选择路由</td>
+<td style="text-align:left">IP、ICMP、OSPF、BGP、ARP、RARP</td>
+</tr>
+<tr>
+<td style="text-align:left">数据链路层</td>
+<td style="text-align:left">传输有地址的帧以及错误检测功能</td>
+<td style="text-align:left">SLIP、CSLIP、PPP、MTU、ARP、RARP</td>
+</tr>
+<tr>
+<td style="text-align:left">物理层</td>
+<td style="text-align:left">以二进制数据形式在屋里媒体上传输数据</td>
+<td style="text-align:left">ISO2110、IEEE802、IEEE802.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="4、当在浏览器输入栏按下回车会发生什么"><a href="#4、当在浏览器输入栏按下回车会发生什么" class="headerlink" title="4、当在浏览器输入栏按下回车会发生什么"></a>4、当在浏览器输入栏按下回车会发生什么</h2><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span>回车键按下后，浏览器会对输入的地址数据进行解析</span><br><span class="line"><span class="number">2.</span>进行DNS（域名服务器 UDP的）递归查询</span><br><span class="line"><span class="number">3.</span>使用套接字进行数据访问</span><br><span class="line"><span class="number">4.</span>建立TCP连接（三次握手）</span><br><span class="line"><span class="number">5.</span>浏览器处理数据</span><br></pre></td></tr></table></figure>
+<h2 id="5、邮件服务器之间传送邮件通常使用什么协议，它们分别使用哪个端口，简述其功能。"><a href="#5、邮件服务器之间传送邮件通常使用什么协议，它们分别使用哪个端口，简述其功能。" class="headerlink" title="5、邮件服务器之间传送邮件通常使用什么协议，它们分别使用哪个端口，简述其功能。"></a>5、邮件服务器之间传送邮件通常使用什么协议，它们分别使用哪个端口，简述其功能。</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">邮件服务器之间常用邮件协议 SMTP POP3 IMAP。</span><br><span class="line"><span class="quote">&gt; SMTP:的一个重要特点是它能够在传送中接力传送邮件，即邮件可以通过不同网络上的主机接力式传送。工作在两种情况下：一是电子邮件从客户机传输到服务器；二是从某一个服务器传输到另一个服务器。SMTP是个请求/响应协议，它监听25号端口，用于接收用户的Mail请求，并与远端Mail服务器建立SMTP连接。</span></span><br><span class="line"><span class="quote">&gt; POP3:仍采用Client/Server工作模式，当客户机需要服务时，客户端的软件将与POP3服务器建立TCP连接，此后要经过POP3协议的三种工作状态，首先是认证过程，确认客户机提供的用户名和密码，在认证通过后便转入处理状态，在此状态下用户可收取自己的邮件或做邮件的删除，在完成响应的操作后客户机便发出quit命令，此后便进入更新状态，将做删除标记的邮件从服务器端删除掉,到此为止整个POP过程完成。</span></span><br><span class="line"><span class="quote">&gt; IMAP:主要提供的是通过Internet获取信息的一种协议。IMAP像POP那样提供了方便的邮件下载服务，让用户能进行离线阅读，但IMAP能完成的却远远不只这些。IMAP提供的摘要浏览功能可以让你在阅读完所有的邮件到达时间、主题、发件人、大小等信息后才作出是否下载的决定</span></span><br></pre></td></tr></table></figure>
+<h1 id="web篇"><a href="#web篇" class="headerlink" title="web篇"></a>web篇</h1><h2 id="1、表单中post和get的区别？"><a href="#1、表单中post和get的区别？" class="headerlink" title="1、表单中post和get的区别？"></a>1、表单中post和get的区别？</h2><p>get：</p>
+<p>​    1、不能传递敏感数据</p>
+<p>​    2、不能传递大量的数据，每次只能传递1024B</p>
+<p>​    3、不能上传附件</p>
+<p>post：</p>
+<p>​    1、相对安全</p>
+<p>​    2、可以上传海量数据</p>
+<p>​    3、可以上传附件</p>
+<h2 id="2、什么是Ajax，好处是什么"><a href="#2、什么是Ajax，好处是什么" class="headerlink" title="2、什么是Ajax，好处是什么"></a>2、什么是Ajax，好处是什么</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。</span><br><span class="line">这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</span><br></pre></td></tr></table></figure>
+<h2 id="3、九大内置对象"><a href="#3、九大内置对象" class="headerlink" title="3、九大内置对象"></a>3、九大内置对象</h2><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">PrintWriter out	 输出服务器响应的输出流对象；</span><br><span class="line">Object<span class="built_in"> page </span> JSP页面本身；</span><br><span class="line">PageContext pageContext  通过该对象可以获取其他对象；</span><br><span class="line">HttpServletRequest request  封装客户端的请求，其中包含来自GET或POST请求的参数；</span><br><span class="line">HttpServletResponse response  封装服务器对客户端的响应；</span><br><span class="line">HttpSession session  封装用户会话的对象；</span><br><span class="line">ServletContext application  封装服务器运行环境的对象--全局变量；</span><br><span class="line">Exception exception  封装页面抛出异常的对象；</span><br><span class="line">ServletConfig<span class="built_in"> config </span> Web应用的配置对象。</span><br></pre></td></tr></table></figure>
+<h2 id="4、转发-Forward-和重定向-Redirect-的区别"><a href="#4、转发-Forward-和重定向-Redirect-的区别" class="headerlink" title="4、转发(Forward)和重定向(Redirect)的区别"></a>4、转发(Forward)和重定向(Redirect)的区别</h2><blockquote>
+<p><strong>转发是服务器行为，重定向是客户端行为</strong>。<br><strong>转发</strong>（Forward） 通过RequestDispatcher对象的forward（HttpServletRequest request,HttpServletResponse response）方法实现的。RequestDispatcher可以通过HttpServletRequest 的getRequestDispatcher()方法获得。例如下面的代码就是跳转到success.jsp页面。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">request.getRequestDispatcher(<span class="string">"success.jsp"</span>).forward(request, response);</span><br></pre></td></tr></table></figure>
+<p><strong>重定向</strong>（Redirect） 是利用服务器返回的状态码来实现的。客户端浏览器请求服务器的时候，服务器会返回一个状态码。服务器通过 HttpServletResponse 的 setStatus(int status) 方法设置状态码。如果服务器返回301或者302，则浏览器会到新的网址重新请求该资源。</p>
+</blockquote>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">从地址栏显示来说</span><br><span class="line">forward是服务器请求资源,服务器直接访问目标地址的URL,把URL的响应内容读取过来,然后把这些内容再发给浏览器.浏览器不知道服务器发送的内容从哪里来的,所以地址栏还是原来的地址. </span><br><span class="line">redirect是服务端根据逻辑,发送一个状态码,告诉浏览器重新去请求那个地址.所以地址栏显示的是新的URL.</span><br><span class="line"></span><br><span class="line">从数据共享来说</span><br><span class="line"><span class="symbol">forward:</span>转发页面和转发到的页面可以共享request里面的数据.</span><br><span class="line"><span class="symbol">redirect:</span>不能共享数据.</span><br><span class="line"></span><br><span class="line">从运用地方来说</span><br><span class="line"><span class="symbol">forward:</span>一般用于用户登陆的时候,根据角色转发到相应的模块. </span><br><span class="line"><span class="symbol">redirect:</span>一般用于用户注销登陆时返回主页面和跳转到其它的网站等</span><br><span class="line"></span><br><span class="line">从效率来说</span><br><span class="line"><span class="symbol">forward:</span>高. </span><br><span class="line"><span class="symbol">redirect:</span>低.</span><br></pre></td></tr></table></figure>
+<h2 id="5、cookie和session"><a href="#5、cookie和session" class="headerlink" title="5、cookie和session"></a>5、cookie和session</h2><p><strong><em>cookie</em></strong>：浏览器A访问服务器的时候，服务器就给这个A一个id，浏览器会将这个id <strong>保存到本地</strong> cookie中；由web服务器在http响应头中附带给浏览器；一旦浏览器保存了cookie 每次访问web服务器时，都会在http请求头中将cookie <strong>回传给web服务器</strong><br><strong><em>session</em></strong>：采用的是在服务端保持Http状态信息的方案(<strong>保存在服务端</strong>)；当服务端需要为某个客户端的请求创建一个session时，服务器首先检查这个客户端的请求里是否包含了一个session标识(即JSESSIONID)；在服务端的session对象的内容，可以访问到，这些变量信息是存在服务器的中的。</p>
+<h2 id="6、你了解监听器吗？"><a href="#6、你了解监听器吗？" class="headerlink" title="6、你了解监听器吗？"></a>6、你了解监听器吗？</h2><p><strong>监听器</strong>是一个专门用于对其他对象身上发生的事件或状态改变进行监听和相应处理的对象，当被监视的对象发生情况时，立即采取相应的行动。<br>java的事件监听机制<br>1、事件监听涉及到三个组件：<strong>事件源</strong>、<strong>事件对象</strong>、<strong>事件监听器</strong>。<br>2、当事件源上发生某一个动作时，它会调用事件监听器的一个方法，并在调用该方法时把事件对象传递进去，<br>开发人员在监听器中通过事件对象，就可以拿到事件源，从而对事件源进行操作。</p>
+<h1 id="框架篇"><a href="#框架篇" class="headerlink" title="框架篇"></a>框架篇</h1><h2 id="1、什么是ORM"><a href="#1、什么是ORM" class="headerlink" title="1、什么是ORM"></a>1、什么是ORM</h2><p>对象关系映射（Object Relational Mapping）模式是一种为了解决面向对象与关系数据库存在的互不匹配的技术；</p>
+<p>简单的说，ORM是通过使用描述对象和数据库之间的映射的元数据，将程序中的对象自动持久化到关系数据库中。</p>
+<h2 id="2、MyBatis默认用什么做日志管理"><a href="#2、MyBatis默认用什么做日志管理" class="headerlink" title="2、MyBatis默认用什么做日志管理"></a>2、MyBatis默认用什么做日志管理</h2><p>log4j</p>
+<h2 id="3、MyBatis动态代理？"><a href="#3、MyBatis动态代理？" class="headerlink" title="3、MyBatis动态代理？"></a>3、MyBatis动态代理？</h2><p>开发者只需声明mapp接口（类似dao接口），无需声明实现类，而由mybatis框架通过创建接口的代理对象，就和实现类类似。需要按照一点的规范来开发接口和映射文件。</p>
+<p>动态代理规则：</p>
+<p>1、映射文件的mapper.xml的名称要和接口的名称一致</p>
+<p>2、映射文件的namspace是接口的全路径</p>
+<p>3、映射文件的sql statement的id是接口的方法名称</p>
+<p>4、映射文件的输入参数类型和接口方法的参数类型一致</p>
+<p>5、映射文件的输出结果和接口方法1的返回类型一致</p>
+<h2 id="4、MyBatis输入输出类型"><a href="#4、MyBatis输入输出类型" class="headerlink" title="4、MyBatis输入输出类型"></a>4、MyBatis输入输出类型</h2><p>输入输出支持类型：</p>
+<p>输入：parameterType支持的类型：java简单类型、hashmap、自定义pojo对象</p>
+<p>输出：resultType：支持的类型：java简单类型、hashmap、自定义pojo对象</p>
+<p>注意：封装的自定义pojo对象的要求：对象的属性名和数据库表的字段名一一对应</p>
+<p>输出2：resultMap：</p>
+<p>1、可以解决对象属性名和数据库字段名不一致的问题</p>
+<p>2、还可以做一对一和一对多</p>
+<h2 id="5、resultMap的使用"><a href="#5、resultMap的使用" class="headerlink" title="5、resultMap的使用"></a>5、resultMap的使用</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"order"</span> <span class="attr">id</span>=<span class="string">"orderResultMap"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 定义主键 ,非常重要。如果是多个字段,则定义多个id --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- property：主键在pojo中的属性名 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- column：主键在数据库中的列名 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"id"</span> <span class="attr">column</span>=<span class="string">"id"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 定义普通属性 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"userId"</span> <span class="attr">column</span>=<span class="string">"user_id"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"number"</span> <span class="attr">column</span>=<span class="string">"number"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>6、简单介绍Spring</p>
+<p>spring是一个轻量级的控制反转和面向切面编程的容器框架</p>
+<p>1、轻量级：spring大小和开销都是轻量级的</p>
+<p>2、非入侵：一般在程序开发中，不需要引入spring包</p>
+<p>3、控制反转（IOC）：对对象的创建权力交给容器</p>
+<p>4、面向切面编程（AOP）：基于代理的 可以将核心业务和系统服务分开</p>
+<p>7、Spring的两大特性</p>
+<p>1、控制反转（IOC）：</p>
+<p>把对象的创建、销毁的权利交给容器框架，由容器来管理对象的生命周期；</p>
+<p>ioc不是新的技术，只是一种思想或理念，。可以实现松耦合</p>
+<p>ioc包括依赖注入和依赖查找</p>
+<p>DI（依赖注入）：就是在spring实例化对象的时候，由容器来设置这些对象的属性值</p>
+<p>2、面向切面编程（AOP）：</p>
+<p>采用横向抽取机制，把分散在各个方法中的相同代码抽取出来</p>
+<p>然后在编译期或者是在运行时再把这些代码应用到所需要执行的地方</p>
+<p>通知（Advice）：aop在切点上执行的增强处理</p>
+<p>切点（Pointcut）：就是带有通知的连接点</p>
+<p>切面（Aspect）：通常上就是一个类，里面定义了通知和切点</p>
+<p>AOP=通知+切点</p>
+<p>3、什么是MVC</p>
+<p>MVC全名是Model View Controller，是模型（model）-视图（view）-控制器（controller）的缩写。</p>
+<p>Model（模型）是应用程序中用于处理应用程序数据逻辑的部分。通常模型对象负责在数据库中存取数据</p>
+<p>View（视图）是应用程序中处理数据显示的部分。通常视图是依据模型数据创建的</p>
+<p>Controller（控制器）是应用程序中处理用户交互的部分。通常控制器负责从视图读取数据，控制用户输入，并向模型发送数据</p>
+<p>4、SpringMVC的工作流程</p>
+<p><img src="/2022/07/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98/Users\刘培永\AppData\Roaming\Typora\typora-user-images\image-20220721083752673.png" alt="image-20220721083752673"></p>
+<blockquote>
+<p>1、客户端发送url到前端控制器（DispatherServlet）</p>
+<p>2、前端控制器把请求url发送给处理器映射器HandlerMapping</p>
+<p>3、处理器映射器根据url来查找处理器Handler，并返回给前端控制器</p>
+<p>4、前端控制器调用处理器适配器去执行处理器，传递需要执行的处理器信息</p>
+<p>5、处理器适配器执行处理器</p>
+<p>6、处理器返回一个ModelAndView对象</p>
+<p>7、适配器返回ModelAndView给前端控制器</p>
+<p>8、前端控制器调用视图解析器去解析视图</p>
+<p>9、视图解析器把逻辑视图解析为真正的视图并且返回给前端控制器</p>
+<p>10、前端控制器对视图进行数据渲染、构建DOM树</p>
+<p>11、把页面返回给客户端</p>
+</blockquote>
+]]></content>
       <categories>
         <category>面试</category>
       </categories>
